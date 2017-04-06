@@ -97,7 +97,7 @@ Logstash is an open source data collection engine with real-time pipelining capa
 <meta property="og:description" content="elk是一款开源的集中式日志管理分析平台，并且拥有实时日志分析的能力；
 Logstash回答第一个问题Logstash是什么？
 Logstash is an open source data collection engine with real-time pipelining capabilities. Logstash can dynamically unify data from dispa">
-<meta property="og:updated_time" content="2017-03-17T09:43:35.000Z">
+<meta property="og:updated_time" content="2017-03-31T09:25:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELK平台">
 <meta name="twitter:description" content="elk是一款开源的集中式日志管理分析平台，并且拥有实时日志分析的能力；
@@ -355,9 +355,34 @@ Logstash is an open source data collection engine with real-time pipelining capa
 <p>查看日志的级别信息<br><a href="http://localhost:9600/_node/logging?pretty" target="_blank" rel="external">http://localhost:9600/_node/logging?pretty</a></p>
 <p><a href="https://www.elastic.co/guide/en/logstash/current/shutdown.html" target="_blank" rel="external">关闭Logstash</a></p>
 <p><a href="https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html" target="_blank" rel="external">Logstash processing config file</a></p>
+<h4 id="input-filter"><a href="#input-filter" class="headerlink" title="input filter"></a>input filter</h4><h5 id="grok"><a href="#grok" class="headerlink" title="grok"></a>grok</h5><p>grok用来解析任意的文本，然后生成结构化的数据；</p>
 <h3 id="Filebeat"><a href="#Filebeat" class="headerlink" title="Filebeat"></a>Filebeat</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./filebeat -e -c filebeat.yml -d &quot;publish&quot;</div></pre></td></tr></table></figure>
 <h3 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h3><blockquote></blockquote>
+<h4 id="Elasticsearch架构"><a href="#Elasticsearch架构" class="headerlink" title="Elasticsearch架构"></a>Elasticsearch架构</h4><p><a href="http://www.tuicool.com/articles/ruQBB3E" target="_blank" rel="external">Elasticsearch架构</a></p>
+<ul>
+<li>elasticsearch中的服务发现</li>
+</ul>
+<p>在分布式系统中要解决的第一个问题就是节点之间互相发现及选主的过程，像Zookeeper，就是解决了这个问题；elasticsearch是一个分布式的弹性伸缩的全文搜索及分析引擎，但es的分布式节点服务发现使用了自身的ZenDiscovery，大致过程如下：</p>
+<blockquote>
+<p>节点启动时先ping节点，ping是一个rpc的命令，如果discovery.zen.ping.unicast.hosts中设置了值，则ping设置中的主机，否则ping localhost；<br>ping返回的response，会包含被ping主机的节点信息以及被ping认为的master节点；<br>选举开始，先从各节点认为的master中选举一个做master，按照字母顺序选；<br>如果没有认为的master存在，就从所有节点中选一个，选的方式也是按照字母顺序，但是如果设置了discovery.zen.minimum_master_nodes，那就必须节点总数达到最小值的限制才能开始选举，否则一直等待；<br>最后肯定能选个master出来，如果只有一个节点，就选自己；<br>如果当前节点是master，等待节点个数大于minimum_master_nodes，然后就对外提供服务；<br>如果当前节点不是master，尝试加入master</p>
+</blockquote>
+<ul>
+<li>弹性伸缩的elastic</li>
+</ul>
+<p>体现在如下两个方面：<br>1 服务发现机制让节点很容易加入和退出<br>2 富的设置以及allocation API</p>
+<p>Elasticsearch 节点启动的时候只需要配置discovery.zen.ping.unicast.hosts，这里不需要列举集群中所有的节点，只要知道其中一个即可。当然为了避免重启集群时正好配置的节点挂掉，最好多配置几个节点。节点退出时只需要调用 API 将该节点从集群中排除，系统会自动迁移该节点上的数据，然后关闭该节点即可。当然最好也将不可用的已知节点从其他节点的配置中去除，避免下次启动时出错。</p>
+<p>分片（Shard）以及副本（Replica） 分布式存储系统为了解决单机容量以及容灾的问题，都需要有分片以及副本机制。Elasticsearch 没有采用节点级别的主从复制，而是基于分片；</p>
+<ul>
+<li></li>
+<li></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"># 查看es集群的健康状态</div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/_cat/health?v&quot; -u elastic:changeme</div><div class="line"></div><div class="line"># 查看es集群的节点信息</div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/_cat/nodes?v&quot; -u elastic:changeme</div><div class="line"></div><div class="line"># 查看es集群中所有的index</div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/_cat/indices?v&quot; -u elastic:changeme</div><div class="line"></div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;match_all&quot;:&#123;&#125;&#125;, &quot;size&quot;: 1&#125;&apos;</div><div class="line"></div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;match_all&quot;:&#123;&#125;&#125;, &quot;from&quot;: 10, &quot;size&quot;: 10&#125;&apos;</div><div class="line"></div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;match_all&quot;:&#123;&#125;&#125;, &quot;from&quot;: 10, &quot;size&quot;: 10, &quot;sort&quot;: &#123;&quot;@timestamp&quot;: &#123;&quot;order&quot;: &quot;desc&quot;&#125;&#125;&#125;&apos;</div><div class="line"></div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;match&quot;:&#123;&quot;@timestamp&quot;: &quot;2017-03-31T03:36:13.993Z&quot;&#125;&#125;&#125;&apos;</div><div class="line"></div><div class="line"># 返回所有包含failure的记录</div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;match&quot;:&#123;&quot;message&quot;: &quot;failure&quot;&#125;&#125;&#125;&apos;</div><div class="line"></div><div class="line"># bool query, must  should   must_not</div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;bool&quot;: &#123;&quot;should&quot;: [&#123;&quot;match&quot;: &#123;&quot;message&quot;: &quot;failure&quot;&#125;&#125;]&#125;&#125;&#125;&apos;</div><div class="line"></div><div class="line"># filters</div><div class="line"></div><div class="line"># Aggregations</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># start elasticsearch</div><div class="line">cd elasticsearch-5.2.2</div><div class="line">bin/elasticsearch</div></pre></td></tr></table></figure>
+<h4 id="Elasticsearch-Mapping"><a href="#Elasticsearch-Mapping" class="headerlink" title="Elasticsearch Mapping"></a>Elasticsearch Mapping</h4><p>Mapping定义了type中的诸多字段的数据类型以及这些字段如何被Elasticsearch处理，比如一个字段是否可以查询以及如何分词等。默认情况不需要显式的定义mapping， 当新的type或者field引入时，Elasticsearch会自动创建并且注册有合理的默认值的mapping(毫无性能压力)， 只有要覆盖默认值时才必须要提供mapping定义。</p>
+<ul>
+<li>Mapping datatypes</li>
+</ul>
+<p>string: text  keyword<br>numberic types: long, integer, short, byte, double, float<br>date types: date<br>boolean types: boolean<br>binary types: binary<br>range types: integer_range, float_range, long_range, double_range, date_range<br>array type<br>object type: a single json object<br>nested type: for arrays of JSON objects</p>
 
       
     </div>
@@ -480,7 +505,7 @@ Logstash is an open source data collection engine with real-time pipelining capa
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -493,7 +518,7 @@ Logstash is an open source data collection engine with real-time pipelining capa
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -528,7 +553,7 @@ Logstash is an open source data collection engine with real-time pipelining capa
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logstash"><span class="nav-number">1.</span> <span class="nav-text">Logstash</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logstash是如何工作的"><span class="nav-number">1.1.</span> <span class="nav-text">Logstash是如何工作的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行模型"><span class="nav-number">1.2.</span> <span class="nav-text">执行模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Logstash的配置"><span class="nav-number">1.3.</span> <span class="nav-text">Logstash的配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Filebeat"><span class="nav-number">2.</span> <span class="nav-text">Filebeat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elasticsearch"><span class="nav-number">3.</span> <span class="nav-text">Elasticsearch</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logstash"><span class="nav-number">1.</span> <span class="nav-text">Logstash</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logstash是如何工作的"><span class="nav-number">1.1.</span> <span class="nav-text">Logstash是如何工作的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行模型"><span class="nav-number">1.2.</span> <span class="nav-text">执行模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Logstash的配置"><span class="nav-number">1.3.</span> <span class="nav-text">Logstash的配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#input-filter"><span class="nav-number">1.4.</span> <span class="nav-text">input filter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#grok"><span class="nav-number">1.4.1.</span> <span class="nav-text">grok</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Filebeat"><span class="nav-number">2.</span> <span class="nav-text">Filebeat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elasticsearch"><span class="nav-number">3.</span> <span class="nav-text">Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Elasticsearch架构"><span class="nav-number">3.1.</span> <span class="nav-text">Elasticsearch架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Elasticsearch-Mapping"><span class="nav-number">3.2.</span> <span class="nav-text">Elasticsearch Mapping</span></a></li></ol></li></ol></div>
             
 
           </div>
