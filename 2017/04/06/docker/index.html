@@ -85,19 +85,37 @@
 
 
 
-<meta name="description" content="Deploy a stack to a swarmhttps://docs.docker.com/engine/swarm/stack-deploy/这篇文章讲了部署到swarm的全过程
-https://blog.couchbase.com/deploy-docker-compose-services-swarm/  Deploy Docker Compose Services to Swarm">
+<meta name="description" content="Question to be answer
+image 在swarm cluster中共享的问题
+
+配置文件动态配置到image中，并在每次更新配置文件只需要重启container即可，而不需要每次都build新的image
+
+
+Basic operatorhttps://docs.docker.com/engine/getstarted/step_four/
+Deploy a stack to">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker in action">
 <meta property="og:url" content="http://shniu.github.io/2017/04/06/docker/index.html">
 <meta property="og:site_name" content="知其然">
-<meta property="og:description" content="Deploy a stack to a swarmhttps://docs.docker.com/engine/swarm/stack-deploy/这篇文章讲了部署到swarm的全过程
-https://blog.couchbase.com/deploy-docker-compose-services-swarm/  Deploy Docker Compose Services to Swarm">
-<meta property="og:updated_time" content="2017-04-06T11:27:04.000Z">
+<meta property="og:description" content="Question to be answer
+image 在swarm cluster中共享的问题
+
+配置文件动态配置到image中，并在每次更新配置文件只需要重启container即可，而不需要每次都build新的image
+
+
+Basic operatorhttps://docs.docker.com/engine/getstarted/step_four/
+Deploy a stack to">
+<meta property="og:updated_time" content="2017-04-08T00:22:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker in action">
-<meta name="twitter:description" content="Deploy a stack to a swarmhttps://docs.docker.com/engine/swarm/stack-deploy/这篇文章讲了部署到swarm的全过程
-https://blog.couchbase.com/deploy-docker-compose-services-swarm/  Deploy Docker Compose Services to Swarm">
+<meta name="twitter:description" content="Question to be answer
+image 在swarm cluster中共享的问题
+
+配置文件动态配置到image中，并在每次更新配置文件只需要重启container即可，而不需要每次都build新的image
+
+
+Basic operatorhttps://docs.docker.com/engine/getstarted/step_four/
+Deploy a stack to">
 
 
 
@@ -322,20 +340,27 @@ https://blog.couchbase.com/deploy-docker-compose-services-swarm/  Deploy Docker 
       
 
       
-        <h3 id="Deploy-a-stack-to-a-swarm"><a href="#Deploy-a-stack-to-a-swarm" class="headerlink" title="Deploy a stack to a swarm"></a>Deploy a stack to a swarm</h3><p><a href="https://docs.docker.com/engine/swarm/stack-deploy/" target="_blank" rel="external">https://docs.docker.com/engine/swarm/stack-deploy/</a>这篇文章讲了部署到swarm的全过程</p>
+        <h3 id="Question-to-be-answer"><a href="#Question-to-be-answer" class="headerlink" title="Question to be answer"></a>Question to be answer</h3><ul>
+<li><p>image 在swarm cluster中共享的问题</p>
+</li>
+<li><p>配置文件动态配置到image中，并在每次更新配置文件只需要重启container即可，而不需要每次都build新的image</p>
+</li>
+</ul>
+<h3 id="Basic-operator"><a href="#Basic-operator" class="headerlink" title="Basic operator"></a>Basic operator</h3><p><a href="https://docs.docker.com/engine/getstarted/step_four/" target="_blank" rel="external">https://docs.docker.com/engine/getstarted/step_four/</a></p>
+<h3 id="Deploy-a-stack-to-a-swarm"><a href="#Deploy-a-stack-to-a-swarm" class="headerlink" title="Deploy a stack to a swarm"></a>Deploy a stack to a swarm</h3><p><a href="https://docs.docker.com/engine/swarm/stack-deploy/" target="_blank" rel="external">https://docs.docker.com/engine/swarm/stack-deploy/</a>这篇文章讲了部署到swarm的全过程</p>
 <p><a href="https://blog.couchbase.com/deploy-docker-compose-services-swarm/" target="_blank" rel="external">https://blog.couchbase.com/deploy-docker-compose-services-swarm/</a>  Deploy Docker Compose Services to Swarm</p>
 <p><a href="https://technologyconversations.com/2017/01/23/using-docker-stack-and-compose-yaml-files-to-deploy-swarm-services/" target="_blank" rel="external">https://technologyconversations.com/2017/01/23/using-docker-stack-and-compose-yaml-files-to-deploy-swarm-services/</a></p>
 <h3 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h3><blockquote>
 <p>Ignoring unsupported options: build in v1.13.0-rc4</p>
 </blockquote>
 <p><a href="https://github.com/docker/docker/issues/29940" target="_blank" rel="external">https://github.com/docker/docker/issues/29940</a><br><a href="https://github.com/docker/docker/issues/29133#issuecomment-270901505" target="_blank" rel="external">https://github.com/docker/docker/issues/29133#issuecomment-270901505</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">The docker stack deploy feature, by design does not perform builds. Reason for this is that a build is performed on the host that the command is run from, so the image will only be available on that node. When deploying that image in a Swarm, the service cannot be started on other nodes. To deploy services, make sure the image you&apos;re deploying is pushed to a registry (or for testing; make sure the image is available on every node in the swarm)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">The docker stack deploy feature, by design does not perform builds. </div><div class="line">Reason for this is that a build is performed on the host that the command is run from, so the image will only be available on that node. </div><div class="line">When deploying that image in a Swarm, the service cannot be started on other nodes. </div><div class="line">To deploy services, make sure the image you&apos;re deploying is pushed to a registry (or for testing; make sure the image is available on every node in the swarm)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>Inconsistent ‘image’ behavior on update  docker unable to pin image</p>
 </blockquote>
 <p><a href="https://github.com/docker/docker/issues/29295" target="_blank" rel="external">https://github.com/docker/docker/issues/29295</a></p>
-<pre><code>
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">有了这个warnning也没关系，可以正常跑服务</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -493,7 +518,7 @@ https://blog.couchbase.com/deploy-docker-compose-services-swarm/  Deploy Docker 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-a-stack-to-a-swarm"><span class="nav-number">1.</span> <span class="nav-text">Deploy a stack to a swarm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QA"><span class="nav-number">2.</span> <span class="nav-text">QA</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-to-be-answer"><span class="nav-number">1.</span> <span class="nav-text">Question to be answer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-operator"><span class="nav-number">2.</span> <span class="nav-text">Basic operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-a-stack-to-a-swarm"><span class="nav-number">3.</span> <span class="nav-text">Deploy a stack to a swarm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QA"><span class="nav-number">4.</span> <span class="nav-text">QA</span></a></li></ol></div>
             
 
           </div>
