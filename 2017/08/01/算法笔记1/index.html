@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="认知," />
+  <meta name="keywords" content="数据结构与算法," />
 
 
 
@@ -87,19 +87,19 @@
 
 
 
-<meta name="description" content="精准是企业的未来
-企业做到了精准，才有机会进入下一轮的商业竞争；Google颠覆了传统广告，带来了创新，Google的广告投放、淘宝的推广投放；商业文明的DNA也具有双螺旋，分别是协同网络和数据智能。协同网络：降低进入生态的门槛，一定是低门槛，以先进入的一批慢慢带动后来者，比如淘宝的生态，开始是一些边缘的人在做，比如大学生、失业的工人等；网络中的各组成部分之间能够自发的发展关系；数据智能：在线化、">
+<meta name="description" content="Question description
+TinyURL is a URL shortening service where you enter a URL such as https://leetcode.com/problems/design-tinyurl and it returns a short URL such as http://tinyurl.com/4e9iAkDesign t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="认知积累">
-<meta property="og:url" content="http://shniu.github.io/2017/04/18/认知积累/index.html">
+<meta property="og:title" content="算法笔记1 - Encode and decode tinyURL">
+<meta property="og:url" content="http://shniu.github.io/2017/08/01/算法笔记1/index.html">
 <meta property="og:site_name" content="一万英尺的高度">
-<meta property="og:description" content="精准是企业的未来
-企业做到了精准，才有机会进入下一轮的商业竞争；Google颠覆了传统广告，带来了创新，Google的广告投放、淘宝的推广投放；商业文明的DNA也具有双螺旋，分别是协同网络和数据智能。协同网络：降低进入生态的门槛，一定是低门槛，以先进入的一批慢慢带动后来者，比如淘宝的生态，开始是一些边缘的人在做，比如大学生、失业的工人等；网络中的各组成部分之间能够自发的发展关系；数据智能：在线化、">
-<meta property="og:updated_time" content="2017-04-18T05:47:20.000Z">
+<meta property="og:description" content="Question description
+TinyURL is a URL shortening service where you enter a URL such as https://leetcode.com/problems/design-tinyurl and it returns a short URL such as http://tinyurl.com/4e9iAkDesign t">
+<meta property="og:updated_time" content="2017-08-02T06:24:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="认知积累">
-<meta name="twitter:description" content="精准是企业的未来
-企业做到了精准，才有机会进入下一轮的商业竞争；Google颠覆了传统广告，带来了创新，Google的广告投放、淘宝的推广投放；商业文明的DNA也具有双螺旋，分别是协同网络和数据智能。协同网络：降低进入生态的门槛，一定是低门槛，以先进入的一批慢慢带动后来者，比如淘宝的生态，开始是一些边缘的人在做，比如大学生、失业的工人等；网络中的各组成部分之间能够自发的发展关系；数据智能：在线化、">
+<meta name="twitter:title" content="算法笔记1 - Encode and decode tinyURL">
+<meta name="twitter:description" content="Question description
+TinyURL is a URL shortening service where you enter a URL such as https://leetcode.com/problems/design-tinyurl and it returns a short URL such as http://tinyurl.com/4e9iAkDesign t">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://shniu.github.io/2017/04/18/认知积累/"/>
+  <link rel="canonical" href="http://shniu.github.io/2017/08/01/算法笔记1/"/>
 
 
 
 
 
-  <title> 认知积累 | 一万英尺的高度 </title>
+  <title> 算法笔记1 - Encode and decode tinyURL | 一万英尺的高度 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/04/18/认知积累/">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/08/01/算法笔记1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
@@ -273,7 +273,7 @@
             
             
               
-                认知积累
+                算法笔记1 - Encode and decode tinyURL
               
             
           </h1>
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T13:22:23+08:00">
-                2017-04-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T14:32:43+08:00">
+                2017-08-01
               </time>
             
 
@@ -324,11 +324,27 @@
       
 
       
-        <h3 id="精准是企业的未来"><a href="#精准是企业的未来" class="headerlink" title="精准是企业的未来"></a>精准是企业的未来</h3><blockquote>
-<p>企业做到了精准，才有机会进入下一轮的商业竞争；Google颠覆了传统广告，带来了创新，Google的广告投放、淘宝的推广投放；商业文明的DNA也具有双螺旋，分别是协同网络和数据智能。<br>协同网络：降低进入生态的门槛，一定是低门槛，以先进入的一批慢慢带动后来者，比如淘宝的生态，开始是一些边缘的人在做，比如大学生、失业的工人等；网络中的各组成部分之间能够自发的发展关系；<br>数据智能：在线化、记录尽可能多的数据，先不要管怎么用，将来肯定有用；<br>数据化是个昂贵的过程，谁有更有创意更优质获取数据的能力，谁就有更强的竞争力；<br>机器学习的的逻辑是否贯穿这个过程，是否能有更有的算法去解决接踵而来的问题；<br>一定要有持续不断的用户反馈、使用反馈，然后再去优化，再去收集反馈；<br>未来一定是有精准服务取胜的。  曾鸣</p>
+        <h2 id="Question-description"><a href="#Question-description" class="headerlink" title="Question description"></a>Question description</h2><blockquote>
+<p>TinyURL is a URL shortening service where you enter a URL such as <a href="https://leetcode.com/problems/design-tinyurl" target="_blank" rel="external">https://leetcode.com/problems/design-tinyurl</a> and it returns a short URL such as <a href="http://tinyurl.com/4e9iAk" target="_blank" rel="external">http://tinyurl.com/4e9iAk</a><br>Design the encode and decode methods for the TinyURL service. There is no restriction on how your encode/decode algorithm should work. You just need to ensure that a URL can be encoded to a tiny URL and the tiny URL can be decoded to the original URL.</p>
+<p>Requirements:<br>For instance, “<a href="http://tinyurl.com/4e9iAk" target="_blank" rel="external">http://tinyurl.com/4e9iAk</a>“ is the tiny url for the page “<a href="https://leetcode.com/problems/design-tinyurl" target="_blank" rel="external">https://leetcode.com/problems/design-tinyurl</a>“. The identifier (the highlighted part) can be any string with 6 alphanumeric characters containing 0-9, a-z, A-Z.<br>Each shortened URL must be unique; that is, no two different URLs can be shortened to the same URL.</p>
 </blockquote>
-<h3 id="知识的正解"><a href="#知识的正解" class="headerlink" title="知识的正解"></a>知识的正解</h3><blockquote>
-<p>所谓的知识，并不能给你带来任何的益处；信息本身并不是知识，堆叠在一起并不会自动产生有价值的、可供使用的知识，比如你知道的成语比别人多，这些大量的信息并不能帮你去做出比别人更好的决策，或对未来更好的关键选择；所以知识是那些能帮你做出更好决策，更好选择，能给你带来更加美好未来的信息；注意力比时间重要，时间比金钱重要；知识创造者和知识传播者，现在知识创造者更加重要；  李笑来</p>
+<p><a href="https://leetcode.com/problems/design-tinyurl/description/" target="_blank" rel="external">https://leetcode.com/problems/design-tinyurl/description/</a><br><a href="https://leetcode.com/problems/encode-and-decode-tinyurl/description/" target="_blank" rel="external">https://leetcode.com/problems/encode-and-decode-tinyurl/description/</a></p>
+<p>一些讨论可以参考这里：<br><a href="https://leetcode.com/problems/design-tinyurl/discuss/" target="_blank" rel="external">discuss</a></p>
+<p>这是一个有点意思的问题或叫需求，既可以单纯的把他当作一个简单的算法题来做做，也能复杂到我们需要大规模分布式系统去解决，取决于我们使用这个tinyURL services的场景是什么。当我们把他当作toy玩一玩的时候，十几行代码就解决了；如果我们把他做成服务千万上亿级别的用户时，每秒需要满足几百万，上千万，上亿次的请求时，他又是另外一帆景象。</p>
+<blockquote>
+<p>世界是奇妙的，当你发现他不一样的时候。</p>
+</blockquote>
+<h2 id="对于这件事情简单的处理"><a href="#对于这件事情简单的处理" class="headerlink" title="对于这件事情简单的处理"></a>对于这件事情简单的处理</h2><h4 id="字母随机组合法"><a href="#字母随机组合法" class="headerlink" title="字母随机组合法"></a>字母随机组合法</h4><p>简单到我们不关心任何复杂的事情，就是去实现Encode tinyURL and decode tinyURL，看下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Codec</span><span class="params">(object)</span>:</span></div><div class="line">    base_domain = <span class="string">'http://tiny.com/'</span></div><div class="line">    </div><div class="line">    alphabet = string.ascii_letters + <span class="string">'0123456789'</span></div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.code_to_url = &#123;&#125;</div><div class="line">        self.url_to_code = &#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">encode</span><span class="params">(self, long_url)</span>:</span></div><div class="line">        <span class="keyword">while</span> long_url <span class="keyword">not</span> <span class="keyword">in</span> self.url_to_code:</div><div class="line">            code = <span class="string">''</span>.join(random.sample(self.alphabet, <span class="number">6</span>))</div><div class="line">            <span class="keyword">if</span> code <span class="keyword">not</span> <span class="keyword">in</span> self.code_to_url:</div><div class="line">                self.url_to_code[long_url] = code</div><div class="line">                self.code_to_url[code] = long_url</div><div class="line">                </div><div class="line">        <span class="keyword">return</span> <span class="string">'%s%s'</span> % (self.base_domain, self.url_to_code[long_url])</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">(self, tiny_url)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.long_url[tiny_url[<span class="number">-6</span>:]]</div></pre></td></tr></table></figure>
+<p>上面使用了一种组合<code>a-z</code>, <code>A-Z</code>, <code>0-9</code> 的方式生成short url，6位的组合有 (62)^6 = 570亿种，所以基本满足了需求上限；</p>
+<h4 id="hash-function"><a href="#hash-function" class="headerlink" title="hash function"></a>hash function</h4><p>此外还有另外一种hash的方式，可以使用md5 or sha-1 的方式做hash运算，我们假设预估每个url的平均长度是20，每个字符占用2Bytes，那么总共需要40Bytes；首先如果使用md5会生成一个128位的二进制，一般会用32位的十六进制去表示，最终会占用16Bytes的空间；其次如果使用sha-1的方式去做hash，会生成一个160位的二进制，用40位的十六进制，使用20Byte就可以搞定存储；此法比较简单，hash的值也会比较随机，可以节省空间；但是这种方式会比较容易产生冲突，冲突之后就需要重新生成，也可以结合timestamp重新hash，但随着url增多时，冲突的机率会大幅增加，效率就会变得比较低。</p>
+<h2 id="URLService系统级别的服务"><a href="#URLService系统级别的服务" class="headerlink" title="URLService系统级别的服务"></a>URLService系统级别的服务</h2><p>下面我再去深入的思考这个问题，假设场景是这样的：</p>
+<ul>
+<li>我们需要构建一个URLService的服务对外提供服务，面向全球</li>
+<li>我们的QPS指标最弱也需要是下面这样的</li>
+</ul>
+<blockquote>
+<p>QPS<br>  日活  10万<br>  日请求  写 300w，读 3000w<br>  响应时间500ms左右<br>  QPS  写 100，读 1K</p>
 </blockquote>
 
       
@@ -353,7 +369,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/认知/" rel="tag"># 认知</a>
+            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
           
         </div>
       
@@ -366,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/11/知识图谱/" rel="next" title="知识图谱">
-                <i class="fa fa-chevron-left"></i> 知识图谱
+              <a href="/2017/04/22/深度学习/" rel="next" title="深度学习">
+                <i class="fa fa-chevron-left"></i> 深度学习
               </a>
             
           </div>
@@ -375,10 +391,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/22/深度学习/" rel="prev" title="深度学习">
-                深度学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -509,7 +521,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#精准是企业的未来"><span class="nav-number">1.</span> <span class="nav-text">精准是企业的未来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#知识的正解"><span class="nav-number">2.</span> <span class="nav-text">知识的正解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Question-description"><span class="nav-number">1.</span> <span class="nav-text">Question description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于这件事情简单的处理"><span class="nav-number">2.</span> <span class="nav-text">对于这件事情简单的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字母随机组合法"><span class="nav-number">2.0.1.</span> <span class="nav-text">字母随机组合法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hash-function"><span class="nav-number">2.0.2.</span> <span class="nav-text">hash function</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URLService系统级别的服务"><span class="nav-number">3.</span> <span class="nav-text">URLService系统级别的服务</span></a></li></ol></div>
             
 
           </div>
