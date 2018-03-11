@@ -1,0 +1,715 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="goloang,Echo,Web Framework," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="快速开始安装1go get -u github.com/labstack/echo/...
+创建一个 Hello world! 服务创建 server.go 文件，代码如下：
+123456789101112131415package mainimport (  &quot;net/http&quot;,  &quot;github.com/labstack/echo&quot;)func main() &amp;#123;    e := ec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Echo golang 下的高性能可扩展极简 Web 框架">
+<meta property="og:url" content="http://shniu.github.io/2018/03/03/201803/golang-echo/index.html">
+<meta property="og:site_name" content="ChainTech">
+<meta property="og:description" content="快速开始安装1go get -u github.com/labstack/echo/...
+创建一个 Hello world! 服务创建 server.go 文件，代码如下：
+123456789101112131415package mainimport (  &quot;net/http&quot;,  &quot;github.com/labstack/echo&quot;)func main() &amp;#123;    e := ec">
+<meta property="og:updated_time" content="2018-03-04T01:13:12.844Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Echo golang 下的高性能可扩展极简 Web 框架">
+<meta name="twitter:description" content="快速开始安装1go get -u github.com/labstack/echo/...
+创建一个 Hello world! 服务创建 server.go 文件，代码如下：
+123456789101112131415package mainimport (  &quot;net/http&quot;,  &quot;github.com/labstack/echo&quot;)func main() &amp;#123;    e := ec">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://shniu.github.io/2018/03/03/201803/golang-echo/"/>
+
+
+
+
+
+  <title> Echo golang 下的高性能可扩展极简 Web 框架 | ChainTech </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ChainTech</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">知其所以然</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/03/201803/golang-echo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Echo golang 下的高性能可扩展极简 Web 框架
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T08:42:04+08:00">
+                2018-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go get -u github.com/labstack/echo/...</div></pre></td></tr></table></figure>
+<h3 id="创建一个-Hello-world-服务"><a href="#创建一个-Hello-world-服务" class="headerlink" title="创建一个 Hello world! 服务"></a>创建一个 Hello world! 服务</h3><p>创建 <code>server.go</code> 文件，代码如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">  <span class="string">"net/http"</span>,</div><div class="line">  <span class="string">"github.com/labstack/echo"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    e := echo.New()</div><div class="line">    e.GET(<span class="string">"/"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">        <span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"Hello, World!"</span>)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    e.Logger.Fatal(e.Start(<span class="string">":1323"</span>))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go run server.go</div></pre></td></tr></table></figure>
+<p>在浏览器中打开 <code>http://localhost:1323</code> 就可以看到 <code>Hello, World!</code></p>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">e.POST(<span class="string">"/users"</span>, saveUser)</div><div class="line">e.GET(<span class="string">"/users/:id"</span>, getUser)</div><div class="line">e.PUT(<span class="string">"/users/:id"</span>, updateUser)</div><div class="line">e.DELETE(<span class="string">"/users/:id"</span>, deleteUser)</div></pre></td></tr></table></figure>
+<h3 id="路径参数"><a href="#路径参数" class="headerlink" title="路径参数"></a>路径参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// e.GET("/users/:id", getUser)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getUser</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">  	<span class="comment">// User ID from path `users/:id`</span></div><div class="line">  	id := c.Param(<span class="string">"id"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, id)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h3><p>例如，<code>/show?team=x-men&amp;member=wolverine</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//e.GET("/show", show)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">show</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get team and member from the query string</span></div><div class="line">	team := c.QueryParam(<span class="string">"team"</span>)</div><div class="line">	member := c.QueryParam(<span class="string">"member"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"team:"</span> + team + <span class="string">", member:"</span> + member)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在浏览器中访问 <code>http://localhost:1323/show?team=x-men&amp;member=wolverine</code> 就能看到结果</p>
+<h3 id="application-x-www-form-urlencoded-表单提交"><a href="#application-x-www-form-urlencoded-表单提交" class="headerlink" title="application/x-www-form-urlencoded 表单提交"></a><code>application/x-www-form-urlencoded</code> 表单提交</h3><p>例如，<code>POST</code> <code>/save</code><br>参数：name=””&amp;email=””</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// e.POST("/save", save)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">save</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get name and email</span></div><div class="line">	name := c.FormValue(<span class="string">"name"</span>)</div><div class="line">	email := c.FormValue(<span class="string">"email"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"name:"</span> + name + <span class="string">", email:"</span> + email)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -F &quot;name=Joe Smith&quot; -F &quot;email=joe@labstack.com&quot; http://localhost:1323/save</div><div class="line">// =&gt; name:Joe Smith, email:joe@labstack.com</div></pre></td></tr></table></figure></p>
+<h3 id="multipart-form-data-表单提交"><a href="#multipart-form-data-表单提交" class="headerlink" title="multipart/form-data 表单提交"></a><code>multipart/form-data</code> 表单提交</h3><p>例如，<code>POST</code> <code>/save</code><br>参数：name=””&amp;avatar=File()</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">save</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get name</span></div><div class="line">	name := c.FormValue(<span class="string">"name"</span>)</div><div class="line">	<span class="comment">// Get avatar</span></div><div class="line">  	avatar, err := c.FormFile(<span class="string">"avatar"</span>)</div><div class="line">  	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"></div><div class="line"> 	<span class="comment">// Source</span></div><div class="line"> 	src, err := avatar.Open()</div><div class="line"> 	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">defer</span> src.Close()</div><div class="line"></div><div class="line"> 	<span class="comment">// Destination</span></div><div class="line"> 	dst, err := os.Create(avatar.Filename)</div><div class="line"> 	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">defer</span> dst.Close()</div><div class="line"></div><div class="line"> 	<span class="comment">// Copy</span></div><div class="line"> 	<span class="keyword">if</span> _, err = io.Copy(dst, src); err != <span class="literal">nil</span> &#123;</div><div class="line">  		<span class="keyword">return</span> err</div><div class="line">  	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> c.HTML(http.StatusOK, <span class="string">"&lt;b&gt;Thank you! "</span> + name + <span class="string">"&lt;/b&gt;"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -F &quot;name=Joe Smith&quot; -F &quot;avatar=@/path/to/your/avatar.png&quot; http://localhost:1323/save</div><div class="line">// =&gt; &lt;b&gt;Thank you! Joe Smith&lt;/b&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="请求处理"><a href="#请求处理" class="headerlink" title="请求处理"></a>请求处理</h3><ul>
+<li>基于 <code>Content-Type</code> 的请求头，将 <code>json</code>, <code>xml</code>, <code>form</code>, <code>query</code> 的负荷绑定到 Go struct 中</li>
+<li>把返回的状态码也渲染到以 <code>json</code>, <code>xml</code> 返回的响应中</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</div><div class="line">	Name  <span class="keyword">string</span> <span class="string">`json:"name" xml:"name" form:"name" query:"name"`</span></div><div class="line">	Email <span class="keyword">string</span> <span class="string">`json:"email" xml:"email" form:"email" query:"email"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">e.POST(<span class="string">"/users"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	u := <span class="built_in">new</span>(User)</div><div class="line">	<span class="keyword">if</span> err := c.Bind(u); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> c.JSON(http.StatusCreated, u)</div><div class="line">	<span class="comment">// or</span></div><div class="line">	<span class="comment">// return c.XML(http.StatusCreated, u)</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="静态内容"><a href="#静态内容" class="headerlink" title="静态内容"></a>静态内容</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">e.Static(<span class="string">"/static"</span>, <span class="string">"static"</span>)</div></pre></td></tr></table></figure>
+<p><a href="https://echo.labstack.com/guide/static-files" target="_blank" rel="external">更多看这里</a><br><a href="https://echo.labstack.com/guide/templates" target="_blank" rel="external">模版渲染</a></p>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Root level middleware</span></div><div class="line">e.Use(middleware.Logger())</div><div class="line">e.Use(middleware.Recover())</div><div class="line"></div><div class="line"><span class="comment">// Group level middleware</span></div><div class="line">g := e.Group(<span class="string">"/admin"</span>)</div><div class="line">g.Use(middleware.BasicAuth(<span class="function"><span class="keyword">func</span><span class="params">(username, password <span class="keyword">string</span>, c echo.Context)</span> <span class="params">(<span class="keyword">bool</span>, error)</span></span> &#123;</div><div class="line">  <span class="keyword">if</span> username == <span class="string">"joe"</span> &amp;&amp; password == <span class="string">"secret"</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>, <span class="literal">nil</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>, <span class="literal">nil</span></div><div class="line">&#125;))</div><div class="line"></div><div class="line"><span class="comment">// Route level middleware</span></div><div class="line">track := <span class="function"><span class="keyword">func</span><span class="params">(next echo.HandlerFunc)</span> <span class="title">echo</span>.<span class="title">HandlerFunc</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">		<span class="built_in">println</span>(<span class="string">"request to /users"</span>)</div><div class="line">		<span class="keyword">return</span> next(c)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">e.GET(<span class="string">"/users"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"/users"</span>)</div><div class="line">&#125;, track)</div></pre></td></tr></table></figure>
+<p><a href="https://echo.labstack.com/middleware" target="_blank" rel="external">更多看这里</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/goloang/" rel="tag"># goloang</a>
+          
+            <a href="/tags/Echo/" rel="tag"># Echo</a>
+          
+            <a href="/tags/Web-Framework/" rel="tag"># Web Framework</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/02/Implementing Tail's Follow In Go/" rel="next" title="在 Go 中实现 tail 的跟踪功能">
+                <i class="fa fa-chevron-left"></i> 在 Go 中实现 tail 的跟踪功能
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/04/201803/blockchain-tech-intro/" rel="prev" title="区块链技术介绍">
+                区块链技术介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="shniu<niushaohan@digcredit.com>" />
+          <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></p>
+           
+              <p class="site-description motion-element" itemprop="description">一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shniu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速开始"><span class="nav-number">1.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个-Hello-world-服务"><span class="nav-number">1.2.</span> <span class="nav-text">创建一个 Hello world! 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由"><span class="nav-number">1.3.</span> <span class="nav-text">路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径参数"><span class="nav-number">1.4.</span> <span class="nav-text">路径参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询参数"><span class="nav-number">1.5.</span> <span class="nav-text">查询参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application-x-www-form-urlencoded-表单提交"><span class="nav-number">1.6.</span> <span class="nav-text">application/x-www-form-urlencoded 表单提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multipart-form-data-表单提交"><span class="nav-number">1.7.</span> <span class="nav-text">multipart/form-data 表单提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求处理"><span class="nav-number">1.8.</span> <span class="nav-text">请求处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态内容"><span class="nav-number">1.9.</span> <span class="nav-text">静态内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中间件"><span class="nav-number">1.10.</span> <span class="nav-text">中间件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

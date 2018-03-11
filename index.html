@@ -248,6 +248,452 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/05/201803/for-range-semantics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/05/201803/for-range-semantics/" itemprop="url">
+                  For range 语义
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T08:42:04+08:00">
+                2018-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为了更好地理解本文中提及的内容，这些是需要首先阅读的好文章：</p>
+<p>下面列出4篇文章的索引：</p>
+<ul>
+<li><ol>
+<li><a href="https://www.goinggo.net/2017/05/language-mechanics-on-stacks-and-pointers.html" target="_blank" rel="external">Language Mechanics On Stacks And Pointers</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://www.goinggo.net/2017/05/language-mechanics-on-escape-analysis.html" target="_blank" rel="external">Language Mechanics On Escape Analysis</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://www.goinggo.net/2017/06/language-mechanics-on-memory-profiling.html" target="_blank" rel="external">Language Mechanics On Memory Profiling</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://www.goinggo.net/2017/06/design-philosophy-on-data-and-semantics.html" target="_blank" rel="external">Design Philosophy On Data And Semantics</a></li>
+</ol>
+</li>
+</ul>
+<p>在 Go 编程语言中，值语义和指针语义的思想无处不在。如前面的文章所述，语义一致性对于完整性和可读性至关重要。它允许开发人员在代码持续不断增长时保持强大的代码库<a href="https://en.wikipedia.org/wiki/Mental_model" target="_blank" rel="external">心理模型</a>。它还有助于最大限度地减少错误，副作用和未知行为。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在这篇文章中，我将探索 Go 中的 <code>for range</code> 语句如何提供值和指针语义形式。我将教授语言机制，并展示这些语义有多深奥。然后件展示一个简单的例子，说明将这些语义和可能导致的问题混合起来是多么容易。</p>
+<h2 id="语言机制"><a href="#语言机制" class="headerlink" title="语言机制"></a>语言机制</h2><p>从这段代码开始，它展示了 <code>for range</code> 循环的值语义形式。</p>
+<p><a href="https://play.golang.org/p/_CWCAF6ge3" target="_blank" rel="external">play.golang.org</a></p>
+<p><strong>代码清单1</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> user <span class="keyword">struct</span> &#123;</div><div class="line">    name <span class="keyword">string</span></div><div class="line">    email <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    users := []user&#123;</div><div class="line">        &#123;<span class="string">"Bill"</span>, <span class="string">"bill@email.com"</span>&#125;,</div><div class="line">        &#123;<span class="string">"Lisa"</span>, <span class="string">"lisa@email.com"</span>&#125;,</div><div class="line">        &#123;<span class="string">"Nancy"</span>, <span class="string">"nancy@email.com"</span>&#125;,</div><div class="line">        &#123;<span class="string">"Paul"</span>, <span class="string">"paul@email.com"</span>&#125;,</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i, u := <span class="keyword">range</span> users &#123;</div><div class="line">        fmt.Println(i, u)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在代码清单1中，程序声明一个名为 <code>user</code> 的类型，创建四个用户值，然后显示关于每个用户的信息。第 18 行的范围循环使用值语义。这是因为在每次迭代中都会在循环内部创建并操作来自切片的原始用户值的副本。实际上，对 <code>Println</code> 的调用会创建循环副本的第二个副本。如果要为用户值使用值语义，这就是你想要的。</p>
+<p>如果你要使用指针语义，<code>for range</code> 循环看起来像这样。</p>
+<p><strong>代码清单2</strong><br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> users &#123;</div><div class="line">    fmt.Println(i, users[i])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在该循环已被修改为使用指针语义。循环内的代码不再它的副本上运行，而是在切片内存储的原始 <code>user</code> 上运行。但是，对 <code>Println</code> 的调用仍然使用值语义，并且传递了一份副本。</p>
+<p>要解决这个问题，需要再做一次最后的修改。</p>
+<p><strong>代码清单3</strong><br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> users &#123;</div><div class="line">    fmt.Println(i, &amp;users[i])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在会一直使用 <code>user</code> 的指针语义。</p>
+<p>作为参考，清单4并排显示了值和指针语义。</p>
+<p><strong>代码清单4</strong><br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Value semantics.           // Pointer semantics.</span></div><div class="line"><span class="keyword">for</span> i, u := <span class="keyword">range</span> users &#123;     <span class="keyword">for</span> i := <span class="keyword">range</span> users &#123;</div><div class="line">    fmt.Println(i, u)             fmt.Println(i, &amp;users[i])</div><div class="line">&#125;                             &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="深层机制"><a href="#深层机制" class="headerlink" title="深层机制"></a>深层机制</h2><p>语言机制比这更深入。请看代码清单 5 中的这个程序。程序初始化一个字符串数组，对这些字符串进行迭代，并在每次迭代中更改索引为 1 的字符串。</p>
+<p><a href="https://play.golang.org/p/IlAiEkgs4C" target="_blank" rel="external">https://play.golang.org/p/IlAiEkgs4C</a></p>
+<p><strong>代码清单5</strong><br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    five := [<span class="number">5</span>]<span class="keyword">string</span>&#123;<span class="string">"Annie"</span>, <span class="string">"Betty"</span>, <span class="string">"Charley"</span>, <span class="string">"Doug"</span>, <span class="string">"Edward"</span>&#125;</div><div class="line">    fmt.Printf(<span class="string">"Bfr[%s] : "</span>, five[<span class="number">1</span>])</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> five &#123;</div><div class="line">        five[<span class="number">1</span>] = <span class="string">"Jack"</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> i == <span class="number">1</span> &#123;</div><div class="line">           fmt.Printf(<span class="string">"Aft[%s]\n"</span>, five[<span class="number">1</span>])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个程序的预期输出是什么？</p>
+<p><strong>清单6</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Bfr[Betty]</div><div class="line">Aft[Jack]</div></pre></td></tr></table></figure></p>
+<p>正如你所期望的那样，第 10 行的代码已经改变了索引 1 的字符串，你可以在输出中看到。该程序使用 <code>for range</code> 循环的指针语义版本。接下来，代码将使用 <code>for range</code> 循环的值语义版本。</p>
+<p><a href="https://play.golang.org/p/opSsIGtNU1" target="_blank" rel="external">https://play.golang.org/p/opSsIGtNU1</a></p>
+<p><strong>清单7</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    five := [<span class="number">5</span>]<span class="keyword">string</span>&#123;<span class="string">"Annie"</span>, <span class="string">"Betty"</span>, <span class="string">"Charley"</span>, <span class="string">"Doug"</span>, <span class="string">"Edward"</span>&#125;</div><div class="line">    fmt.Printf(<span class="string">"Bfr[%s] : "</span>, five[<span class="number">1</span>])</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> five &#123;</div><div class="line">        five[<span class="number">1</span>] = <span class="string">"Jack"</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> i == <span class="number">1</span> &#123;</div><div class="line">            fmt.Printf(<span class="string">"v[%s]\n"</span>, v)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在循环的每次迭代中，代码再次更改索引 1 处的字符串。此时代码显示索引 1 处的值时，输出不同。</p>
+<p><strong>清单8</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Bfr[Betty] : v[Betty]</div></pre></td></tr></table></figure></p>
+<p>我们可以看到这种形式的 <code>for range</code> 真的是使用了值语义。<code>for ranage</code> 在数组的拷贝上进行迭代。这就是为什么在输出中并未看到值的改变。</p>
+<p>当使用值语义形式覆盖切片时，将采用切片标头的副本。 这就是为什么清单 9 中的代码不必惊慌。</p>
+<p><strong>清单9</strong><br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    five := []<span class="keyword">string</span>&#123;<span class="string">"Annie"</span>, <span class="string">"Betty"</span>, <span class="string">"Charley"</span>, <span class="string">"Doug"</span>, <span class="string">"Edward"</span>&#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> five &#123;</div><div class="line">        five = five[:<span class="number">2</span>]</div><div class="line">        fmt.Printf(<span class="string">"v[%s]\n"</span>, v)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Output:</div><div class="line">v[Annie]</div><div class="line">v[Betty]</div><div class="line">v[Charley]</div><div class="line">v[Doug]</div><div class="line">v[Edward]</div></pre></td></tr></table></figure></p>
+<p>如果您查看第09行，循环内的切片值会缩减为2，但循环将在切片值的自身副本上进行操作。 这允许循环使用原始长度进行迭代而没有任何问题，因为后备数组仍然是完整的。</p>
+<p>如果代码使用 <code>for range</code> 的指针语义形式，程序就会发生混乱。</p>
+<p><strong>清单10</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import &quot;fmt&quot;</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">    five := []string&#123;&quot;Annie&quot;, &quot;Betty&quot;, &quot;Charley&quot;, &quot;Doug&quot;, &quot;Edward&quot;&#125;</div><div class="line"></div><div class="line">    for i := range five &#123;</div><div class="line">        five = five[:2]</div><div class="line">        fmt.Printf(&quot;v[%s]\n&quot;, five[i])</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Output:</div><div class="line">v[Annie]</div><div class="line">v[Betty]</div><div class="line">panic: runtime error: index out of range</div><div class="line"></div><div class="line">goroutine 1 [running]:</div><div class="line">main.main()</div><div class="line">	/tmp/sandbox688667612/main.go:10 +0x140</div></pre></td></tr></table></figure></p>
+<p><code>for range</code> 在迭代之前获取到切片的长度，但是在循环过程中长度发生了变换。现在在第三次迭代的时候，循环尝试访问不再与切片长度相关联的元素。</p>
+<h2 id="混合语义"><a href="#混合语义" class="headerlink" title="混合语义"></a>混合语义</h2><p>这是一个完全糟糕的例子。该代码混合了用户类型定义的语义，并引发了一个 bug。</p>
+<p><strong>清单11</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> <span class="keyword">struct</span> user &#123;</div><div class="line">    name <span class="keyword">string</span></div><div class="line">    likes <span class="keyword">int</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *user)</span> <span class="title">notify</span><span class="params">()</span></span> &#123;</div><div class="line">    fmt.Printf(<span class="string">"%s has %d likes\n"</span>, u.name, u.likes)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *user)</span> <span class="title">addLike</span><span class="params">()</span></span> &#123;</div><div class="line">    u.likes++</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    users := []user&#123;</div><div class="line">        &#123;name: <span class="string">"bill"</span>&#125;,</div><div class="line">        &#123;name: <span class="string">"lisa"</span>&#125;,</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _, u := <span class="keyword">range</span> users &#123;</div><div class="line">        u.addLike()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _, u := <span class="keyword">range</span> users &#123;</div><div class="line">        u.notify()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个例子没有那么做作。在第05行，<code>user</code> 类型被声明并且选择指针语义来实现为用户类型设置的方法。然后在 <code>main</code> 程序中，在 <code>for range</code> 循环中使用值语义为每个用户添加一个 like。然后使用第二个循环来再次使用值语义来通知每个 <code>user</code>。</p>
+<p><strong>清单12</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bill has 0 likes</div><div class="line">lisa has 0 likes</div></pre></td></tr></table></figure>
+<p>输出显示并没有增加 like。我无法强调，您应该为给定类型选择语义，并坚持使用该类型的数据。</p>
+<p>这是代码应该看起来如何与用户类型的指针语义保持一致。</p>
+<p><strong>清单13</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> user <span class="keyword">struct</span> &#123;</div><div class="line">    name <span class="keyword">string</span></div><div class="line">    likes <span class="keyword">int</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *user)</span> <span class="title">notify</span><span class="params">()</span></span> &#123;</div><div class="line">    fmt.Printf(<span class="string">"%s has %d likes\n"</span>, u.name, u.likes)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *user)</span> <span class="title">addLike</span><span class="params">()</span></span> &#123;</div><div class="line">    u.likes++</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    users := []user&#123;</div><div class="line">        &#123;name: <span class="string">"bill"</span>&#125;,</div><div class="line">        &#123;name: <span class="string">"lisa"</span>&#125;,</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> users &#123;</div><div class="line">        users[i].addLike()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> users &#123;</div><div class="line">        users[i].notify()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Output:</span></div><div class="line">bill has <span class="number">1</span> likes</div><div class="line">lisa has <span class="number">1</span> likes</div></pre></td></tr></table></figure>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>值和指针语义是Go编程语言的重要组成部分，正如我已经展示的那样，集成到了 <code>for range</code> 循环中。在使用 <code>for range</code> 时，验证你正在迭代的给定类型在使用正确的形式。最后一件事时混合语义，如果你没有注意的话，<code>for range</code> 很容易混合使用语义。</p>
+<p>语言给了你这种选择语义的力量，并且干净而一致地使用它。这是你想要充分利用的东西。 我想让你决定每种类型使用的语义并保持一致。你对一段数据的语义越一致，您的代码库就越好。如果你有一个很好的理由来改变语义，然后广泛地记录下来。</p>
+<hr>
+<p>via: <a href="https://www.ardanlabs.com/blog/2017/06/for-range-semantics.html" target="_blank" rel="external">https://www.ardanlabs.com/blog/2017/06/for-range-semantics.html</a></p>
+<p>作者：<a href="https://github.com/ardanlabs/gotraining" target="_blank" rel="external">William Kennedy</a><br>译者：<a href="https://github.com/shniu" target="_blank" rel="external">shniu</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/04/201803/blockchain-tech-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/04/201803/blockchain-tech-intro/" itemprop="url">
+                  区块链技术介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-04T08:38:48+08:00">
+                2018-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是一篇区块链技术介绍的文章</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/03/201803/golang-echo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/03/201803/golang-echo/" itemprop="url">
+                  Echo golang 下的高性能可扩展极简 Web 框架
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T08:42:04+08:00">
+                2018-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go get -u github.com/labstack/echo/...</div></pre></td></tr></table></figure>
+<h3 id="创建一个-Hello-world-服务"><a href="#创建一个-Hello-world-服务" class="headerlink" title="创建一个 Hello world! 服务"></a>创建一个 Hello world! 服务</h3><p>创建 <code>server.go</code> 文件，代码如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">  <span class="string">"net/http"</span>,</div><div class="line">  <span class="string">"github.com/labstack/echo"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    e := echo.New()</div><div class="line">    e.GET(<span class="string">"/"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">        <span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"Hello, World!"</span>)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    e.Logger.Fatal(e.Start(<span class="string">":1323"</span>))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go run server.go</div></pre></td></tr></table></figure>
+<p>在浏览器中打开 <code>http://localhost:1323</code> 就可以看到 <code>Hello, World!</code></p>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">e.POST(<span class="string">"/users"</span>, saveUser)</div><div class="line">e.GET(<span class="string">"/users/:id"</span>, getUser)</div><div class="line">e.PUT(<span class="string">"/users/:id"</span>, updateUser)</div><div class="line">e.DELETE(<span class="string">"/users/:id"</span>, deleteUser)</div></pre></td></tr></table></figure>
+<h3 id="路径参数"><a href="#路径参数" class="headerlink" title="路径参数"></a>路径参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// e.GET("/users/:id", getUser)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getUser</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">  	<span class="comment">// User ID from path `users/:id`</span></div><div class="line">  	id := c.Param(<span class="string">"id"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, id)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h3><p>例如，<code>/show?team=x-men&amp;member=wolverine</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//e.GET("/show", show)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">show</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get team and member from the query string</span></div><div class="line">	team := c.QueryParam(<span class="string">"team"</span>)</div><div class="line">	member := c.QueryParam(<span class="string">"member"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"team:"</span> + team + <span class="string">", member:"</span> + member)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在浏览器中访问 <code>http://localhost:1323/show?team=x-men&amp;member=wolverine</code> 就能看到结果</p>
+<h3 id="application-x-www-form-urlencoded-表单提交"><a href="#application-x-www-form-urlencoded-表单提交" class="headerlink" title="application/x-www-form-urlencoded 表单提交"></a><code>application/x-www-form-urlencoded</code> 表单提交</h3><p>例如，<code>POST</code> <code>/save</code><br>参数：name=””&amp;email=””</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// e.POST("/save", save)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">save</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get name and email</span></div><div class="line">	name := c.FormValue(<span class="string">"name"</span>)</div><div class="line">	email := c.FormValue(<span class="string">"email"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"name:"</span> + name + <span class="string">", email:"</span> + email)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -F &quot;name=Joe Smith&quot; -F &quot;email=joe@labstack.com&quot; http://localhost:1323/save</div><div class="line">// =&gt; name:Joe Smith, email:joe@labstack.com</div></pre></td></tr></table></figure></p>
+<h3 id="multipart-form-data-表单提交"><a href="#multipart-form-data-表单提交" class="headerlink" title="multipart/form-data 表单提交"></a><code>multipart/form-data</code> 表单提交</h3><p>例如，<code>POST</code> <code>/save</code><br>参数：name=””&amp;avatar=File()</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">save</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get name</span></div><div class="line">	name := c.FormValue(<span class="string">"name"</span>)</div><div class="line">	<span class="comment">// Get avatar</span></div><div class="line">  	avatar, err := c.FormFile(<span class="string">"avatar"</span>)</div><div class="line">  	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"></div><div class="line"> 	<span class="comment">// Source</span></div><div class="line"> 	src, err := avatar.Open()</div><div class="line"> 	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">defer</span> src.Close()</div><div class="line"></div><div class="line"> 	<span class="comment">// Destination</span></div><div class="line"> 	dst, err := os.Create(avatar.Filename)</div><div class="line"> 	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">defer</span> dst.Close()</div><div class="line"></div><div class="line"> 	<span class="comment">// Copy</span></div><div class="line"> 	<span class="keyword">if</span> _, err = io.Copy(dst, src); err != <span class="literal">nil</span> &#123;</div><div class="line">  		<span class="keyword">return</span> err</div><div class="line">  	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> c.HTML(http.StatusOK, <span class="string">"&lt;b&gt;Thank you! "</span> + name + <span class="string">"&lt;/b&gt;"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -F &quot;name=Joe Smith&quot; -F &quot;avatar=@/path/to/your/avatar.png&quot; http://localhost:1323/save</div><div class="line">// =&gt; &lt;b&gt;Thank you! Joe Smith&lt;/b&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="请求处理"><a href="#请求处理" class="headerlink" title="请求处理"></a>请求处理</h3><ul>
+<li>基于 <code>Content-Type</code> 的请求头，将 <code>json</code>, <code>xml</code>, <code>form</code>, <code>query</code> 的负荷绑定到 Go struct 中</li>
+<li>把返回的状态码也渲染到以 <code>json</code>, <code>xml</code> 返回的响应中</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</div><div class="line">	Name  <span class="keyword">string</span> <span class="string">`json:"name" xml:"name" form:"name" query:"name"`</span></div><div class="line">	Email <span class="keyword">string</span> <span class="string">`json:"email" xml:"email" form:"email" query:"email"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">e.POST(<span class="string">"/users"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	u := <span class="built_in">new</span>(User)</div><div class="line">	<span class="keyword">if</span> err := c.Bind(u); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> c.JSON(http.StatusCreated, u)</div><div class="line">	<span class="comment">// or</span></div><div class="line">	<span class="comment">// return c.XML(http.StatusCreated, u)</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="静态内容"><a href="#静态内容" class="headerlink" title="静态内容"></a>静态内容</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">e.Static(<span class="string">"/static"</span>, <span class="string">"static"</span>)</div></pre></td></tr></table></figure>
+<p><a href="https://echo.labstack.com/guide/static-files" target="_blank" rel="external">更多看这里</a><br><a href="https://echo.labstack.com/guide/templates" target="_blank" rel="external">模版渲染</a></p>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Root level middleware</span></div><div class="line">e.Use(middleware.Logger())</div><div class="line">e.Use(middleware.Recover())</div><div class="line"></div><div class="line"><span class="comment">// Group level middleware</span></div><div class="line">g := e.Group(<span class="string">"/admin"</span>)</div><div class="line">g.Use(middleware.BasicAuth(<span class="function"><span class="keyword">func</span><span class="params">(username, password <span class="keyword">string</span>, c echo.Context)</span> <span class="params">(<span class="keyword">bool</span>, error)</span></span> &#123;</div><div class="line">  <span class="keyword">if</span> username == <span class="string">"joe"</span> &amp;&amp; password == <span class="string">"secret"</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>, <span class="literal">nil</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>, <span class="literal">nil</span></div><div class="line">&#125;))</div><div class="line"></div><div class="line"><span class="comment">// Route level middleware</span></div><div class="line">track := <span class="function"><span class="keyword">func</span><span class="params">(next echo.HandlerFunc)</span> <span class="title">echo</span>.<span class="title">HandlerFunc</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">		<span class="built_in">println</span>(<span class="string">"request to /users"</span>)</div><div class="line">		<span class="keyword">return</span> next(c)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">e.GET(<span class="string">"/users"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"/users"</span>)</div><div class="line">&#125;, track)</div></pre></td></tr></table></figure>
+<p><a href="https://echo.labstack.com/middleware" target="_blank" rel="external">更多看这里</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/02/Implementing Tail's Follow In Go/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1313,388 +1759,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/04/22/深度学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/22/深度学习/" itemprop="url">
-                  深度学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-22T18:50:55+08:00">
-                2017-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="未知概念"><a href="#未知概念" class="headerlink" title="未知概念"></a>未知概念</h2><ul>
-<li>神经网络</li>
-<li>高数</li>
-<li>线性代数</li>
-</ul>
-<h2 id="重要资源"><a href="#重要资源" class="headerlink" title="重要资源"></a>重要资源</h2><p><a href="https://www.zhihu.com/question/49909565" target="_blank" rel="external">tensorflow如何入门 - 知乎</a></p>
-<p><a href="http://www.tensorflow.org" target="_blank" rel="external">tensorflow.org</a></p>
-<p><a href="http://playground.tensorflow.org" target="_blank" rel="external">playground.tensorflow.org</a></p>
-<p><a href="https://github.com/zsdonghao/tensorlayer" target="_blank" rel="external">https://github.com/zsdonghao/tensorlayer</a></p>
-<h2 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h2><ul>
-<li>tensorflow.org总是打不开的处理办法</li>
-</ul>
-<blockquote>
-<p>修改 /etc/hosts 文件，加入<br>64.233.188.121 www.tensorflow.org</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/04/18/认知积累/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/18/认知积累/" itemprop="url">
-                  认知积累
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T13:22:23+08:00">
-                2017-04-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="精准是企业的未来"><a href="#精准是企业的未来" class="headerlink" title="精准是企业的未来"></a>精准是企业的未来</h3><blockquote>
-<p>企业做到了精准，才有机会进入下一轮的商业竞争；Google颠覆了传统广告，带来了创新，Google的广告投放、淘宝的推广投放；商业文明的DNA也具有双螺旋，分别是协同网络和数据智能。<br>协同网络：降低进入生态的门槛，一定是低门槛，以先进入的一批慢慢带动后来者，比如淘宝的生态，开始是一些边缘的人在做，比如大学生、失业的工人等；网络中的各组成部分之间能够自发的发展关系；<br>数据智能：在线化、记录尽可能多的数据，先不要管怎么用，将来肯定有用；<br>数据化是个昂贵的过程，谁有更有创意更优质获取数据的能力，谁就有更强的竞争力；<br>机器学习的的逻辑是否贯穿这个过程，是否能有更有的算法去解决接踵而来的问题；<br>一定要有持续不断的用户反馈、使用反馈，然后再去优化，再去收集反馈；<br>未来一定是有精准服务取胜的。  曾鸣</p>
-</blockquote>
-<h3 id="知识的正解"><a href="#知识的正解" class="headerlink" title="知识的正解"></a>知识的正解</h3><blockquote>
-<p>所谓的知识，并不能给你带来任何的益处；信息本身并不是知识，堆叠在一起并不会自动产生有价值的、可供使用的知识，比如你知道的成语比别人多，这些大量的信息并不能帮你去做出比别人更好的决策，或对未来更好的关键选择；所以知识是那些能帮你做出更好决策，更好选择，能给你带来更加美好未来的信息；注意力比时间重要，时间比金钱重要；知识创造者和知识传播者，现在知识创造者更加重要；  李笑来</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/04/11/知识图谱/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/11/知识图谱/" itemprop="url">
-                  知识图谱
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T21:10:55+08:00">
-                2017-04-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="知乎上的"><a href="#知乎上的" class="headerlink" title="知乎上的"></a>知乎上的</h4><blockquote>
-<p>从头构建知识图谱，抛开应用不谈，就是获取结构化数据（并映射到本体）的过程；快速构建的方法，个人觉得最好的是从各种源头爬取结构化数据，涉及到几个过程：</p>
-<ol>
-<li>网页/数据的爬取，解析</li>
-<li>清洗</li>
-<li>消重，消歧<br>(<a href="https://www.zhihu.com/question/26385031" target="_blank" rel="external">https://www.zhihu.com/question/26385031</a>)</li>
-</ol>
-<p>方法的是清晰的，没有什么秘密。楼上各位都说的很清楚了：实体提取，关系提取，图谱存储和检索。知识图谱实践坑太多了，绝不是看看教科书就能学会的。这是很年轻的学科，目前还没有好的教材。关键是项目的目标控制和路径设计。科研项目，工程项目，大公司项目，小公司项目，大公司装逼项目，大公司现有产品改进项目，抢资金项目，预研试验项目。To B项目，To C项目，To VC项目，To G项目。那做法都是完全不同的。关键是成本控制，回报周期控制，和出钱的大爷的预期管理。在技术上做好演进的，可容忍低结构、高噪声、低质量数据，充分理解没有神奇的银弹。在团队上充分考虑到知识图谱人才稀缺性，尽量用现有的技术人才渐进推进。在资金管理上充分理解大爷们耐心是有限的，要快速迭代，快速出活。</p>
-<p>真实的世界在人类的认知当中就是由实体、属性和实体间的关系构成的；获取这些东西的最大挑战无非就是实体识别、消歧（重名，别名）、实体关系挖掘等，这些归根到底都属于nlp的问题；所以说如果中文知识图谱的构建和英文的有什么区别的话，只能是中文和英文在自然语言处理技术上的差别比如处理语料时中文和英文分词的差别，这点中文更难，很多实体的指代直接被分成多个词，后面再想救回来又得另想办法；比如消歧的时候英文中有大量的缩写指代，同一个缩写对应很多可能的实体，这点英文比中文难；再比如关系挖掘的时候，个人感觉中文要更难一些，因为表述更丰富更不规律；综上，中文知识图谱的构建和英文的所谓区别，归根结底只在nlp这一块，其他的诸如步骤流程框架等等确实没啥差<br>当然，英文方面现成的东西更多一点，可以直接拿来用，中文就苦逼呵呵了…这会导致实施起来有所不同，在我看来这也算是一个很大的差别吧…</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1744,7 +1808,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1757,7 +1821,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
