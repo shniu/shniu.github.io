@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="TDD,测试驱动开发," />
+  <meta name="keywords" content="团队管理,个人成长," />
 
 
 
@@ -87,18 +87,19 @@
 
 
 
-<meta name="description" content="试想你从井里提一桶水，如果井不太深，水桶不太满，提起来很容易；就算是提一桶水，刚开始很容易，但要不了多久你就累了；就好比我们做系统写代码，刚开始的时候，功能少，简单的做些测试就能清楚的知道系统是否可用、是否有bug，而且这种测试也很快，但是随着系统的功能的增多，复杂度慢慢的增加，你就会发现，代码和系统的测试就不如之前那么的方便了；而TDD的开发方式，能帮助我们去解决一些问题，帮我们保存当前的进度">
+<meta name="description" content="反思过去的经验教训是一段充满激情的美妙经历，与传统工作相比，创业是一个相反的过程：最开始你并不知道公司能否启动，也不确定这能否变成一个全职的工作；随着公司的发展壮大，你开始面对各种蜂拥而至的问题，而且大多数问题你之前都没有碰到过。在这段时间里你会以飞快的速度积累并掌握各种知识和经验。
+创业公司虽然灵活，但你最开始作出的决策将会在以后的时间里产生影响。一开始对基础设施、框架以及编程语言的选择，会影响">
 <meta property="og:type" content="article">
-<meta property="og:title" content="聊一下TDD">
-<meta property="og:url" content="http://shniu.github.io/2017/03/07/聊一下TDD/index.html">
+<meta property="og:title" content="当我做 CTO 时，我希望自己知道什么">
+<meta property="og:url" content="http://shniu.github.io/2018/03/13/201803/What-I-wish-I-knew-when-I-became-CTO/index.html">
 <meta property="og:site_name" content="ChainTech">
-<meta property="og:description" content="试想你从井里提一桶水，如果井不太深，水桶不太满，提起来很容易；就算是提一桶水，刚开始很容易，但要不了多久你就累了；就好比我们做系统写代码，刚开始的时候，功能少，简单的做些测试就能清楚的知道系统是否可用、是否有bug，而且这种测试也很快，但是随着系统的功能的增多，复杂度慢慢的增加，你就会发现，代码和系统的测试就不如之前那么的方便了；而TDD的开发方式，能帮助我们去解决一些问题，帮我们保存当前的进度">
-<meta property="og:image" content="http://shniu.github.io/images/TDD.png">
-<meta property="og:updated_time" content="2017-04-18T05:47:14.000Z">
+<meta property="og:description" content="反思过去的经验教训是一段充满激情的美妙经历，与传统工作相比，创业是一个相反的过程：最开始你并不知道公司能否启动，也不确定这能否变成一个全职的工作；随着公司的发展壮大，你开始面对各种蜂拥而至的问题，而且大多数问题你之前都没有碰到过。在这段时间里你会以飞快的速度积累并掌握各种知识和经验。
+创业公司虽然灵活，但你最开始作出的决策将会在以后的时间里产生影响。一开始对基础设施、框架以及编程语言的选择，会影响">
+<meta property="og:updated_time" content="2018-03-15T00:58:03.271Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="聊一下TDD">
-<meta name="twitter:description" content="试想你从井里提一桶水，如果井不太深，水桶不太满，提起来很容易；就算是提一桶水，刚开始很容易，但要不了多久你就累了；就好比我们做系统写代码，刚开始的时候，功能少，简单的做些测试就能清楚的知道系统是否可用、是否有bug，而且这种测试也很快，但是随着系统的功能的增多，复杂度慢慢的增加，你就会发现，代码和系统的测试就不如之前那么的方便了；而TDD的开发方式，能帮助我们去解决一些问题，帮我们保存当前的进度">
-<meta name="twitter:image" content="http://shniu.github.io/images/TDD.png">
+<meta name="twitter:title" content="当我做 CTO 时，我希望自己知道什么">
+<meta name="twitter:description" content="反思过去的经验教训是一段充满激情的美妙经历，与传统工作相比，创业是一个相反的过程：最开始你并不知道公司能否启动，也不确定这能否变成一个全职的工作；随着公司的发展壮大，你开始面对各种蜂拥而至的问题，而且大多数问题你之前都没有碰到过。在这段时间里你会以飞快的速度积累并掌握各种知识和经验。
+创业公司虽然灵活，但你最开始作出的决策将会在以后的时间里产生影响。一开始对基础设施、框架以及编程语言的选择，会影响">
 
 
 
@@ -126,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://shniu.github.io/2017/03/07/聊一下TDD/"/>
+  <link rel="canonical" href="http://shniu.github.io/2018/03/13/201803/What-I-wish-I-knew-when-I-became-CTO/"/>
 
 
 
 
 
-  <title> 聊一下TDD | ChainTech </title>
+  <title> 当我做 CTO 时，我希望自己知道什么 | ChainTech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/03/07/聊一下TDD/">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/13/201803/What-I-wish-I-knew-when-I-became-CTO/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
@@ -272,7 +273,7 @@
             
             
               
-                聊一下TDD
+                当我做 CTO 时，我希望自己知道什么
               
             
           </h1>
@@ -287,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-07T17:43:54+08:00">
-                2017-03-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-13T07:33:42+08:00">
+                2018-03-13
               </time>
             
 
@@ -323,19 +324,35 @@
       
 
       
-        <span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject"><img itemprop="url image" src="/images/TDD.png" class="full-image" alt="TDD" title="测试驱动开发"><meta itemprop="width" content="auto"><meta itemprop="height" content="auto"></span>
-<blockquote><p>试想你从井里提一桶水，如果井不太深，水桶不太满，提起来很容易；就算是提一桶水，刚开始很容易，但要不了多久你就累了；就好比我们做系统写代码，刚开始的时候，功能少，简单的做些测试就能清楚的知道系统是否可用、是否有bug，而且这种测试也很快，但是随着系统的功能的增多，复杂度慢慢的增加，你就会发现，代码和系统的测试就不如之前那么的方便了；而TDD的开发方式，能帮助我们去解决一些问题，帮我们保存当前的进度，让我们再下一次做的时候都会从上一次的进度开始，而不是每次都 Test all the things.</p>
+        <p>反思过去的经验教训是一段充满激情的美妙经历，与传统工作相比，创业是一个相反的过程：最开始你并不知道公司能否启动，也不确定这能否变成一个全职的工作；随着公司的发展壮大，你开始面对各种蜂拥而至的问题，而且大多数问题你之前都没有碰到过。在这段时间里你会以飞快的速度积累并掌握各种知识和经验。</p>
+<p>创业公司虽然灵活，但你最开始作出的决策将会在以后的时间里产生影响。一开始对基础设施、框架以及编程语言的选择，会影响相当长的一段时间。随着业务的发展，需要增加的功能和子系统越来越多，其中的每一项都会在未来影响后续的选择，而当公司进入快速发展期的时候，你会发现根本没有办法停下来考虑重构。</p>
+<p>我对于我们最开始的选择还是比较满意的：Amazon Web Services 、Elastic Beanstalk 、Firebase 、AngularJS 、Coffeescript 、Kafka 、Simple Queue System 、SocketStream 、Docker 、SemaphoreCI 、MySQL 。其中，只有 AngularJS 和 MySQL 两个在后续的扩展上带来问题。我们的 AngularJS 代码是写在一个文件上的，该文件后来变得很大，导致初次下载的时候需要耗费一段时间，而且在系统运行时也感觉很慢。MySQL（ 用的是 RDS ）由于 BI 查询的复杂度增加而崩溃了好几次，并且不好修复。</p>
+<p>一项技术的生命周期出乎意料地短。我们用到的 CoffeeScript 和 AngularJS 就是现在已显得过时了的组件（我们打算迁移到 TypeScript 和最新版的 AngularJS ），但它们在我们选用的当时都是比较前沿的。另外比较幸运的是，我对新技术的钟情并没有造成什么严重的问题。我很庆幸选择了 CoffeeScript ，在过去这几年里，它那简明的语法帮助我大大地提升了开发效率。</p>
+<p>经历了上述这些事情后，我意识到，需要提前对技术的更新换代做好时间安排和策略准备。对于每一项技术的选定，你都有要有承受长期的“技术债”的心理准备。</p>
+<p>同样地，你写的组件和库也会被长时间地使用。不管写得好坏，你都几乎不会再去动它。因此你最好在开始的时候多花一些时间进行设计和构建，以方便日后的维护。</p>
+<p>我对那些暂停开发新功能并重写整个系统的“重构”做法一向是反感的。这曾让很多项目陷入死亡的漩涡。“童子军军规”里面有一条说得很好：</p>
+<blockquote>
+<p>试着让这个世界比你认识它的时候好一点 —— Robert Baden Powell ，童子军与女童军的创始人。</p>
 </blockquote>
-<p>在我现在的团队里，一直受到测试的困扰，我们想把测试做的更充分，想尽力提高一些代码的质量；基于这些期望，我们在团队里给队员洗脑式的说要写单元测试，要充分的做功能测试，但执行的结果往往是不尽如人意的。我们可能想把测试这件事情做好，发现它需要我们为之付出的时间、精力、知识等是比想象中多得多的；我也很长一段时间都在思考，如何才能把测试在团队中良好的运转起来？如何才能让每个人有测试的这种意识？如何才能在系统变得越来越复杂的时候让系统更加的可测、更好的可测、更容易的可测？</p>
-<h3 id="因在哪"><a href="#因在哪" class="headerlink" title="因在哪"></a>因在哪</h3><p>作为一个好的工程师，都想写出高质量的代码，都想沉浸在一个优秀的工程师文化的团队里；而从自己的工作中总结，大致会有一些点是制约我们面向前方的脚步：质量意识、分析需求并进行任务分解的能力、系统设计和代码重构的能力、单测和功能测试</p>
+<p>于是我们尝试在代码中进行一些小改进。有时候想通盘考虑整个代码库的状态（往往都是不完美的状态）会让人感到头大，所以我会专注于持续、小幅的改进。<br>最后，关于测试的一些提醒：让我们的团队编写测试代码真的是难于登天。我给我们系统中的很多部分都编写了测试用例，并配置好了测试服务器，在每次有代码提交的时候会自动运行。尽管如此，我还是很少看到其他人添加新的测试用例。我本希望团队能自发地重视测试，但是，并没有。对此，我的一些解决思路是：</p>
 <ul>
-<li>质量意识</li>
+<li>组织定期的讲座重温如何编写测试用例；</li>
+<li>要求重要的功能必须包含至少一个测试用例；</li>
+<li>优化测试服务器，让自动化测试在 10 秒内完成，而不是 10 分钟，让程序员及时看到测试结果。</li>
 </ul>
-<p>在实际的项目中，经常会用到的一种情况是开发人员往往站在自己的角度去看待问题，从而忽略了真正需要测试的用例；或者有人会认为测试不是一位研发工程师应该做的面面俱到的活；或者有些开发工程师压根就不知道从哪些方面去准备测试用例，不清楚该如何更好更全面的测试好自己开发的功能；</p>
-<p>开发人员对于软件质量，常常偏重于软件的外部质量，体现在他们的工作效益上，就是被测试人员发现的缺陷数。软件质量除了外部质量之外，内部质量同等重要。软件成本等于开发成本与维护成本之和，而维护成本的增加主要就归咎于内部质量的糟糕。这里讲的内部质量包括：代码的可读性、可重用性、可扩展性等。当我们让开发人员为原有代码编写单元测试时，总是觉得举步维艰。分析原因，主要问题在于代码的可测试性不好，测试的意识不足。要测试一个类，竟然连简单创建它的对象都变成了不可能完成的任务。我们为这样的代码编写单元测试，就好像在触及蜘蛛网，一旦被这些网丝给牵住，缠住，就可能无法摆脱。除非我们能够快刀斩乱麻，那对于这个系统而言，就不是维护，而是重写了。测试先行的开发至少在一定程度规避了这样的问题。</p>
-<ul>
-<li>分析需求并进行任务分解的能力</li>
-</ul>
+<p>除了技术决策以外，CTO 的另外一大责任是人员管理。CTO 每天的大部分时间会花在管理与领导、招人与解雇等事务之中。我不得不一边学习如何管理一边推进工作，所以不可避免会犯一些错误。<br>不管我阅读过多少次“员工是公司最重要的资产”，我都没有准备好应对招聘这么让人筋疲力尽的事情。如果你刚开始着手招聘，那我要提醒你：你可能要在上面花很长的时间，也可能要拒绝掉很多人，才能找到让你满意的那位。在此之前我从来没有想到，优秀的创业团队成员竟然如此稀少，我竟需要花如此之多的精力才能找到他们。</p>
+<p>选择招聘的时机也是另外一个棘手问题：这个职位是现在就要招，还是晚点？哪个职位要先招？这些问题在你得到投资之后会尤其突出，因为你会觉得应该要把这些钱派上用场。幸好，Michael Siebel 和 YC 给我们提供了一些很有用的建议：</p>
+<ol>
+<li>当你感觉某个职位需求非常迫切的时候才开始招聘（比如快赶不上合同进度了的时候）；</li>
+<li>招人是为了满足业务发展的需要，不能本末倒置（这条主要适用于还没有形成规模化、可持续的业务流程的早期公司）；</li>
+<li>不要招人来做一些你都还没想明白的事情（一些特殊的候选人也许能给公司带来新的动力，但通常最靠谱的办法还是靠创始人调整公司资源以适应新的发展）。</li>
+</ol>
+<p>综上所述，如果你不确定某个岗位是否需要招聘，那可能就是太早了。我们犯过的错误就是：过早地招人来做一些我们自己并不擅长的增长方案，结果基本上是以失败告终。</p>
+<p>员工管理基本上一路走来都比较顺利 —— 定期开展开诚布公的检查，明确什么是该做的，什么是不该做的，这些措施让我和我的员工保持着良好的关系。</p>
+<p>解雇员工则比较艰难。你可以在别处找到很多有用的建议，我这里只简单说一点：你的直觉通常很早就告诉你应该解雇某个人，但你往往要经过很长时间才能接受这个事实并着手实施，而且实施过程通常很困难。拥有良好的检查制度可以帮助雇佣双方做好最坏结果的准备。另外，如果安排合适的个人发展计划，有些人的水平能得到提升甚至达到优秀，每个人都应该有这样的机会。</p>
+<p>伴随公司发展的一大乐趣就是看到一些优秀的人才在各自的领域冒出头来，成为新的领导者。在此，我要向我的整个团队致以诚挚的敬意和祝贺。</p>
+<hr>
+<p>via: <a href="https://medium.com/sketchdeck-developer-blog/what-i-wish-i-knew-when-i-became-cto-fdc934b790e3" target="_blank" rel="external">https://medium.com/sketchdeck-developer-blog/what-i-wish-i-knew-when-i-became-cto-fdc934b790e3</a></p>
 
       
     </div>
@@ -359,9 +376,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/TDD/" rel="tag"># TDD</a>
+            <a href="/tags/团队管理/" rel="tag"># 团队管理</a>
           
-            <a href="/tags/测试驱动开发/" rel="tag"># 测试驱动开发</a>
+            <a href="/tags/个人成长/" rel="tag"># 个人成长</a>
           
         </div>
       
@@ -374,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/07/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/03/11/201803/go-interface/" rel="next" title="Go 的 interface">
+                <i class="fa fa-chevron-left"></i> Go 的 interface
               </a>
             
           </div>
@@ -383,10 +400,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/09/设计原则/" rel="prev" title="设计原则">
-                设计原则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -433,17 +446,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -507,22 +511,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#因在哪"><span class="nav-number">1.</span> <span class="nav-text">因在哪</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
