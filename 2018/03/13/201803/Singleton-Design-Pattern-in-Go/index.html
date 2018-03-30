@@ -107,7 +107,7 @@
 任何分配了资源的线程都应该释放同类型的资源
 
 在 Go 中，没有线程，只有 Go Routines。Go 运行时抽象了">
-<meta property="og:updated_time" content="2018-03-30T23:43:10.949Z">
+<meta property="og:updated_time" content="2018-03-30T23:44:45.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go 中的单例设计模式">
 <meta name="twitter:description" content="多线程应用程序非常复杂，尤其是当你的代码没有组织并且与资源访问、管理和维护保持一致时。如果你想最大限度地减少错误，你需要哲学和规则来生活。这里有一些我的：
@@ -380,10 +380,6 @@
 <p>在 main 中我们不需要分配任何内存或保持引用。通过包名，我们调用 Load 来初始化 Singleton。然后再次通过包名称访问公共接口，在这种情况下，是 Strap 函数。</p>
 <p>如果你有通过公共接口尝试来管理共享资源的需求，就使用 Singleton。</p>
 <p>和往常一样，我希望这可以帮助您更好地编写代码并减少 bug。</p>
-<hr>
-<p>via: <a href="https://www.ardanlabs.com/blog/2013/07/singleton-design-pattern-in-go.html" target="_blank" rel="external">https://www.ardanlabs.com/blog/2013/07/singleton-design-pattern-in-go.html</a></p>
-<p>作者：<a href="https://github.com/ardanlabs/gotraining" target="_blank" rel="external">William Kennedy</a><br>译者：<a href="https://github.com/shniu" target="_blank" rel="external">shniu</a><br>校对：<a href="https://github.com/polaris1119" target="_blank" rel="external">polaris1119</a></p>
-<p>本文由 <a href="https://github.com/studygolang/GCTT" target="_blank" rel="external">GCTT</a> 原创编译，<a href="https://studygolang.com/" target="_blank" rel="external">Go 中文网</a> 荣誉推出</p>
 
       
     </div>
