@@ -248,6 +248,167 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/01/Microservices in Golang - Part 5 - Event brokering with Go Micro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/01/Microservices in Golang - Part 5 - Event brokering with Go Micro/" itemprop="url">
+                  Golang 下的微服务 - Part5 - Go Micro 的事件代理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T07:00:00+08:00">
+                2018-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在本系列的前一部分中，我们谈到了用户认证和 JWT。在这一部分中，我们将快速浏览 go-micro 的代理功能。</p>
+<p>正如前面的文章提到的，go-micro 是一个可插拔的框架，它连接了许多不同的常用技术。如果你看看<a href="https://github.com/micro/go-plugins" target="_blank" rel="external">插件仓库</a>，你会看到它支持多少插件。</p>
+<p>在我们的例子中，我们将使用 NATS 代理插件。</p>
+<h2 id="基于事件驱动的架构"><a href="#基于事件驱动的架构" class="headerlink" title="基于事件驱动的架构"></a>基于事件驱动的架构</h2><p><a href="https://en.wikipedia.org/wiki/Event-driven_architecture" target="_blank" rel="external">事件驱动的架构</a>是一个非常简单的概念。我们通常认为好的架构是要解耦的，一个服务不应该与其他服务耦合或者感知到其他服务。当我们使用诸如 <code>gRPC</code> 协议时，在某些情况下是正确的，我们以向 <code>go.srv.user-service</code> 发布请求为例。其中就使用了服务发现的方式来查找该服务的实际位置。 尽管这并不直接将我们与实现耦合，但它确实将该服务耦合到了其他名为 <code>go.srv.user-service</code> 的服务，因此它不是完全的解耦，因为它直接与其他服务进行交互。</p>
+<p>那么什么让事件驱动架构真正的解耦呢？为了理解这一点，我们首先看看发布和订阅事件的过程。服务 a 完成了一项任务 x，然后向系统发布一个事件<code>x 刚刚发生了</code>。服务并不需要知道或者关心谁在监听这个事件，或者该事件正在发生什么影响。这些事情留给了监听事件的客户端。如果你期待 n 个服务对某个事件采取行动，那么也很容易。例如，你想 12 个不同的服务针对使用 <code>gRPC</code> 创建新用户采取行动，可能需要在用户服务中实例化 12 个客户端。而借助事件发布订阅或事件驱动架构，你的服务就不需要关心这些。</p>
+<p>现在，客户端服务只需要简单的监听事件。这意味着，你需要中间的介质来接收这些事件，并通知订阅了事件的客户端。</p>
+<p>这篇文章中，我们将在每次创建用户时创建一个事件，并且将创建一个用于发送电子邮件的新服务。我们不会真的去实现发邮件的功能，只是模拟它。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>首先，我们需要将 NATS 代理插件集成到我们的用户服务中：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// shippy-user-service/main.go</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    ... </div><div class="line">    <span class="comment">// Init will parse the command line flags.</span></div><div class="line">	srv.Init()</div><div class="line"></div><div class="line">	<span class="comment">// Get instance of the broker using our defaults</span></div><div class="line">	pubsub := srv.Server().Options().Broker</div><div class="line"></div><div class="line">	<span class="comment">// Register handler</span></div><div class="line">	pb.RegisterUserServiceHandler(srv.Server(), &amp;service&#123;repo, tokenService, pubsub&#125;)</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在让我们在创建新用户时发布事件（<a href="https://github.com/EwanValentine/shippy-user-service/tree/tutorial-5" target="_blank" rel="external">请参阅此处的完整更改</a>）</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// shippy-user-service/handler.go</span></div><div class="line"><span class="keyword">const</span> topic = <span class="string">"user.created"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> service <span class="keyword">struct</span> &#123;</div><div class="line">	repo         Repository</div><div class="line">	tokenService Authable</div><div class="line">	PubSub       broker.Broker</div><div class="line">&#125;</div><div class="line">...</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(srv *service)</span> <span class="title">Create</span><span class="params">(ctx context.Context, req *pb.User, res *pb.Response)</span> <span class="title">error</span></span> &#123;</div><div class="line"></div><div class="line">	<span class="comment">// Generates a hashed version of our password</span></div><div class="line">	hashedPass, err := bcrypt.GenerateFromPassword([]<span class="keyword">byte</span>(req.Password), bcrypt.DefaultCost)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	req.Password = <span class="keyword">string</span>(hashedPass)</div><div class="line">	<span class="keyword">if</span> err := srv.repo.Create(req); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	res.User = req</div><div class="line">	<span class="keyword">if</span> err := srv.publishEvent(req); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(srv *service)</span> <span class="title">publishEvent</span><span class="params">(user *pb.User)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Marshal to JSON string</span></div><div class="line">	body, err := json.Marshal(user)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Create a broker message</span></div><div class="line">	msg := &amp;broker.Message&#123;</div><div class="line">		Header: <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</div><div class="line">			<span class="string">"id"</span>: user.Id,</div><div class="line">		&#125;,</div><div class="line">		Body: body,</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Publish message to broker</span></div><div class="line">	<span class="keyword">if</span> err := srv.PubSub.Publish(topic, msg); err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Printf(<span class="string">"[pub] failed: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>确保你正在运行 Postgres，然后让我们运行这个服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -p 5432:5432 postgres</div><div class="line">$ make build</div><div class="line">$ make run</div></pre></td></tr></table></figure>
+<p>现在我们创建我们的电子邮件服务。 我为此创建了一个<a href="https://github.com/EwanValentine/shippy-email-service" target="_blank" rel="external">新的仓库</a>：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// shippy-email-service</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"encoding/json"</span></div><div class="line">	<span class="string">"log"</span></div><div class="line"></div><div class="line">	pb <span class="string">"github.com/EwanValentine/shippy-user-service/proto/user"</span></div><div class="line">	micro <span class="string">"github.com/micro/go-micro"</span></div><div class="line">	<span class="string">"github.com/micro/go-micro/broker"</span></div><div class="line">	_ <span class="string">"github.com/micro/go-plugins/broker/nats"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">const</span> topic = <span class="string">"user.created"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	srv := micro.NewService(</div><div class="line">		micro.Name(<span class="string">"go.micro.srv.email"</span>),</div><div class="line">		micro.Version(<span class="string">"latest"</span>),</div><div class="line">	)</div><div class="line"></div><div class="line">	srv.Init()</div><div class="line"></div><div class="line">	<span class="comment">// Get the broker instance using our environment variables</span></div><div class="line">	pubsub := srv.Server().Options().Broker</div><div class="line">	<span class="keyword">if</span> err := pubsub.Connect(); err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Fatal(err)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Subscribe to messages on the broker</span></div><div class="line">	_, err := pubsub.Subscribe(topic, <span class="function"><span class="keyword">func</span><span class="params">(p broker.Publication)</span> <span class="title">error</span></span> &#123;</div><div class="line">		<span class="keyword">var</span> user *pb.User</div><div class="line">		<span class="keyword">if</span> err := json.Unmarshal(p.Message().Body, &amp;user); err != <span class="literal">nil</span> &#123;</div><div class="line">			<span class="keyword">return</span> err</div><div class="line">		&#125;</div><div class="line">		log.Println(user)</div><div class="line">		<span class="keyword">go</span> sendEmail(user)</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">	&#125;)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Println(err)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Run the server</span></div><div class="line">	<span class="keyword">if</span> err := srv.Run(); err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Println(err)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sendEmail</span><span class="params">(user *pb.User)</span> <span class="title">error</span></span> &#123;</div><div class="line">	log.Println(<span class="string">"Sending email to:"</span>, user.Name)</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在运行之前，我们需要启动 <a href="https://nats.io/" target="_blank" rel="external">NATS</a>…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -p 4222:4222 nats</div></pre></td></tr></table></figure>
+<p>另外，我想快速解释一下 go-micro 的一部分，我觉得这对于理解它作为框架如何工作很重要。你会注意到：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">srv.Init()</div><div class="line">pubsub := srv.Server().Options().Broker</div></pre></td></tr></table></figure>
+<p>让我们来快速浏览一下。当我们用 go-micro 创建服务时，<code>srv.Init()</code> 会自动去查找所有的配置，例如所有配置的插件、环境变量或命令行选项。它将会将这些集成实例化为服务的一部分。为了使用这些实例，我们需要将它们从服务中提取出来。在 <code>srv.Server().Options()</code> 中，你还可以找到 Transport (go-micro 框架的一个核心组件，传输是服务之间的同步请求/响应通信的接口) 和 Registry (go-micro 框架的一个核心组件，叫注册表，提供了一个服务发现机制来将名称解析为地址)。</p>
+<p>在我们的例子中，会用到 <code>GO_MICRO_BROKER</code> 环境变量，会用到 <code>NATS</code> 代理插件，并创建一个该插件的实例，准备好我们连接和使用。</p>
+<p>如果你正在创建一个命令行工具，你可以使用 <code>cmd.Init()</code>，确保你导入了 <code>github.com/micro/go-micro/cmd</code>。这会产生同样的影响。</p>
+<p>现在构建并运行此服务：<code>$ make build &amp;&amp; make run</code>，确保你也在运行用户服务。然后转到 <code>shippy-user-cli</code> 项目，并运行 <code>$ make run</code>，看我们的电子邮件服务输出。你应该看到类似… <code>2017/12/26 23:57:23 Sending email to: Ewan Valentine</code></p>
+<p>就是这样！这是一个简单的例子，因为我们的电子邮件服务隐式地收听单个 <code>user.created</code> 事件，但希望你能看到这种方法如何让你编写解耦的服务。</p>
+<p>值得一提的是，使用 JSON over NATS 会比 gRPC 带来更高的性能开销，因为我们已经回到串行化json字符串的领域。但是，对于某些使用情况，这是完全可以接受的。 NATS 非常高效，非常适合消息最多交付一次的事件（fire and forget 有消息最多交付一次的意思，这个<a href="http://www.enterpriseintegrationpatterns.com/patterns/conversation/FireAndForget.html" target="_blank" rel="external">链接</a>可以帮助做更深入的理解）。</p>
+<p>Go-micro 还支持一些最广泛使用的队列 / pubsub 技术供你使用。<a href="https://github.com/micro/go-plugins/tree/master/broker" target="_blank" rel="external">你可以在这里看到它们的列表</a>。你不需要改变你的实现因为 go-micro 为你提供了抽象。你只需要将环境变量从 <code>MICRO_BROKER=nats</code> 更改为 <code>MICRO_BROKER=googlepubsub</code>，然后将 main.go 的导入从 <code>_ &quot;github.com/micro/go-plugins/broker/nats&quot;</code> 更改为 <code>_ &quot;github.com/micro/go-plugins/broker/googlepubsub&quot;</code>。</p>
+<p>如果你不使用 go-micro，那么有一个 <a href="https://github.com/nats-io/go-nats" target="_blank" rel="external">NATS go 库</a>（NATS 是用 go 写的，所以对 Go 的支持非常稳固）。</p>
+<p>发布一个事件：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nc, _ := nats.Connect(nats.DefaultURL)</div><div class="line"></div><div class="line"><span class="comment">// Simple Publisher</span></div><div class="line">nc.Publish(<span class="string">"user.created"</span>, userJsonString)</div></pre></td></tr></table></figure>
+<p>订阅一个事件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// Simple Async Subscriber</div><div class="line">nc.Subscribe(&quot;user.created&quot;, func(m *nats.Msg) &#123;</div><div class="line">    user := convertUserString(m.Data)</div><div class="line">    go sendEmail(user)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>我之前提到过，在使用第三方消息代理（如 NATS）时，会失去对 protobuf 的使用。这是一种耻辱，因为我们失去了使用二进制流进行通信的能力，这当然比串行化的 JSON 字符串的开销要低得多。 但是，像大多数人所关心的那样，go-micro 也可以解决这个问题。</p>
+<p>内置 go-micro 是 pubsub 层，位于代理层之上，但不需要第三方代理（如 NATS）。 但是这个功能真正棒的部分在于它利用了 protobuf 的定义。 所以我们回到了低延迟二进制流的领域。 因此，让我们更新我们的用户服务，用 go-micro 的 pubsub 替换现有的 NATS 代理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// shippy-user-service/main.go</div><div class="line">func main() &#123;</div><div class="line">    ...</div><div class="line">    publisher := micro.NewPublisher(&quot;user.created&quot;, srv.Client())</div><div class="line"></div><div class="line">	// Register handler</div><div class="line">	pb.RegisterUserServiceHandler(srv.Server(), &amp;service&#123;repo, tokenService, publisher&#125;)</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// shippy-user-service/handler.go</div><div class="line">func (srv *service) Create(ctx context.Context, req *pb.User, res *pb.Response) error &#123;</div><div class="line"></div><div class="line">	// Generates a hashed version of our password</div><div class="line">	hashedPass, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)</div><div class="line">	if err != nil &#123;</div><div class="line">		return err</div><div class="line">	&#125;</div><div class="line">	req.Password = string(hashedPass)</div><div class="line"></div><div class="line">    // Here&apos;s our new publisher code, much simpler</div><div class="line">	if err := srv.repo.Create(req); err != nil &#123;</div><div class="line">		return err</div><div class="line">	&#125;</div><div class="line">	res.User = req</div><div class="line">	if err := srv.Publisher.Publish(ctx, req); err != nil &#123;</div><div class="line">		return err</div><div class="line">	&#125;</div><div class="line">	return nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在我们的邮件服务是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// shippy-email-service</div><div class="line">const topic = &quot;user.created&quot;</div><div class="line"></div><div class="line">type Subscriber struct&#123;&#125;</div><div class="line"></div><div class="line">func (sub *Subscriber) Process(ctx context.Context, user *pb.User) error &#123;</div><div class="line">	log.Println(&quot;Picked up a new message&quot;)</div><div class="line">	log.Println(&quot;Sending email to:&quot;, user.Name)</div><div class="line">	return nil</div><div class="line">&#125;</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">    ...</div><div class="line">    micro.RegisterSubscriber(topic, srv.Server(), new(Subscriber))</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在我们在我们的服务中使用我们的底层 User protobuf 定义，通过 gRPC，并且不使用第三方代理。太棒了！</p>
+<p>这是一个包装！ 接下来的教程我们将着眼于为我们的服务创建一个用户界面，并研究 Web 客户端如何开始与我们的服务进行交互。</p>
+<p>本文中的任何错误、反馈，或任何您会发现有用的东西，请给我发一封<a href="ewan.valentine89@gmail.com">电子邮件</a>。</p>
+<hr>
+<p>via：<a href="https://ewanvalentine.io/microservices-in-golang-part-5/" target="_blank" rel="external">Microservices in Golang - Part 5 - Event brokering with Go Micro</a></p>
+<p>作者：<a href="http://ewanvalentine.io/" target="_blank" rel="external">ewanvalentine.io</a><br>译者：<a href="https://github.com/shniu" target="_blank" rel="external">shniu</a><br>校对：<a href="https://github.com/polaris1119" target="_blank" rel="external">polaris1119</a></p>
+<p>首发于 <a href="https://github.com/studygolang/GCTT" target="_blank" rel="external">GCTT</a> ，<a href="https://studygolang.com" target="_blank" rel="external">Go中文网</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/02/28/Part3 ERC20 Token Standard Example/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1545,175 +1706,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/03/31/汇总精华文章/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/31/汇总精华文章/" itemprop="url">
-                  不积硅步，无以至千里
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-31T17:01:30+08:00">
-                2017-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote><p>两点之间最短的距离是恶性循环</p>
-</blockquote>
-<h2 id="大数据处理技术"><a href="#大数据处理技术" class="headerlink" title="大数据处理技术"></a>大数据处理技术</h2><ul>
-<li><a href="https://spark.apache.org/docs/latest/programming-guide.html#transformations" target="_blank" rel="external">spark官方文档</a></li>
-</ul>
-<h2 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h2><h2 id="Vuejs"><a href="#Vuejs" class="headerlink" title="Vuejs"></a>Vuejs</h2><ul>
-<li><a href="https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-CN.md" target="_blank" rel="external">Vuejs编码规范</a></li>
-<li><a href="https://github.com/lin-xin/vue-manage-system" target="_blank" rel="external">Vue2.x和Element-ui开发的后台管理系统</a></li>
-<li><a href="https://github.com/ElementUI/awesome-element" target="_blank" rel="external">awesome-element</a></li>
-<li><a href="https://github.com/taylorchen709/vue-admin" target="_blank" rel="external">vue-admin-element</a></li>
-<li><a href="http://www.jianshu.com/c/c71f9c127c71" target="_blank" rel="external">element-ui分析的系列文章</a></li>
-</ul>
-<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p><a href="http://feisky.xyz/docker/" target="_blank" rel="external">Docker学习笔记</a></p>
-<p><a href="https://docs.docker.com/samples/" target="_blank" rel="external">Docker samples</a></p>
-<p><a href="http://www.dockerinfo.net/341.html" target="_blank" rel="external">Docker命令指令详情</a><br><a href="http://www.jianshu.com/p/3da0e1bce796" target="_blank" rel="external">http://www.jianshu.com/p/3da0e1bce796</a></p>
-<p><a href="https://sematext.com/blog/2016/12/12/docker-elasticsearch-swarm/" target="_blank" rel="external">https://sematext.com/blog/2016/12/12/docker-elasticsearch-swarm/</a></p>
-<p><a href="https://www.ibm.com/developerworks/cn/opensource/os-cn-docker-distributed-bigdata/" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/opensource/os-cn-docker-distributed-bigdata/</a></p>
-<p><a href="http://blog.daocloud.io/unfhdockerswarm/" target="_blank" rel="external">http://blog.daocloud.io/unfhdockerswarm/</a></p>
-<p><a href="https://github.com/hashicorp/raft" target="_blank" rel="external">https://github.com/hashicorp/raft</a></p>
-<p><a href="http://shiyanjun.cn/archives/1625.html" target="_blank" rel="external">Docker Swarm架构、特性与基本实践</a></p>
-<p><a href="http://www.infoq.com/cn/news/2017/02/docker-1.13" target="_blank" rel="external">docker1.13新特性</a></p>
-<p><a href="https://sematext.com/blog/2016/12/12/docker-elasticsearch-swarm/" target="_blank" rel="external">ES cluster of Docker</a></p>
-<p><a href="https://yq.aliyun.com/articles/135?spm=5176.100239.blogcont134.9.ufn1ej" target="_blank" rel="external">阿里云Docker博客</a></p>
-<h2 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a>自然语言处理</h2><ul>
-<li><a href="http://spaces.ac.cn/archives/4316/?appinstall=0" target="_blank" rel="external">Word2Vec</a> </li>
-</ul>
-<blockquote>
-<p>本文主要是给出了关键词的一种新的定义，并且基于Word2Vec给出了一个实现方案。</p>
-</blockquote>
-<ul>
-<li><a href="https://www.zhihu.com/question/52368821/answer/138745422" target="_blank" rel="external">知乎-知识图谱如何入门</a></li>
-</ul>
-<blockquote>
-<p>任何一个学科，重要的不是静态的知识本身，而是建立知其然（Framework），知其所以然（Rationale），最后到知未然（Insights）</p>
-</blockquote>
-<ul>
-<li><a href="https://zhuanlan.zhihu.com/p/26208385" target="_blank" rel="external">金融知识图谱的现状和展望</a></li>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzI1NDE1MDUwOQ==&amp;mid=2650796469&amp;idx=1&amp;sn=ac96b8a3c8b0aa8efd73983efde43cd3&amp;chksm=f1c2c3b7c6b54aa1eae085a7bfb790b7814ffedc3e401c4c40d788f75d0d3563ee5c2a066993&amp;mpshare=1&amp;scene=1&amp;srcid=0410SnB1VMKgJMFgKj77SZAZ&amp;key=da7b049fa48f9065a6e5edd50cb00bace41288d1af4b6a68fc3d0182868d83a8542204171759c72e7dc8907195b75da86386371be23c365393c72029d9f97d2ee79df75535d273dc94bdc1b906cbf393&amp;ascene=0&amp;uin=MTM2NDMwMDgyMg%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.12.3+build(16D32)&amp;version=12010310&amp;nettype=WIFI&amp;fontScale=100&amp;pass_ticket=ZEBBE0sCS5MOoVxyNVyehxmOnuU3Wt%2BrQh8%2Bz0FI9cg6koZnQpy0Kg0LtbI6G1df" target="_blank" rel="external">https://mp.weixin.qq.com/s?__biz=MzI1NDE1MDUwOQ==&amp;mid=2650796469&amp;idx=1&amp;sn=ac96b8a3c8b0aa8efd73983efde43cd3&amp;chksm=f1c2c3b7c6b54aa1eae085a7bfb790b7814ffedc3e401c4c40d788f75d0d3563ee5c2a066993&amp;mpshare=1&amp;scene=1&amp;srcid=0410SnB1VMKgJMFgKj77SZAZ&amp;key=da7b049fa48f9065a6e5edd50cb00bace41288d1af4b6a68fc3d0182868d83a8542204171759c72e7dc8907195b75da86386371be23c365393c72029d9f97d2ee79df75535d273dc94bdc1b906cbf393&amp;ascene=0&amp;uin=MTM2NDMwMDgyMg%3D%3D&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.12.3+build(16D32)&amp;version=12010310&amp;nettype=WIFI&amp;fontScale=100&amp;pass_ticket=ZEBBE0sCS5MOoVxyNVyehxmOnuU3Wt%2BrQh8%2Bz0FI9cg6koZnQpy0Kg0LtbI6G1df</a></li>
-</ul>
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><ul>
-<li><a href="https://gavinzhang1.gitbooks.io/spring/content/" target="_blank" rel="external">Spring源码阅读</a></li>
-<li><a href="https://www.zhihu.com/question/21346206" target="_blank" rel="external">知乎-怎么阅读Spring源码？</a></li>
-<li><a href="https://my.oschina.net/kaywu123/blog?search=Spring" target="_blank" rel="external">Spring源码分析系列</a></li>
-</ul>
-<h2 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h2><ul>
-<li><a href="http://www.oschina.net/translate/log-what-every-software-engineer-should-know-about-real-time-datas-unifying" target="_blank" rel="external">日志：每个软件工程师都应该知道的有关实时数据的统一概念</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1758,7 +1755,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1771,7 +1768,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
