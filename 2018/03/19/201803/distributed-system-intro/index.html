@@ -87,16 +87,40 @@
 
 
 
-<meta name="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+<meta name="description" content="为什么需要分布式系统分布式系统固然高大上，但是不是一开始就需要做分布式系统呢？肯定不是，传统的单体架构能满足的场景，就不要考虑使用分布式系统；分布式系统有它需要解决的痛点：
+
+增大系统容量
+
+当业务量越来越大，要应对与日剧增的业务量，单台机器的性能已经无法满足了，我们就需要很多台机器去满足大规模的应用场景；所以，需要垂直或水平拆分业务系统，让其演变成为一个分布式架构的系统。
+
+加强系统可用性
+
+业">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式系统介绍">
 <meta property="og:url" content="http://shniu.github.io/2018/03/19/201803/distributed-system-intro/index.html">
 <meta property="og:site_name" content="ChainTech">
-<meta property="og:description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
-<meta property="og:updated_time" content="2018-03-19T05:36:28.717Z">
+<meta property="og:description" content="为什么需要分布式系统分布式系统固然高大上，但是不是一开始就需要做分布式系统呢？肯定不是，传统的单体架构能满足的场景，就不要考虑使用分布式系统；分布式系统有它需要解决的痛点：
+
+增大系统容量
+
+当业务量越来越大，要应对与日剧增的业务量，单台机器的性能已经无法满足了，我们就需要很多台机器去满足大规模的应用场景；所以，需要垂直或水平拆分业务系统，让其演变成为一个分布式架构的系统。
+
+加强系统可用性
+
+业">
+<meta property="og:updated_time" content="2018-04-07T13:13:53.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式系统介绍">
-<meta name="twitter:description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+<meta name="twitter:description" content="为什么需要分布式系统分布式系统固然高大上，但是不是一开始就需要做分布式系统呢？肯定不是，传统的单体架构能满足的场景，就不要考虑使用分布式系统；分布式系统有它需要解决的痛点：
+
+增大系统容量
+
+当业务量越来越大，要应对与日剧增的业务量，单台机器的性能已经无法满足了，我们就需要很多台机器去满足大规模的应用场景；所以，需要垂直或水平拆分业务系统，让其演变成为一个分布式架构的系统。
+
+加强系统可用性
+
+业">
 
 
 
@@ -321,7 +345,91 @@
       
 
       
-        
+        <h2 id="为什么需要分布式系统"><a href="#为什么需要分布式系统" class="headerlink" title="为什么需要分布式系统"></a>为什么需要分布式系统</h2><p>分布式系统固然高大上，但是不是一开始就需要做分布式系统呢？肯定不是，传统的单体架构能满足的场景，就不要考虑使用分布式系统；分布式系统有它需要解决的痛点：</p>
+<ul>
+<li>增大系统容量</li>
+</ul>
+<p>当业务量越来越大，要应对与日剧增的业务量，单台机器的性能已经无法满足了，我们就需要很多台机器去满足大规模的应用场景；所以，需要垂直或水平拆分业务系统，让其演变成为一个分布式架构的系统。</p>
+<ul>
+<li>加强系统可用性</li>
+</ul>
+<p>业务越来越多，服务拆分的也越来越细，很多业务和服务都变得越来越关键，需要提高整个系统架构的可用性，意味着架构中不能存在单点故障；这样整个系统不会因为单点故障导致整体不可用；所以，使用分布式架构来冗余系统以消除单点故障，从而提高系统的可用性。</p>
+<p>其他优点：</p>
+<ul>
+<li>模块化，模块可重用度高</li>
+<li>软件服务模块被拆分，开发和发布速度可以并行而变快</li>
+<li>系统扩展性高</li>
+<li>团队协作流程得到改善</li>
+</ul>
+<p>在系统架构的世界里，不存在完美的解决方案，基本都是在不同方面进行各种trade-off，所以说，分布式系统有他自己需要考虑的难点和问题：</p>
+<ul>
+<li>架构设计变得复杂了，尤其是分布式事务</li>
+<li>部署会变得复杂了，要维护多个服务</li>
+<li>吞吐量是大了，但是响应时间会变长，这也是要重点解决的问题</li>
+<li>运维的复杂度可想而知变得更复杂了，更难维护了</li>
+<li>架构复杂，学习曲线剧增</li>
+<li>测试和查错的复杂度加大</li>
+<li>技术选型可以多样化，维护和运维的要求变得很高</li>
+<li>管理分布式系统中的服务和调度变得困难和复杂</li>
+</ul>
+<p>分布式系统中的难点在于系统设计、服务管理和系统运维；虽然解决了单点故障和性能容量的问题，但是随之而来的其他问题，却层出不穷；</p>
+<h2 id="分布式系统的历史"><a href="#分布式系统的历史" class="headerlink" title="分布式系统的历史"></a>分布式系统的历史</h2><p>模块化编程，到面向事件设计，到基于接口/构件设计，再到SOA，SOA是一种基于服务的架构，将应用程序功能作为服务发送给最终用户或者其他服务，采用开放标准与软件资源进行交互：</p>
+<ul>
+<li>可重用，粒度合适，模块化，可组合，构件化及有互操作性</li>
+<li>符合开放标准</li>
+<li>服务识别和分类，提供和发布，监控和追踪</li>
+</ul>
+<p>面向服务的架构三个重要发展阶段：</p>
+<ol>
+<li>单体架构，软件模块高度耦合</li>
+<li>松耦合的SOA架构，这种架构需要一个标准的协议或中间件来联动其他服务，这样服务间就不直接依赖</li>
+<li>微服务架构，这种架构更加松耦合；每个微服务都能独立完整运行，后端的数据库也被微服务这样的架构分散到不同的服务中。但是微服务的服务间需要服务编排和服务整合的引擎，来统一指挥和调度服务；这个引擎可以是网关，可以是工作流引擎，会用到容器化调度的技术，如Kubernetes；<a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="external">微服务</a>.</li>
+</ol>
+<p>微服务的好处是让开发速度变得更快，部署快，隔离性高，系统的扩展性也好，但是集成测试，运维和服务管理就比较麻烦；</p>
+<h2 id="分布式系统的难点"><a href="#分布式系统的难点" class="headerlink" title="分布式系统的难点"></a>分布式系统的难点</h2><p>亚马逊的架构规定：</p>
+<ul>
+<li>所有团队的程序模块都要通过 Service interface 方式将数据和功能开放出来；</li>
+<li>团队间程序模块的信息通信都要通过这些接口；</li>
+<li>除此之外不能通过其他方式</li>
+<li>任何技术都可以使用，如 http, corba, pub/sub 等</li>
+</ul>
+<p>一些总结：</p>
+<ul>
+<li>分布式服务的架构需要分布式的团队架构</li>
+</ul>
+<p>一个服务由一个小团队负责，从前到后，从需求分析到上线运维，按职责分工，非技能分工</p>
+<ul>
+<li><p>分布式服务查错不容易</p>
+</li>
+<li><p>没有专职的测试人员，没有专职的运维人员，开发人员做所有的事情</p>
+</li>
+<li><p>运维优先，崇尚简化和自动化</p>
+</li>
+<li><p>内部服务和外部服务一致</p>
+</li>
+</ul>
+<p>分布式服务架构需要从组织，到软件工程，再到技术上有一个大的改造，需要长时间来磨合和改进，并不断总结教训和成功经验。</p>
+<h3 id="异构系统的问题"><a href="#异构系统的问题" class="headerlink" title="异构系统的问题"></a>异构系统的问题</h3><ul>
+<li>软件和应用不标准</li>
+</ul>
+<p>不同软件不同语言会出现兼容性和不同的开发、运维、测试标准；如有的用配置文件，有点需要调用管理 API 接口</p>
+<ul>
+<li>通讯协议不标准</li>
+</ul>
+<p>需要规范分布式架构的通讯协议，协议包括协议头和协议体，如，很多服务的 API 出错返回 HTTP 的错误状态码，二是返回正常的 200，然后在 Body 里 JSON 串中描述 error 信息，不是一种好的习惯；</p>
+<ul>
+<li>数据格式不标准</li>
+<li>开发和运维的过程和方法不标准</li>
+</ul>
+<p>一个好的配置管理，要有三层：底层和操作系统相关，中间层和中间件相关，最上层和业务应用相关</p>
+<h3 id="系统架构中的服务依赖性问题"><a href="#系统架构中的服务依赖性问题" class="headerlink" title="系统架构中的服务依赖性问题"></a>系统架构中的服务依赖性问题</h3><p>单体服务中，一个机器挂了，整个软件就挂了，但是分布式架构下，服务具有依赖性，一个服务挂了可能引发整个依赖链上的服务都挂掉；</p>
+<ul>
+<li>如果非关键业务依赖了关键业务，则会升级为一个关键业务</li>
+<li>服务依赖链中，整个 SLA 由最差的哪个服务决定</li>
+</ul>
+<p>很多分布式架构在应用层上做到了业务隔离，然而，在数据库结点上并没有。如果一个非关键业务把数据库拖死，那么会导致全站不可用。所以，数据库方面也需要做相应的隔离。也就是说，最好一个业务线用一套自己的数据库。这就是亚马逊服务器的实践——系统间不能读取对方的数据库，只通过服务接口耦合。这也是微服务的要求。我们不但要拆分服务，还要为每个服务拆分相应的数据库。</p>
+<h3 id="故障发生的概率更大"><a href="#故障发生的概率更大" class="headerlink" title="故障发生的概率更大"></a>故障发生的概率更大</h3><h3 id="多层架构的运维复杂度更大"><a href="#多层架构的运维复杂度更大" class="headerlink" title="多层架构的运维复杂度更大"></a>多层架构的运维复杂度更大</h3><p>分工不是问题，问题是分工后的协作是否统一和规范。</p>
+
       
     </div>
 
@@ -416,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -481,6 +598,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要分布式系统"><span class="nav-number">1.</span> <span class="nav-text">为什么需要分布式系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式系统的历史"><span class="nav-number">2.</span> <span class="nav-text">分布式系统的历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式系统的难点"><span class="nav-number">3.</span> <span class="nav-text">分布式系统的难点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异构系统的问题"><span class="nav-number">3.1.</span> <span class="nav-text">异构系统的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统架构中的服务依赖性问题"><span class="nav-number">3.2.</span> <span class="nav-text">系统架构中的服务依赖性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#故障发生的概率更大"><span class="nav-number">3.3.</span> <span class="nav-text">故障发生的概率更大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多层架构的运维复杂度更大"><span class="nav-number">3.4.</span> <span class="nav-text">多层架构的运维复杂度更大</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
