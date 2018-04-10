@@ -117,7 +117,7 @@ Prometheus 实战
 对 load average 的理解参看 理解Linux系统中的load average
 
 通常我们先看15分钟load，如果load很高，再看1分钟和5分钟负载，查看是否有下降趋势。1分">
-<meta property="og:updated_time" content="2018-04-09T15:23:03.204Z">
+<meta property="og:updated_time" content="2018-04-10T13:50:09.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="监控平台">
 <meta name="twitter:description" content="Prometheus
@@ -372,6 +372,10 @@ Prometheus 实战
 <p>通常我们先看15分钟load，如果load很高，再看1分钟和5分钟负载，查看是否有下降趋势。1分钟负载值 &gt; 1，那么我们不用担心，但是如果15分钟负载都超过1，我们要赶紧看看发生了什么事情。所以我们要根据实际情况查看这三个值。<br>0.7 &lt; load &lt; 1: 此时是不错的状态，如果进来更多的汽车，你的马路仍然可以应付。<br>load = 1: 你的马路即将拥堵，而且没有更多的资源额外的任务，赶紧看看发生了什么吧。<br>load &gt; 5: 非常严重拥堵，我们的马路非常繁忙，每辆车都无法很快的运行</p>
 </blockquote>
 <p><strong>使用 Prometheus 统计平均负载</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">node_load1&#123;instance=&quot;xxx&quot;&#125; // 1分钟负载</div><div class="line">node_load5&#123;instance=&quot;xxx&quot;&#125; // 5分钟负载</div><div class="line">node_load15&#123;instance=&quot;xxx&quot;&#125; // 15分钟负载</div></pre></td></tr></table></figure></p>
+<h2 id="Spring-boot-and-prometheus"><a href="#Spring-boot-and-prometheus" class="headerlink" title="Spring boot and prometheus"></a>Spring boot and prometheus</h2><ul>
+<li><a href="https://reflectoring.io/monitoring-spring-boot-with-prometheus/" target="_blank" rel="external">Exposing Metrics of a Spring Boot Application for Prometheus</a></li>
+<li><a href="http://yunlzheng.github.io/2018/01/24/use-prometheus-monitor-your-spring-boot-application/" target="_blank" rel="external">自定义Metrics：让Prometheus监控你的应用程序（Spring版)</a></li>
+</ul>
 
       
     </div>
@@ -494,7 +498,7 @@ Prometheus 实战
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -553,7 +557,7 @@ Prometheus 实战
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus"><span class="nav-number">1.</span> <span class="nav-text">Prometheus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主机监控指标"><span class="nav-number">2.</span> <span class="nav-text">主机监控指标</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus"><span class="nav-number">1.</span> <span class="nav-text">Prometheus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主机监控指标"><span class="nav-number">2.</span> <span class="nav-text">主机监控指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot-and-prometheus"><span class="nav-number">3.</span> <span class="nav-text">Spring boot and prometheus</span></a></li></ol></div>
             
 
           </div>
