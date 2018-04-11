@@ -248,6 +248,125 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/11/201804/refactoring/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/11/201804/refactoring/" itemprop="url">
+                  代码重构
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T21:45:05+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/code1.png" class="full-image"></p>
+<h2 id="重构的第一步"><a href="#重构的第一步" class="headerlink" title="重构的第一步"></a>重构的第一步</h2><p>如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/10/201804/design-pattern/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -472,10 +591,9 @@
 <span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject"><img itemprop="url image" src="/images/spring-boot1.jpg" class="full-image" alt="my-heaven" title="spring-boot"><meta itemprop="width" content="auto"><meta itemprop="height" content="auto"></span>
 <p>Spring Boot(英文中是“引导”的意思)，是用来简化Spring应用的搭建到开发的过程。应用开箱即用，只要通过 “just run”（可能是 java -jar 或 tomcat 或 maven插件run 或 shell脚本），就可以启动项目。二者，Spring Boot 只要很少的Spring配置文件（例如那些xml，property）。 因为“习惯优先于配置”的原则，使得Spring Boot在快速开发应用和微服务架构实践中得到广泛应用。</p>
 <h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><ul>
-<li><p><a href="http://www.spring4all.com/article/266" target="_blank" rel="external">Spring Boot 之 HelloWorld详解</a><br>spring boot 入门级的使用介绍</p>
-</li>
-<li><p><a href="http://blog.didispace.com/spring-boot-learning-1/" target="_blank" rel="external">Spring Boot快速入门</a></p>
-</li>
+<li><a href="http://www.spring4all.com/article/266" target="_blank" rel="external">Spring Boot 之 HelloWorld详解</a><br>spring boot 入门级的使用介绍</li>
+<li><a href="http://www.spring4all.com/article/248" target="_blank" rel="external">Spring Boot 配置文件详解：自定义属性、随机数、多环境配置等</a></li>
+<li><a href="http://blog.didispace.com/spring-boot-learning-1/" target="_blank" rel="external">Spring Boot快速入门</a></li>
 <li><a href="http://blog.didispace.com/books/java8-tutorial/ch1.html" target="_blank" rel="external">Java 8 简明教程</a></li>
 <li><a href="http://blog.didispace.com/books/think-in-java/" target="_blank" rel="external">Thinking in Java (Java 编程思想)</a></li>
 <li><a href="http://blog.didispace.com/books/spring-boot-reference/" target="_blank" rel="external">Spring-Boot-Reference-Guide</a></li>
@@ -499,6 +617,19 @@
 <li><code>@RestController</code>：Spring4 之后加入的注解，原来在 <code>@Controller</code> 中返回 json 需要 <code>@ResponseBody</code> 来配合，如果直接用 @RestController 替代 @Controller 就不需要再配置 @ResponseBody，默认返回 json 格式。</li>
 <li><code>@RequestMapping</code>：配置 url 映射</li>
 </ul>
+<h3 id="Spring-boot-配置的优先级"><a href="#Spring-boot-配置的优先级" class="headerlink" title="Spring boot 配置的优先级"></a>Spring boot 配置的优先级</h3><ol>
+<li>命令行参数</li>
+<li>java:comp/env 里的 JNDI 属性</li>
+<li>JVM 系统属性</li>
+<li>操作系统环境变量</li>
+<li>RandomValuePropertySource 属性类生成的 <code>random.*</code> 属性</li>
+<li>应用以外的 application.properties（或 yml）文件</li>
+<li>打包在应用内的 application.properties（或 yml）文件</li>
+<li>在应用 @Configuration 配置类中，用 @PropertySource 注解声明的属性文件</li>
+<li>SpringApplication.setDefaultProperties 声明的默认属性</li>
+</ol>
+<p>命令行参数优先级最高。这个可以根据这个优先级，可以在测试或生产环境中快速地修改配置参数值，而不需要重新打包和部署应用。</p>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html" target="_blank" rel="external">Spring boot 的配置项</a></p>
 <h4 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h4><ul>
 <li><a href="http://blog.didispace.com/books/mostly-adequate-guide-chinese/" target="_blank" rel="external">js函数式编程</a></li>
 <li><a href="http://blog.didispace.com/books/http2-explained-chinese/" target="_blank" rel="external">http2</a></li>
@@ -640,6 +771,12 @@
 <h2 id="Spring-boot-and-prometheus"><a href="#Spring-boot-and-prometheus" class="headerlink" title="Spring boot and prometheus"></a>Spring boot and prometheus</h2><ul>
 <li><a href="https://reflectoring.io/monitoring-spring-boot-with-prometheus/" target="_blank" rel="external">Exposing Metrics of a Spring Boot Application for Prometheus</a></li>
 <li><a href="http://yunlzheng.github.io/2018/01/24/use-prometheus-monitor-your-spring-boot-application/" target="_blank" rel="external">自定义Metrics：让Prometheus监控你的应用程序（Spring版)</a></li>
+</ul>
+<h2 id="Docker-hosts-and-containers-monitoring"><a href="#Docker-hosts-and-containers-monitoring" class="headerlink" title="Docker hosts and containers monitoring"></a>Docker hosts and containers monitoring</h2><ul>
+<li><a href="https://github.com/stefanprodan/dockprom" target="_blank" rel="external">Docker hosts and containers monitoring with Prometheus, Grafana, cAdvisor, NodeExporter and AlertManager</a><br>使用起来简单方便，使用及参考价值很大</li>
+</ul>
+<h2 id="Mongodb-monitor"><a href="#Mongodb-monitor" class="headerlink" title="Mongodb monitor"></a>Mongodb monitor</h2><ul>
+<li><a href="https://github.com/percona/mongodb_exporter" target="_blank" rel="external">A Prometheus exporter for MongoDB including sharding, replication and storage engines</a></li>
 </ul>
 
           
@@ -1420,152 +1557,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/13/201803/What-I-wish-I-knew-when-I-became-CTO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/13/201803/What-I-wish-I-knew-when-I-became-CTO/" itemprop="url">
-                  当我做 CTO 时，我希望自己知道什么
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-13T07:33:42+08:00">
-                2018-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>反思过去的经验教训是一段充满激情的美妙经历，与传统工作相比，创业是一个相反的过程：最开始你并不知道公司能否启动，也不确定这能否变成一个全职的工作；随着公司的发展壮大，你开始面对各种蜂拥而至的问题，而且大多数问题你之前都没有碰到过。在这段时间里你会以飞快的速度积累并掌握各种知识和经验。</p>
-<p>创业公司虽然灵活，但你最开始作出的决策将会在以后的时间里产生影响。一开始对基础设施、框架以及编程语言的选择，会影响相当长的一段时间。随着业务的发展，需要增加的功能和子系统越来越多，其中的每一项都会在未来影响后续的选择，而当公司进入快速发展期的时候，你会发现根本没有办法停下来考虑重构。</p>
-<p>我对于我们最开始的选择还是比较满意的：Amazon Web Services 、Elastic Beanstalk 、Firebase 、AngularJS 、Coffeescript 、Kafka 、Simple Queue System 、SocketStream 、Docker 、SemaphoreCI 、MySQL 。其中，只有 AngularJS 和 MySQL 两个在后续的扩展上带来问题。我们的 AngularJS 代码是写在一个文件上的，该文件后来变得很大，导致初次下载的时候需要耗费一段时间，而且在系统运行时也感觉很慢。MySQL（ 用的是 RDS ）由于 BI 查询的复杂度增加而崩溃了好几次，并且不好修复。</p>
-<p>一项技术的生命周期出乎意料地短。我们用到的 CoffeeScript 和 AngularJS 就是现在已显得过时了的组件（我们打算迁移到 TypeScript 和最新版的 AngularJS ），但它们在我们选用的当时都是比较前沿的。另外比较幸运的是，我对新技术的钟情并没有造成什么严重的问题。我很庆幸选择了 CoffeeScript ，在过去这几年里，它那简明的语法帮助我大大地提升了开发效率。</p>
-<p>经历了上述这些事情后，我意识到，需要提前对技术的更新换代做好时间安排和策略准备。对于每一项技术的选定，你都有要有承受长期的“技术债”的心理准备。</p>
-<p>同样地，你写的组件和库也会被长时间地使用。不管写得好坏，你都几乎不会再去动它。因此你最好在开始的时候多花一些时间进行设计和构建，以方便日后的维护。</p>
-<p>我对那些暂停开发新功能并重写整个系统的“重构”做法一向是反感的。这曾让很多项目陷入死亡的漩涡。“童子军军规”里面有一条说得很好：</p>
-<blockquote>
-<p>试着让这个世界比你认识它的时候好一点 —— Robert Baden Powell ，童子军与女童军的创始人。</p>
-</blockquote>
-<p>于是我们尝试在代码中进行一些小改进。有时候想通盘考虑整个代码库的状态（往往都是不完美的状态）会让人感到头大，所以我会专注于持续、小幅的改进。<br>最后，关于测试的一些提醒：让我们的团队编写测试代码真的是难于登天。我给我们系统中的很多部分都编写了测试用例，并配置好了测试服务器，在每次有代码提交的时候会自动运行。尽管如此，我还是很少看到其他人添加新的测试用例。我本希望团队能自发地重视测试，但是，并没有。对此，我的一些解决思路是：</p>
-<ul>
-<li>组织定期的讲座重温如何编写测试用例；</li>
-<li>要求重要的功能必须包含至少一个测试用例；</li>
-<li>优化测试服务器，让自动化测试在 10 秒内完成，而不是 10 分钟，让程序员及时看到测试结果。</li>
-</ul>
-<p>除了技术决策以外，CTO 的另外一大责任是人员管理。CTO 每天的大部分时间会花在管理与领导、招人与解雇等事务之中。我不得不一边学习如何管理一边推进工作，所以不可避免会犯一些错误。<br>不管我阅读过多少次“员工是公司最重要的资产”，我都没有准备好应对招聘这么让人筋疲力尽的事情。如果你刚开始着手招聘，那我要提醒你：你可能要在上面花很长的时间，也可能要拒绝掉很多人，才能找到让你满意的那位。在此之前我从来没有想到，优秀的创业团队成员竟然如此稀少，我竟需要花如此之多的精力才能找到他们。</p>
-<p>选择招聘的时机也是另外一个棘手问题：这个职位是现在就要招，还是晚点？哪个职位要先招？这些问题在你得到投资之后会尤其突出，因为你会觉得应该要把这些钱派上用场。幸好，Michael Siebel 和 YC 给我们提供了一些很有用的建议：</p>
-<ol>
-<li>当你感觉某个职位需求非常迫切的时候才开始招聘（比如快赶不上合同进度了的时候）；</li>
-<li>招人是为了满足业务发展的需要，不能本末倒置（这条主要适用于还没有形成规模化、可持续的业务流程的早期公司）；</li>
-<li>不要招人来做一些你都还没想明白的事情（一些特殊的候选人也许能给公司带来新的动力，但通常最靠谱的办法还是靠创始人调整公司资源以适应新的发展）。</li>
-</ol>
-<p>综上所述，如果你不确定某个岗位是否需要招聘，那可能就是太早了。我们犯过的错误就是：过早地招人来做一些我们自己并不擅长的增长方案，结果基本上是以失败告终。</p>
-<p>员工管理基本上一路走来都比较顺利 —— 定期开展开诚布公的检查，明确什么是该做的，什么是不该做的，这些措施让我和我的员工保持着良好的关系。</p>
-<p>解雇员工则比较艰难。你可以在别处找到很多有用的建议，我这里只简单说一点：你的直觉通常很早就告诉你应该解雇某个人，但你往往要经过很长时间才能接受这个事实并着手实施，而且实施过程通常很困难。拥有良好的检查制度可以帮助雇佣双方做好最坏结果的准备。另外，如果安排合适的个人发展计划，有些人的水平能得到提升甚至达到优秀，每个人都应该有这样的机会。</p>
-<p>伴随公司发展的一大乐趣就是看到一些优秀的人才在各自的领域冒出头来，成为新的领导者。在此，我要向我的整个团队致以诚挚的敬意和祝贺。</p>
-<hr>
-<p>via: <a href="https://medium.com/sketchdeck-developer-blog/what-i-wish-i-knew-when-i-became-cto-fdc934b790e3" target="_blank" rel="external">https://medium.com/sketchdeck-developer-blog/what-i-wish-i-knew-when-i-became-cto-fdc934b790e3</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/13/201803/Singleton-Design-Pattern-in-Go/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1761,7 +1752,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1774,7 +1765,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
