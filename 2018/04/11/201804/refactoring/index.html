@@ -87,17 +87,29 @@
 
 
 
-<meta name="description" content="重构的第一步如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。">
+<meta name="description" content="重构的第一步
+如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。
+在做重构前的第一步：重构前，先检查自己是否有一套可靠的测试机制，这些测试必须有自我检测能力。
+重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易可发现它。
+好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。任何一个傻瓜都能写出计算">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码重构">
 <meta property="og:url" content="http://shniu.github.io/2018/04/11/201804/refactoring/index.html">
 <meta property="og:site_name" content="ChainTech">
-<meta property="og:description" content="重构的第一步如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。">
+<meta property="og:description" content="重构的第一步
+如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。
+在做重构前的第一步：重构前，先检查自己是否有一套可靠的测试机制，这些测试必须有自我检测能力。
+重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易可发现它。
+好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。任何一个傻瓜都能写出计算">
 <meta property="og:image" content="http://shniu.github.io/images/code1.png">
-<meta property="og:updated_time" content="2018-04-11T13:57:50.911Z">
+<meta property="og:updated_time" content="2018-04-11T15:05:01.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码重构">
-<meta name="twitter:description" content="重构的第一步如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。">
+<meta name="twitter:description" content="重构的第一步
+如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。
+在做重构前的第一步：重构前，先检查自己是否有一套可靠的测试机制，这些测试必须有自我检测能力。
+重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易可发现它。
+好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。任何一个傻瓜都能写出计算">
 <meta name="twitter:image" content="http://shniu.github.io/images/code1.png">
 
 
@@ -324,8 +336,15 @@
 
       
         <p><img src="/images/code1.png" class="full-image"></p>
-<h2 id="重构的第一步"><a href="#重构的第一步" class="headerlink" title="重构的第一步"></a>重构的第一步</h2><p>如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。</p>
-
+<h2 id="重构的第一步"><a href="#重构的第一步" class="headerlink" title="重构的第一步"></a>重构的第一步</h2><ul>
+<li>如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。</li>
+<li>在做重构前的第一步：重构前，先检查自己是否有一套可靠的测试机制，这些测试必须有自我检测能力。</li>
+<li>重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易可发现它。</li>
+<li>好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。任何一个傻瓜都能写出计算机可以理解的代码。唯有写出人类容易理解的代码才是优秀的程序员。代码应该表现自己的目的。</li>
+<li>临时变量往往引发问题，他们会导致大量参数传来传去，尽量少用。</li>
+<li>重构的节奏：测试、小修改、测试、小修改、测试、小修改…</li>
+</ul>
+<h2 id="重构原则"><a href="#重构原则" class="headerlink" title="重构原则"></a>重构原则</h2>
       
     </div>
 
@@ -502,7 +521,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重构的第一步"><span class="nav-number">1.</span> <span class="nav-text">重构的第一步</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重构的第一步"><span class="nav-number">1.</span> <span class="nav-text">重构的第一步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重构原则"><span class="nav-number">2.</span> <span class="nav-text">重构原则</span></a></li></ol></div>
             
 
           </div>
