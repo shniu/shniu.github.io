@@ -248,6 +248,165 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/18/201804/unit-test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/18/201804/unit-test/" itemprop="url">
+                  单元测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T13:24:41+08:00">
+                2018-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试关注一个方法或一个类。它应该非常小，最多只有几行代码。人们在编写单元测试时会犯许多错误，所以这不是小事。因为它们非常小，所以它们应该在内存中运行，而且，一个单元测试应该在几毫秒内运行完成。任何用到外部依赖（数据库、WebService、文件系统、I/O）的测试都不是一个单元测试，那是其他的东西（“集成测试（integration test）”、“综合测试（integrated test）”、验收测试、端到端测试，等等）。</p>
+<p>单元测试更偏技术，它们通常关注代码细节，甚或是编程语言特有的概念。在类似Java这样的静态编程语言和类似Ruby这样的动态编程语言中，单元测试看上去是不一样的。这就是为什么编写单元测试主要应该由程序员负责。</p>
+<p>另一方面，测试人员更了解如何制定测试计划，根据特定分析，如等价类划分和边界值分析，定义有价值的值。因此，程序员需要从测试人员那里“窃取”这类知识，或者，他们可以和测试人员结对，一起讨论需要编写的测试，但是，之后应该由程序员实现它们。</p>
+<h2 id="什么时候适合写单元测试"><a href="#什么时候适合写单元测试" class="headerlink" title="什么时候适合写单元测试"></a>什么时候适合写单元测试</h2><p>团队可以在生产代码编写完成之后编写单元测试。我们称之为“测试延后（test after）”。但是那通常很困难，因为在编写生产代码时需要时刻考虑可测试性。如果我们选择了这种方法，则生产代码需要经过一个代码审核流程，以确保它是可测试的。只有在完成这项工作之后，程序员和测试人员才可以继续结对创建测试。</p>
+<p>也有一种方法是“测试优先（test-first）”，我建议从同伴那里“窃取”了大量测试知识的程序员使用这种方法。使用这种方法时，我们先分析问题，然后编写一个单元测试，最简单的实现代码，一个单元测试，实现它，依此类推。当团队达到了这个水平，我会说，编写单元测试的程序员是半个测试人员了，因为“测试优先”方法需要大量的测试知识。在这种情况下，测试人员最终将专注于审核单元测试及编写验收测试。</p>
+<p>测试优先方法定义了需要做什么。它定义了我们为解决特定问题而需要编写的代码，因为我们有一个测试形式的定义。只要运行测试，我们就很容易知道我们的功能是否有效。</p>
+<p>采用这种方法可以获得更高的覆盖率，因为测试成了一等开发活动，而不是拖到最后。</p>
+<p>此外，在编写这些测试并详细说明场景时，我们更深入地了解了问题空间，因为许多问题会被提出来。在测试延后方法中，这些讨论有时候都不会发生，开发人员按照自己的想法编写代码，而不是根据解决方案的需要。</p>
+<p>单元测试是一种测试特定代码片段的方法，它可以确保该代码段可以正常运行并且契合软件拼图。有证据表明，借助单元测试，你可以检查超过90%的代码，而且，和QA的手动测试工具不同，恰当构建、可以自动测试的单元测试可以随着代码库一起演化，实时测试代码。</p>
+<h2 id="编写良好的单元测试"><a href="#编写良好的单元测试" class="headerlink" title="编写良好的单元测试"></a>编写良好的单元测试</h2><p>人们有不同的看法——方法、类、模块。第一个难点是让所有的团队成员对单元是什么有一个共识，并编写相应的测试。在我看来，单元非常小，就像发动机中的螺丝或者家具中的钉子那么大。所以，我建议定义单元是什么，并在测试审核阶段对此进行密切关注，确保其得到了执行。</p>
+<p>单元测试混合了编程和测试。为了编写简单、快捷、可维护的测试，程序员需要知道许多测试概念。如：等价划分、边界值分析、测试覆盖、正向测试、逆向测试。</p>
+<p>关于单元测试，还有另外一个经常被遗忘的部分，那就是分析。我们不能不经过思考就立即开始编写测试。我们需要分析问题，如果可能对它进行划分，然后再考虑我们需要编写的单元测试。这里有一个不错的建议，就是总是从系统输出开始，然后找出生成那个输出的可能输入。</p>
+<p>在编写单元测试时，我们应该使用来自问题领域的词汇。测试应该体现一项特性存在于产品中的理由。一个了解业务领域但不了解编程的人也应该能够阅读你的测试。在那方面，和分析师结对非常有用。</p>
+<h2 id="测试要多细的问题"><a href="#测试要多细的问题" class="headerlink" title="测试要多细的问题"></a>测试要多细的问题</h2><blockquote>
+<p>老板为我的代码付报酬，而不是测试，所以，我对此的价值观是——测试越少越好，少到你对你的代码质量达到了某种自信（我觉得这种的自信标准应该要高于业内的标准，当然，这种自信也可能是种自大）。如果我的编码生涯中不会犯这种典型的错误（如：在构造函数中设了个错误的值），那我就不会测试它。我倾向于去对那些有意义的错误做测试，所以，我对一些比较复杂的条件逻辑会异常地小心。当在一个团队中，我会非常小心的测试那些会让团队容易出错的代码。</p>
+</blockquote>
+<h2 id="哪些代码更适合写单元测试"><a href="#哪些代码更适合写单元测试" class="headerlink" title="哪些代码更适合写单元测试"></a>哪些代码更适合写单元测试</h2><ol>
+<li>逻辑复杂的</li>
+<li>容易出错的</li>
+<li>不易理解的，即使是自己过段时间也会遗忘的，看不懂自己的代码，单元测试代码有助于理解代码的功能和需求</li>
+<li>公共代码。比如自定义的所有http请求都会经过的拦截器；工具类等。</li>
+<li>核心业务代码。一个产品里最核心最有业务价值的代码应该要有较高的单元测试覆盖率。</li>
+</ol>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a href="https://juejin.im/post/5924578fa0bb9f005f784c81" target="_blank" rel="external">谈谈单元测试</a></li>
+<li><a href="https://arthurportas.wordpress.com/2017/01/21/sample-project-using-spring-boot-and-mongodbfongo-and-test-repository-with-nosqlunit/" target="_blank" rel="external">Sample project using Spring Boot and MongoDB(Fongo) and test repository with NoSqlUnit</a></li>
+<li><a href="https://devops.datenkollektiv.de/testing-the-mongodb-slice-with-spring-and-fongo.html" target="_blank" rel="external">Testing the MongoDB slice with Spring and Fongo</a></li>
+<li><a href="http://www.baeldung.com/mockito-void-methods" target="_blank" rel="external">Mocking void methods with Mockito</a></li>
+<li><a href="https://www.paradigmadigital.com/dev/tests-integrados-spring-boot-fongo/" target="_blank" rel="external">Tests integrados en Spring Boot con Fongo</a></li>
+<li><a href="https://www.infoq.com/news/2016/01/test-first-TDD-BDD" target="_blank" rel="external">Test First Approaches With Test Driven Development and Behavior Driven Development</a></li>
+<li><a href="http://www.infoq.com/cn/news/2017/02/writing-good-unit-tests" target="_blank" rel="external">writing good unit test</a></li>
+<li><a href="https://blog.fundebug.com/2017/12/20/rethinking-unit-test/" target="_blank" rel="external">重新思考单元测试</a></li>
+<li><p><a href="https://dzone.com/articles/spring-boot-unit-testing-and-mocking-with-mockito" target="_blank" rel="external">Spring Boot: Unit Testing and Mocking with Mockito and JUnit</a></p>
+</li>
+<li><p><a href="http://static.javadoc.io/org.mockito/mockito-core/2.18.0/org/mockito/Mockito.html" target="_blank" rel="external">Mockito document</a></p>
+</li>
+<li><a href="https://docs.spring.io/spring/docs/4.3.16.RELEASE/spring-framework-reference/htmlsingle/#testing" target="_blank" rel="external">Spring test</a></li>
+<li><p><a href="http://sunxiang0918.cn/2016/03/28/%E4%BD%BF%E7%94%A8Mockito%E5%92%8CSpringTest%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" target="_blank" rel="external">使用Mockito和SpringTest进行单元测试</a></p>
+</li>
+<li><p><a href="https://in28minutes1.teachable.com/courses/257149/lectures/3994283" target="_blank" rel="external">in28minutes mockito courses</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/13/201804/java8-new-feature/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -761,6 +920,7 @@
 </ol>
 <p>命令行参数优先级最高。这个可以根据这个优先级，可以在测试或生产环境中快速地修改配置参数值，而不需要重新打包和部署应用。</p>
 <p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html" target="_blank" rel="external">Spring boot 的配置项</a></p>
+<h2 id="Spring-boot-course"><a href="#Spring-boot-course" class="headerlink" title="Spring boot course"></a>Spring boot course</h2><p><a href="https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps" target="_blank" rel="external">Spring Boot for Beginners in 10 Step</a></p>
 <h4 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h4><ul>
 <li><a href="http://blog.didispace.com/books/mostly-adequate-guide-chinese/" target="_blank" rel="external">js函数式编程</a></li>
 <li><a href="http://blog.didispace.com/books/http2-explained-chinese/" target="_blank" rel="external">http2</a></li>
@@ -1460,225 +1620,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/19/201803/distributed-system-intro/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/19/201803/distributed-system-intro/" itemprop="url">
-                  分布式系统介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T13:34:11+08:00">
-                2018-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="为什么需要分布式系统"><a href="#为什么需要分布式系统" class="headerlink" title="为什么需要分布式系统"></a>为什么需要分布式系统</h2><p>分布式系统固然高大上，但是不是一开始就需要做分布式系统呢？肯定不是，传统的单体架构能满足的场景，就不要考虑使用分布式系统；分布式系统有它需要解决的痛点：</p>
-<ul>
-<li>增大系统容量</li>
-</ul>
-<p>当业务量越来越大，要应对与日剧增的业务量，单台机器的性能已经无法满足了，我们就需要很多台机器去满足大规模的应用场景；所以，需要垂直或水平拆分业务系统，让其演变成为一个分布式架构的系统。</p>
-<ul>
-<li>加强系统可用性</li>
-</ul>
-<p>业务越来越多，服务拆分的也越来越细，很多业务和服务都变得越来越关键，需要提高整个系统架构的可用性，意味着架构中不能存在单点故障；这样整个系统不会因为单点故障导致整体不可用；所以，使用分布式架构来冗余系统以消除单点故障，从而提高系统的可用性。</p>
-<p>其他优点：</p>
-<ul>
-<li>模块化，模块可重用度高</li>
-<li>软件服务模块被拆分，开发和发布速度可以并行而变快</li>
-<li>系统扩展性高</li>
-<li>团队协作流程得到改善</li>
-</ul>
-<p>在系统架构的世界里，不存在完美的解决方案，基本都是在不同方面进行各种trade-off，所以说，分布式系统有他自己需要考虑的难点和问题：</p>
-<ul>
-<li>架构设计变得复杂了，尤其是分布式事务</li>
-<li>部署会变得复杂了，要维护多个服务</li>
-<li>吞吐量是大了，但是响应时间会变长，这也是要重点解决的问题</li>
-<li>运维的复杂度可想而知变得更复杂了，更难维护了</li>
-<li>架构复杂，学习曲线剧增</li>
-<li>测试和查错的复杂度加大</li>
-<li>技术选型可以多样化，维护和运维的要求变得很高</li>
-<li>管理分布式系统中的服务和调度变得困难和复杂</li>
-</ul>
-<p>分布式系统中的难点在于系统设计、服务管理和系统运维；虽然解决了单点故障和性能容量的问题，但是随之而来的其他问题，却层出不穷；</p>
-<h2 id="分布式系统的历史"><a href="#分布式系统的历史" class="headerlink" title="分布式系统的历史"></a>分布式系统的历史</h2><p>模块化编程，到面向事件设计，到基于接口/构件设计，再到SOA，SOA是一种基于服务的架构，将应用程序功能作为服务发送给最终用户或者其他服务，采用开放标准与软件资源进行交互：</p>
-<ul>
-<li>可重用，粒度合适，模块化，可组合，构件化及有互操作性</li>
-<li>符合开放标准</li>
-<li>服务识别和分类，提供和发布，监控和追踪</li>
-</ul>
-<p>面向服务的架构三个重要发展阶段：</p>
-<ol>
-<li>单体架构，软件模块高度耦合</li>
-<li>松耦合的SOA架构，这种架构需要一个标准的协议或中间件来联动其他服务，这样服务间就不直接依赖</li>
-<li>微服务架构，这种架构更加松耦合；每个微服务都能独立完整运行，后端的数据库也被微服务这样的架构分散到不同的服务中。但是微服务的服务间需要服务编排和服务整合的引擎，来统一指挥和调度服务；这个引擎可以是网关，可以是工作流引擎，会用到容器化调度的技术，如Kubernetes；<a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="external">微服务</a>.</li>
-</ol>
-<p>微服务的好处是让开发速度变得更快，部署快，隔离性高，系统的扩展性也好，但是集成测试，运维和服务管理就比较麻烦；</p>
-<h2 id="分布式系统的难点"><a href="#分布式系统的难点" class="headerlink" title="分布式系统的难点"></a>分布式系统的难点</h2><p>亚马逊的架构规定：</p>
-<ul>
-<li>所有团队的程序模块都要通过 Service interface 方式将数据和功能开放出来；</li>
-<li>团队间程序模块的信息通信都要通过这些接口；</li>
-<li>除此之外不能通过其他方式</li>
-<li>任何技术都可以使用，如 http, corba, pub/sub 等</li>
-</ul>
-<p>一些总结：</p>
-<ul>
-<li>分布式服务的架构需要分布式的团队架构</li>
-</ul>
-<p>一个服务由一个小团队负责，从前到后，从需求分析到上线运维，按职责分工，非技能分工</p>
-<ul>
-<li><p>分布式服务查错不容易</p>
-</li>
-<li><p>没有专职的测试人员，没有专职的运维人员，开发人员做所有的事情</p>
-</li>
-<li><p>运维优先，崇尚简化和自动化</p>
-</li>
-<li><p>内部服务和外部服务一致</p>
-</li>
-</ul>
-<p>分布式服务架构需要从组织，到软件工程，再到技术上有一个大的改造，需要长时间来磨合和改进，并不断总结教训和成功经验。</p>
-<h3 id="异构系统的问题"><a href="#异构系统的问题" class="headerlink" title="异构系统的问题"></a>异构系统的问题</h3><ul>
-<li>软件和应用不标准</li>
-</ul>
-<p>不同软件不同语言会出现兼容性和不同的开发、运维、测试标准；如有的用配置文件，有点需要调用管理 API 接口</p>
-<ul>
-<li>通讯协议不标准</li>
-</ul>
-<p>需要规范分布式架构的通讯协议，协议包括协议头和协议体，如，很多服务的 API 出错返回 HTTP 的错误状态码，二是返回正常的 200，然后在 Body 里 JSON 串中描述 error 信息，不是一种好的习惯；</p>
-<ul>
-<li>数据格式不标准</li>
-<li>开发和运维的过程和方法不标准</li>
-</ul>
-<p>一个好的配置管理，要有三层：底层和操作系统相关，中间层和中间件相关，最上层和业务应用相关</p>
-<h3 id="系统架构中的服务依赖性问题"><a href="#系统架构中的服务依赖性问题" class="headerlink" title="系统架构中的服务依赖性问题"></a>系统架构中的服务依赖性问题</h3><p>单体服务中，一个机器挂了，整个软件就挂了，但是分布式架构下，服务具有依赖性，一个服务挂了可能引发整个依赖链上的服务都挂掉；</p>
-<ul>
-<li>如果非关键业务依赖了关键业务，则会升级为一个关键业务</li>
-<li>服务依赖链中，整个 SLA 由最差的哪个服务决定</li>
-</ul>
-<p>很多分布式架构在应用层上做到了业务隔离，然而，在数据库结点上并没有。如果一个非关键业务把数据库拖死，那么会导致全站不可用。所以，数据库方面也需要做相应的隔离。也就是说，最好一个业务线用一套自己的数据库。这就是亚马逊服务器的实践——系统间不能读取对方的数据库，只通过服务接口耦合。这也是微服务的要求。我们不但要拆分服务，还要为每个服务拆分相应的数据库。</p>
-<h3 id="故障发生的概率更大"><a href="#故障发生的概率更大" class="headerlink" title="故障发生的概率更大"></a>故障发生的概率更大</h3><h3 id="多层架构的运维复杂度更大"><a href="#多层架构的运维复杂度更大" class="headerlink" title="多层架构的运维复杂度更大"></a>多层架构的运维复杂度更大</h3><p>可以简单分为4层：基础层、平台层、应用层和接入层</p>
-<p>分工不是问题，问题是分工后的协作是否统一和规范。</p>
-<h2 id="分布式系统技术栈"><a href="#分布式系统技术栈" class="headerlink" title="分布式系统技术栈"></a>分布式系统技术栈</h2><p>分布式系统的主要目标是增加系统容量，提高系统可用性，从技术角度讲就是如下两点：</p>
-<ul>
-<li>大流量处理。通过集群技术把大规模并发请求的负载分散到不同的机器上</li>
-<li>关键业务保护。提高服务的可用性，如果流量过大，需要对业务降级，以保护关键业务流转</li>
-</ul>
-<p>就是提高整体架构的吞吐量更多的并发和流量；提高系统的稳定性，让系统的可用性更高</p>
-<h3 id="提高系统性能"><a href="#提高系统性能" class="headerlink" title="提高系统性能"></a>提高系统性能</h3><p><img src="https://github.com/shniu/resources/raw/master/images/distribute-tech.jpeg" alt="img"></p>
-<h3 id="提高架构图的稳定性"><a href="#提高架构图的稳定性" class="headerlink" title="提高架构图的稳定性"></a>提高架构图的稳定性</h3><p><img src="https://github.com/shniu/resources/raw/master/images/distribute-tech2.jpeg" alt="img"></p>
-<p>Docker 是一个非常值得学习和关注的技术。</p>
-<h3 id="分布式系统的纲领"><a href="#分布式系统的纲领" class="headerlink" title="分布式系统的纲领"></a>分布式系统的纲领</h3><ul>
-<li>全栈系统监控</li>
-<li>服务/资源调度</li>
-<li>流量调度</li>
-<li>状态/数据调度</li>
-<li>开发和运维自动化</li>
-</ul>
-<p><img src="https://github.com/shniu/resources/raw/master/images/distribute-tech3.jpeg" alt="img"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1728,7 +1669,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1741,7 +1682,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

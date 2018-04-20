@@ -248,6 +248,225 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/19/201803/distributed-system-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/19/201803/distributed-system-intro/" itemprop="url">
+                  分布式系统介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T13:34:11+08:00">
+                2018-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="为什么需要分布式系统"><a href="#为什么需要分布式系统" class="headerlink" title="为什么需要分布式系统"></a>为什么需要分布式系统</h2><p>分布式系统固然高大上，但是不是一开始就需要做分布式系统呢？肯定不是，传统的单体架构能满足的场景，就不要考虑使用分布式系统；分布式系统有它需要解决的痛点：</p>
+<ul>
+<li>增大系统容量</li>
+</ul>
+<p>当业务量越来越大，要应对与日剧增的业务量，单台机器的性能已经无法满足了，我们就需要很多台机器去满足大规模的应用场景；所以，需要垂直或水平拆分业务系统，让其演变成为一个分布式架构的系统。</p>
+<ul>
+<li>加强系统可用性</li>
+</ul>
+<p>业务越来越多，服务拆分的也越来越细，很多业务和服务都变得越来越关键，需要提高整个系统架构的可用性，意味着架构中不能存在单点故障；这样整个系统不会因为单点故障导致整体不可用；所以，使用分布式架构来冗余系统以消除单点故障，从而提高系统的可用性。</p>
+<p>其他优点：</p>
+<ul>
+<li>模块化，模块可重用度高</li>
+<li>软件服务模块被拆分，开发和发布速度可以并行而变快</li>
+<li>系统扩展性高</li>
+<li>团队协作流程得到改善</li>
+</ul>
+<p>在系统架构的世界里，不存在完美的解决方案，基本都是在不同方面进行各种trade-off，所以说，分布式系统有他自己需要考虑的难点和问题：</p>
+<ul>
+<li>架构设计变得复杂了，尤其是分布式事务</li>
+<li>部署会变得复杂了，要维护多个服务</li>
+<li>吞吐量是大了，但是响应时间会变长，这也是要重点解决的问题</li>
+<li>运维的复杂度可想而知变得更复杂了，更难维护了</li>
+<li>架构复杂，学习曲线剧增</li>
+<li>测试和查错的复杂度加大</li>
+<li>技术选型可以多样化，维护和运维的要求变得很高</li>
+<li>管理分布式系统中的服务和调度变得困难和复杂</li>
+</ul>
+<p>分布式系统中的难点在于系统设计、服务管理和系统运维；虽然解决了单点故障和性能容量的问题，但是随之而来的其他问题，却层出不穷；</p>
+<h2 id="分布式系统的历史"><a href="#分布式系统的历史" class="headerlink" title="分布式系统的历史"></a>分布式系统的历史</h2><p>模块化编程，到面向事件设计，到基于接口/构件设计，再到SOA，SOA是一种基于服务的架构，将应用程序功能作为服务发送给最终用户或者其他服务，采用开放标准与软件资源进行交互：</p>
+<ul>
+<li>可重用，粒度合适，模块化，可组合，构件化及有互操作性</li>
+<li>符合开放标准</li>
+<li>服务识别和分类，提供和发布，监控和追踪</li>
+</ul>
+<p>面向服务的架构三个重要发展阶段：</p>
+<ol>
+<li>单体架构，软件模块高度耦合</li>
+<li>松耦合的SOA架构，这种架构需要一个标准的协议或中间件来联动其他服务，这样服务间就不直接依赖</li>
+<li>微服务架构，这种架构更加松耦合；每个微服务都能独立完整运行，后端的数据库也被微服务这样的架构分散到不同的服务中。但是微服务的服务间需要服务编排和服务整合的引擎，来统一指挥和调度服务；这个引擎可以是网关，可以是工作流引擎，会用到容器化调度的技术，如Kubernetes；<a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="external">微服务</a>.</li>
+</ol>
+<p>微服务的好处是让开发速度变得更快，部署快，隔离性高，系统的扩展性也好，但是集成测试，运维和服务管理就比较麻烦；</p>
+<h2 id="分布式系统的难点"><a href="#分布式系统的难点" class="headerlink" title="分布式系统的难点"></a>分布式系统的难点</h2><p>亚马逊的架构规定：</p>
+<ul>
+<li>所有团队的程序模块都要通过 Service interface 方式将数据和功能开放出来；</li>
+<li>团队间程序模块的信息通信都要通过这些接口；</li>
+<li>除此之外不能通过其他方式</li>
+<li>任何技术都可以使用，如 http, corba, pub/sub 等</li>
+</ul>
+<p>一些总结：</p>
+<ul>
+<li>分布式服务的架构需要分布式的团队架构</li>
+</ul>
+<p>一个服务由一个小团队负责，从前到后，从需求分析到上线运维，按职责分工，非技能分工</p>
+<ul>
+<li><p>分布式服务查错不容易</p>
+</li>
+<li><p>没有专职的测试人员，没有专职的运维人员，开发人员做所有的事情</p>
+</li>
+<li><p>运维优先，崇尚简化和自动化</p>
+</li>
+<li><p>内部服务和外部服务一致</p>
+</li>
+</ul>
+<p>分布式服务架构需要从组织，到软件工程，再到技术上有一个大的改造，需要长时间来磨合和改进，并不断总结教训和成功经验。</p>
+<h3 id="异构系统的问题"><a href="#异构系统的问题" class="headerlink" title="异构系统的问题"></a>异构系统的问题</h3><ul>
+<li>软件和应用不标准</li>
+</ul>
+<p>不同软件不同语言会出现兼容性和不同的开发、运维、测试标准；如有的用配置文件，有点需要调用管理 API 接口</p>
+<ul>
+<li>通讯协议不标准</li>
+</ul>
+<p>需要规范分布式架构的通讯协议，协议包括协议头和协议体，如，很多服务的 API 出错返回 HTTP 的错误状态码，二是返回正常的 200，然后在 Body 里 JSON 串中描述 error 信息，不是一种好的习惯；</p>
+<ul>
+<li>数据格式不标准</li>
+<li>开发和运维的过程和方法不标准</li>
+</ul>
+<p>一个好的配置管理，要有三层：底层和操作系统相关，中间层和中间件相关，最上层和业务应用相关</p>
+<h3 id="系统架构中的服务依赖性问题"><a href="#系统架构中的服务依赖性问题" class="headerlink" title="系统架构中的服务依赖性问题"></a>系统架构中的服务依赖性问题</h3><p>单体服务中，一个机器挂了，整个软件就挂了，但是分布式架构下，服务具有依赖性，一个服务挂了可能引发整个依赖链上的服务都挂掉；</p>
+<ul>
+<li>如果非关键业务依赖了关键业务，则会升级为一个关键业务</li>
+<li>服务依赖链中，整个 SLA 由最差的哪个服务决定</li>
+</ul>
+<p>很多分布式架构在应用层上做到了业务隔离，然而，在数据库结点上并没有。如果一个非关键业务把数据库拖死，那么会导致全站不可用。所以，数据库方面也需要做相应的隔离。也就是说，最好一个业务线用一套自己的数据库。这就是亚马逊服务器的实践——系统间不能读取对方的数据库，只通过服务接口耦合。这也是微服务的要求。我们不但要拆分服务，还要为每个服务拆分相应的数据库。</p>
+<h3 id="故障发生的概率更大"><a href="#故障发生的概率更大" class="headerlink" title="故障发生的概率更大"></a>故障发生的概率更大</h3><h3 id="多层架构的运维复杂度更大"><a href="#多层架构的运维复杂度更大" class="headerlink" title="多层架构的运维复杂度更大"></a>多层架构的运维复杂度更大</h3><p>可以简单分为4层：基础层、平台层、应用层和接入层</p>
+<p>分工不是问题，问题是分工后的协作是否统一和规范。</p>
+<h2 id="分布式系统技术栈"><a href="#分布式系统技术栈" class="headerlink" title="分布式系统技术栈"></a>分布式系统技术栈</h2><p>分布式系统的主要目标是增加系统容量，提高系统可用性，从技术角度讲就是如下两点：</p>
+<ul>
+<li>大流量处理。通过集群技术把大规模并发请求的负载分散到不同的机器上</li>
+<li>关键业务保护。提高服务的可用性，如果流量过大，需要对业务降级，以保护关键业务流转</li>
+</ul>
+<p>就是提高整体架构的吞吐量更多的并发和流量；提高系统的稳定性，让系统的可用性更高</p>
+<h3 id="提高系统性能"><a href="#提高系统性能" class="headerlink" title="提高系统性能"></a>提高系统性能</h3><p><img src="https://github.com/shniu/resources/raw/master/images/distribute-tech.jpeg" alt="img"></p>
+<h3 id="提高架构图的稳定性"><a href="#提高架构图的稳定性" class="headerlink" title="提高架构图的稳定性"></a>提高架构图的稳定性</h3><p><img src="https://github.com/shniu/resources/raw/master/images/distribute-tech2.jpeg" alt="img"></p>
+<p>Docker 是一个非常值得学习和关注的技术。</p>
+<h3 id="分布式系统的纲领"><a href="#分布式系统的纲领" class="headerlink" title="分布式系统的纲领"></a>分布式系统的纲领</h3><ul>
+<li>全栈系统监控</li>
+<li>服务/资源调度</li>
+<li>流量调度</li>
+<li>状态/数据调度</li>
+<li>开发和运维自动化</li>
+</ul>
+<p><img src="https://github.com/shniu/resources/raw/master/images/distribute-tech3.jpeg" alt="img"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/13/201803/Singleton-Design-Pattern-in-Go/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1587,174 +1806,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/02/27/Part2 eip-20 ERC20 Token Starndard/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/27/Part2 eip-20 ERC20 Token Starndard/" itemprop="url">
-                  ERC20 Token 标准
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-27T13:00:00+08:00">
-                2018-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Part2-EIP-20"><a href="#Part2-EIP-20" class="headerlink" title="Part2 EIP 20"></a>Part2 EIP 20</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EIP: 20</div><div class="line">Title: ERC-20 Token Standard</div><div class="line">Author: Fabian Vogelsteller &lt;fabian@ethereum.org&gt;, Vitalik Buterin &lt;vitalik.buterin@ethereum.org&gt;</div><div class="line">Type: Standard</div><div class="line">Category: ERC</div><div class="line">Status: Accepted</div><div class="line">Created: 2015-11-19</div></pre></td></tr></table></figure>
-<h2 id="简单的总结"><a href="#简单的总结" class="headerlink" title="简单的总结"></a>简单的总结</h2><p>token 的标准接口。</p>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>以下标准允许在智能合约中实施令牌的标准 API。该标准提供了转移 token 的基本功能，并允许 token 被批准，以便其他链上的第三方可以使用它们。</p>
-<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>标准接口允许其他应用程序重复使用以太坊上的任何令牌：从钱包到去中心化的交易。</p>
-<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><h3 id="Token"><a href="#Token" class="headerlink" title="Token"></a>Token</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p><strong>注意</strong>：调用者必须处理 <code>returns (bool success)</code> 为 <code>false</code> 的情况。调用者绝不能假设永远不会返回 <code>false</code>。</p>
-<h5 id="name"><a href="#name" class="headerlink" title="name"></a>name</h5><p>返回 token 的名称 - 例如：<code>MyToken</code></p>
-<p>可选 - 此方法可用于提高可用性，但接口和其他合约不能期望这些值存在。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function name() constant returns (string name)</div></pre></td></tr></table></figure>
-<h5 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h5><p>返回 token 的符号，也就是代币的简称，例如：<code>HIX</code></p>
-<p>可选 - 此方法可用于提高可用性，但接口和其他合同不能期望这些值存在。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function symbol() constant returns (string symbol)</div></pre></td></tr></table></figure>
-<h5 id="decimals"><a href="#decimals" class="headerlink" title="decimals"></a>decimals</h5><p>返回 token 使用的小数位数，例如 8，意味着将令牌数量除以 <code>100000000</code> 以获得其用户表示。</p>
-<p>可选 - 此方法可用于提高可用性，但接口和其他合同不能期望这些值存在。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function decimals() constant returns (uint8 decimals)</div></pre></td></tr></table></figure>
-<h5 id="totalSupply"><a href="#totalSupply" class="headerlink" title="totalSupply"></a>totalSupply</h5><p>返回供应的 token 总量，也就是发行代币的总量。所有智能合约发行的代币总量是一定的，totalSupply 必须设置初始值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function totalSupply() constant returns (uint256 totalSupply)</div></pre></td></tr></table></figure>
-<h5 id="balanceOf"><a href="#balanceOf" class="headerlink" title="balanceOf"></a>balanceOf</h5><p>返回地址为 <code>_owner</code> 帐户的帐户余额。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function balanceOf(address _owner) constant returns (uint256 balance)</div></pre></td></tr></table></figure>
-<h5 id="transfer"><a href="#transfer" class="headerlink" title="transfer"></a>transfer</h5><p>向地址 <code>_to</code> 转移 <code>_value</code> 数量的 token，并且必须触发 <code>Transfer</code> 事件。如果 <code>_from</code> 的账户余额没有足够的 token 消费，函数必须抛出异常。</p>
-<p>注意 0值的转移必须被视为正常转移并触发 <code>Transfer</code> 事件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function transfer(address _to, uint256 _value) returns (bool success)</div></pre></td></tr></table></figure>
-<h5 id="transferFrom"><a href="#transferFrom" class="headerlink" title="transferFrom"></a>transferFrom</h5><p>从地址 <code>_from</code> 向地址 <code>_to</code> 转移 <code>_value</code> 数量的 token，但必须触发 <code>Transfer</code> 事件。</p>
-<p><code>transferfrom</code> 方法用于提取工作流，允许合约代表你转移 token。例如，可以允许合约代表你转移 token 或以子货币收取费用。该函数应该抛出，除非 <code>_from</code> 帐户通过某种机制故意授权消息的发送者。</p>
-<p>注意 0值的转移必须被视为正常转移并触发 <code>Transfer</code> 事件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function transferFrom(address _from, address _to, uint256 _value) returns (bool success)</div></pre></td></tr></table></figure>
-<h5 id="approve"><a href="#approve" class="headerlink" title="approve"></a>approve</h5><p>允许 <code>_spender</code> 多次从你的账户里提现，直至 <code>_value</code> 的数量。如果再次调用此函数，它将以 <code>_value</code> 覆盖当前的余量。</p>
-<p><strong>注意</strong>：为了阻止向量攻击（<a href="https://docs.google.com/document/d/1YLPtQxZu1UAvO9cZ1O2RPXBbT0mooh4DYKjA_jp-RLM/" target="_blank" rel="external">here</a> and <a href="https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729" target="_blank" rel="external">here</a>），客户端需要确认以这样的方式创建用户接口，即将它们设置为0，然后将其设置为同一个花费者的另一个值。虽然合同本身不应该强制执行，允许向后兼容以前部署的合同兼容性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function approve(address _spender, uint256 _value) returns (bool success)</div></pre></td></tr></table></figure>
-<h5 id="allowance"><a href="#allowance" class="headerlink" title="allowance"></a>allowance</h5><p>返回 <code>_spender</code> 还能提取 token 的个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function allowance(address _owner, address _spender) constant returns (uint256 remaining)</div></pre></td></tr></table></figure>
-<h5 id="对-approve-transferFrom-allowance-的解释"><a href="#对-approve-transferFrom-allowance-的解释" class="headerlink" title="对 approve transferFrom allowance 的解释"></a>对 approve transferFrom allowance 的解释</h5><p>账户 A 有 1000 个 ETH，想允许 B 账户随意调用 100 个 ETH。A 账户按照以下形式调用 approve 函数 <code>approve(B, 100)</code>。当 B 账户想用这 100 个 ETH 中的 10 个 ETH 给 C 账户时，则调用 <code>transferFrom(A, C, 10)</code>。这时调用 <code>allowance(A, B)</code> 可以查看B账户还能够调用 A 账户多少个 token。</p>
-<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><h5 id="Transfer"><a href="#Transfer" class="headerlink" title="Transfer"></a>Transfer</h5><p>当 token 被转移时必须被触发，0 个 token 也会触发</p>
-<p>当创建 token 时，创建新 token 的 token 合约应该触发一个传输事件，并将 <code>_from</code> 地址设置为 <code>0x0</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event Transfer(address indexed _from, address indexed _to, uint256 _value)</div></pre></td></tr></table></figure>
-<h5 id="Approval"><a href="#Approval" class="headerlink" title="Approval"></a>Approval</h5><p>当调用approval函数成功时，一定要触发Approval事件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event Approval(address indexed _owner, address indexed _spender, uint256 _value)</div></pre></td></tr></table></figure>
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>以太坊网络上已经有大量符合 ERC20 的令牌。 不同的实施由不同的团队编写，这些团队有不同的权衡：从节约燃料到提高安全性。</p>
-<h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><ul>
-<li><a href="https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/token/ERC20/StandardToken.sol" target="_blank" rel="external">https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/token/ERC20/StandardToken.sol</a></li>
-<li><a href="https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol" target="_blank" rel="external">https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol</a></li>
-</ul>
-<h5 id="再次调用-approve-之前向0添加强制的实现"><a href="#再次调用-approve-之前向0添加强制的实现" class="headerlink" title="再次调用 approve 之前向0添加强制的实现"></a>再次调用 approve 之前向0添加强制的实现</h5><ul>
-<li><a href="https://github.com/Giveth/minime/blob/master/contracts/MiniMeToken.sol" target="_blank" rel="external">https://github.com/Giveth/minime/blob/master/contracts/MiniMeToken.sol</a></li>
-</ul>
-<h4 id="历史资源"><a href="#历史资源" class="headerlink" title="历史资源"></a>历史资源</h4><ul>
-<li><a href="https://github.com/ethereum/wiki/wiki/Standardized_Contract_APIs/499c882f3ec123537fc2fccd57eaa29e6032fe4a" target="_blank" rel="external">V神写的最原始的协议</a></li>
-<li><a href="https://www.reddit.com/r/ethereum/comments/3n8fkn/lets_talk_about_the_coin_standard/" target="_blank" rel="external">Reddit 上的讨论</a></li>
-<li><a href="https://github.com/ethereum/EIPs/issues/20" target="_blank" rel="external">最开始的 issue #20</a></li>
-</ul>
-<hr>
-<p>via: <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md" target="_blank" rel="external">https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1804,7 +1855,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1817,7 +1868,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
