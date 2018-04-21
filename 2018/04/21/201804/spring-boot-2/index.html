@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="重构,优化," />
+  <meta name="keywords" content="spring,spring-security," />
 
 
 
@@ -87,30 +87,18 @@
 
 
 
-<meta name="description" content="重构的第一步
-如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。
-在做重构前的第一步：重构前，先检查自己是否有一套可靠的测试机制，这些测试必须有自我检测能力。
-重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易可发现它。
-好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。任何一个傻瓜都能写出计算">
+<meta name="description" content="Spring security 的核心组件1. SecurityContextHolderSecurityContextHolder 用于存储安全上下文（security context）的信息。当前操作的用户是谁，该用户是否已经被认证，他拥有哪些角色权限…这些都被保存在 SecurityContextHolder 中。SecurityContextHolder 默认使用 ThreadLocal">
 <meta property="og:type" content="article">
-<meta property="og:title" content="代码重构">
-<meta property="og:url" content="http://shniu.github.io/2018/04/11/201804/refactoring/index.html">
+<meta property="og:title" content="Spring boot - Spring Security 框架">
+<meta property="og:url" content="http://shniu.github.io/2018/04/21/201804/spring-boot-2/index.html">
 <meta property="og:site_name" content="ChainTech">
-<meta property="og:description" content="重构的第一步
-如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。
-在做重构前的第一步：重构前，先检查自己是否有一套可靠的测试机制，这些测试必须有自我检测能力。
-重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易可发现它。
-好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。任何一个傻瓜都能写出计算">
-<meta property="og:image" content="http://shniu.github.io/images/code1.png">
-<meta property="og:updated_time" content="2018-04-12T01:04:33.758Z">
+<meta property="og:description" content="Spring security 的核心组件1. SecurityContextHolderSecurityContextHolder 用于存储安全上下文（security context）的信息。当前操作的用户是谁，该用户是否已经被认证，他拥有哪些角色权限…这些都被保存在 SecurityContextHolder 中。SecurityContextHolder 默认使用 ThreadLocal">
+<meta property="og:image" content="http://shniu.github.io/images/spring-security-architecture.png">
+<meta property="og:updated_time" content="2018-04-21T01:09:05.647Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="代码重构">
-<meta name="twitter:description" content="重构的第一步
-如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。
-在做重构前的第一步：重构前，先检查自己是否有一套可靠的测试机制，这些测试必须有自我检测能力。
-重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易可发现它。
-好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。任何一个傻瓜都能写出计算">
-<meta name="twitter:image" content="http://shniu.github.io/images/code1.png">
+<meta name="twitter:title" content="Spring boot - Spring Security 框架">
+<meta name="twitter:description" content="Spring security 的核心组件1. SecurityContextHolderSecurityContextHolder 用于存储安全上下文（security context）的信息。当前操作的用户是谁，该用户是否已经被认证，他拥有哪些角色权限…这些都被保存在 SecurityContextHolder 中。SecurityContextHolder 默认使用 ThreadLocal">
+<meta name="twitter:image" content="http://shniu.github.io/images/spring-security-architecture.png">
 
 
 
@@ -138,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://shniu.github.io/2018/04/11/201804/refactoring/"/>
+  <link rel="canonical" href="http://shniu.github.io/2018/04/21/201804/spring-boot-2/"/>
 
 
 
 
 
-  <title> 代码重构 | ChainTech </title>
+  <title> Spring boot - Spring Security 框架 | ChainTech </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +251,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/11/201804/refactoring/">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/21/201804/spring-boot-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
@@ -284,7 +272,7 @@
             
             
               
-                代码重构
+                Spring boot - Spring Security 框架
               
             
           </h1>
@@ -299,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T21:45:05+08:00">
-                2018-04-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T08:42:07+08:00">
+                2018-04-21
               </time>
             
 
@@ -335,18 +323,22 @@
       
 
       
-        <p><img src="/images/code1.png" class="full-image"></p>
-<h2 id="重构的第一步"><a href="#重构的第一步" class="headerlink" title="重构的第一步"></a>重构的第一步</h2><ul>
-<li>如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。</li>
-<li>在做重构前的第一步：重构前，先检查自己是否有一套可靠的测试机制，这些测试必须有自我检测能力。</li>
-<li>重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易可发现它。</li>
-<li>好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。任何一个傻瓜都能写出计算机可以理解的代码。唯有写出人类容易理解的代码才是优秀的程序员。代码应该表现自己的目的。</li>
-<li>临时变量往往引发问题，他们会导致大量参数传来传去，尽量少用。</li>
-<li>重构的节奏：测试、小修改、测试、小修改、测试、小修改…</li>
+        <p><img class="full-image" src="/images/spring-security-architecture.png"></p>
+<h2 id="Spring-security-的核心组件"><a href="#Spring-security-的核心组件" class="headerlink" title="Spring security 的核心组件"></a>Spring security 的核心组件</h2><h4 id="1-SecurityContextHolder"><a href="#1-SecurityContextHolder" class="headerlink" title="1. SecurityContextHolder"></a>1. SecurityContextHolder</h4><p><code>SecurityContextHolder</code> 用于存储安全上下文（security context）的信息。当前操作的用户是谁，该用户是否已经被认证，他拥有哪些角色权限…这些都被保存在 <code>SecurityContextHolder</code> 中。<code>SecurityContextHolder</code> 默认使用 <code>ThreadLocal</code> 策略来存储认证信息。看到 <code>ThreadLocal</code> 也就意味着，这是一种与线程绑定的策略。Spring Security在用户登录时自动绑定认证信息到当前线程，在用户退出时，自动清除当前线程的认证信息。</p>
+<h5 id="1-1-获取用户信息"><a href="#1-1-获取用户信息" class="headerlink" title="1.1 获取用户信息"></a>1.1 获取用户信息</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();</div><div class="line"></div><div class="line"><span class="keyword">if</span> (principal <span class="keyword">instanceof</span> UserDetails) &#123;</div><div class="line">    String username = ((UserDetails)principal).getUsername();</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    String username = principal.toString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为身份信息是与线程绑定的，所以可以在程序的任何地方使用静态方法获取用户信息。getAuthentication()返回了认证信息，再次getPrincipal()返回了身份信息，UserDetails便是Spring对身份信息封装的一个接口。</p>
+<h5 id="1-2-Authentication"><a href="#1-2-Authentication" class="headerlink" title="1.2 Authentication"></a>1.2 Authentication</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> org.springframework.security.core;<span class="comment">// &lt;1&gt;</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Authentication</span> <span class="keyword">extends</span> <span class="title">Principal</span>, <span class="title">Serializable</span> </span>&#123; <span class="comment">// &lt;1&gt;</span></div><div class="line">    Collection&lt;? extends GrantedAuthority&gt; getAuthorities(); <span class="comment">// &lt;2&gt;</span></div><div class="line"></div><div class="line">    <span class="function">Object <span class="title">getCredentials</span><span class="params">()</span></span>;<span class="comment">// &lt;2&gt;</span></div><div class="line"></div><div class="line">    <span class="function">Object <span class="title">getDetails</span><span class="params">()</span></span>;<span class="comment">// &lt;2&gt;</span></div><div class="line"></div><div class="line">    <span class="function">Object <span class="title">getPrincipal</span><span class="params">()</span></span>;<span class="comment">// &lt;2&gt;</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isAuthenticated</span><span class="params">()</span></span>;<span class="comment">// &lt;2&gt;</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setAuthenticated</span><span class="params">(<span class="keyword">boolean</span> var1)</span> <span class="keyword">throws</span> IllegalArgumentException</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="2-Spring-Security是如何完成身份认证的？"><a href="#2-Spring-Security是如何完成身份认证的？" class="headerlink" title="2. Spring Security是如何完成身份认证的？"></a>2. Spring Security是如何完成身份认证的？</h4><ul>
+<li>用户名和密码被过滤器获取到，封装成Authentication,通常情况下是UsernamePasswordAuthenticationToken这个实现类。</li>
+<li>AuthenticationManager 身份管理器负责验证这个Authentication。</li>
+<li>认证成功后，AuthenticationManager身份管理器返回一个被填充满了信息的（包括上面提到的权限信息，身份信息，细节信息，但密码通常会被移除）Authentication实例。</li>
+<li>SecurityContextHolder安全上下文容器将第3步填充了信息的Authentication，通过SecurityContextHolder.getContext().setAuthentication(…)方法，设置到其中。</li>
 </ul>
-<h2 id="重构原则"><a href="#重构原则" class="headerlink" title="重构原则"></a>重构原则</h2><blockquote>
-<p>重构：对软件内部结构的一种调整，目的是在不改变软件可观察行为的前提下，提高其可理解性，降低其修改成本。</p>
-</blockquote>
+<h3 id="3-AuthenticationManager"><a href="#3-AuthenticationManager" class="headerlink" title="3. AuthenticationManager"></a>3. AuthenticationManager</h3><p>AuthenticationManager（接口）是认证相关的核心接口，也是发起认证的出发点，因为在实际需求中，我们可能会允许用户使用用户名+密码登录，同时允许用户使用邮箱+密码，手机号码+密码登录，甚至，可能允许用户使用指纹登录, 所以说AuthenticationManager一般不直接认证，AuthenticationManager接口的常用实现类ProviderManager 内部会维护一个List<authenticationprovider>列表，存放多种认证方式，实际上这是委托者模式的应用（Delegate）。核心的认证入口始终只有一个：AuthenticationManager，不同的认证方式：用户名+密码（UsernamePasswordAuthenticationToken），邮箱+密码，手机号码+密码登录则对应了三个AuthenticationProvider。熟悉shiro的朋友可以把AuthenticationProvider理解成Realm。在默认策略下，只需要通过一个AuthenticationProvider的认证，即可被认为是登录成功。</authenticationprovider></p>
+<p>### </p>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a href="http://www.spring4all.com/article/443" target="_blank" rel="external">Spring Security(一)–Architecture Overview</a></li>
+</ul>
 
       
     </div>
@@ -370,9 +362,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/重构/" rel="tag"># 重构</a>
+            <a href="/tags/spring/" rel="tag"># spring</a>
           
-            <a href="/tags/优化/" rel="tag"># 优化</a>
+            <a href="/tags/spring-security/" rel="tag"># spring-security</a>
           
         </div>
       
@@ -385,8 +377,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/10/201804/design-pattern/" rel="next" title="设计模式">
-                <i class="fa fa-chevron-left"></i> 设计模式
+              <a href="/2018/04/18/201804/unit-test/" rel="next" title="单元测试">
+                <i class="fa fa-chevron-left"></i> 单元测试
               </a>
             
           </div>
@@ -394,10 +386,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/13/201804/java8-new-feature/" rel="prev" title="Java 8">
-                Java 8 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -528,7 +516,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重构的第一步"><span class="nav-number">1.</span> <span class="nav-text">重构的第一步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重构原则"><span class="nav-number">2.</span> <span class="nav-text">重构原则</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-security-的核心组件"><span class="nav-number">1.</span> <span class="nav-text">Spring security 的核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-SecurityContextHolder"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. SecurityContextHolder</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-获取用户信息"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">1.1 获取用户信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-Authentication"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">1.2 Authentication</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Spring-Security是如何完成身份认证的？"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. Spring Security是如何完成身份认证的？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-AuthenticationManager"><span class="nav-number">1.1.</span> <span class="nav-text">3. AuthenticationManager</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">2.</span> <span class="nav-text">Ref</span></a></li></ol></div>
             
 
           </div>
