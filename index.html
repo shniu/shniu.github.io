@@ -248,6 +248,131 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/21/201804/spring-boot-design-pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/21/201804/spring-boot-design-pattern/" itemprop="url">
+                  Spring boot - Spring 中的设计模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T10:25:17+08:00">
+                2018-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Spring-中使用的设计模式"><a href="#Spring-中使用的设计模式" class="headerlink" title="Spring 中使用的设计模式"></a>Spring 中使用的设计模式</h2><ul>
+<li>代理模式</li>
+</ul>
+<p>e.g.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// springSecurityFilterChain</div><div class="line">org.springframework.web.filter.DelegatingFilterProxy</div></pre></td></tr></table></figure></p>
+<ul>
+<li>适配器模式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WebSecurityConfigurerAdapter</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/21/201804/spring-boot-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -326,20 +451,29 @@
         
           
             <p><img class="full-image" src="/images/spring-security-architecture.png"></p>
-<h2 id="Spring-security-的核心组件"><a href="#Spring-security-的核心组件" class="headerlink" title="Spring security 的核心组件"></a>Spring security 的核心组件</h2><h4 id="1-SecurityContextHolder"><a href="#1-SecurityContextHolder" class="headerlink" title="1. SecurityContextHolder"></a>1. SecurityContextHolder</h4><p><code>SecurityContextHolder</code> 用于存储安全上下文（security context）的信息。当前操作的用户是谁，该用户是否已经被认证，他拥有哪些角色权限…这些都被保存在 <code>SecurityContextHolder</code> 中。<code>SecurityContextHolder</code> 默认使用 <code>ThreadLocal</code> 策略来存储认证信息。看到 <code>ThreadLocal</code> 也就意味着，这是一种与线程绑定的策略。Spring Security在用户登录时自动绑定认证信息到当前线程，在用户退出时，自动清除当前线程的认证信息。</p>
+<h2 id="Spring-security-的核心组件"><a href="#Spring-security-的核心组件" class="headerlink" title="Spring security 的核心组件"></a>Spring security 的核心组件</h2><h3 id="1-SecurityContextHolder"><a href="#1-SecurityContextHolder" class="headerlink" title="1. SecurityContextHolder"></a>1. SecurityContextHolder</h3><p><code>SecurityContextHolder</code> 用于存储安全上下文（security context）的信息。当前操作的用户是谁，该用户是否已经被认证，他拥有哪些角色权限…这些都被保存在 <code>SecurityContextHolder</code> 中。<code>SecurityContextHolder</code> 默认使用 <code>ThreadLocal</code> 策略来存储认证信息。看到 <code>ThreadLocal</code> 也就意味着，这是一种与线程绑定的策略。Spring Security在用户登录时自动绑定认证信息到当前线程，在用户退出时，自动清除当前线程的认证信息。</p>
 <h5 id="1-1-获取用户信息"><a href="#1-1-获取用户信息" class="headerlink" title="1.1 获取用户信息"></a>1.1 获取用户信息</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();</div><div class="line"></div><div class="line"><span class="keyword">if</span> (principal <span class="keyword">instanceof</span> UserDetails) &#123;</div><div class="line">    String username = ((UserDetails)principal).getUsername();</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    String username = principal.toString();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>因为身份信息是与线程绑定的，所以可以在程序的任何地方使用静态方法获取用户信息。getAuthentication()返回了认证信息，再次getPrincipal()返回了身份信息，UserDetails便是Spring对身份信息封装的一个接口。</p>
 <h5 id="1-2-Authentication"><a href="#1-2-Authentication" class="headerlink" title="1.2 Authentication"></a>1.2 Authentication</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> org.springframework.security.core;<span class="comment">// &lt;1&gt;</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Authentication</span> <span class="keyword">extends</span> <span class="title">Principal</span>, <span class="title">Serializable</span> </span>&#123; <span class="comment">// &lt;1&gt;</span></div><div class="line">    Collection&lt;? extends GrantedAuthority&gt; getAuthorities(); <span class="comment">// &lt;2&gt;</span></div><div class="line"></div><div class="line">    <span class="function">Object <span class="title">getCredentials</span><span class="params">()</span></span>;<span class="comment">// &lt;2&gt;</span></div><div class="line"></div><div class="line">    <span class="function">Object <span class="title">getDetails</span><span class="params">()</span></span>;<span class="comment">// &lt;2&gt;</span></div><div class="line"></div><div class="line">    <span class="function">Object <span class="title">getPrincipal</span><span class="params">()</span></span>;<span class="comment">// &lt;2&gt;</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isAuthenticated</span><span class="params">()</span></span>;<span class="comment">// &lt;2&gt;</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setAuthenticated</span><span class="params">(<span class="keyword">boolean</span> var1)</span> <span class="keyword">throws</span> IllegalArgumentException</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="2-Spring-Security是如何完成身份认证的？"><a href="#2-Spring-Security是如何完成身份认证的？" class="headerlink" title="2. Spring Security是如何完成身份认证的？"></a>2. Spring Security是如何完成身份认证的？</h4><ul>
+<h3 id="2-Spring-Security是如何完成身份认证的？"><a href="#2-Spring-Security是如何完成身份认证的？" class="headerlink" title="2. Spring Security是如何完成身份认证的？"></a>2. Spring Security是如何完成身份认证的？</h3><ul>
 <li>用户名和密码被过滤器获取到，封装成Authentication,通常情况下是UsernamePasswordAuthenticationToken这个实现类。</li>
 <li>AuthenticationManager 身份管理器负责验证这个Authentication。</li>
 <li>认证成功后，AuthenticationManager身份管理器返回一个被填充满了信息的（包括上面提到的权限信息，身份信息，细节信息，但密码通常会被移除）Authentication实例。</li>
 <li>SecurityContextHolder安全上下文容器将第3步填充了信息的Authentication，通过SecurityContextHolder.getContext().setAuthentication(…)方法，设置到其中。</li>
 </ul>
 <h3 id="3-AuthenticationManager"><a href="#3-AuthenticationManager" class="headerlink" title="3. AuthenticationManager"></a>3. AuthenticationManager</h3><p>AuthenticationManager（接口）是认证相关的核心接口，也是发起认证的出发点，因为在实际需求中，我们可能会允许用户使用用户名+密码登录，同时允许用户使用邮箱+密码，手机号码+密码登录，甚至，可能允许用户使用指纹登录, 所以说AuthenticationManager一般不直接认证，AuthenticationManager接口的常用实现类ProviderManager 内部会维护一个List<authenticationprovider>列表，存放多种认证方式，实际上这是委托者模式的应用（Delegate）。核心的认证入口始终只有一个：AuthenticationManager，不同的认证方式：用户名+密码（UsernamePasswordAuthenticationToken），邮箱+密码，手机号码+密码登录则对应了三个AuthenticationProvider。熟悉shiro的朋友可以把AuthenticationProvider理解成Realm。在默认策略下，只需要通过一个AuthenticationProvider的认证，即可被认为是登录成功。</authenticationprovider></p>
-<p>### </p>
+<h3 id="4-核心配置"><a href="#4-核心配置" class="headerlink" title="4. 核心配置"></a>4. 核心配置</h3><h4 id="4-1-EnableWebSecurity"><a href="#4-1-EnableWebSecurity" class="headerlink" title="4.1 @EnableWebSecurity"></a>4.1 @EnableWebSecurity</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Import(&#123; WebSecurityConfiguration.class, // &lt;2&gt;</div><div class="line">      SpringWebMvcImportSelector.class &#125;) // &lt;1&gt;</div><div class="line">@EnableGlobalAuthentication // &lt;3&gt;</div><div class="line">@Configuration</div><div class="line">public @interface EnableWebSecurity &#123;</div><div class="line">   boolean debug() default false;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="4-1-1-WebSecurityConfiguration"><a href="#4-1-1-WebSecurityConfiguration" class="headerlink" title="4.1.1 WebSecurityConfiguration"></a>4.1.1 WebSecurityConfiguration</h5><h5 id="4-1-2-AuthenticationConfiguration"><a href="#4-1-2-AuthenticationConfiguration" class="headerlink" title="4.1.2 AuthenticationConfiguration"></a>4.1.2 AuthenticationConfiguration</h5><h4 id="4-2-常用配置"><a href="#4-2-常用配置" class="headerlink" title="4.2 常用配置"></a>4.2 常用配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@Configuration</div><div class="line">@EnableWebSecurity</div><div class="line">public class CustomWebSecurityConfig extends WebSecurityConfigurerAdapter &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void configure(HttpSecurity http) throws Exception &#123;</div><div class="line">        http</div><div class="line">            .authorizeRequests()</div><div class="line">                .antMatchers(&quot;/resources/**&quot;, &quot;/signup&quot;, &quot;/about&quot;).permitAll()</div><div class="line">                .antMatchers(&quot;/admin/**&quot;).hasRole(&quot;ADMIN&quot;)</div><div class="line">                .antMatchers(&quot;/db/**&quot;).access(&quot;hasRole(&apos;ADMIN&apos;) and hasRole(&apos;DBA&apos;)&quot;)</div><div class="line">                .anyRequest().authenticated()</div><div class="line">                .and()</div><div class="line">            .formLogin()</div><div class="line">                .usernameParameter(&quot;username&quot;)</div><div class="line">                .passwordParameter(&quot;password&quot;)</div><div class="line">                .failureForwardUrl(&quot;/login?error&quot;)</div><div class="line">                .loginPage(&quot;/login&quot;)</div><div class="line">                .permitAll()</div><div class="line">                .and()</div><div class="line">            .logout()</div><div class="line">                .logoutUrl(&quot;/logout&quot;)</div><div class="line">                .logoutSuccessUrl(&quot;/index&quot;)</div><div class="line">                .permitAll()</div><div class="line">                .and()</div><div class="line">            .httpBasic()</div><div class="line">                .disable();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="5-过滤器"><a href="#5-过滤器" class="headerlink" title="5. 过滤器"></a>5. 过滤器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1,</div><div class="line">[org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@60b85ba1,</div><div class="line"></div><div class="line">// 请求来临时，创建SecurityContext安全上下文信息，请求结束时清空SecurityContextHolder</div><div class="line">org.springframework.security.web.context.SecurityContextPersistenceFilter@33d05366,</div><div class="line"></div><div class="line">// 用来给http响应添加一些Header,比如X-Frame-Options, X-XSS-Protection*，X-Content-Type-Options.</div><div class="line">org.springframework.security.web.header.HeaderWriterFilter@57a4d5ee,</div><div class="line"></div><div class="line">// 在spring4这个版本中被默认开启的一个过滤器，用于防止csrf攻击，了解前后端分离的人一定不会对这个攻击方式感到陌生，前后端使用json交互需要注意的一个问题</div><div class="line">org.springframework.security.web.csrf.CsrfFilter@42deb43a,</div><div class="line"></div><div class="line">// 处理注销</div><div class="line">org.springframework.security.web.authentication.logout.LogoutFilter@3c1e3314,</div><div class="line"></div><div class="line">// 表单提交了username和password，被封装成token进行一系列的认证，便是主要通过这个过滤器完成的，在表单认证的方法中，这是最最关键的过滤器</div><div class="line">org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@79ab3a71,</div><div class="line"></div><div class="line">// 内部维护了一个RequestCache，用于缓存request请求</div><div class="line">org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7692cd34,</div><div class="line"></div><div class="line">// 此过滤器对ServletRequest进行了一次包装，使得request具有更加丰富的API</div><div class="line">org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22ee2d0,</div><div class="line"></div><div class="line">// 匿名身份过滤器，需要将它与UsernamePasswordAuthenticationFilter 放在一起比较理解，spring security为了兼容未登录的访问，也走了一套认证流程，只不过是一个匿名的身份。</div><div class="line">org.springframework.security.web.authentication.AnonymousAuthenticationFilter@492fc69e,</div><div class="line"></div><div class="line">// 和session相关的过滤器，内部维护了一个SessionAuthenticationStrategy，两者组合使用，常用来防止session-fixation protection attack，以及限制同一用户开启多个会话的数量</div><div class="line">org.springframework.security.web.session.SessionManagementFilter@3a45c42a,</div><div class="line"></div><div class="line">// 异常翻译过滤器，还是比较形象的，这个过滤器本身不处理异常，而是将认证过程中出现的异常交给内部维护的一些类去处理</div><div class="line">org.springframework.security.web.access.ExceptionTranslationFilter@24b52d3e,</div><div class="line"></div><div class="line">// 决定了访问特定路径应该具备的权限，访问的用户的角色，权限是什么？访问的路径需要什么样的角色和权限？这些判断和处理都是由该类进行的</div><div class="line">org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5aa360ea]</div></pre></td></tr></table></figure>
 <h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
 <li><a href="http://www.spring4all.com/article/443" target="_blank" rel="external">Spring Security(一)–Architecture Overview</a></li>
+<li><a href="http://www.spring4all.com/article/445" target="_blank" rel="external">Spring Security(二)–Guides</a></li>
+<li><a href="http://www.spring4all.com/article/447" target="_blank" rel="external">Spring filters</a></li>
+<li><p><a href="https://github.com/longfeizheng/logback" target="_blank" rel="external">Spring boot and spring security demo code</a><br>很直得看，里面包含很多内容</p>
+</li>
+<li><p><a href="https://github.com/longfeizheng/security-oauth2" target="_blank" rel="external">Spring security auth2</a></p>
+</li>
+<li><a href="https://longfeizheng.github.io/2018/01/23/Spring-Security源码分析十一-Spring-Security-OAuth2整合JWT/" target="_blank" rel="external">Spring Security源码分析十一：Spring Security OAuth2整合JWT</a></li>
 </ul>
 
           
@@ -1496,132 +1630,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/07/201804/distribute-system-cap-theorem/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/04/07/201804/distribute-system-cap-theorem/" itemprop="url">
-                  分布式系统-CAP定理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T15:03:29+08:00">
-                2018-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="CAP定理"><a href="#CAP定理" class="headerlink" title="CAP定理"></a>CAP定理</h2><p>：</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="http://blog.cloudera.com/blog/2010/04/cap-confusion-problems-with-partition-tolerance/" target="_blank" rel="external">CAP Confusion: Problems with ‘partition tolerance’</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1666,7 +1679,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
