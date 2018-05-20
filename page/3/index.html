@@ -1444,6 +1444,148 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/10/20/docker/容器技术1-docker基础及底层技术/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/20/docker/容器技术1-docker基础及底层技术/" itemprop="url">
+                  容器技术1-docker基础及底层技术
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T17:01:08+08:00">
+                2017-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Docker-基础"><a href="#Docker-基础" class="headerlink" title="Docker 基础"></a>Docker 基础</h3><h4 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 启动一个容器</div><div class="line">docker run -d -p 80:80 -v host_dir:container_dir --name web syph/web:1.0</div><div class="line"></div><div class="line"># 进入docker容器内部</div><div class="line">docker exec -it container_name /bin/bash</div></pre></td></tr></table></figure>
+<h3 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h3><blockquote>
+<p>Ignoring unsupported options: build in v1.13.0-rc4</p>
+</blockquote>
+<p><a href="https://github.com/docker/docker/issues/29940" target="_blank" rel="external">https://github.com/docker/docker/issues/29940</a><br><a href="https://github.com/docker/docker/issues/29133#issuecomment-270901505" target="_blank" rel="external">https://github.com/docker/docker/issues/29133#issuecomment-270901505</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">The docker stack deploy feature, by design does not perform builds. </div><div class="line">Reason for this is that a build is performed on the host that the command is run from, so the image will only be available on that node. </div><div class="line">When deploying that image in a Swarm, the service cannot be started on other nodes. </div><div class="line">To deploy services, make sure the image you&apos;re deploying is pushed to a registry (or for testing; make sure the image is available on every node in the swarm)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Inconsistent ‘image’ behavior on update  docker unable to pin image</p>
+</blockquote>
+<p><a href="https://github.com/docker/docker/issues/29295" target="_blank" rel="external">https://github.com/docker/docker/issues/29295</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">有了这个warnning也没关系，可以正常跑服务</div></pre></td></tr></table></figure>
+<h3 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h3><ul>
+<li><a href="https://www.jianshu.com/p/7a1ce51a0eba" target="_blank" rel="external">Docker 底层技术</a></li>
+<li><a href="https://docs.docker.com/engine/getstarted/step_four/" target="_blank" rel="external">https://docs.docker.com/engine/getstarted/step_four/</a></li>
+<li><a href="http://www.dockerinfo.net/2117.html" target="_blank" rel="external">Docker技术架构详细分析 Docker模块分析</a></li>
+<li><a href="http://blog.leanote.com/post/dongkui0712@foxmail.com/api-v2" target="_blank" rel="external">Docker Registry HTTP API V2翻译</a></li>
+<li><a href="http://blog.csdn.net/mideagroup/article/details/52052618" target="_blank" rel="external">使用官方 docker registry 搭建私有镜像仓库及部署 web ui</a></li>
+<li><a href="http://www.dockerinfo.net/4471.html" target="_blank" rel="external">专家深入剖析Docker容器常见攻击手法与防护对策</a></li>
+<li><a href="http://www.dockerinfo.net/4193.html" target="_blank" rel="external">Docker for Devs — 如何将应用容器化</a></li>
+<li><a href="http://www.dockerinfo.net/4374.html" target="_blank" rel="external">Docker Swarm架构、特性与基本实践</a></li>
+<li><a href="http://www.dockerinfo.net/4334.html" target="_blank" rel="external">创建docker swarm应用</a></li>
+<li><a href="https://docs.docker.com/engine/swarm/stack-deploy/" target="_blank" rel="external">https://docs.docker.com/engine/swarm/stack-deploy/</a>这篇文章讲了部署到swarm的全过程</li>
+<li><a href="https://blog.couchbase.com/deploy-docker-compose-services-swarm/" target="_blank" rel="external">https://blog.couchbase.com/deploy-docker-compose-services-swarm/</a>  Deploy Docker Compose Services to Swarm</li>
+<li><a href="https://technologyconversations.com/2017/01/23/using-docker-stack-and-compose-yaml-files-to-deploy-swarm-services/" target="_blank" rel="external">https://technologyconversations.com/2017/01/23/using-docker-stack-and-compose-yaml-files-to-deploy-swarm-services/</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/08/01/算法笔记1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1574,138 +1716,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/04/22/深度学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/22/深度学习/" itemprop="url">
-                  深度学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-22T18:50:55+08:00">
-                2017-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="未知概念"><a href="#未知概念" class="headerlink" title="未知概念"></a>未知概念</h2><ul>
-<li>神经网络</li>
-<li>高数</li>
-<li>线性代数</li>
-</ul>
-<h2 id="重要资源"><a href="#重要资源" class="headerlink" title="重要资源"></a>重要资源</h2><p><a href="https://www.zhihu.com/question/49909565" target="_blank" rel="external">tensorflow如何入门 - 知乎</a></p>
-<p><a href="http://www.tensorflow.org" target="_blank" rel="external">tensorflow.org</a></p>
-<p><a href="http://playground.tensorflow.org" target="_blank" rel="external">playground.tensorflow.org</a></p>
-<p><a href="https://github.com/zsdonghao/tensorlayer" target="_blank" rel="external">https://github.com/zsdonghao/tensorlayer</a></p>
-<h2 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h2><ul>
-<li>tensorflow.org总是打不开的处理办法</li>
-</ul>
-<blockquote>
-<p>修改 /etc/hosts 文件，加入<br>64.233.188.121 www.tensorflow.org</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1768,7 +1778,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
