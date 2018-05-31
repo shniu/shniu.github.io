@@ -248,6 +248,756 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/02/27/Part2 eip-20 ERC20 Token Starndard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/02/27/Part2 eip-20 ERC20 Token Starndard/" itemprop="url">
+                  ERC20 Token 标准
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-27T13:00:00+08:00">
+                2018-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Part2-EIP-20"><a href="#Part2-EIP-20" class="headerlink" title="Part2 EIP 20"></a>Part2 EIP 20</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EIP: 20</div><div class="line">Title: ERC-20 Token Standard</div><div class="line">Author: Fabian Vogelsteller &lt;fabian@ethereum.org&gt;, Vitalik Buterin &lt;vitalik.buterin@ethereum.org&gt;</div><div class="line">Type: Standard</div><div class="line">Category: ERC</div><div class="line">Status: Accepted</div><div class="line">Created: 2015-11-19</div></pre></td></tr></table></figure>
+<h2 id="简单的总结"><a href="#简单的总结" class="headerlink" title="简单的总结"></a>简单的总结</h2><p>token 的标准接口。</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>以下标准允许在智能合约中实施令牌的标准 API。该标准提供了转移 token 的基本功能，并允许 token 被批准，以便其他链上的第三方可以使用它们。</p>
+<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>标准接口允许其他应用程序重复使用以太坊上的任何令牌：从钱包到去中心化的交易。</p>
+<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><h3 id="Token"><a href="#Token" class="headerlink" title="Token"></a>Token</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p><strong>注意</strong>：调用者必须处理 <code>returns (bool success)</code> 为 <code>false</code> 的情况。调用者绝不能假设永远不会返回 <code>false</code>。</p>
+<h5 id="name"><a href="#name" class="headerlink" title="name"></a>name</h5><p>返回 token 的名称 - 例如：<code>MyToken</code></p>
+<p>可选 - 此方法可用于提高可用性，但接口和其他合约不能期望这些值存在。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function name() constant returns (string name)</div></pre></td></tr></table></figure>
+<h5 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h5><p>返回 token 的符号，也就是代币的简称，例如：<code>HIX</code></p>
+<p>可选 - 此方法可用于提高可用性，但接口和其他合同不能期望这些值存在。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function symbol() constant returns (string symbol)</div></pre></td></tr></table></figure>
+<h5 id="decimals"><a href="#decimals" class="headerlink" title="decimals"></a>decimals</h5><p>返回 token 使用的小数位数，例如 8，意味着将令牌数量除以 <code>100000000</code> 以获得其用户表示。</p>
+<p>可选 - 此方法可用于提高可用性，但接口和其他合同不能期望这些值存在。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function decimals() constant returns (uint8 decimals)</div></pre></td></tr></table></figure>
+<h5 id="totalSupply"><a href="#totalSupply" class="headerlink" title="totalSupply"></a>totalSupply</h5><p>返回供应的 token 总量，也就是发行代币的总量。所有智能合约发行的代币总量是一定的，totalSupply 必须设置初始值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function totalSupply() constant returns (uint256 totalSupply)</div></pre></td></tr></table></figure>
+<h5 id="balanceOf"><a href="#balanceOf" class="headerlink" title="balanceOf"></a>balanceOf</h5><p>返回地址为 <code>_owner</code> 帐户的帐户余额。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function balanceOf(address _owner) constant returns (uint256 balance)</div></pre></td></tr></table></figure>
+<h5 id="transfer"><a href="#transfer" class="headerlink" title="transfer"></a>transfer</h5><p>向地址 <code>_to</code> 转移 <code>_value</code> 数量的 token，并且必须触发 <code>Transfer</code> 事件。如果 <code>_from</code> 的账户余额没有足够的 token 消费，函数必须抛出异常。</p>
+<p>注意 0值的转移必须被视为正常转移并触发 <code>Transfer</code> 事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function transfer(address _to, uint256 _value) returns (bool success)</div></pre></td></tr></table></figure>
+<h5 id="transferFrom"><a href="#transferFrom" class="headerlink" title="transferFrom"></a>transferFrom</h5><p>从地址 <code>_from</code> 向地址 <code>_to</code> 转移 <code>_value</code> 数量的 token，但必须触发 <code>Transfer</code> 事件。</p>
+<p><code>transferfrom</code> 方法用于提取工作流，允许合约代表你转移 token。例如，可以允许合约代表你转移 token 或以子货币收取费用。该函数应该抛出，除非 <code>_from</code> 帐户通过某种机制故意授权消息的发送者。</p>
+<p>注意 0值的转移必须被视为正常转移并触发 <code>Transfer</code> 事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function transferFrom(address _from, address _to, uint256 _value) returns (bool success)</div></pre></td></tr></table></figure>
+<h5 id="approve"><a href="#approve" class="headerlink" title="approve"></a>approve</h5><p>允许 <code>_spender</code> 多次从你的账户里提现，直至 <code>_value</code> 的数量。如果再次调用此函数，它将以 <code>_value</code> 覆盖当前的余量。</p>
+<p><strong>注意</strong>：为了阻止向量攻击（<a href="https://docs.google.com/document/d/1YLPtQxZu1UAvO9cZ1O2RPXBbT0mooh4DYKjA_jp-RLM/" target="_blank" rel="external">here</a> and <a href="https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729" target="_blank" rel="external">here</a>），客户端需要确认以这样的方式创建用户接口，即将它们设置为0，然后将其设置为同一个花费者的另一个值。虽然合同本身不应该强制执行，允许向后兼容以前部署的合同兼容性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function approve(address _spender, uint256 _value) returns (bool success)</div></pre></td></tr></table></figure>
+<h5 id="allowance"><a href="#allowance" class="headerlink" title="allowance"></a>allowance</h5><p>返回 <code>_spender</code> 还能提取 token 的个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function allowance(address _owner, address _spender) constant returns (uint256 remaining)</div></pre></td></tr></table></figure>
+<h5 id="对-approve-transferFrom-allowance-的解释"><a href="#对-approve-transferFrom-allowance-的解释" class="headerlink" title="对 approve transferFrom allowance 的解释"></a>对 approve transferFrom allowance 的解释</h5><p>账户 A 有 1000 个 ETH，想允许 B 账户随意调用 100 个 ETH。A 账户按照以下形式调用 approve 函数 <code>approve(B, 100)</code>。当 B 账户想用这 100 个 ETH 中的 10 个 ETH 给 C 账户时，则调用 <code>transferFrom(A, C, 10)</code>。这时调用 <code>allowance(A, B)</code> 可以查看B账户还能够调用 A 账户多少个 token。</p>
+<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><h5 id="Transfer"><a href="#Transfer" class="headerlink" title="Transfer"></a>Transfer</h5><p>当 token 被转移时必须被触发，0 个 token 也会触发</p>
+<p>当创建 token 时，创建新 token 的 token 合约应该触发一个传输事件，并将 <code>_from</code> 地址设置为 <code>0x0</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event Transfer(address indexed _from, address indexed _to, uint256 _value)</div></pre></td></tr></table></figure>
+<h5 id="Approval"><a href="#Approval" class="headerlink" title="Approval"></a>Approval</h5><p>当调用approval函数成功时，一定要触发Approval事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event Approval(address indexed _owner, address indexed _spender, uint256 _value)</div></pre></td></tr></table></figure>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>以太坊网络上已经有大量符合 ERC20 的令牌。 不同的实施由不同的团队编写，这些团队有不同的权衡：从节约燃料到提高安全性。</p>
+<h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><ul>
+<li><a href="https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/token/ERC20/StandardToken.sol" target="_blank" rel="external">https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/token/ERC20/StandardToken.sol</a></li>
+<li><a href="https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol" target="_blank" rel="external">https://github.com/ConsenSys/Tokens/blob/master/contracts/eip20/EIP20.sol</a></li>
+</ul>
+<h5 id="再次调用-approve-之前向0添加强制的实现"><a href="#再次调用-approve-之前向0添加强制的实现" class="headerlink" title="再次调用 approve 之前向0添加强制的实现"></a>再次调用 approve 之前向0添加强制的实现</h5><ul>
+<li><a href="https://github.com/Giveth/minime/blob/master/contracts/MiniMeToken.sol" target="_blank" rel="external">https://github.com/Giveth/minime/blob/master/contracts/MiniMeToken.sol</a></li>
+</ul>
+<h4 id="历史资源"><a href="#历史资源" class="headerlink" title="历史资源"></a>历史资源</h4><ul>
+<li><a href="https://github.com/ethereum/wiki/wiki/Standardized_Contract_APIs/499c882f3ec123537fc2fccd57eaa29e6032fe4a" target="_blank" rel="external">V神写的最原始的协议</a></li>
+<li><a href="https://www.reddit.com/r/ethereum/comments/3n8fkn/lets_talk_about_the_coin_standard/" target="_blank" rel="external">Reddit 上的讨论</a></li>
+<li><a href="https://github.com/ethereum/EIPs/issues/20" target="_blank" rel="external">最开始的 issue #20</a></li>
+</ul>
+<hr>
+<p>via: <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md" target="_blank" rel="external">https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/02/27/Part1 What is the ERC20 Ethereum Token Standard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/02/27/Part1 What is the ERC20 Ethereum Token Standard/" itemprop="url">
+                  什么是 ERC20 以太坊令牌标准
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-27T07:00:00+08:00">
+                2018-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Part1-什么是-ERC20-以太坊令牌标准？"><a href="#Part1-什么是-ERC20-以太坊令牌标准？" class="headerlink" title="Part1 - 什么是 ERC20 以太坊令牌标准？"></a>Part1 - 什么是 ERC20 以太坊令牌标准？</h1><p>Cryptocurrency爱好者深知如何在以太坊区块链上发行大量代币。同样也出现了许多使用新的 ERC20 Token 标准发行的代币。很多人仍然不知道ERC20的全部内容，以及与引入新标准之前颁发令牌相比，它有什么不同。 让我们来看看ERC20如此特别的原因。</p>
+<h2 id="ERC20-Token-标准概述"><a href="#ERC20-Token-标准概述" class="headerlink" title="ERC20 Token 标准概述"></a>ERC20 Token 标准概述</h2><p>没有人需要一个 Token 是什么的介绍，但我们还是再重新回顾一下。Token 被设计为代表一些别的东西，在大多数情况下，它代表一种价值。在以太坊生态系统中，这些 Token 在区块链上发布，代表财务价值或作为数字资产存在。但是这些 Token 不一定遵守特定的标准。</p>
+<p>由于 <a href="https://github.com/ethereum/EIPs/pull/610" target="_blank" rel="external">ERC20 Token 标准</a>的引入，这种情况将会得到改变。尽管表面上的令牌变化很小，但这是一个有趣的发展。Token 仍然在以太坊网络上发行，并可以兑换其他货币。但是，ERC20 标准使资产更易于互换，并确保 <code>Dapps</code> 采用相同的标准进行工作。</p>
+<p>正如人们所期望的那样，ERC20提供的“魔力”可以在底层找到。ERC20标准使所有兼容令牌更易于由新项目和服务本地支持。而且，这个标准的引入允许其他功能的 token 化，包括投票权。大多数原生项目代币为投资者提供投票，表明该项目的未来应该如何。</p>
+<p>在过去几个月里，我们看到以太坊区块链上发布了大量 ERC20 Token。所有这些数字资产都与不同的 Dapps 和项目交叉兼容。但是，仍然有一些工作要做，因为直接将它们（指数字资产）直接发送给 token 合约会导致财务损失。这非常令人不安，但它也是开发人员可以轻松解决的问题。目前，解决方法是在 Token 合约上调用函数，而不是从受控钱包中直接发送它们。</p>
+<p>有趣的是，token 持有者在任何时候都仍然完全控制着他们的资产。遵守 ERC20 标准的 token 合约可以在任何给定时间追踪谁拥有多少 token。由于每个 token 都是以太坊网络的子货币，因此该解决方案易于实施。所有 token 的分配都是通过有问题的令牌合约完成的（<em>这里有疑问，不理解什么意思</em>），而所有者仍然必须亲自“命令”传输。</p>
+<p>最后，一个 token 化的标准将被证明对整个以太坊生态系统是非常有利的。确保这些资产可用于不同的平台和项目将使它们更有用。否则，令牌将被锁定在他们自己特定的应用程序生态系统中，这不一定是好事。 ERC20 标准是一个有趣的开发，但它也不是一个完美的解决方案。</p>
+<hr>
+<p>Author: <a href="https://github.com/shniu" target="_blank" rel="external">shniu</a><br>Link: <a href="https://github.com/chaintechinfo" target="_blank" rel="external">chaintech.info</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/02/26/Using-Go-as-a-scripting-language-in-linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/02/26/Using-Go-as-a-scripting-language-in-linux/" itemprop="url">
+                  在 Linux 中使用 Go 作为脚本语言
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-26T07:00:00+08:00">
+                2018-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="在-Linux-中使用-Go-作为脚本语言"><a href="#在-Linux-中使用-Go-作为脚本语言" class="headerlink" title="在 Linux 中使用 Go 作为脚本语言"></a>在 Linux 中使用 Go 作为脚本语言</h1><p>在 <code>Cloudflare</code> 的人们都非常喜欢 Go 语言。我们在许多<a href="https://blog.cloudflare.com/what-weve-been-doing-with-go/" target="_blank" rel="external">内部软件项目</a>以及更大的<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/" target="_blank" rel="external">管道系统</a>中使用它。但是，我们能否进入下一个层次并将其用作我们最喜欢的操作系统Linux的脚本语言呢？</p>
+<p><img src="https://github.com/shniu/resources/raw/master/images/gopher-tux-1.png" alt="image here"></p>
+<h2 id="为什么考虑将-Go-作为脚本语言"><a href="#为什么考虑将-Go-作为脚本语言" class="headerlink" title="为什么考虑将 Go 作为脚本语言"></a>为什么考虑将 Go 作为脚本语言</h2><p>简短点的回答：为什么不呢？Go 相对容易学习，不冗余并且有一个强大的生态库，这些库可以重复使用避免我们从头开始编写所有代码。它可能带来的一些其他潜在优势：</p>
+<ul>
+<li><p>为你的 Go 项目提供一个基于 Go 的构建系统：<code>go build</code> 命令主要适用于小型自包含项目。更复杂的项目通常采用构建系统或脚本集。为什么不用 Go 编写这些脚本呢？</p>
+</li>
+<li><p>易于使用的非特权包管理：如果你想在脚本中使用第三方库，你可以简单的使用 <code>go get</code> 命令来获取。而且由于拉取的代码将安装在你的 <code>GOPATH</code> 中，使用一些第三方库并不需要系统管理员的权限（与其他一些脚本语言不同）。这在大型企业环境中尤其有用。</p>
+</li>
+<li><p>在早期项目阶段进行快速的代码原型设计：当您进行第一次代码迭代时，通常需要进行大量的编辑，甚至进行编译，而且您必须在 “编辑-&gt;构建-&gt;检查” 循环中浪费大量的按键。相反，使用 Go，您可以跳过 <code>build</code> 部分，并立即执行源文件。</p>
+</li>
+<li><p>强类型的脚本语言：如果你在脚本中的某个地方有个小的输入错误，大多数的脚本语言都会执行到有错误的地方然后停止。这可能会让你的系统处于不一致的状态（因为有些语句的执行会改变数据的状态，从而污染了执行脚本之前的状态）。使用强类型语言时，许多拼写错误可以在编译时被捕获，因此有 bug 的脚本将不会首先运行。</p>
+</li>
+</ul>
+<h2 id="Go-脚本的当前状态"><a href="#Go-脚本的当前状态" class="headerlink" title="Go 脚本的当前状态"></a>Go 脚本的当前状态</h2><p>咋一看 Go 脚本貌似很容易实现 Unix 脚本的 shebang(#! …) 支持。<a href="https://en.wikipedia.org/wiki/Shebang_(Unix" target="_blank" rel="external">shebang 行</a>)是脚本的第一行，以 <code>#!</code> 开头，并指定脚本解释器用于执行脚本（例如，<code>#!/bin/bash</code> 或 <code>#!/usr/bin/env python</code>），所以无论使用何种编程语言，系统都确切知道如何执行脚本。Go 已经使用 <code>go run</code> 命令支持 <code>.go</code> 文件的类似于解释器的调用，所以只需要添加适当的 shebang 行（<code>#!/usr/bin/env go run</code>）到任何的 <code>.go</code> 文件中，设置好文件的可执行状态，然后就可以愉快的玩耍了。</p>
+<p>但是，直接使用 go run 还是有问题的。<a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd" target="_blank" rel="external">这篇牛 b 的文章</a>详细描述了围绕 <code>go run</code> 的所有问题和潜在解决方法，但其要点是：</p>
+<ul>
+<li><p><code>go run</code> 不能正确地将脚本错误代码返回给操作系统，这对脚本很重要，因为错误代码是多个脚本之间相互交互和操作系统环境最常见的方式之一。</p>
+</li>
+<li><p>你不能在有效的 <code>.go</code> 文件中创建一个 shebang 行，因为 Go 语言不知道如何处理以 <code>#</code> 开头的行。而其他语言不存在这个问题，是由于 <code>#</code> 大多数情况下是一种注释的方式，所以最后解释器会忽略掉 shebang 行，但是 Go 注释是以 <code>//</code> 开头的并且在调用时运行会产生如下错误：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">package main:</div><div class="line">helloscript.go:1:1: illegal character U+0023 &apos;#&apos;</div></pre></td></tr></table></figure>
+<p><a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd" target="_blank" rel="external">这篇文章</a>描述了上述问题的几种解决方法，包括使用一个自定义的包装程序 <a href="https://github.com/erning/gorun" target="_blank" rel="external">gorun</a> 作为解释器，但是都没有提供一个理想的解决方案。你可以：</p>
+<ul>
+<li><p>必须使用非标准的 shebang 行，它以 <code>//</code> 开头。这在技术上甚至不是 shebang 行，而是 bash shell 如何处理可执行文本文件的方式，所以这个解决方案是 bash 特有的。另外，由于 <code>go run</code> 的具体行为，这一行相当复杂并且不够明显（请参阅原始文章的示例）。</p>
+</li>
+<li><p>必须在 shebang 行中使用 gorun 自定义包装程序，这很好，但是，最终得到的 <code>.go</code> 文件由于非法的 <code>#</code> 字符而不能与标准 <code>go build</code> 命令编译。</p>
+</li>
+</ul>
+<h2 id="Linux-如何执行文件"><a href="#Linux-如何执行文件" class="headerlink" title="Linux 如何执行文件"></a>Linux 如何执行文件</h2><p>OK，看起来 shebang 的方法并没有为我们提供全面的解决方案。是否还有其他方式是我们可以使用的？让我们仔细看看 Linux 内核如何执行二进制文件。 当你尝试执行一个二进制/脚本（或任何有可执行位设置的文件）时，你的 shell 最后只会使用 Linux <code>execve</code> 系统调用，将它传递给二进制文件系统路径，命令行参数和 当前定义的环境变量。 然后内核负责正确解析文件并用文件中的代码创建一个新进程。 我们中的大多数人都知道 Linux （和许多其他类 Unix 操作系统）为其可执行文件使用 ELF 二进制格式。</p>
+<p>然而，Linux 内核开发的核心原则之一是避免任何子系统的 “vendor/format lock-in”，这是内核的一部分。因此，Linux 实现了一个“可插拔”系统，它允许内核支持任何二进制格式 - 所有你需要做的就是编写一个正确的模块，它可以解析你选择的格式。如果仔细研究内核源代码，你会发现 Linux 支持更多的二进制格式。例如，最近的<code>4.14</code> Linux 内核，我们可以看到它至少支持7种二进制格式（用于各种二进制格式的树内模块通常在其名称中具有 <code>binfmt_</code> 前缀）。值得注意的是 <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs/binfmt_script.c?h=linux-4.14.y" target="_blank" rel="external">binfmt_script</a> 模块，它负责解析上面提到的 shebang 行并在目标系统上执行脚本（并不是每个人都知道 shebang 支持实际上是在内核本身而不是在 shell 或其他守护进程/进程中实现的）。</p>
+<h2 id="从用户空间扩展受支持的二进制格式"><a href="#从用户空间扩展受支持的二进制格式" class="headerlink" title="从用户空间扩展受支持的二进制格式"></a>从用户空间扩展受支持的二进制格式</h2><p>但既然我们认为 shebang 不是 Go 脚本的最佳选择，似乎我们需要别的东西。令人惊讶的是，Linux 内核已经有了一个“其他类型的”二进制支持模块，它有一个贴切的名称 <code>binfmt_misc</code>。该模块允许管理员通过定义良好的 <code>procfs</code> 接口直接从用户空间动态添加对各种可执行格式的支持，并且有详细记录。</p>
+<p>让我们按照<a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html" target="_blank" rel="external">文档</a>并尝试为 <code>.go</code> 文件设置二进制格式描述。首先，该指南告诉您将特殊的 <code>binfmt_misc</code> 文件系统安装到 <code>/proc/sys/fs/binfmt_misc</code>。如果您使用的是基于 systemd 的相对较新的 Linux 发行版，则很可能已经为您安装了文件系统，因为默认情况下 system 会为此安装特殊的 mount 和 automount 单元。 要仔细检查，只需运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mount | grep binfmt_misc</div><div class="line">systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=27,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)</div></pre></td></tr></table></figure>
+<p>另一种方法是检查 <code>/proc/sys/fs/binfmt_misc</code> 中是否有文件：正确安装 <code>binfmt_misc</code> 文件系统将至少创建两个名称为 <code>register</code> 和 <code>status</code> 的特殊文件。</p>
+<p>接下来，因为我们希望我们的 .go 脚本能够正确地将退出代码传递给操作系统，所以我们需要将定制的 gorun 包装器作为我们的“解释器”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ go get github.com/erning/gorun</div><div class="line">$ sudo mv ~/go/bin/gorun /usr/local/bin/</div></pre></td></tr></table></figure>
+<p>从技术角度上讲，我们不需要将 gorun 移动到 <code>/usr/local/bin</code> 或任何其他系统路径，而无论如何 <code>binfmt_misc</code> 都需要解释器的完整路径，但系统可以以任意权限运行此可执行文件，因此从安全视角来看限制文件访问权限是一个好主意。</p>
+<p>在这一点上，让我们来建一个简单的 go 脚本 <code>helloscript.go</code> 并验证我们可以成功“解释”它。脚本如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"os"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	s := <span class="string">"world"</span></div><div class="line"></div><div class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(os.Args) &gt; <span class="number">1</span> &#123;</div><div class="line">		s = os.Args[<span class="number">1</span>]</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	fmt.Printf(<span class="string">"Hello, %v!"</span>, s)</div><div class="line">	fmt.Println(<span class="string">""</span>)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> s == <span class="string">"fail"</span> &#123;</div><div class="line">		os.Exit(<span class="number">30</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>检查参数传递和错误处理是否按预期工作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ gorun helloscript.go</div><div class="line">Hello, world!</div><div class="line">$ echo $?</div><div class="line">0</div><div class="line">$ gorun helloscript.go gopher</div><div class="line">Hello, gopher!</div><div class="line">$ echo $?</div><div class="line">0</div><div class="line">$ gorun helloscript.go fail</div><div class="line">Hello, fail!</div><div class="line">$ echo $?</div><div class="line">30</div></pre></td></tr></table></figure>
+<p>现在我们需要告诉 <code>binfmt_misc</code> 模块如何使用 <code>gorun</code> 执行 <code>.go</code> 文件。按照文档中的描述我们需要配置如下字符串： <code>:golang:E::go::/usr/local/bin/gorun:OC</code>，意思是告诉系统：当遇到以 <code>.go</code> 为扩展名的可执行文件，请使用 <code>/usr/local/bin/gorun</code> 解释器执行该文件。字符串末尾的 <code>OC</code> 标志确保脚本将根据脚本本身设置的所有者信息和权限位执行，而不是在解释器二进制文件上设置的那些位。这使 Go 脚本的执行行为与 Linux 中其他可执行文件和脚本的行为相同。</p>
+<p>让我们注册我们新的 Go 脚本二进制格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ echo &apos;:golang:E::go::/usr/local/bin/gorun:OC&apos; | sudo tee /proc/sys/fs/binfmt_misc/register</div><div class="line">:golang:E::go::/usr/local/bin/gorun:OC</div></pre></td></tr></table></figure>
+<p>如果系统成功注册了，则应在 <code>/proc/sys/fs/binfmt_misc</code> 目录下显示新的 golang 文件。 最后，我们可以在本地执行我们的 .go 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ chmod u+x helloscript.go</div><div class="line">$ ./helloscript.go</div><div class="line">Hello, world!</div><div class="line">$ ./helloscript.go gopher</div><div class="line">Hello, gopher!</div><div class="line">$ ./helloscript.go fail</div><div class="line">Hello, fail!</div><div class="line">$ echo $?</div><div class="line">30</div></pre></td></tr></table></figure>
+<p>就这样了！现在我们可以根据自己的喜好编辑 helloscript.go，并在下次执行文件时看到更改将立即可见。此外，和此前的 shebang 方式不同，我们可以随时使用 <code>go build</code> 将文件编译成真正的可执行文件。</p>
+<hr>
+<p>via：<a href="https://blog.cloudflare.com/using-go-as-a-scripting-language-in-linux/" target="_blank" rel="external">Using Go as a scripting language in Linux</a></p>
+<ul>
+<li><a href="https://github.com/shniu" target="_blank" rel="external">shniu</a></li>
+<li><a href="https://digcredit.com/chaintechinfo" target="_blank" rel="external">chaintech.info</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/10/20/docker/容器技术1-docker基础及底层技术/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/20/docker/容器技术1-docker基础及底层技术/" itemprop="url">
+                  容器技术1-docker基础及底层技术
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T17:01:08+08:00">
+                2017-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Docker-基础"><a href="#Docker-基础" class="headerlink" title="Docker 基础"></a>Docker 基础</h3><h4 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 启动一个容器</div><div class="line">docker run -d -p 80:80 -v host_dir:container_dir --name web syph/web:1.0</div><div class="line"></div><div class="line"># 进入docker容器内部</div><div class="line">docker exec -it container_name /bin/bash</div></pre></td></tr></table></figure>
+<h3 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h3><blockquote>
+<p>Ignoring unsupported options: build in v1.13.0-rc4</p>
+</blockquote>
+<p><a href="https://github.com/docker/docker/issues/29940" target="_blank" rel="external">https://github.com/docker/docker/issues/29940</a><br><a href="https://github.com/docker/docker/issues/29133#issuecomment-270901505" target="_blank" rel="external">https://github.com/docker/docker/issues/29133#issuecomment-270901505</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">The docker stack deploy feature, by design does not perform builds. </div><div class="line">Reason for this is that a build is performed on the host that the command is run from, so the image will only be available on that node. </div><div class="line">When deploying that image in a Swarm, the service cannot be started on other nodes. </div><div class="line">To deploy services, make sure the image you&apos;re deploying is pushed to a registry (or for testing; make sure the image is available on every node in the swarm)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Inconsistent ‘image’ behavior on update  docker unable to pin image</p>
+</blockquote>
+<p><a href="https://github.com/docker/docker/issues/29295" target="_blank" rel="external">https://github.com/docker/docker/issues/29295</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">有了这个warnning也没关系，可以正常跑服务</div></pre></td></tr></table></figure>
+<h3 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h3><ul>
+<li><a href="https://www.jianshu.com/p/7a1ce51a0eba" target="_blank" rel="external">Docker 底层技术</a></li>
+<li><a href="https://docs.docker.com/engine/getstarted/step_four/" target="_blank" rel="external">https://docs.docker.com/engine/getstarted/step_four/</a></li>
+<li><a href="http://www.dockerinfo.net/2117.html" target="_blank" rel="external">Docker技术架构详细分析 Docker模块分析</a></li>
+<li><a href="http://blog.leanote.com/post/dongkui0712@foxmail.com/api-v2" target="_blank" rel="external">Docker Registry HTTP API V2翻译</a></li>
+<li><a href="http://blog.csdn.net/mideagroup/article/details/52052618" target="_blank" rel="external">使用官方 docker registry 搭建私有镜像仓库及部署 web ui</a></li>
+<li><a href="http://www.dockerinfo.net/4471.html" target="_blank" rel="external">专家深入剖析Docker容器常见攻击手法与防护对策</a></li>
+<li><a href="http://www.dockerinfo.net/4193.html" target="_blank" rel="external">Docker for Devs — 如何将应用容器化</a></li>
+<li><a href="http://www.dockerinfo.net/4374.html" target="_blank" rel="external">Docker Swarm架构、特性与基本实践</a></li>
+<li><a href="http://www.dockerinfo.net/4334.html" target="_blank" rel="external">创建docker swarm应用</a></li>
+<li><a href="https://docs.docker.com/engine/swarm/stack-deploy/" target="_blank" rel="external">https://docs.docker.com/engine/swarm/stack-deploy/</a>这篇文章讲了部署到swarm的全过程</li>
+<li><a href="https://blog.couchbase.com/deploy-docker-compose-services-swarm/" target="_blank" rel="external">https://blog.couchbase.com/deploy-docker-compose-services-swarm/</a>  Deploy Docker Compose Services to Swarm</li>
+<li><a href="https://technologyconversations.com/2017/01/23/using-docker-stack-and-compose-yaml-files-to-deploy-swarm-services/" target="_blank" rel="external">https://technologyconversations.com/2017/01/23/using-docker-stack-and-compose-yaml-files-to-deploy-swarm-services/</a></li>
+</ul>
+<h3 id="docker-技术"><a href="#docker-技术" class="headerlink" title="docker 技术"></a>docker 技术</h3><p>Container (容器)是一种轻量级的虚拟化技术，它不需要模拟硬件创建虚拟机。在 Linux 系统里面，使用到 Linux kernel 的 cgroups，namespace(ipc，network， user，pid，mount），capability 等用于隔离运行环境和资源限制的技术。</p>
+<ul>
+<li><a href="https://coolshell.cn/articles/17010.html" target="_blank" rel="external">DOCKER基础技术：LINUX NAMESPACE</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/08/01/算法笔记1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/01/算法笔记1/" itemprop="url">
+                  算法笔记1 - Encode and decode tinyURL
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T14:32:43+08:00">
+                2017-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Question-description"><a href="#Question-description" class="headerlink" title="Question description"></a>Question description</h2><blockquote>
+<p>TinyURL is a URL shortening service where you enter a URL such as <a href="https://leetcode.com/problems/design-tinyurl" target="_blank" rel="external">https://leetcode.com/problems/design-tinyurl</a> and it returns a short URL such as <a href="http://tinyurl.com/4e9iAk" target="_blank" rel="external">http://tinyurl.com/4e9iAk</a><br>Design the encode and decode methods for the TinyURL service. There is no restriction on how your encode/decode algorithm should work. You just need to ensure that a URL can be encoded to a tiny URL and the tiny URL can be decoded to the original URL.</p>
+<p>Requirements:<br>For instance, “<a href="http://tinyurl.com/4e9iAk" target="_blank" rel="external">http://tinyurl.com/4e9iAk</a>“ is the tiny url for the page “<a href="https://leetcode.com/problems/design-tinyurl" target="_blank" rel="external">https://leetcode.com/problems/design-tinyurl</a>“. The identifier (the highlighted part) can be any string with 6 alphanumeric characters containing 0-9, a-z, A-Z.<br>Each shortened URL must be unique; that is, no two different URLs can be shortened to the same URL.</p>
+</blockquote>
+<p><a href="https://leetcode.com/problems/design-tinyurl/description/" target="_blank" rel="external">https://leetcode.com/problems/design-tinyurl/description/</a><br><a href="https://leetcode.com/problems/encode-and-decode-tinyurl/description/" target="_blank" rel="external">https://leetcode.com/problems/encode-and-decode-tinyurl/description/</a></p>
+<p>一些讨论可以参考这里：<br><a href="https://leetcode.com/problems/design-tinyurl/discuss/" target="_blank" rel="external">discuss</a></p>
+<p>这是一个有点意思的问题或叫需求，既可以单纯的把他当作一个简单的算法题来做做，也能复杂到我们需要大规模分布式系统去解决，取决于我们使用这个tinyURL services的场景是什么。当我们把他当作toy玩一玩的时候，十几行代码就解决了；如果我们把他做成服务千万上亿级别的用户时，每秒需要满足几百万，上千万，上亿次的请求时，他又是另外一帆景象。</p>
+<blockquote>
+<p>世界是奇妙的，当你发现他不一样的时候。</p>
+</blockquote>
+<h2 id="对于这件事情简单的处理"><a href="#对于这件事情简单的处理" class="headerlink" title="对于这件事情简单的处理"></a>对于这件事情简单的处理</h2><h4 id="字母随机组合法"><a href="#字母随机组合法" class="headerlink" title="字母随机组合法"></a>字母随机组合法</h4><p>简单到我们不关心任何复杂的事情，就是去实现Encode tinyURL and decode tinyURL，看下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Codec</span><span class="params">(object)</span>:</span></div><div class="line">    base_domain = <span class="string">'http://tiny.com/'</span></div><div class="line">    </div><div class="line">    alphabet = string.ascii_letters + <span class="string">'0123456789'</span></div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.code_to_url = &#123;&#125;</div><div class="line">        self.url_to_code = &#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">encode</span><span class="params">(self, long_url)</span>:</span></div><div class="line">        <span class="keyword">while</span> long_url <span class="keyword">not</span> <span class="keyword">in</span> self.url_to_code:</div><div class="line">            code = <span class="string">''</span>.join(random.sample(self.alphabet, <span class="number">6</span>))</div><div class="line">            <span class="keyword">if</span> code <span class="keyword">not</span> <span class="keyword">in</span> self.code_to_url:</div><div class="line">                self.url_to_code[long_url] = code</div><div class="line">                self.code_to_url[code] = long_url</div><div class="line">                </div><div class="line">        <span class="keyword">return</span> <span class="string">'%s%s'</span> % (self.base_domain, self.url_to_code[long_url])</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">(self, tiny_url)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.long_url[tiny_url[<span class="number">-6</span>:]]</div></pre></td></tr></table></figure>
+<p>上面使用了一种组合<code>a-z</code>, <code>A-Z</code>, <code>0-9</code> 的方式生成short url，6位的组合有 (62)^6 = 570亿种，所以基本满足了需求上限；</p>
+<h4 id="hash-function"><a href="#hash-function" class="headerlink" title="hash function"></a>hash function</h4><p>此外还有另外一种hash的方式，可以使用md5 or sha-1 的方式做hash运算，我们假设预估每个url的平均长度是20，每个字符占用2Bytes，那么总共需要40Bytes；首先如果使用md5会生成一个128位的二进制，一般会用32位的十六进制去表示，最终会占用16Bytes的空间；其次如果使用sha-1的方式去做hash，会生成一个160位的二进制，用40位的十六进制，使用20Byte就可以搞定存储；此法比较简单，hash的值也会比较随机，可以节省空间；但是这种方式会比较容易产生冲突，冲突之后就需要重新生成，也可以结合timestamp重新hash，但随着url增多时，冲突的机率会大幅增加，效率就会变得比较低。</p>
+<h2 id="URLService系统级别的服务"><a href="#URLService系统级别的服务" class="headerlink" title="URLService系统级别的服务"></a>URLService系统级别的服务</h2><p>下面我再去深入的思考这个问题，假设场景是这样的：</p>
+<ul>
+<li>我们需要构建一个URLService的服务对外提供服务，面向全球</li>
+<li>我们的QPS指标最弱也需要是下面这样的</li>
+</ul>
+<blockquote>
+<p>QPS<br>  日活  10万<br>  日请求  写 300w，读 3000w<br>  响应时间500ms左右<br>  QPS  写 100，读 1K</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/04/22/深度学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -905,668 +1655,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/03/31/Our-team-and-I/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/31/Our-team-and-I/" itemprop="url">
-                  团队与团队管理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-31T10:22:02+08:00">
-                2017-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote><p>在团队推进项目的过程中，一个非常重要的原则是：一定要让工作可见、让进度可见，可见是对everyone and everything。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/03/30/elasticsearch配置说明/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/30/elasticsearch配置说明/" itemprop="url">
-                  elasticsearch配置说明
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-30T15:47:48+08:00">
-                2017-03-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote><p>持续运行的服务，需要我们持续不断的监控，需要对日志的实时分析</p>
-</blockquote>
-<p>elasticsearch.yml 是elasticsearch的重要配置文件</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 配置es的集群名称，默认是elasticsearch，es会自动发现在同一网段下的es，如果在同一网段下有多个集群，就可以用这个属性来区分不同的集群</span></div><div class="line">cluster.name: elasticsearch</div><div class="line"></div><div class="line"><span class="comment"># 节点名，默认随机指定一个name列表中名字，该列表在es的jar包中config文件夹里name.txt文件中，其中有很多作者添加的有趣名字</span></div><div class="line">node.name: demo</div><div class="line"></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/03/21/我们都知道但不一定懂的道/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/21/我们都知道但不一定懂的道/" itemprop="url">
-                  我们都知道但不一定懂的道
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T13:04:29+08:00">
-                2017-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="道"><a href="#道" class="headerlink" title="道"></a>道</h2><blockquote><p>我要感谢我的妻子……在我心中，物理不是最重要的，爱才是。</p>
-<footer><strong>费曼, 1965年诺贝尔物理奖得主</strong><cite><a href="https://shniu.github.io">shniu.github.io</a></cite></footer></blockquote>
-<hr>
-<blockquote><p>天行健，君子以自强不息；地势坤，君子以厚德载物。</p>
-</blockquote>
-<hr>
-<blockquote><p>我知道怎样处卑贱,也知道怎样处丰富，或饱足，或饥饿，或有余，或缺乏，随事随在，我都得了秘诀。我靠着那加给我力量的，凡事都能做。</p>
-<footer><strong>保罗</strong><cite>新约圣经</cite></footer></blockquote>
-<hr>
-<blockquote><p>因真理，得自由，以服侍</p>
-<footer><strong>北大前身燕京大学校训</strong></footer></blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/03/17/ELK平台/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/17/ELK平台/" itemprop="url">
-                  ELK平台
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T09:54:21+08:00">
-                2017-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>elk是一款开源的集中式日志管理分析平台，并且拥有实时日志分析的能力；</p>
-<h3 id="Logstash"><a href="#Logstash" class="headerlink" title="Logstash"></a>Logstash</h3><p>回答第一个问题Logstash是什么？</p>
-<blockquote><p>Logstash is an open source data collection engine with real-time pipelining capabilities. Logstash can dynamically unify data from disparate sources and normalize the data into destinations of your choice. Cleanse and democratize all your data for diverse advanced downstream analytics and visualization use cases.</p>
-<p>上面这段话，已经很清楚的描述了Logstash的定位了，大概是说 Logstash是一款开源的实时管道数据收集引擎，它可以将分散在不同地方的数据动态实时的汇总在一起，然后把标准化后的数据放在你想放的人和地方；清洗和标准化所有你为下游的高阶应用提供的数据，如数据分析、可视化；</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 启动logstash</div><div class="line">cd logstash-5.2.2</div><div class="line">bin/logstash -f ~/logstash.conf</div></pre></td></tr></table></figure>
-<p>Logstash的配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">input &#123; </div><div class="line">    stdin &#123; &#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">filter &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">output &#123;</div><div class="line">  stdout &#123; codec =&gt; rubydebug &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 测试配置文件</div><div class="line">bin/logstash -f first-pipeline.conf --config.test_and_exit</div><div class="line"></div><div class="line"># 自动装载配置文件，会自动load</div><div class="line">bin/logstash -f first-pipeline.conf --config.reload.automatic</div></pre></td></tr></table></figure>
-<h4 id="Logstash是如何工作的"><a href="#Logstash是如何工作的" class="headerlink" title="Logstash是如何工作的"></a>Logstash是如何工作的</h4><p>Logstash处理包括三个步骤：inputs -&gt; filters -&gt; outputs, inputs生产事件，filters处理它们，outputs把这些处理后的东西输出到任何其他地方；Inputs and outputs support codecs that enable you to encode or decode the data as it enters or exits the pipeline without having to use a separate filter.</p>
-<ul>
-<li>inputs</li>
-</ul>
-<p>常用的一些inputs，如 <code>file</code>, <code>syslog</code>, <code>redis</code>, <code>beats</code></p>
-<ul>
-<li></li>
-<li></li>
-</ul>
-<h4 id="执行模型"><a href="#执行模型" class="headerlink" title="执行模型"></a>执行模型</h4><p><a href="https://www.elastic.co/guide/en/logstash/current/persistent-queues.html" target="_blank" rel="external">持久化队列</a> 属于优化层面的</p>
-<h4 id="Logstash的配置"><a href="#Logstash的配置" class="headerlink" title="Logstash的配置"></a>Logstash的配置</h4><p>Logstash有两类配置文件：处理流程管道配置文件和控制logstash启动关闭的配置文件；</p>
-<p><a href="https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html" target="_blank" rel="external">Logstash 的系统配置</a></p>
-<p><a href="https://www.elastic.co/guide/en/logstash/current/running-logstash-command-line.html" target="_blank" rel="external">Logstash的命令行</a></p>
-<p><a href="https://www.elastic.co/guide/en/logstash/current/running-logstash.html" target="_blank" rel="external">作为服务运行</a></p>
-<p><a href="https://www.elastic.co/guide/en/logstash/current/docker.html" target="_blank" rel="external">Running logstash on Docker</a></p>
-<p><a href="https://www.elastic.co/guide/en/logstash/current/logging.html#logging" target="_blank" rel="external">Logstash logging</a></p>
-<p>查看日志的级别信息<br><a href="http://localhost:9600/_node/logging?pretty" target="_blank" rel="external">http://localhost:9600/_node/logging?pretty</a></p>
-<p><a href="https://www.elastic.co/guide/en/logstash/current/shutdown.html" target="_blank" rel="external">关闭Logstash</a></p>
-<p><a href="https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html" target="_blank" rel="external">Logstash processing config file</a></p>
-<h4 id="input-filter"><a href="#input-filter" class="headerlink" title="input filter"></a>input filter</h4><h5 id="grok"><a href="#grok" class="headerlink" title="grok"></a>grok</h5><p>grok用来解析任意的文本，然后生成结构化的数据；</p>
-<h3 id="Filebeat"><a href="#Filebeat" class="headerlink" title="Filebeat"></a>Filebeat</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./filebeat -e -c filebeat.yml -d &quot;publish&quot;</div></pre></td></tr></table></figure>
-<h3 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h3><blockquote></blockquote>
-<h4 id="Elasticsearch架构"><a href="#Elasticsearch架构" class="headerlink" title="Elasticsearch架构"></a>Elasticsearch架构</h4><p><a href="http://www.tuicool.com/articles/ruQBB3E" target="_blank" rel="external">Elasticsearch架构</a></p>
-<ul>
-<li>elasticsearch中的服务发现</li>
-</ul>
-<p>在分布式系统中要解决的第一个问题就是节点之间互相发现及选主的过程，像Zookeeper，就是解决了这个问题；elasticsearch是一个分布式的弹性伸缩的全文搜索及分析引擎，但es的分布式节点服务发现使用了自身的ZenDiscovery，大致过程如下：</p>
-<blockquote>
-<p>节点启动时先ping节点，ping是一个rpc的命令，如果discovery.zen.ping.unicast.hosts中设置了值，则ping设置中的主机，否则ping localhost；<br>ping返回的response，会包含被ping主机的节点信息以及被ping认为的master节点；<br>选举开始，先从各节点认为的master中选举一个做master，按照字母顺序选；<br>如果没有认为的master存在，就从所有节点中选一个，选的方式也是按照字母顺序，但是如果设置了discovery.zen.minimum_master_nodes，那就必须节点总数达到最小值的限制才能开始选举，否则一直等待；<br>最后肯定能选个master出来，如果只有一个节点，就选自己；<br>如果当前节点是master，等待节点个数大于minimum_master_nodes，然后就对外提供服务；<br>如果当前节点不是master，尝试加入master</p>
-</blockquote>
-<ul>
-<li>弹性伸缩的elastic</li>
-</ul>
-<p>体现在如下两个方面：<br>1 服务发现机制让节点很容易加入和退出<br>2 富的设置以及allocation API</p>
-<p>Elasticsearch 节点启动的时候只需要配置discovery.zen.ping.unicast.hosts，这里不需要列举集群中所有的节点，只要知道其中一个即可。当然为了避免重启集群时正好配置的节点挂掉，最好多配置几个节点。节点退出时只需要调用 API 将该节点从集群中排除，系统会自动迁移该节点上的数据，然后关闭该节点即可。当然最好也将不可用的已知节点从其他节点的配置中去除，避免下次启动时出错。</p>
-<p>分片（Shard）以及副本（Replica） 分布式存储系统为了解决单机容量以及容灾的问题，都需要有分片以及副本机制。Elasticsearch 没有采用节点级别的主从复制，而是基于分片；</p>
-<ul>
-<li></li>
-<li></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"># 查看es集群的健康状态</div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/_cat/health?v&quot; -u elastic:changeme</div><div class="line"></div><div class="line"># 查看es集群的节点信息</div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/_cat/nodes?v&quot; -u elastic:changeme</div><div class="line"></div><div class="line"># 查看es集群中所有的index</div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/_cat/indices?v&quot; -u elastic:changeme</div><div class="line"></div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;match_all&quot;:&#123;&#125;&#125;, &quot;size&quot;: 1&#125;&apos;</div><div class="line"></div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;match_all&quot;:&#123;&#125;&#125;, &quot;from&quot;: 10, &quot;size&quot;: 10&#125;&apos;</div><div class="line"></div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;match_all&quot;:&#123;&#125;&#125;, &quot;from&quot;: 10, &quot;size&quot;: 10, &quot;sort&quot;: &#123;&quot;@timestamp&quot;: &#123;&quot;order&quot;: &quot;desc&quot;&#125;&#125;&#125;&apos;</div><div class="line"></div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;match&quot;:&#123;&quot;@timestamp&quot;: &quot;2017-03-31T03:36:13.993Z&quot;&#125;&#125;&#125;&apos;</div><div class="line"></div><div class="line"># 返回所有包含failure的记录</div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;match&quot;:&#123;&quot;message&quot;: &quot;failure&quot;&#125;&#125;&#125;&apos;</div><div class="line"></div><div class="line"># bool query, must  should   must_not</div><div class="line">curl -i -X GET &quot;http://192.168.1.100:9200/logstash-decision-engine/_search?pretty&quot; -u elastic:changeme -d &apos;&#123;&quot;query&quot;:&#123;&quot;bool&quot;: &#123;&quot;should&quot;: [&#123;&quot;match&quot;: &#123;&quot;message&quot;: &quot;failure&quot;&#125;&#125;]&#125;&#125;&#125;&apos;</div><div class="line"></div><div class="line"># filters</div><div class="line"></div><div class="line"># Aggregations</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># start elasticsearch</div><div class="line">cd elasticsearch-5.2.2</div><div class="line">bin/elasticsearch</div></pre></td></tr></table></figure>
-<h4 id="Elasticsearch-Mapping"><a href="#Elasticsearch-Mapping" class="headerlink" title="Elasticsearch Mapping"></a>Elasticsearch Mapping</h4><p>Mapping定义了type中的诸多字段的数据类型以及这些字段如何被Elasticsearch处理，比如一个字段是否可以查询以及如何分词等。默认情况不需要显式的定义mapping， 当新的type或者field引入时，Elasticsearch会自动创建并且注册有合理的默认值的mapping(毫无性能压力)， 只有要覆盖默认值时才必须要提供mapping定义。</p>
-<ul>
-<li>Mapping datatypes</li>
-</ul>
-<p>string: text  keyword<br>numberic types: long, integer, short, byte, double, float<br>date types: date<br>boolean types: boolean<br>binary types: binary<br>range types: integer_range, float_range, long_range, double_range, date_range<br>array type<br>object type: a single json object<br>nested type: for arrays of JSON objects</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/03/16/我眼中的前端工程化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/16/我眼中的前端工程化/" itemprop="url">
-                  我眼中的前端工程化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-16T14:33:19+08:00">
-                2017-03-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote><p>有过痛苦，才知道众生的痛苦；有过执着，才能放下执着；有过牵挂，才能了无牵挂。</p>
-</blockquote>
-<span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject"><img itemprop="url image" src="/images/fed.jpg" class="full-image" alt="前端工程化" title="前端工程化"><meta itemprop="width" content="auto"><meta itemprop="height" content="auto"></span>
-<p>有时候经常会想的一个问题是，人们做工程化的目的是什么？在现实生活中，工程化的例子也不乏可陈；</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1616,7 +1704,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1629,7 +1717,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

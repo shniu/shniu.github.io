@@ -248,6 +248,737 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/18/201804/unit-test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/18/201804/unit-test/" itemprop="url">
+                  单元测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T13:24:41+08:00">
+                2018-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试关注一个方法或一个类。它应该非常小，最多只有几行代码。人们在编写单元测试时会犯许多错误，所以这不是小事。因为它们非常小，所以它们应该在内存中运行，而且，一个单元测试应该在几毫秒内运行完成。任何用到外部依赖（数据库、WebService、文件系统、I/O）的测试都不是一个单元测试，那是其他的东西（“集成测试（integration test）”、“综合测试（integrated test）”、验收测试、端到端测试，等等）。</p>
+<p>单元测试更偏技术，它们通常关注代码细节，甚或是编程语言特有的概念。在类似Java这样的静态编程语言和类似Ruby这样的动态编程语言中，单元测试看上去是不一样的。这就是为什么编写单元测试主要应该由程序员负责。</p>
+<p>另一方面，测试人员更了解如何制定测试计划，根据特定分析，如等价类划分和边界值分析，定义有价值的值。因此，程序员需要从测试人员那里“窃取”这类知识，或者，他们可以和测试人员结对，一起讨论需要编写的测试，但是，之后应该由程序员实现它们。</p>
+<h2 id="什么时候适合写单元测试"><a href="#什么时候适合写单元测试" class="headerlink" title="什么时候适合写单元测试"></a>什么时候适合写单元测试</h2><p>团队可以在生产代码编写完成之后编写单元测试。我们称之为“测试延后（test after）”。但是那通常很困难，因为在编写生产代码时需要时刻考虑可测试性。如果我们选择了这种方法，则生产代码需要经过一个代码审核流程，以确保它是可测试的。只有在完成这项工作之后，程序员和测试人员才可以继续结对创建测试。</p>
+<p>也有一种方法是“测试优先（test-first）”，我建议从同伴那里“窃取”了大量测试知识的程序员使用这种方法。使用这种方法时，我们先分析问题，然后编写一个单元测试，最简单的实现代码，一个单元测试，实现它，依此类推。当团队达到了这个水平，我会说，编写单元测试的程序员是半个测试人员了，因为“测试优先”方法需要大量的测试知识。在这种情况下，测试人员最终将专注于审核单元测试及编写验收测试。</p>
+<p>测试优先方法定义了需要做什么。它定义了我们为解决特定问题而需要编写的代码，因为我们有一个测试形式的定义。只要运行测试，我们就很容易知道我们的功能是否有效。</p>
+<p>采用这种方法可以获得更高的覆盖率，因为测试成了一等开发活动，而不是拖到最后。</p>
+<p>此外，在编写这些测试并详细说明场景时，我们更深入地了解了问题空间，因为许多问题会被提出来。在测试延后方法中，这些讨论有时候都不会发生，开发人员按照自己的想法编写代码，而不是根据解决方案的需要。</p>
+<p>单元测试是一种测试特定代码片段的方法，它可以确保该代码段可以正常运行并且契合软件拼图。有证据表明，借助单元测试，你可以检查超过90%的代码，而且，和QA的手动测试工具不同，恰当构建、可以自动测试的单元测试可以随着代码库一起演化，实时测试代码。</p>
+<h2 id="编写良好的单元测试"><a href="#编写良好的单元测试" class="headerlink" title="编写良好的单元测试"></a>编写良好的单元测试</h2><p>人们有不同的看法——方法、类、模块。第一个难点是让所有的团队成员对单元是什么有一个共识，并编写相应的测试。在我看来，单元非常小，就像发动机中的螺丝或者家具中的钉子那么大。所以，我建议定义单元是什么，并在测试审核阶段对此进行密切关注，确保其得到了执行。</p>
+<p>单元测试混合了编程和测试。为了编写简单、快捷、可维护的测试，程序员需要知道许多测试概念。如：等价划分、边界值分析、测试覆盖、正向测试、逆向测试。</p>
+<p>关于单元测试，还有另外一个经常被遗忘的部分，那就是分析。我们不能不经过思考就立即开始编写测试。我们需要分析问题，如果可能对它进行划分，然后再考虑我们需要编写的单元测试。这里有一个不错的建议，就是总是从系统输出开始，然后找出生成那个输出的可能输入。</p>
+<p>在编写单元测试时，我们应该使用来自问题领域的词汇。测试应该体现一项特性存在于产品中的理由。一个了解业务领域但不了解编程的人也应该能够阅读你的测试。在那方面，和分析师结对非常有用。</p>
+<h2 id="测试要多细的问题"><a href="#测试要多细的问题" class="headerlink" title="测试要多细的问题"></a>测试要多细的问题</h2><blockquote>
+<p>老板为我的代码付报酬，而不是测试，所以，我对此的价值观是——测试越少越好，少到你对你的代码质量达到了某种自信（我觉得这种的自信标准应该要高于业内的标准，当然，这种自信也可能是种自大）。如果我的编码生涯中不会犯这种典型的错误（如：在构造函数中设了个错误的值），那我就不会测试它。我倾向于去对那些有意义的错误做测试，所以，我对一些比较复杂的条件逻辑会异常地小心。当在一个团队中，我会非常小心的测试那些会让团队容易出错的代码。</p>
+</blockquote>
+<h2 id="哪些代码更适合写单元测试"><a href="#哪些代码更适合写单元测试" class="headerlink" title="哪些代码更适合写单元测试"></a>哪些代码更适合写单元测试</h2><ol>
+<li>逻辑复杂的</li>
+<li>容易出错的</li>
+<li>不易理解的，即使是自己过段时间也会遗忘的，看不懂自己的代码，单元测试代码有助于理解代码的功能和需求</li>
+<li>公共代码。比如自定义的所有http请求都会经过的拦截器；工具类等。</li>
+<li>核心业务代码。一个产品里最核心最有业务价值的代码应该要有较高的单元测试覆盖率。</li>
+</ol>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a href="https://juejin.im/post/5924578fa0bb9f005f784c81" target="_blank" rel="external">谈谈单元测试</a></li>
+<li><a href="https://arthurportas.wordpress.com/2017/01/21/sample-project-using-spring-boot-and-mongodbfongo-and-test-repository-with-nosqlunit/" target="_blank" rel="external">Sample project using Spring Boot and MongoDB(Fongo) and test repository with NoSqlUnit</a></li>
+<li><a href="https://devops.datenkollektiv.de/testing-the-mongodb-slice-with-spring-and-fongo.html" target="_blank" rel="external">Testing the MongoDB slice with Spring and Fongo</a></li>
+<li><a href="http://www.baeldung.com/mockito-void-methods" target="_blank" rel="external">Mocking void methods with Mockito</a></li>
+<li><a href="https://www.paradigmadigital.com/dev/tests-integrados-spring-boot-fongo/" target="_blank" rel="external">Tests integrados en Spring Boot con Fongo</a></li>
+<li><a href="https://www.infoq.com/news/2016/01/test-first-TDD-BDD" target="_blank" rel="external">Test First Approaches With Test Driven Development and Behavior Driven Development</a></li>
+<li><a href="http://www.infoq.com/cn/news/2017/02/writing-good-unit-tests" target="_blank" rel="external">writing good unit test</a></li>
+<li><a href="https://blog.fundebug.com/2017/12/20/rethinking-unit-test/" target="_blank" rel="external">重新思考单元测试</a></li>
+<li><p><a href="https://dzone.com/articles/spring-boot-unit-testing-and-mocking-with-mockito" target="_blank" rel="external">Spring Boot: Unit Testing and Mocking with Mockito and JUnit</a></p>
+</li>
+<li><p><a href="http://static.javadoc.io/org.mockito/mockito-core/2.18.0/org/mockito/Mockito.html" target="_blank" rel="external">Mockito document</a></p>
+</li>
+<li><a href="https://docs.spring.io/spring/docs/4.3.16.RELEASE/spring-framework-reference/htmlsingle/#testing" target="_blank" rel="external">Spring test</a></li>
+<li><p><a href="http://sunxiang0918.cn/2016/03/28/%E4%BD%BF%E7%94%A8Mockito%E5%92%8CSpringTest%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" target="_blank" rel="external">使用Mockito和SpringTest进行单元测试</a></p>
+</li>
+<li><p><a href="https://in28minutes1.teachable.com/courses/257149/lectures/3994283" target="_blank" rel="external">in28minutes mockito courses</a></p>
+</li>
+<li><p><a href="http://tengj.top/2017/12/28/springboot12/" target="_blank" rel="external">Spring Boot干货系列：（十二）Spring Boot使用单元测试</a></p>
+</li>
+<li><a href="https://reflectoring.io/transparency-with-spring-boot/" target="_blank" rel="external">Exposing Metrics of a Spring Boot Application using Dropwizard</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/13/201804/java8-new-feature/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/13/201804/java8-new-feature/" itemprop="url">
+                  Java 8
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-13T12:55:53+08:00">
+                2018-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="java-8-带来的变革"><a href="#java-8-带来的变革" class="headerlink" title="java 8 带来的变革"></a>java 8 带来的变革</h2><h2 id="行为参数化"><a href="#行为参数化" class="headerlink" title="行为参数化"></a>行为参数化</h2><h2 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h2><h2 id="行为参数化、lambda、方法引用的例子"><a href="#行为参数化、lambda、方法引用的例子" class="headerlink" title="行为参数化、lambda、方法引用的例子"></a>行为参数化、lambda、方法引用的例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.digcredit.blockchain.rmladmin.ground;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"><span class="keyword">import</span> java.util.Comparator;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by shniu on 2018/4/13.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java8NewFeature</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; str = Arrays.asList(<span class="string">"bbb"</span>, <span class="string">"abc"</span>, <span class="string">"ccc"</span>);</div><div class="line">        System.out.println(str);</div><div class="line">        <span class="comment">// 方法 1 传递代码</span></div><div class="line">        str.sort(<span class="keyword">new</span> MyComparator());</div><div class="line">        System.out.println(str);</div><div class="line"></div><div class="line">        <span class="comment">// 方法2 匿名类</span></div><div class="line">        List&lt;String&gt; str2 = Arrays.asList(<span class="string">"bbb"</span>, <span class="string">"abc"</span>, <span class="string">"ccc"</span>);</div><div class="line">        System.out.println(str2);</div><div class="line">        str2.sort(<span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> o1.compareTo(o2);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        System.out.println(str2);</div><div class="line"></div><div class="line">        <span class="comment">// 方法3 使用 lambda</span></div><div class="line">        List&lt;String&gt; str3 = Arrays.asList(<span class="string">"bbb"</span>, <span class="string">"abc"</span>, <span class="string">"ccc"</span>);</div><div class="line">        System.out.println(str3);</div><div class="line">        str3.sort((String s1, String s2) -&gt; s1.compareTo(s2));</div><div class="line">        <span class="comment">// or</span></div><div class="line">        str3.sort((s1, s2) -&gt; s1.compareTo(s2));</div><div class="line">        <span class="comment">// or</span></div><div class="line">        str3.sort(Comparator.comparing((s) -&gt; s));</div><div class="line">        System.out.println(str3);</div><div class="line"></div><div class="line">        <span class="comment">// 方法4 方法引用</span></div><div class="line">        List&lt;String&gt; str4 = Arrays.asList(<span class="string">"bbb"</span>, <span class="string">"abc"</span>, <span class="string">"ccc"</span>);</div><div class="line">        System.out.println(str4);</div><div class="line">        str4.sort(Comparator.comparing(String::toString));</div><div class="line">        System.out.println(str4);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">String</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> o1.compareTo(o2);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li>java 8 in action</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/11/201804/refactoring/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/11/201804/refactoring/" itemprop="url">
+                  代码重构
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T21:45:05+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/code1.png" class="full-image"></p>
+<h2 id="重构的第一步"><a href="#重构的第一步" class="headerlink" title="重构的第一步"></a>重构的第一步</h2><ul>
+<li>如果你发现自己需要为程序添加一个特性，而代码结构使你无法很方便地达成目的，那就先重构那个程序，是特性的添加比较容易进行，然后再添加特性。</li>
+<li>在做重构前的第一步：重构前，先检查自己是否有一套可靠的测试机制，这些测试必须有自我检测能力。</li>
+<li>重构技术就是以微小的步伐修改程序，如果你犯下错误，很容易可发现它。</li>
+<li>好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。任何一个傻瓜都能写出计算机可以理解的代码。唯有写出人类容易理解的代码才是优秀的程序员。代码应该表现自己的目的。</li>
+<li>临时变量往往引发问题，他们会导致大量参数传来传去，尽量少用。</li>
+<li>重构的节奏：测试、小修改、测试、小修改、测试、小修改…</li>
+</ul>
+<h2 id="重构原则"><a href="#重构原则" class="headerlink" title="重构原则"></a>重构原则</h2><blockquote>
+<p>重构：对软件内部结构的一种调整，目的是在不改变软件可观察行为的前提下，提高其可理解性，降低其修改成本。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/10/201804/design-pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/10/201804/design-pattern/" itemprop="url">
+                  设计模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T08:01:08+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="模式的定义"><a href="#模式的定义" class="headerlink" title="模式的定义"></a>模式的定义</h2><p>每个模式都描述了一个在我们的环境中不断出现的问题，然后描述了该问题的解决方案的核心，通过这种方式，我们可以无数次地重用那些已有的成功的解决方案，无须再重复相同的工作。这个定义可以简单地用一句话表示：模式是在特定环境下人们解决某类重复出现问题的一套成功或有效的解决方案。</p>
+<blockquote>
+<p>每一个模式(Pattern)都从Context（前提条件）、Theme或Problem（目标问题）、 Solution（解决方案）三个方面进行了描述，并给出了从用户需求分析到建筑环境结构设计直至经典实例的过程模型。</p>
+</blockquote>
+<p>软件模式是在软件开发中某些可重现问题的一些有效解决方法，软件模式的基础结构主要由四部分构成，包括问题描述【待解决的问题是什么】、前提条件【在何种环境或约束条件下使用】、解法【如何解决】和效果【有哪些优缺点】</p>
+<p>设计模式(Design Pattern)是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结，使用设计模式是为了可重用代码、让代码更容易被他人理解并且保证代码可靠性。</p>
+<p>设计模式一般包含模式名称、问题、目的、解决方案、效果等组成要素，其中关键要素是模式名称、问题、解决方案和效果。模式名称(Pattern Name)通过一两个词来描述模式的问题、解决方案和效果，以便更好地理解模式并方便开发人员之间的交流，绝大多数模式都是根据其功能或模式结构来命名的（GoF设计模式中没有一个模式用人名命名，微笑）；问题(Problem)描述了应该在何时使用模式，它包含了设计中存在的问题以及问题存在的原因；解决方案(Solution)描述了一个设计模式的组成成分，以及这些组成成分之间的相互关系，各自的职责和协作方式，通常解决方案通过UML类图和核心代码来进行描述；效果(Consequences)描述了模式的优缺点以及在使用模式时应权衡的问题。</p>
+<p>设计模式可分为创建型(Creational)，结构型(Structural)和行为型(Behavioral)三种，其中创建型模式主要用于描述如何创建对象，结构型模式主要用于描述如何实现类或对象的组合，行为型模式主要用于描述类或对象怎样交互以及怎样分配职责，在GoF 23种设计模式中包含5种创建型设计模式、7种结构型设计模式和11种行为型设计模式。</p>
+<h4 id="观点"><a href="#观点" class="headerlink" title="观点"></a>观点</h4><ol>
+<li>模式从不保证任何东西，它不能保证你一定能够做出可复用的软件，提高你的生产率，更不能保证世界和平，微笑。模式并不能替代人来完成软件系统的创造，它们只不过会给那些缺乏经验但却具备才能和创造力的人带来希望。</li>
+<li>掌握设计模式并不是件很难的事情，关键在于多思考，多实践，不要听到人家说懂几个设计模式就很“牛”，只要用心学习，设计模式也就那么回事</li>
+<li>学习每一个设计模式时至少应该掌握如下几点：这个设计模式的意图是什么，它要解决一个什么问题，什么时候可以使用它；它是如何解决的，掌握它的结构图，记住它的关键代码；能够想到至少两个它的应用实例，一个生活中的，一个软件中的；这个模式的优缺点是什么，在使用时要注意什么。当你能够回答上述所有问题时，恭喜你，你了解一个设计模式了，至于掌握它，那就在开发中去使用吧，用多了你自然就掌握了。</li>
+</ol>
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><ul>
+<li>单一职责原则 (Single Responsibility Principle, SRP) 一个类只负责一个功能领域中的相应职责</li>
+<li>开闭原则 (Open-Closed Principle, OCP) 软件实体应对扩展开放，而对修改关闭</li>
+<li>里氏代换原则 (Liskov Substitution Principle, LSP)  所有引用基类对象的地方能够透明地使用其子类的对象</li>
+<li>依赖倒转原则 (Dependence Inversion Principle, DIP) 抽象不应该依赖于细节，细节应该依赖于抽象</li>
+<li>接口隔离原则 (Interface Segregation Principle, ISP) 使用多个专门的接口，而不使用单一的总接口</li>
+<li>合成复用原则 (Composite Reuse Principle, CRP) 尽量使用对象组合，而不是继承来达到复用的目的</li>
+<li>迪米特法则 (Law of Demeter, LoD) 一个软件实体应当尽可能少地与其他实体发生相互作用<br>具体的可参见之前的博客 <a href="http://shniu.github.io/2017/03/09/设计原则/">设计原则</a></li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a href="http://woquanke.com/books/gof/" target="_blank" rel="external">设计模式</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/09/201804/spring-boot-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/09/201804/spring-boot-1/" itemprop="url">
+                  Spring boot 系列 - 入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T15:05:48+08:00">
+                2018-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote><p>将书越读越薄，将知识越学越广阔</p>
+</blockquote>
+<span itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject"><img itemprop="url image" src="/images/spring-boot1.jpg" class="full-image" alt="my-heaven" title="spring-boot"><meta itemprop="width" content="auto"><meta itemprop="height" content="auto"></span>
+<p>Spring Boot(英文中是“引导”的意思)，是用来简化Spring应用的搭建到开发的过程。应用开箱即用，只要通过 “just run”（可能是 java -jar 或 tomcat 或 maven插件run 或 shell脚本），就可以启动项目。二者，Spring Boot 只要很少的Spring配置文件（例如那些xml，property）。 因为“习惯优先于配置”的原则，使得Spring Boot在快速开发应用和微服务架构实践中得到广泛应用。</p>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><ul>
+<li><p><a href="http://www.spring4all.com/article/266" target="_blank" rel="external">Spring Boot 之 HelloWorld详解</a><br>spring boot 入门级的使用介绍</p>
+</li>
+<li><p><a href="http://www.spring4all.com/article/248" target="_blank" rel="external">Spring Boot 配置文件详解：自定义属性、随机数、多环境配置等</a></p>
+</li>
+<li><a href="http://blog.didispace.com/spring-boot-learning-1/" target="_blank" rel="external">Spring Boot快速入门</a></li>
+<li><a href="http://blog.didispace.com/books/java8-tutorial/ch1.html" target="_blank" rel="external">Java 8 简明教程</a></li>
+<li><a href="http://blog.didispace.com/books/think-in-java/" target="_blank" rel="external">Thinking in Java (Java 编程思想)</a></li>
+<li><a href="http://blog.didispace.com/books/spring-boot-reference/" target="_blank" rel="external">Spring-Boot-Reference-Guide</a></li>
+<li><a href="http://blog.didispace.com/books/spring-framework-4-reference/" target="_blank" rel="external">spring-framework-4-reference</a></li>
+<li><a href="http://blog.didispace.com/books/spring-mvc-4-tutorial/" target="_blank" rel="external">Spring MVC 4.2.4.RELEASE 中文文档 </a></li>
+<li><a href="https://gitee.com/didispace/SpringBoot-Learning" target="_blank" rel="external">Spring boot learing</a></li>
+<li><a href="http://blog.didispace.com/springbootrestfulapi/" target="_blank" rel="external">Spring Boot构建RESTful API与单元测试</a></li>
+<li><a href="http://blog.didispace.com/springbootmongodb-plus/" target="_blank" rel="external">Spring Boot中增强对MongoDB的配置（连接池等）</a></li>
+<li><a href="http://blog.didispace.com/tags/Spring-Boot/" target="_blank" rel="external">Spring boot 系列文章</a></li>
+<li><a href="http://blog.didispace.com/Spring-Boot基础教程/" target="_blank" rel="external">Spring Boot基础教程</a></li>
+<li><a href="http://blog.didispace.com/Spring-Boot-2-0-feature/" target="_blank" rel="external">Spring Boot 2.0 新特性学习</a></li>
+<li><a href="http://blog.didispace.com/Spring-Cloud基础教程/" target="_blank" rel="external">Spring Cloud基础教程</a></li>
+<li><p><a href="http://blog.didispace.com/12factor-zh-cn/" target="_blank" rel="external">云原生应用的12要素</a><br>这是一个非常好的总结，有必要看一下</p>
+</li>
+<li><p><a href="http://blog.didispace.com/categories/Spring-Cloud/" target="_blank" rel="external">spring cloud</a></p>
+</li>
+<li><a href="http://www.spring4all.com" target="_blank" rel="external">spring for all 社区</a></li>
+<li><a href="http://doc.spring4all.com/spring-guildes/spring-boot-with-docker.html" target="_blank" rel="external">Spring Boot应用Docker化</a></li>
+<li><a href="http://www.spring4all.com/article/653" target="_blank" rel="external">论系统架构设计中缓存的重要性</a><br>解耦是计算机系统架构设计中最常用的手段，那么缓存就必将在计算机系统中无处不在。使用缓存将大大提高我们系统的性能。而缓存用空间换时间的方式解决问题，而空间不可能无限使用，使用缓存我们将考虑如何存储，如何使用，如何提高命中率，如何确定有效的更新策略、更有如何保证数据一致性、自身可用性可维护性等等。<br><a href="http://www.spring4all.com/question/177" target="_blank" rel="external">论系统架构设计中缓存的重要性</a></li>
+</ul>
+<h3 id="关于-Spring-的一些注解"><a href="#关于-Spring-的一些注解" class="headerlink" title="关于 Spring 的一些注解"></a>关于 Spring 的一些注解</h3><ul>
+<li><code>@Controller</code>：修饰 class，用来创建处理 http 请求的对象</li>
+<li><code>@RestController</code>：Spring4 之后加入的注解，原来在 <code>@Controller</code> 中返回 json 需要 <code>@ResponseBody</code> 来配合，如果直接用 @RestController 替代 @Controller 就不需要再配置 @ResponseBody，默认返回 json 格式。</li>
+<li><code>@RequestMapping</code>：配置 url 映射</li>
+</ul>
+<h3 id="Spring-boot-配置的优先级"><a href="#Spring-boot-配置的优先级" class="headerlink" title="Spring boot 配置的优先级"></a>Spring boot 配置的优先级</h3><ol>
+<li>命令行参数</li>
+<li>java:comp/env 里的 JNDI 属性</li>
+<li>JVM 系统属性</li>
+<li>操作系统环境变量</li>
+<li>RandomValuePropertySource 属性类生成的 <code>random.*</code> 属性</li>
+<li>应用以外的 application.properties（或 yml）文件</li>
+<li>打包在应用内的 application.properties（或 yml）文件</li>
+<li>在应用 @Configuration 配置类中，用 @PropertySource 注解声明的属性文件</li>
+<li>SpringApplication.setDefaultProperties 声明的默认属性</li>
+</ol>
+<p>命令行参数优先级最高。这个可以根据这个优先级，可以在测试或生产环境中快速地修改配置参数值，而不需要重新打包和部署应用。</p>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html" target="_blank" rel="external">Spring boot 的配置项</a></p>
+<h3 id="Spring-boot-course"><a href="#Spring-boot-course" class="headerlink" title="Spring boot course"></a>Spring boot course</h3><ul>
+<li><a href="https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps" target="_blank" rel="external">Spring Boot for Beginners in 10 Step</a></li>
+</ul>
+<h3 id="Spring-boot-错误处理"><a href="#Spring-boot-错误处理" class="headerlink" title="Spring boot 错误处理"></a>Spring boot 错误处理</h3><ul>
+<li><a href="http://www.spring4all.com/article/1162" target="_blank" rel="external">Spring Boot 异常处理汇总</a></li>
+</ul>
+<h4 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h4><ul>
+<li><a href="http://blog.didispace.com/books/mostly-adequate-guide-chinese/" target="_blank" rel="external">js函数式编程</a></li>
+<li><a href="http://blog.didispace.com/books/http2-explained-chinese/" target="_blank" rel="external">http2</a></li>
+<li><a href="http://blog.didispace.com/books/a-programmer-prepares/" target="_blank" rel="external">程序员的自我修养</a></li>
+<li><a href="http://blog.didispace.com/阿里云Redis开发规范/" target="_blank" rel="external">阿里云Redis开发规范</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/09/201804/monitor-platform/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -901,842 +1632,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/19/201803/distributed-system-intro/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/19/201803/distributed-system-intro/" itemprop="url">
-                  分布式系统介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T13:34:11+08:00">
-                2018-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="为什么需要分布式系统"><a href="#为什么需要分布式系统" class="headerlink" title="为什么需要分布式系统"></a>为什么需要分布式系统</h2><p>分布式系统固然高大上，但是不是一开始就需要做分布式系统呢？肯定不是，传统的单体架构能满足的场景，就不要考虑使用分布式系统；分布式系统有它需要解决的痛点：</p>
-<ul>
-<li>增大系统容量</li>
-</ul>
-<p>当业务量越来越大，要应对与日剧增的业务量，单台机器的性能已经无法满足了，我们就需要很多台机器去满足大规模的应用场景；所以，需要垂直或水平拆分业务系统，让其演变成为一个分布式架构的系统。</p>
-<ul>
-<li>加强系统可用性</li>
-</ul>
-<p>业务越来越多，服务拆分的也越来越细，很多业务和服务都变得越来越关键，需要提高整个系统架构的可用性，意味着架构中不能存在单点故障；这样整个系统不会因为单点故障导致整体不可用；所以，使用分布式架构来冗余系统以消除单点故障，从而提高系统的可用性。</p>
-<p>其他优点：</p>
-<ul>
-<li>模块化，模块可重用度高</li>
-<li>软件服务模块被拆分，开发和发布速度可以并行而变快</li>
-<li>系统扩展性高</li>
-<li>团队协作流程得到改善</li>
-</ul>
-<p>在系统架构的世界里，不存在完美的解决方案，基本都是在不同方面进行各种trade-off，所以说，分布式系统有他自己需要考虑的难点和问题：</p>
-<ul>
-<li>架构设计变得复杂了，尤其是分布式事务</li>
-<li>部署会变得复杂了，要维护多个服务</li>
-<li>吞吐量是大了，但是响应时间会变长，这也是要重点解决的问题</li>
-<li>运维的复杂度可想而知变得更复杂了，更难维护了</li>
-<li>架构复杂，学习曲线剧增</li>
-<li>测试和查错的复杂度加大</li>
-<li>技术选型可以多样化，维护和运维的要求变得很高</li>
-<li>管理分布式系统中的服务和调度变得困难和复杂</li>
-</ul>
-<p>分布式系统中的难点在于系统设计、服务管理和系统运维；虽然解决了单点故障和性能容量的问题，但是随之而来的其他问题，却层出不穷；</p>
-<h2 id="分布式系统的历史"><a href="#分布式系统的历史" class="headerlink" title="分布式系统的历史"></a>分布式系统的历史</h2><p>模块化编程，到面向事件设计，到基于接口/构件设计，再到SOA，SOA是一种基于服务的架构，将应用程序功能作为服务发送给最终用户或者其他服务，采用开放标准与软件资源进行交互：</p>
-<ul>
-<li>可重用，粒度合适，模块化，可组合，构件化及有互操作性</li>
-<li>符合开放标准</li>
-<li>服务识别和分类，提供和发布，监控和追踪</li>
-</ul>
-<p>面向服务的架构三个重要发展阶段：</p>
-<ol>
-<li>单体架构，软件模块高度耦合</li>
-<li>松耦合的SOA架构，这种架构需要一个标准的协议或中间件来联动其他服务，这样服务间就不直接依赖</li>
-<li>微服务架构，这种架构更加松耦合；每个微服务都能独立完整运行，后端的数据库也被微服务这样的架构分散到不同的服务中。但是微服务的服务间需要服务编排和服务整合的引擎，来统一指挥和调度服务；这个引擎可以是网关，可以是工作流引擎，会用到容器化调度的技术，如Kubernetes；<a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="external">微服务</a>.</li>
-</ol>
-<p>微服务的好处是让开发速度变得更快，部署快，隔离性高，系统的扩展性也好，但是集成测试，运维和服务管理就比较麻烦；</p>
-<h2 id="分布式系统的难点"><a href="#分布式系统的难点" class="headerlink" title="分布式系统的难点"></a>分布式系统的难点</h2><p>亚马逊的架构规定：</p>
-<ul>
-<li>所有团队的程序模块都要通过 Service interface 方式将数据和功能开放出来；</li>
-<li>团队间程序模块的信息通信都要通过这些接口；</li>
-<li>除此之外不能通过其他方式</li>
-<li>任何技术都可以使用，如 http, corba, pub/sub 等</li>
-</ul>
-<p>一些总结：</p>
-<ul>
-<li>分布式服务的架构需要分布式的团队架构</li>
-</ul>
-<p>一个服务由一个小团队负责，从前到后，从需求分析到上线运维，按职责分工，非技能分工</p>
-<ul>
-<li><p>分布式服务查错不容易</p>
-</li>
-<li><p>没有专职的测试人员，没有专职的运维人员，开发人员做所有的事情</p>
-</li>
-<li><p>运维优先，崇尚简化和自动化</p>
-</li>
-<li><p>内部服务和外部服务一致</p>
-</li>
-</ul>
-<p>分布式服务架构需要从组织，到软件工程，再到技术上有一个大的改造，需要长时间来磨合和改进，并不断总结教训和成功经验。</p>
-<h3 id="异构系统的问题"><a href="#异构系统的问题" class="headerlink" title="异构系统的问题"></a>异构系统的问题</h3><ul>
-<li>软件和应用不标准</li>
-</ul>
-<p>不同软件不同语言会出现兼容性和不同的开发、运维、测试标准；如有的用配置文件，有点需要调用管理 API 接口</p>
-<ul>
-<li>通讯协议不标准</li>
-</ul>
-<p>需要规范分布式架构的通讯协议，协议包括协议头和协议体，如，很多服务的 API 出错返回 HTTP 的错误状态码，二是返回正常的 200，然后在 Body 里 JSON 串中描述 error 信息，不是一种好的习惯；</p>
-<ul>
-<li>数据格式不标准</li>
-<li>开发和运维的过程和方法不标准</li>
-</ul>
-<p>一个好的配置管理，要有三层：底层和操作系统相关，中间层和中间件相关，最上层和业务应用相关</p>
-<h3 id="系统架构中的服务依赖性问题"><a href="#系统架构中的服务依赖性问题" class="headerlink" title="系统架构中的服务依赖性问题"></a>系统架构中的服务依赖性问题</h3><p>单体服务中，一个机器挂了，整个软件就挂了，但是分布式架构下，服务具有依赖性，一个服务挂了可能引发整个依赖链上的服务都挂掉；</p>
-<ul>
-<li>如果非关键业务依赖了关键业务，则会升级为一个关键业务</li>
-<li>服务依赖链中，整个 SLA 由最差的哪个服务决定</li>
-</ul>
-<p>很多分布式架构在应用层上做到了业务隔离，然而，在数据库结点上并没有。如果一个非关键业务把数据库拖死，那么会导致全站不可用。所以，数据库方面也需要做相应的隔离。也就是说，最好一个业务线用一套自己的数据库。这就是亚马逊服务器的实践——系统间不能读取对方的数据库，只通过服务接口耦合。这也是微服务的要求。我们不但要拆分服务，还要为每个服务拆分相应的数据库。</p>
-<h3 id="故障发生的概率更大"><a href="#故障发生的概率更大" class="headerlink" title="故障发生的概率更大"></a>故障发生的概率更大</h3><h3 id="多层架构的运维复杂度更大"><a href="#多层架构的运维复杂度更大" class="headerlink" title="多层架构的运维复杂度更大"></a>多层架构的运维复杂度更大</h3><p>可以简单分为4层：基础层、平台层、应用层和接入层</p>
-<p>分工不是问题，问题是分工后的协作是否统一和规范。</p>
-<h2 id="分布式系统技术栈"><a href="#分布式系统技术栈" class="headerlink" title="分布式系统技术栈"></a>分布式系统技术栈</h2><p>分布式系统的主要目标是增加系统容量，提高系统可用性，从技术角度讲就是如下两点：</p>
-<ul>
-<li>大流量处理。通过集群技术把大规模并发请求的负载分散到不同的机器上</li>
-<li>关键业务保护。提高服务的可用性，如果流量过大，需要对业务降级，以保护关键业务流转</li>
-</ul>
-<p>就是提高整体架构的吞吐量更多的并发和流量；提高系统的稳定性，让系统的可用性更高</p>
-<h3 id="提高系统性能"><a href="#提高系统性能" class="headerlink" title="提高系统性能"></a>提高系统性能</h3><p><img src="https://github.com/shniu/resources/raw/master/images/distribute-tech.jpeg" alt="img"></p>
-<h3 id="提高架构图的稳定性"><a href="#提高架构图的稳定性" class="headerlink" title="提高架构图的稳定性"></a>提高架构图的稳定性</h3><p><img src="https://github.com/shniu/resources/raw/master/images/distribute-tech2.jpeg" alt="img"></p>
-<p>Docker 是一个非常值得学习和关注的技术。</p>
-<h3 id="分布式系统的纲领"><a href="#分布式系统的纲领" class="headerlink" title="分布式系统的纲领"></a>分布式系统的纲领</h3><ul>
-<li>全栈系统监控</li>
-<li>服务/资源调度</li>
-<li>流量调度</li>
-<li>状态/数据调度</li>
-<li>开发和运维自动化</li>
-</ul>
-<p><img src="https://github.com/shniu/resources/raw/master/images/distribute-tech3.jpeg" alt="img"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/13/201803/Singleton-Design-Pattern-in-Go/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/13/201803/Singleton-Design-Pattern-in-Go/" itemprop="url">
-                  Go 中的单例设计模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-13T07:33:42+08:00">
-                2018-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>多线程应用程序非常复杂，尤其是当你的代码没有组织并且与资源访问、管理和维护保持一致时。如果你想最大限度地减少错误，你需要哲学和规则来生活。这里有一些我的：</p>
-<ul>
-<li>资源的分配和回收应该在同一类型中抽象和管理</li>
-<li>资源线程安全性应该在同一类型中抽象和管理</li>
-<li>公共接口应该是访问共享资源的唯一手段</li>
-<li>任何分配了资源的线程都应该释放同类型的资源</li>
-</ul>
-<p>在 Go 中，没有线程，只有 <code>Go Routines</code>。Go 运行时抽象了这些例程的线程和任务交换。无论如何，相同的哲学和规则也适用。</p>
-<p>我最喜欢的设计模式之一是单例模式（Singleton）。当你只需要一个类型的实例并且该类型管理共享资源时，它提供了一个很好的实现。访问由该引用管理的共享资源是通过静态公共接口抽象出来的。这些静态方法还提供了线程安全性。使用 Singleton 的应用程序负责初始化和销毁 Singleton，但不能直接访问内部。</p>
-<p>在一段时间内，我回避如何在 Go 中实现一个单例的问题，因为 Go 不是传统的面向对象的编程语言，也没有静态方法。</p>
-<p>我认为 Go 是一个轻量级的面向对象编程语言。是的，它确实具有封装和类型成员函数，但缺乏继承性，因此缺乏传统的多态性。在我曾经使用过的所有 OOP 语言中，除非我想实现多态性，否则我从来没有使用过继承。 在 Go 中实现接口的方式不需要继承。 Go 取了 OOP 最好的部分，移除了剩下的部分，并给了我们一个更好的方式来编写多态代码。</p>
-<p>在 Go 中我们可以利用包和类型的作用域和封装规则来实现 Singleton，对于这篇文章，我们将探索我的 straps 包，因为它将给我们一个现实世界的例子。</p>
-<p>straps 包提供了一种机制来将配置选项（straps）存储在XML文档中，并将其读入内存以供应用程序使用。straps 的名称来自配置网络设备的早期阶段。 这些设置被称为 straps，并且这个名字一直伴随着我。 在 MacOS 中，我们有 .plist 文件，在 .Net 中我们有 app.config 文件，在 Go 中有 straps.xml 文件。</p>
-<p>以下是我的一个应用程序的示例 straps 文件：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">straps</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">!–</span> <span class="attr">Log</span> <span class="attr">Settings</span> –&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">strap</span> <span class="attr">key</span>=<span class="string">"baseFilePath"</span> <span class="attr">value</span>=<span class="string">"/Users/bill/Logs/OC-DataServer"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">strap</span> <span class="attr">key</span>=<span class="string">"machineName"</span> <span class="attr">value</span>=<span class="string">"my-machine"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">strap</span> <span class="attr">key</span>=<span class="string">"daysToKeep"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">!–</span> <span class="attr">ServerManager</span> <span class="attr">Settings</span> –&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">strap</span> <span class="attr">key</span>=<span class="string">"cpuMultiplier"</span> <span class="attr">value</span>=<span class="string">"100"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">straps</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>straps 包知道如何读取这个 xml 文件，并通过基于 Singleton 的公共接口提供对这些值的访问。 由于这些值只需要读入内存中，因此 Singleton 对于这个包来说是一个很好的选择。</p>
-<p>以下是 straps 包和类型信息：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> straps</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"encoding/xml"</span></div><div class="line">    <span class="string">"io"</span></div><div class="line">    <span class="string">"os"</span></div><div class="line">    <span class="string">"path/filepath"</span></div><div class="line">    <span class="string">"strconv"</span></div><div class="line">)</div><div class="line"></div><div class="line">.</div><div class="line">. Types Removed</div><div class="line">.</div><div class="line"></div><div class="line"><span class="keyword">type</span> straps <span class="keyword">struct</span> &#123;</div><div class="line">    StrapMap <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span> <span class="comment">// The map of strap key value pairs</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> st straps <span class="comment">// A reference to the singleton</span></div></pre></td></tr></table></figure>
-<p>我不会谈论读取 XML 文档的内容。 如果你有兴趣，请阅读这篇博文 <a href="http://www.goinggo.net/2013/06/reading-xml-documents-in-go.html。" target="_blank" rel="external">http://www.goinggo.net/2013/06/reading-xml-documents-in-go.html。</a></p>
-<p>在上面的代码片段中，您将看到包名称（straps），私有类型 straps 的定义和私有包变量 st。st 变量将包含 Singleton 的值。</p>
-<p>Go 的作用域规则声明以大写字母开头的类型和函数是公开的，并且可以在包外部访问。以小写字母开头的类型和函数是私有的，在包之外不可访问。</p>
-<p>我使用小写字母命名在函数作用域内定义的变量。在函数作用域之外定义的变量名称，例如类型成员和包变量以大写字母开头。这使我可以查看代码并立即知道引用了哪个给定变量的内存。</p>
-<p>straps 类型和 st 变量都是私有的，只能从包中访问。</p>
-<p>查看初始化 Singleton 以供使用的 Load 函数：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">MustLoad</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// Find the location of the straps.xml file</span></div><div class="line">    strapsFilePath, err := filepath.Abs(<span class="string">"straps.xml"</span>)</div><div class="line"></div><div class="line">    <span class="comment">// Open the straps.xml file</span></div><div class="line">    file, err := os.Open(strapsFilePath)</div><div class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">        <span class="built_in">panic</span>(err.Error())</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">defer</span> file.Close()</div><div class="line"></div><div class="line">    <span class="comment">// Read the straps file</span></div><div class="line">    xmlStraps, err := readStraps(file)</div><div class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">        <span class="built_in">panic</span>(err.Error())</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Create a straps object</span></div><div class="line">    st = straps&#123;</div><div class="line">        StrapMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>),</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Store the key/value pairs for each strap</span></div><div class="line">    <span class="keyword">for</span> _, strap := <span class="keyword">range</span> xmlStraps &#123;</div><div class="line">        st.StrapMap[strap.Key] = strap.Value</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Load 函数是包的公有函数。应用程序可以通过包名来访问这个函数。你可以看到我如何使用以局部变量的小写字母开头的名称。在 Load 函数的底部创建一个 straps 对象，并将该引用设置为 st 变量。在这一点上，Singleton 存在并且 straps 已经可以使用了。</p>
-<p>使用公有函数 Strap 访问 straps：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Strap</span><span class="params">(key <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</div><div class="line">    <span class="keyword">return</span> st.StrapMap[key]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>公有函数 Strap 使用 Singleton 引用来访问共享资源。在这个例子中，就是 straps 的字典映射。 如果字典映射在应用程序的生命周期内可能发生变化，则需要使用互斥锁或其他同步对象来保护字典映射。 幸运的是，straps 一旦被装载就不会改变。</p>
-<p>由于由 straps 管理的资源只是内存，因此不需要 Unload 或 Close 方法。如果我们需要一个函数来关闭任何资源，则必须创建另一个公有函数。</p>
-<p>如果在 Singleton 包中需要私有方法来帮助组织代码，我喜欢使用成员函数。 由于类型是私有的，我可以使成员函数公开，因为它们不可访问。 我也认为成员函数有助于使代码更具可读性。 通过查看函数是否是成员函数，我知道该函数是私有的还是公共接口的一部分。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">SomePublicFunction</span><span class="params">()</span></span> &#123;</div><div class="line">    .</div><div class="line">    st.SomePrivateMemberFunction(<span class="string">"key"</span>)</div><div class="line">    .</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(straps *straps)</span> <span class="title">SomePrivateMemberFunction</span><span class="params">(key <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">    <span class="keyword">return</span> straps.StrapMap[key]</div><div class="line">    .</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>由于函数是一个成员函数，我们需要使用 st 变量来进行函数调用。从成员函数内使用局部变量（straps）而不是 st 变量。成员函数是公共的，但引用是私有的，所以只有包可以引用成员函数。这只是我为自己建立的一个习惯。</p>
-<p>下面是一个使用 straps 包的示例程序：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"ArdanStudios/straps"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    straps.MustLoad()</div><div class="line">    cpu := straps.Strap(<span class="string">"cpuMultiplier"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 main 中我们不需要分配任何内存或保持引用。通过包名，我们调用 Load 来初始化 Singleton。然后再次通过包名称访问公共接口，在这种情况下，是 Strap 函数。</p>
-<p>如果你有通过公共接口尝试来管理共享资源的需求，就使用 Singleton。</p>
-<p>和往常一样，我希望这可以帮助您更好地编写代码并减少 bug。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/13/201803/What-I-wish-I-knew-when-I-became-CTO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/13/201803/What-I-wish-I-knew-when-I-became-CTO/" itemprop="url">
-                  当我做 CTO 时，我希望自己知道什么
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-13T07:33:42+08:00">
-                2018-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>反思过去的经验教训是一段充满激情的美妙经历，与传统工作相比，创业是一个相反的过程：最开始你并不知道公司能否启动，也不确定这能否变成一个全职的工作；随着公司的发展壮大，你开始面对各种蜂拥而至的问题，而且大多数问题你之前都没有碰到过。在这段时间里你会以飞快的速度积累并掌握各种知识和经验。</p>
-<p>创业公司虽然灵活，但你最开始作出的决策将会在以后的时间里产生影响。一开始对基础设施、框架以及编程语言的选择，会影响相当长的一段时间。随着业务的发展，需要增加的功能和子系统越来越多，其中的每一项都会在未来影响后续的选择，而当公司进入快速发展期的时候，你会发现根本没有办法停下来考虑重构。</p>
-<p>我对于我们最开始的选择还是比较满意的：Amazon Web Services 、Elastic Beanstalk 、Firebase 、AngularJS 、Coffeescript 、Kafka 、Simple Queue System 、SocketStream 、Docker 、SemaphoreCI 、MySQL 。其中，只有 AngularJS 和 MySQL 两个在后续的扩展上带来问题。我们的 AngularJS 代码是写在一个文件上的，该文件后来变得很大，导致初次下载的时候需要耗费一段时间，而且在系统运行时也感觉很慢。MySQL（ 用的是 RDS ）由于 BI 查询的复杂度增加而崩溃了好几次，并且不好修复。</p>
-<p>一项技术的生命周期出乎意料地短。我们用到的 CoffeeScript 和 AngularJS 就是现在已显得过时了的组件（我们打算迁移到 TypeScript 和最新版的 AngularJS ），但它们在我们选用的当时都是比较前沿的。另外比较幸运的是，我对新技术的钟情并没有造成什么严重的问题。我很庆幸选择了 CoffeeScript ，在过去这几年里，它那简明的语法帮助我大大地提升了开发效率。</p>
-<p>经历了上述这些事情后，我意识到，需要提前对技术的更新换代做好时间安排和策略准备。对于每一项技术的选定，你都有要有承受长期的“技术债”的心理准备。</p>
-<p>同样地，你写的组件和库也会被长时间地使用。不管写得好坏，你都几乎不会再去动它。因此你最好在开始的时候多花一些时间进行设计和构建，以方便日后的维护。</p>
-<p>我对那些暂停开发新功能并重写整个系统的“重构”做法一向是反感的。这曾让很多项目陷入死亡的漩涡。“童子军军规”里面有一条说得很好：</p>
-<blockquote>
-<p>试着让这个世界比你认识它的时候好一点 —— Robert Baden Powell ，童子军与女童军的创始人。</p>
-</blockquote>
-<p>于是我们尝试在代码中进行一些小改进。有时候想通盘考虑整个代码库的状态（往往都是不完美的状态）会让人感到头大，所以我会专注于持续、小幅的改进。<br>最后，关于测试的一些提醒：让我们的团队编写测试代码真的是难于登天。我给我们系统中的很多部分都编写了测试用例，并配置好了测试服务器，在每次有代码提交的时候会自动运行。尽管如此，我还是很少看到其他人添加新的测试用例。我本希望团队能自发地重视测试，但是，并没有。对此，我的一些解决思路是：</p>
-<ul>
-<li>组织定期的讲座重温如何编写测试用例；</li>
-<li>要求重要的功能必须包含至少一个测试用例；</li>
-<li>优化测试服务器，让自动化测试在 10 秒内完成，而不是 10 分钟，让程序员及时看到测试结果。</li>
-</ul>
-<p>除了技术决策以外，CTO 的另外一大责任是人员管理。CTO 每天的大部分时间会花在管理与领导、招人与解雇等事务之中。我不得不一边学习如何管理一边推进工作，所以不可避免会犯一些错误。<br>不管我阅读过多少次“员工是公司最重要的资产”，我都没有准备好应对招聘这么让人筋疲力尽的事情。如果你刚开始着手招聘，那我要提醒你：你可能要在上面花很长的时间，也可能要拒绝掉很多人，才能找到让你满意的那位。在此之前我从来没有想到，优秀的创业团队成员竟然如此稀少，我竟需要花如此之多的精力才能找到他们。</p>
-<p>选择招聘的时机也是另外一个棘手问题：这个职位是现在就要招，还是晚点？哪个职位要先招？这些问题在你得到投资之后会尤其突出，因为你会觉得应该要把这些钱派上用场。幸好，Michael Siebel 和 YC 给我们提供了一些很有用的建议：</p>
-<ol>
-<li>当你感觉某个职位需求非常迫切的时候才开始招聘（比如快赶不上合同进度了的时候）；</li>
-<li>招人是为了满足业务发展的需要，不能本末倒置（这条主要适用于还没有形成规模化、可持续的业务流程的早期公司）；</li>
-<li>不要招人来做一些你都还没想明白的事情（一些特殊的候选人也许能给公司带来新的动力，但通常最靠谱的办法还是靠创始人调整公司资源以适应新的发展）。</li>
-</ol>
-<p>综上所述，如果你不确定某个岗位是否需要招聘，那可能就是太早了。我们犯过的错误就是：过早地招人来做一些我们自己并不擅长的增长方案，结果基本上是以失败告终。</p>
-<p>员工管理基本上一路走来都比较顺利 —— 定期开展开诚布公的检查，明确什么是该做的，什么是不该做的，这些措施让我和我的员工保持着良好的关系。</p>
-<p>解雇员工则比较艰难。你可以在别处找到很多有用的建议，我这里只简单说一点：你的直觉通常很早就告诉你应该解雇某个人，但你往往要经过很长时间才能接受这个事实并着手实施，而且实施过程通常很困难。拥有良好的检查制度可以帮助雇佣双方做好最坏结果的准备。另外，如果安排合适的个人发展计划，有些人的水平能得到提升甚至达到优秀，每个人都应该有这样的机会。</p>
-<p>伴随公司发展的一大乐趣就是看到一些优秀的人才在各自的领域冒出头来，成为新的领导者。在此，我要向我的整个团队致以诚挚的敬意和祝贺。</p>
-<hr>
-<p>via: <a href="https://medium.com/sketchdeck-developer-blog/what-i-wish-i-knew-when-i-became-cto-fdc934b790e3" target="_blank" rel="external">https://medium.com/sketchdeck-developer-blog/what-i-wish-i-knew-when-i-became-cto-fdc934b790e3</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/11/201803/go-interface/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/11/201803/go-interface/" itemprop="url">
-                  Go 的 interface
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T22:27:40+08:00">
-                2018-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>接口类型是对其它类型行为的抽象和概括；因为接口类型不会和特定的实现细节绑定在一起，通过这种抽象的方式我们可以让我们的函数更加灵活和更具有适应能力。</p>
-<p>很多面向对象的语言都有相似的接口概念，但 Go 语言中接口类型的独特之处在于它是满足隐式实现的。也就是说，我们没有必要对于给定的具体类型定义所有满足的接口类型；简单地拥有一些必需的方法就足够了。这种设计可以让你创建一个新的接口类型满足已经存在的具体类型却不会去改变这些类型的定义；当我们使用的类型来自于不受我们控制的包时这种设计尤其有用。</p>
-<h2 id="接口即合约"><a href="#接口即合约" class="headerlink" title="接口即合约"></a>接口即合约</h2><p>目前为止，我们看到的类型都是具体的类型。一个具体的类型可以准确的描述它所代表的值并且展示出对类型本身的一些操作方式就像数字类型的算术操作，切片类型的索引、附加和取范围操作。具体的类型还可以通过它的方法提供额外的行为操作。总的来说，当你拿到一个具体的类型时你就知道它的本身是什么和你可以用它来做什么。</p>
-<p>在 Go 语言中还存在着另外一种类型：接口类型。接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会展示出它们自己的方法。也就是说当你有看到一个接口类型的值时，你不知道它是什么，唯一知道的就是可以通过它的方法来做什么。</p>
-<p>我们一直使用两个相似的函数来进行字符串的格式化：<code>fmt.Printf</code> 它会把结果写到标准输出和 <code>fmt.Sprintf</code> 它会把结果以字符串的形式返回。这得益于使用接口，我们不必可悲的因为返回结果在使用方式上的一些浅显不同就必需把格式化这个最困难的过程复制一份。实际上，这两个函数都使用了另一个函数 <code>fmt.Fprintf</code> 来进行封装。<code>fmt.Fprintf</code> 这个函数对它的计算结果会被怎么使用是完全不知道的。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> fmt</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Fprintf</span><span class="params">(w io.Writer, format <span class="keyword">string</span>, args ...<span class="keyword">interface</span>&#123;&#125;)</span> <span class="params">(<span class="keyword">int</span>, error)</span></span></div><div class="line"><span class="title">func</span> <span class="title">Printf</span><span class="params">(format <span class="keyword">string</span>, args ...<span class="keyword">interface</span>&#123;&#125;)</span> <span class="params">(<span class="keyword">int</span>, error)</span> &#123;</div><div class="line">    <span class="keyword">return</span> Fprintf(os.Stdout, format, args...)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Sprintf</span><span class="params">(format <span class="keyword">string</span>, args ...<span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">string</span></span> &#123;</div><div class="line">    <span class="keyword">var</span> buf bytes.Buffer</div><div class="line">    Fprintf(&amp;buf, format, args...)</div><div class="line">    <span class="keyword">return</span> buf.String()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>Fprintf</code> 的前缀 F 表示文件(File)也表明格式化输出结果应该被写入第一个参数提供的文件中。在 Printf 函数中的第一个参数 <code>os.Stdout</code> 是 <code>*os.File</code> 类型；在 Sprintf 函数中的第一个参数 <code>&amp;buf</code> 是一个指向可以写入字节的内存缓冲区，然而它 并不是一个文件类型尽管它在某种意义上和文件类型相似。</p>
-<p>即使 Fprintf 函数中的第一个参数也不是一个文件类型。它是 <code>io.Writer</code> 类型这是一个接口类型定义如下：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> io</div><div class="line"></div><div class="line"><span class="comment">// Writer is the interface that wraps the basic Write method.</span></div><div class="line"><span class="keyword">type</span> Writer <span class="keyword">interface</span> &#123;</div><div class="line">    <span class="comment">// Write writes len(p) bytes from p to the underlying data stream.</span></div><div class="line">    <span class="comment">// It returns the number of bytes written from p (0 &lt;= n &lt;= len(p))</span></div><div class="line">    <span class="comment">// and any error encountered that caused the write to stop early.</span></div><div class="line">    <span class="comment">// Write must return a non-nil error if it returns n &lt; len(p).</span></div><div class="line">    <span class="comment">// Write must not modify the slice data, even temporarily.</span></div><div class="line">    <span class="comment">//</span></div><div class="line">    <span class="comment">// Implementations must not retain p.</span></div><div class="line">    Write(p []<span class="keyword">byte</span>) (n <span class="keyword">int</span>, err error)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>io.Writer</code> 类型定义了函数Fprintf和这个函数调用者之间的约定。一方面这个约定需要调用者提供具体类型的值就像 <code>*os.File</code> 和 <code>*bytes.Buffer</code>，这些类型都有一个特定签名和行为的 Write 的函数。另一方面这个约定保证了 Fprintf 接受任何满足 <code>io.Writer</code> 接口的值都可以工作。Fprintf 函数可能没有假定写入的是一个文件或是一段内存，而是写入一个可以调用 Write 函数的值。</p>
-<p>因为 fmt.Fprintf 函数没有对具体操作的值做任何假设而是仅仅通过 io.Writer 接口的约定来保证行为，所以第一个参数可以安全地传入一个任何具体类型的值只需要满足 <code>io.Writer</code> 接口。一个类型可以自由的使用另一个满足相同接口的类型来进行替换被称作可替换性(LSP 里氏替换)。这是一个面向对象的特征。<br>让我们通过一个新的类型来进行校验，下面 <code>*ByteCounter</code> 类型里的 Write 方法，仅仅在丢失写向它的字节前统计它们的长度。(在这个 += 赋值语句中，让 len(p) 的类型和 <code>*c</code> 的类型匹配的转换是必须的。)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">type ByteCounter int</div><div class="line"></div><div class="line">func (c *ByteCounter) Write(p []byte) (int, error) &#123;</div><div class="line">    *c += ByteCounter(len(p)) // convert int to ByteCounter</div><div class="line">    return len(p), nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>因为 <code>*ByteCounter</code> 满足 io.Writer 的约定，我们可以把它传入 Fprintf 函数中；Fprintf 函数执行字符串格式化的过程不会去关注 ByteCounter 正确的累加结果的长度。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> c ByteCounter</div><div class="line">c.Write([]<span class="keyword">byte</span>(<span class="string">"hello"</span>))</div><div class="line">fmt.Println(c) <span class="comment">// "5", = len("hello")</span></div><div class="line">c = <span class="number">0</span>          <span class="comment">// reset the counter</span></div><div class="line"><span class="keyword">var</span> name = <span class="string">"Dolly"</span></div><div class="line">fmt.Fprintf(&amp;c, <span class="string">"hello, %s"</span>, name)</div><div class="line">fmt.Println(c) <span class="comment">// "12", = len("hello, Dolly")</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/05/201803/for-range-semantics/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/05/201803/for-range-semantics/" itemprop="url">
-                  For range 语义
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T08:42:04+08:00">
-                2018-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为了更好地理解本文中提及的内容，这些是需要首先阅读的好文章：</p>
-<p>下面列出4篇文章的索引：</p>
-<ul>
-<li><ol>
-<li><a href="https://www.goinggo.net/2017/05/language-mechanics-on-stacks-and-pointers.html" target="_blank" rel="external">Language Mechanics On Stacks And Pointers</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://www.goinggo.net/2017/05/language-mechanics-on-escape-analysis.html" target="_blank" rel="external">Language Mechanics On Escape Analysis</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://www.goinggo.net/2017/06/language-mechanics-on-memory-profiling.html" target="_blank" rel="external">Language Mechanics On Memory Profiling</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://www.goinggo.net/2017/06/design-philosophy-on-data-and-semantics.html" target="_blank" rel="external">Design Philosophy On Data And Semantics</a></li>
-</ol>
-</li>
-</ul>
-<p>在 Go 编程语言中，值语义和指针语义的思想无处不在。如前面的文章所述，语义一致性对于完整性和可读性至关重要。它允许开发人员在代码持续不断增长时保持强大的代码库<a href="https://en.wikipedia.org/wiki/Mental_model" target="_blank" rel="external">心理模型</a>。它还有助于最大限度地减少错误，副作用和未知行为。</p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在这篇文章中，我将探索 Go 中的 <code>for range</code> 语句如何提供值和指针语义形式。我将教授语言机制，并展示这些语义有多深奥。然后件展示一个简单的例子，说明将这些语义和可能导致的问题混合起来是多么容易。</p>
-<h2 id="语言机制"><a href="#语言机制" class="headerlink" title="语言机制"></a>语言机制</h2><p>从这段代码开始，它展示了 <code>for range</code> 循环的值语义形式。</p>
-<p><a href="https://play.golang.org/p/_CWCAF6ge3" target="_blank" rel="external">play.golang.org</a></p>
-<p><strong>代码清单1</strong></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> user <span class="keyword">struct</span> &#123;</div><div class="line">    name <span class="keyword">string</span></div><div class="line">    email <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    users := []user&#123;</div><div class="line">        &#123;<span class="string">"Bill"</span>, <span class="string">"bill@email.com"</span>&#125;,</div><div class="line">        &#123;<span class="string">"Lisa"</span>, <span class="string">"lisa@email.com"</span>&#125;,</div><div class="line">        &#123;<span class="string">"Nancy"</span>, <span class="string">"nancy@email.com"</span>&#125;,</div><div class="line">        &#123;<span class="string">"Paul"</span>, <span class="string">"paul@email.com"</span>&#125;,</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i, u := <span class="keyword">range</span> users &#123;</div><div class="line">        fmt.Println(i, u)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在代码清单1中，程序声明一个名为 <code>user</code> 的类型，创建四个用户值，然后显示关于每个用户的信息。第 18 行的范围循环使用值语义。这是因为在每次迭代中都会在循环内部创建并操作来自切片的原始用户值的副本。实际上，对 <code>Println</code> 的调用会创建循环副本的第二个副本。如果要为用户值使用值语义，这就是你想要的。</p>
-<p>如果你要使用指针语义，<code>for range</code> 循环看起来像这样。</p>
-<p><strong>代码清单2</strong><br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> users &#123;</div><div class="line">    fmt.Println(i, users[i])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>现在该循环已被修改为使用指针语义。循环内的代码不再它的副本上运行，而是在切片内存储的原始 <code>user</code> 上运行。但是，对 <code>Println</code> 的调用仍然使用值语义，并且传递了一份副本。</p>
-<p>要解决这个问题，需要再做一次最后的修改。</p>
-<p><strong>代码清单3</strong><br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> users &#123;</div><div class="line">    fmt.Println(i, &amp;users[i])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>现在会一直使用 <code>user</code> 的指针语义。</p>
-<p>作为参考，清单4并排显示了值和指针语义。</p>
-<p><strong>代码清单4</strong><br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Value semantics.           // Pointer semantics.</span></div><div class="line"><span class="keyword">for</span> i, u := <span class="keyword">range</span> users &#123;     <span class="keyword">for</span> i := <span class="keyword">range</span> users &#123;</div><div class="line">    fmt.Println(i, u)             fmt.Println(i, &amp;users[i])</div><div class="line">&#125;                             &#125;</div></pre></td></tr></table></figure></p>
-<h2 id="深层机制"><a href="#深层机制" class="headerlink" title="深层机制"></a>深层机制</h2><p>语言机制比这更深入。请看代码清单 5 中的这个程序。程序初始化一个字符串数组，对这些字符串进行迭代，并在每次迭代中更改索引为 1 的字符串。</p>
-<p><a href="https://play.golang.org/p/IlAiEkgs4C" target="_blank" rel="external">https://play.golang.org/p/IlAiEkgs4C</a></p>
-<p><strong>代码清单5</strong><br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    five := [<span class="number">5</span>]<span class="keyword">string</span>&#123;<span class="string">"Annie"</span>, <span class="string">"Betty"</span>, <span class="string">"Charley"</span>, <span class="string">"Doug"</span>, <span class="string">"Edward"</span>&#125;</div><div class="line">    fmt.Printf(<span class="string">"Bfr[%s] : "</span>, five[<span class="number">1</span>])</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> five &#123;</div><div class="line">        five[<span class="number">1</span>] = <span class="string">"Jack"</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> i == <span class="number">1</span> &#123;</div><div class="line">           fmt.Printf(<span class="string">"Aft[%s]\n"</span>, five[<span class="number">1</span>])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这个程序的预期输出是什么？</p>
-<p><strong>清单6</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Bfr[Betty]</div><div class="line">Aft[Jack]</div></pre></td></tr></table></figure></p>
-<p>正如你所期望的那样，第 10 行的代码已经改变了索引 1 的字符串，你可以在输出中看到。该程序使用 <code>for range</code> 循环的指针语义版本。接下来，代码将使用 <code>for range</code> 循环的值语义版本。</p>
-<p><a href="https://play.golang.org/p/opSsIGtNU1" target="_blank" rel="external">https://play.golang.org/p/opSsIGtNU1</a></p>
-<p><strong>清单7</strong></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    five := [<span class="number">5</span>]<span class="keyword">string</span>&#123;<span class="string">"Annie"</span>, <span class="string">"Betty"</span>, <span class="string">"Charley"</span>, <span class="string">"Doug"</span>, <span class="string">"Edward"</span>&#125;</div><div class="line">    fmt.Printf(<span class="string">"Bfr[%s] : "</span>, five[<span class="number">1</span>])</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> five &#123;</div><div class="line">        five[<span class="number">1</span>] = <span class="string">"Jack"</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> i == <span class="number">1</span> &#123;</div><div class="line">            fmt.Printf(<span class="string">"v[%s]\n"</span>, v)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在循环的每次迭代中，代码再次更改索引 1 处的字符串。此时代码显示索引 1 处的值时，输出不同。</p>
-<p><strong>清单8</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Bfr[Betty] : v[Betty]</div></pre></td></tr></table></figure></p>
-<p>我们可以看到这种形式的 <code>for range</code> 真的是使用了值语义。<code>for ranage</code> 在数组的拷贝上进行迭代。这就是为什么在输出中并未看到值的改变。</p>
-<p>当使用值语义形式覆盖切片时，将采用切片标头的副本。 这就是为什么清单 9 中的代码不必惊慌。</p>
-<p><strong>清单9</strong><br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    five := []<span class="keyword">string</span>&#123;<span class="string">"Annie"</span>, <span class="string">"Betty"</span>, <span class="string">"Charley"</span>, <span class="string">"Doug"</span>, <span class="string">"Edward"</span>&#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> five &#123;</div><div class="line">        five = five[:<span class="number">2</span>]</div><div class="line">        fmt.Printf(<span class="string">"v[%s]\n"</span>, v)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Output:</div><div class="line">v[Annie]</div><div class="line">v[Betty]</div><div class="line">v[Charley]</div><div class="line">v[Doug]</div><div class="line">v[Edward]</div></pre></td></tr></table></figure></p>
-<p>如果您查看第09行，循环内的切片值会缩减为2，但循环将在切片值的自身副本上进行操作。 这允许循环使用原始长度进行迭代而没有任何问题，因为后备数组仍然是完整的。</p>
-<p>如果代码使用 <code>for range</code> 的指针语义形式，程序就会发生混乱。</p>
-<p><strong>清单10</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">package main</div><div class="line"></div><div class="line">import &quot;fmt&quot;</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">    five := []string&#123;&quot;Annie&quot;, &quot;Betty&quot;, &quot;Charley&quot;, &quot;Doug&quot;, &quot;Edward&quot;&#125;</div><div class="line"></div><div class="line">    for i := range five &#123;</div><div class="line">        five = five[:2]</div><div class="line">        fmt.Printf(&quot;v[%s]\n&quot;, five[i])</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Output:</div><div class="line">v[Annie]</div><div class="line">v[Betty]</div><div class="line">panic: runtime error: index out of range</div><div class="line"></div><div class="line">goroutine 1 [running]:</div><div class="line">main.main()</div><div class="line">	/tmp/sandbox688667612/main.go:10 +0x140</div></pre></td></tr></table></figure></p>
-<p><code>for range</code> 在迭代之前获取到切片的长度，但是在循环过程中长度发生了变换。现在在第三次迭代的时候，循环尝试访问不再与切片长度相关联的元素。</p>
-<h2 id="混合语义"><a href="#混合语义" class="headerlink" title="混合语义"></a>混合语义</h2><p>这是一个完全糟糕的例子。该代码混合了用户类型定义的语义，并引发了一个 bug。</p>
-<p><strong>清单11</strong></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> <span class="keyword">struct</span> user &#123;</div><div class="line">    name <span class="keyword">string</span></div><div class="line">    likes <span class="keyword">int</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *user)</span> <span class="title">notify</span><span class="params">()</span></span> &#123;</div><div class="line">    fmt.Printf(<span class="string">"%s has %d likes\n"</span>, u.name, u.likes)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *user)</span> <span class="title">addLike</span><span class="params">()</span></span> &#123;</div><div class="line">    u.likes++</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    users := []user&#123;</div><div class="line">        &#123;name: <span class="string">"bill"</span>&#125;,</div><div class="line">        &#123;name: <span class="string">"lisa"</span>&#125;,</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _, u := <span class="keyword">range</span> users &#123;</div><div class="line">        u.addLike()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _, u := <span class="keyword">range</span> users &#123;</div><div class="line">        u.notify()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个例子没有那么做作。在第05行，<code>user</code> 类型被声明并且选择指针语义来实现为用户类型设置的方法。然后在 <code>main</code> 程序中，在 <code>for range</code> 循环中使用值语义为每个用户添加一个 like。然后使用第二个循环来再次使用值语义来通知每个 <code>user</code>。</p>
-<p><strong>清单12</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bill has 0 likes</div><div class="line">lisa has 0 likes</div></pre></td></tr></table></figure>
-<p>输出显示并没有增加 like。我无法强调，您应该为给定类型选择语义，并坚持使用该类型的数据。</p>
-<p>这是代码应该看起来如何与用户类型的指针语义保持一致。</p>
-<p><strong>清单13</strong></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> user <span class="keyword">struct</span> &#123;</div><div class="line">    name <span class="keyword">string</span></div><div class="line">    likes <span class="keyword">int</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *user)</span> <span class="title">notify</span><span class="params">()</span></span> &#123;</div><div class="line">    fmt.Printf(<span class="string">"%s has %d likes\n"</span>, u.name, u.likes)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *user)</span> <span class="title">addLike</span><span class="params">()</span></span> &#123;</div><div class="line">    u.likes++</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    users := []user&#123;</div><div class="line">        &#123;name: <span class="string">"bill"</span>&#125;,</div><div class="line">        &#123;name: <span class="string">"lisa"</span>&#125;,</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> users &#123;</div><div class="line">        users[i].addLike()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> users &#123;</div><div class="line">        users[i].notify()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Output:</span></div><div class="line">bill has <span class="number">1</span> likes</div><div class="line">lisa has <span class="number">1</span> likes</div></pre></td></tr></table></figure>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>值和指针语义是Go编程语言的重要组成部分，正如我已经展示的那样，集成到了 <code>for range</code> 循环中。在使用 <code>for range</code> 时，验证你正在迭代的给定类型在使用正确的形式。最后一件事时混合语义，如果你没有注意的话，<code>for range</code> 很容易混合使用语义。</p>
-<p>语言给了你这种选择语义的力量，并且干净而一致地使用它。这是你想要充分利用的东西。 我想让你决定每种类型使用的语义并保持一致。你对一段数据的语义越一致，您的代码库就越好。如果你有一个很好的理由来改变语义，然后广泛地记录下来。</p>
-<hr>
-<p>via: <a href="https://www.ardanlabs.com/blog/2017/06/for-range-semantics.html" target="_blank" rel="external">https://www.ardanlabs.com/blog/2017/06/for-range-semantics.html</a></p>
-<p>作者：<a href="https://github.com/ardanlabs/gotraining" target="_blank" rel="external">William Kennedy</a><br>译者：<a href="https://github.com/shniu" target="_blank" rel="external">shniu</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1786,7 +1681,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1799,7 +1694,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

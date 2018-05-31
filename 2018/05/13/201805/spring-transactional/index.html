@@ -103,7 +103,7 @@
 一致性：指事务前后数据的完整性必须保持一致。
 隔离性：指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。
 持久性：指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，即时">
-<meta property="og:updated_time" content="2018-05-13T23:16:27.916Z">
+<meta property="og:updated_time" content="2018-05-27T23:13:49.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring 事务处理">
 <meta name="twitter:description" content="Spring 事务处理事务的作用将若干的数据库操作作为一个整体控制,一起成功或一起失败。
@@ -355,6 +355,9 @@
 <li>REPEATABLE_READ–对相同字段的多次读取是一致的，除非数据被事务本身改变。可防止脏、不可重复读，但幻读仍可能发生</li>
 <li>SERIALIZABLE–完全服从ACID的隔离级别，确保不发生脏、幻、不可重复读。这在所有的隔离级别中是最慢的，它是典型的通过完全锁定在事务中涉及的数据表来完成的</li>
 </ul>
+<h3 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h3><ul>
+<li><a href="https://blog.csdn.net/wkl305268748/article/details/77619367" target="_blank" rel="external">SpringBoot事务注解@Transactional</a></li>
+</ul>
 
       
     </div>
@@ -401,8 +404,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/14/201805/deep-in-java/" rel="prev" title="深入java平台">
-                深入java平台 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/14/java/deep-in-java/" rel="prev" title="深入 Java 平台 - 总览">
+                深入 Java 平台 - 总览 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -475,7 +478,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -488,7 +491,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -534,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-事务处理"><span class="nav-number">1.</span> <span class="nav-text">Spring 事务处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事务的作用"><span class="nav-number">1.0.1.</span> <span class="nav-text">事务的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容易引发的问题"><span class="nav-number">1.0.2.</span> <span class="nav-text">容易引发的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">1.0.3.</span> <span class="nav-text">事务隔离级别</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-事务处理"><span class="nav-number">1.</span> <span class="nav-text">Spring 事务处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事务的作用"><span class="nav-number">1.0.1.</span> <span class="nav-text">事务的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容易引发的问题"><span class="nav-number">1.0.2.</span> <span class="nav-text">容易引发的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">1.0.3.</span> <span class="nav-text">事务隔离级别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ref"><span class="nav-number">1.1.</span> <span class="nav-text">Ref</span></a></li></ol></li></ol></div>
             
 
           </div>
