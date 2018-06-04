@@ -248,6 +248,263 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/07/201804/distribute-system-cap-theorem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/portrait-01.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/07/201804/distribute-system-cap-theorem/" itemprop="url">
+                  分布式系统-CAP定理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T15:03:29+08:00">
+                2018-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="CAP定理"><a href="#CAP定理" class="headerlink" title="CAP定理"></a>CAP定理</h2><p>：</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://blog.cloudera.com/blog/2010/04/cap-confusion-problems-with-partition-tolerance/" target="_blank" rel="external">CAP Confusion: Problems with ‘partition tolerance’</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/25/201803/golang-usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/portrait-01.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/25/201803/golang-usage/" itemprop="url">
+                  Golang
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T08:09:05+08:00">
+                2018-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Golang-关键字"><a href="#Golang-关键字" class="headerlink" title="Golang 关键字"></a>Golang 关键字</h2><ul>
+<li>var和const ：变量和常量的声明</li>
+<li>go : 用于并行<br>go 关键字用来创建 goroutine (协程)，是实现并发的关键。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//go 关键字放在方法调用前新建一个 goroutine 并让他执行方法体</div><div class="line">go GetThingDone(param1, param2);</div><div class="line"></div><div class="line">//上例的变种，新建一个匿名方法并执行</div><div class="line">go func(param1, param2) &#123;</div><div class="line">&#125;(val1, val2)</div><div class="line"></div><div class="line">//直接新建一个 goroutine 并在 goroutine 中执行代码块</div><div class="line">go &#123;</div><div class="line">    //do someting...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Golang-flag-解析入参"><a href="#Golang-flag-解析入参" class="headerlink" title="Golang flag 解析入参"></a>Golang flag 解析入参</h2><p>flag 是 go 标准库提供的解析命令行参数的包。</p>
+<p>使用 flag.String(), Bool(), Int() 等函数注册 flag</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">"flag"</span></div><div class="line"><span class="comment">// 声明了一个整数flag，解析结果保存在*int指针ip里</span></div><div class="line"><span class="keyword">var</span> ip = flag.Int(<span class="string">"flagname"</span>, <span class="number">1234</span>, <span class="string">"help message for flagname"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 下面的方式也是可以的</span></div><div class="line"><span class="keyword">var</span> flagvar <span class="keyword">int</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</div><div class="line">	flag.IntVar(&amp;flagvar, <span class="string">"flagname"</span>, <span class="number">1234</span>, <span class="string">"help message for flagname"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="自定义-flag"><a href="#自定义-flag" class="headerlink" title="自定义 flag"></a>自定义 flag</h4><p>需要实现 <code>flag.Value</code> interface:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">type Value interface &#123;</div><div class="line">     String() string</div><div class="line">     Set(string) error</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p><strong>Example</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">type percentage float32</div><div class="line"> func (p *percentage) Set(s string) error &#123;</div><div class="line">     v, err := strconv.ParseFloat(s, 32)</div><div class="line">     *p = percentage(v)</div><div class="line">     return err</div><div class="line"> &#125;</div><div class="line"> func (p *percentage) String() string &#123;</div><div class="line">     return fmt.Sprintf(&quot;%f&quot;, *p)</div><div class="line"> &#125;</div><div class="line"></div><div class="line">var pop percentage</div><div class="line">flag.Var(&amp;pop, &quot;pop&quot;, &quot;popularity&quot;)</div></pre></td></tr></table></figure>
+<p>在注册完成之后，最后调用 <code>flag.Parse()</code></p>
+<h4 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-flag</div><div class="line">-flag=x</div><div class="line">-flag x  // 只有非bool类型的flag可以</div></pre></td></tr></table></figure>
+<p>可以使用1个或2个’-‘号，效果是一样的。最后一种格式不能用于 bool 类型的 flag。</p>
+<h4 id="来个简单的例子："><a href="#来个简单的例子：" class="headerlink" title="来个简单的例子："></a>来个简单的例子：</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"flag"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    data_path := flag.String(<span class="string">"D"</span>,<span class="string">"/home/manu/sample/"</span>,<span class="string">"DB data path"</span>)</div><div class="line">    log_file := flag.String(<span class="string">"l"</span>,<span class="string">"/home/manu/sample.log"</span>,<span class="string">"log file"</span>)</div><div class="line">    nowait_flag :=flag.Bool(<span class="string">"W"</span>,<span class="literal">false</span>,<span class="string">"do not wait until operation completes"</span>)</div><div class="line"></div><div class="line">    flag.Parse()</div><div class="line"></div><div class="line">    <span class="keyword">var</span> cmd <span class="keyword">string</span> = flag.Arg(<span class="number">0</span>);</div><div class="line"></div><div class="line">    fmt.Printf(<span class="string">"action   : %s\n"</span>,cmd)</div><div class="line">    fmt.Printf(<span class="string">"data path: %s\n"</span>,*data_path)</div><div class="line">    fmt.Printf(<span class="string">"log file : %s\n"</span>,*log_file)</div><div class="line">    fmt.Printf(<span class="string">"nowait     : %v\n"</span>,*nowait_flag)</div><div class="line"></div><div class="line">    fmt.Printf(<span class="string">"-------------------------------------------------------\n"</span>)</div><div class="line"></div><div class="line">    fmt.Printf(<span class="string">"there are %d non-flag input param\n"</span>, flag.NArg())</div><div class="line">    <span class="keyword">for</span> i,param := <span class="keyword">range</span> flag.Args() &#123;</div><div class="line">        fmt.Printf(<span class="string">"#%d    :%s\n"</span>,i,param)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://studygolang.com/pkgdoc" target="_blank" rel="external">Go 标准库</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/19/201803/distributed-system-intro/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1470,347 +1727,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/01/Microservices in Golang - Part 5 - Event brokering with Go Micro/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/01/Microservices in Golang - Part 5 - Event brokering with Go Micro/" itemprop="url">
-                  Golang 下的微服务 - Part5 - Go Micro 的事件代理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T07:00:00+08:00">
-                2018-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在本系列的前一部分中，我们谈到了用户认证和 JWT。在这一部分中，我们将快速浏览 go-micro 的代理功能。</p>
-<p>正如前面的文章提到的，go-micro 是一个可插拔的框架，它连接了许多不同的常用技术。如果你看看<a href="https://github.com/micro/go-plugins" target="_blank" rel="external">插件仓库</a>，你会看到它支持多少插件。</p>
-<p>在我们的例子中，我们将使用 NATS 代理插件。</p>
-<h2 id="基于事件驱动的架构"><a href="#基于事件驱动的架构" class="headerlink" title="基于事件驱动的架构"></a>基于事件驱动的架构</h2><p><a href="https://en.wikipedia.org/wiki/Event-driven_architecture" target="_blank" rel="external">事件驱动的架构</a>是一个非常简单的概念。我们通常认为好的架构是要解耦的，一个服务不应该与其他服务耦合或者感知到其他服务。当我们使用诸如 <code>gRPC</code> 协议时，在某些情况下是正确的，我们以向 <code>go.srv.user-service</code> 发布请求为例。其中就使用了服务发现的方式来查找该服务的实际位置。 尽管这并不直接将我们与实现耦合，但它确实将该服务耦合到了其他名为 <code>go.srv.user-service</code> 的服务，因此它不是完全的解耦，因为它直接与其他服务进行交互。</p>
-<p>那么什么让事件驱动架构真正的解耦呢？为了理解这一点，我们首先看看发布和订阅事件的过程。服务 a 完成了一项任务 x，然后向系统发布一个事件<code>x 刚刚发生了</code>。服务并不需要知道或者关心谁在监听这个事件，或者该事件正在发生什么影响。这些事情留给了监听事件的客户端。如果你期待 n 个服务对某个事件采取行动，那么也很容易。例如，你想 12 个不同的服务针对使用 <code>gRPC</code> 创建新用户采取行动，可能需要在用户服务中实例化 12 个客户端。而借助事件发布订阅或事件驱动架构，你的服务就不需要关心这些。</p>
-<p>现在，客户端服务只需要简单的监听事件。这意味着，你需要中间的介质来接收这些事件，并通知订阅了事件的客户端。</p>
-<p>这篇文章中，我们将在每次创建用户时创建一个事件，并且将创建一个用于发送电子邮件的新服务。我们不会真的去实现发邮件的功能，只是模拟它。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>首先，我们需要将 NATS 代理插件集成到我们的用户服务中：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// shippy-user-service/main.go</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    ... </div><div class="line">    <span class="comment">// Init will parse the command line flags.</span></div><div class="line">	srv.Init()</div><div class="line"></div><div class="line">	<span class="comment">// Get instance of the broker using our defaults</span></div><div class="line">	pubsub := srv.Server().Options().Broker</div><div class="line"></div><div class="line">	<span class="comment">// Register handler</span></div><div class="line">	pb.RegisterUserServiceHandler(srv.Server(), &amp;service&#123;repo, tokenService, pubsub&#125;)</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>现在让我们在创建新用户时发布事件（<a href="https://github.com/EwanValentine/shippy-user-service/tree/tutorial-5" target="_blank" rel="external">请参阅此处的完整更改</a>）</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// shippy-user-service/handler.go</span></div><div class="line"><span class="keyword">const</span> topic = <span class="string">"user.created"</span></div><div class="line"></div><div class="line"><span class="keyword">type</span> service <span class="keyword">struct</span> &#123;</div><div class="line">	repo         Repository</div><div class="line">	tokenService Authable</div><div class="line">	PubSub       broker.Broker</div><div class="line">&#125;</div><div class="line">...</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(srv *service)</span> <span class="title">Create</span><span class="params">(ctx context.Context, req *pb.User, res *pb.Response)</span> <span class="title">error</span></span> &#123;</div><div class="line"></div><div class="line">	<span class="comment">// Generates a hashed version of our password</span></div><div class="line">	hashedPass, err := bcrypt.GenerateFromPassword([]<span class="keyword">byte</span>(req.Password), bcrypt.DefaultCost)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	req.Password = <span class="keyword">string</span>(hashedPass)</div><div class="line">	<span class="keyword">if</span> err := srv.repo.Create(req); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	res.User = req</div><div class="line">	<span class="keyword">if</span> err := srv.publishEvent(req); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(srv *service)</span> <span class="title">publishEvent</span><span class="params">(user *pb.User)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Marshal to JSON string</span></div><div class="line">	body, err := json.Marshal(user)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Create a broker message</span></div><div class="line">	msg := &amp;broker.Message&#123;</div><div class="line">		Header: <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</div><div class="line">			<span class="string">"id"</span>: user.Id,</div><div class="line">		&#125;,</div><div class="line">		Body: body,</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Publish message to broker</span></div><div class="line">	<span class="keyword">if</span> err := srv.PubSub.Publish(topic, msg); err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Printf(<span class="string">"[pub] failed: %v"</span>, err)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure>
-<p>确保你正在运行 Postgres，然后让我们运行这个服务：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -p 5432:5432 postgres</div><div class="line">$ make build</div><div class="line">$ make run</div></pre></td></tr></table></figure>
-<p>现在我们创建我们的电子邮件服务。 我为此创建了一个<a href="https://github.com/EwanValentine/shippy-email-service" target="_blank" rel="external">新的仓库</a>：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// shippy-email-service</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"encoding/json"</span></div><div class="line">	<span class="string">"log"</span></div><div class="line"></div><div class="line">	pb <span class="string">"github.com/EwanValentine/shippy-user-service/proto/user"</span></div><div class="line">	micro <span class="string">"github.com/micro/go-micro"</span></div><div class="line">	<span class="string">"github.com/micro/go-micro/broker"</span></div><div class="line">	_ <span class="string">"github.com/micro/go-plugins/broker/nats"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">const</span> topic = <span class="string">"user.created"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	srv := micro.NewService(</div><div class="line">		micro.Name(<span class="string">"go.micro.srv.email"</span>),</div><div class="line">		micro.Version(<span class="string">"latest"</span>),</div><div class="line">	)</div><div class="line"></div><div class="line">	srv.Init()</div><div class="line"></div><div class="line">	<span class="comment">// Get the broker instance using our environment variables</span></div><div class="line">	pubsub := srv.Server().Options().Broker</div><div class="line">	<span class="keyword">if</span> err := pubsub.Connect(); err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Fatal(err)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Subscribe to messages on the broker</span></div><div class="line">	_, err := pubsub.Subscribe(topic, <span class="function"><span class="keyword">func</span><span class="params">(p broker.Publication)</span> <span class="title">error</span></span> &#123;</div><div class="line">		<span class="keyword">var</span> user *pb.User</div><div class="line">		<span class="keyword">if</span> err := json.Unmarshal(p.Message().Body, &amp;user); err != <span class="literal">nil</span> &#123;</div><div class="line">			<span class="keyword">return</span> err</div><div class="line">		&#125;</div><div class="line">		log.Println(user)</div><div class="line">		<span class="keyword">go</span> sendEmail(user)</div><div class="line">		<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">	&#125;)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Println(err)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// Run the server</span></div><div class="line">	<span class="keyword">if</span> err := srv.Run(); err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Println(err)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sendEmail</span><span class="params">(user *pb.User)</span> <span class="title">error</span></span> &#123;</div><div class="line">	log.Println(<span class="string">"Sending email to:"</span>, user.Name)</div><div class="line">	<span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在运行之前，我们需要启动 <a href="https://nats.io/" target="_blank" rel="external">NATS</a>…</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run -d -p 4222:4222 nats</div></pre></td></tr></table></figure>
-<p>另外，我想快速解释一下 go-micro 的一部分，我觉得这对于理解它作为框架如何工作很重要。你会注意到：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">srv.Init()</div><div class="line">pubsub := srv.Server().Options().Broker</div></pre></td></tr></table></figure>
-<p>让我们来快速浏览一下。当我们用 go-micro 创建服务时，<code>srv.Init()</code> 会自动去查找所有的配置，例如所有配置的插件、环境变量或命令行选项。它将会将这些集成实例化为服务的一部分。为了使用这些实例，我们需要将它们从服务中提取出来。在 <code>srv.Server().Options()</code> 中，你还可以找到 Transport (go-micro 框架的一个核心组件，传输是服务之间的同步请求/响应通信的接口) 和 Registry (go-micro 框架的一个核心组件，叫注册表，提供了一个服务发现机制来将名称解析为地址)。</p>
-<p>在我们的例子中，会用到 <code>GO_MICRO_BROKER</code> 环境变量，会用到 <code>NATS</code> 代理插件，并创建一个该插件的实例，准备好我们连接和使用。</p>
-<p>如果你正在创建一个命令行工具，你可以使用 <code>cmd.Init()</code>，确保你导入了 <code>github.com/micro/go-micro/cmd</code>。这会产生同样的影响。</p>
-<p>现在构建并运行此服务：<code>$ make build &amp;&amp; make run</code>，确保你也在运行用户服务。然后转到 <code>shippy-user-cli</code> 项目，并运行 <code>$ make run</code>，看我们的电子邮件服务输出。你应该看到类似… <code>2017/12/26 23:57:23 Sending email to: Ewan Valentine</code></p>
-<p>就是这样！这是一个简单的例子，因为我们的电子邮件服务隐式地收听单个 <code>user.created</code> 事件，但希望你能看到这种方法如何让你编写解耦的服务。</p>
-<p>值得一提的是，使用 JSON over NATS 会比 gRPC 带来更高的性能开销，因为我们已经回到串行化json字符串的领域。但是，对于某些使用情况，这是完全可以接受的。 NATS 非常高效，非常适合消息最多交付一次的事件（fire and forget 有消息最多交付一次的意思，这个<a href="http://www.enterpriseintegrationpatterns.com/patterns/conversation/FireAndForget.html" target="_blank" rel="external">链接</a>可以帮助做更深入的理解）。</p>
-<p>Go-micro 还支持一些最广泛使用的队列 / pubsub 技术供你使用。<a href="https://github.com/micro/go-plugins/tree/master/broker" target="_blank" rel="external">你可以在这里看到它们的列表</a>。你不需要改变你的实现因为 go-micro 为你提供了抽象。你只需要将环境变量从 <code>MICRO_BROKER=nats</code> 更改为 <code>MICRO_BROKER=googlepubsub</code>，然后将 main.go 的导入从 <code>_ &quot;github.com/micro/go-plugins/broker/nats&quot;</code> 更改为 <code>_ &quot;github.com/micro/go-plugins/broker/googlepubsub&quot;</code>。</p>
-<p>如果你不使用 go-micro，那么有一个 <a href="https://github.com/nats-io/go-nats" target="_blank" rel="external">NATS go 库</a>（NATS 是用 go 写的，所以对 Go 的支持非常稳固）。</p>
-<p>发布一个事件：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nc, _ := nats.Connect(nats.DefaultURL)</div><div class="line"></div><div class="line"><span class="comment">// Simple Publisher</span></div><div class="line">nc.Publish(<span class="string">"user.created"</span>, userJsonString)</div></pre></td></tr></table></figure>
-<p>订阅一个事件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// Simple Async Subscriber</div><div class="line">nc.Subscribe(&quot;user.created&quot;, func(m *nats.Msg) &#123;</div><div class="line">    user := convertUserString(m.Data)</div><div class="line">    go sendEmail(user)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>我之前提到过，在使用第三方消息代理（如 NATS）时，会失去对 protobuf 的使用。这是一种耻辱，因为我们失去了使用二进制流进行通信的能力，这当然比串行化的 JSON 字符串的开销要低得多。 但是，像大多数人所关心的那样，go-micro 也可以解决这个问题。</p>
-<p>内置 go-micro 是 pubsub 层，位于代理层之上，但不需要第三方代理（如 NATS）。 但是这个功能真正棒的部分在于它利用了 protobuf 的定义。 所以我们回到了低延迟二进制流的领域。 因此，让我们更新我们的用户服务，用 go-micro 的 pubsub 替换现有的 NATS 代理：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// shippy-user-service/main.go</div><div class="line">func main() &#123;</div><div class="line">    ...</div><div class="line">    publisher := micro.NewPublisher(&quot;user.created&quot;, srv.Client())</div><div class="line"></div><div class="line">	// Register handler</div><div class="line">	pb.RegisterUserServiceHandler(srv.Server(), &amp;service&#123;repo, tokenService, publisher&#125;)</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// shippy-user-service/handler.go</div><div class="line">func (srv *service) Create(ctx context.Context, req *pb.User, res *pb.Response) error &#123;</div><div class="line"></div><div class="line">	// Generates a hashed version of our password</div><div class="line">	hashedPass, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)</div><div class="line">	if err != nil &#123;</div><div class="line">		return err</div><div class="line">	&#125;</div><div class="line">	req.Password = string(hashedPass)</div><div class="line"></div><div class="line">    // Here&apos;s our new publisher code, much simpler</div><div class="line">	if err := srv.repo.Create(req); err != nil &#123;</div><div class="line">		return err</div><div class="line">	&#125;</div><div class="line">	res.User = req</div><div class="line">	if err := srv.Publisher.Publish(ctx, req); err != nil &#123;</div><div class="line">		return err</div><div class="line">	&#125;</div><div class="line">	return nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>现在我们的邮件服务是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// shippy-email-service</div><div class="line">const topic = &quot;user.created&quot;</div><div class="line"></div><div class="line">type Subscriber struct&#123;&#125;</div><div class="line"></div><div class="line">func (sub *Subscriber) Process(ctx context.Context, user *pb.User) error &#123;</div><div class="line">	log.Println(&quot;Picked up a new message&quot;)</div><div class="line">	log.Println(&quot;Sending email to:&quot;, user.Name)</div><div class="line">	return nil</div><div class="line">&#125;</div><div class="line"></div><div class="line">func main() &#123;</div><div class="line">    ...</div><div class="line">    micro.RegisterSubscriber(topic, srv.Server(), new(Subscriber))</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>现在我们在我们的服务中使用我们的底层 User protobuf 定义，通过 gRPC，并且不使用第三方代理。太棒了！</p>
-<p>这是一个包装！ 接下来的教程我们将着眼于为我们的服务创建一个用户界面，并研究 Web 客户端如何开始与我们的服务进行交互。</p>
-<p>本文中的任何错误、反馈，或任何您会发现有用的东西，请给我发一封<a href="ewan.valentine89@gmail.com">电子邮件</a>。</p>
-<hr>
-<p>via：<a href="https://ewanvalentine.io/microservices-in-golang-part-5/" target="_blank" rel="external">Microservices in Golang - Part 5 - Event brokering with Go Micro</a></p>
-<p>作者：<a href="http://ewanvalentine.io/" target="_blank" rel="external">ewanvalentine.io</a><br>译者：<a href="https://github.com/shniu" target="_blank" rel="external">shniu</a><br>校对：<a href="https://github.com/polaris1119" target="_blank" rel="external">polaris1119</a></p>
-<p>首发于 <a href="https://github.com/studygolang/GCTT" target="_blank" rel="external">GCTT</a> ，<a href="https://studygolang.com" target="_blank" rel="external">Go中文网</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/02/28/Part3 ERC20 Token Standard Example/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/28/Part3 ERC20 Token Standard Example/" itemprop="url">
-                  ERC20 Token 标准例子及解读
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T07:00:00+08:00">
-                2018-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ERC20-Token-标准"><a href="#ERC20-Token-标准" class="headerlink" title="ERC20 Token 标准"></a>ERC20 Token 标准</h1><p>参见 <a href="https://theethereum.wiki/w/index.php/Ethereum_Based_Tokens" target="_blank" rel="external">Ethereum Based Tokens</a> 和 <a href="https://theethereum.wiki/w/index.php/ERC20_Wallet_Support" target="_blank" rel="external">ERC20 Wallet Support</a></p>
-<p>ERC20 Token 标准描述了以太坊的令牌合约必须实现的功能和事件。</p>
-<h2 id="ERC20-Token-标准接口"><a href="#ERC20-Token-标准接口" class="headerlink" title="ERC20 Token 标准接口"></a>ERC20 Token 标准接口</h2><p>以下是一个接口合约，声明所需的功能和事件以符合ERC20标准：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// ERC Token Standard #20 Interface</div><div class="line">// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">contract ERC20Interface &#123;</div><div class="line">    function totalSupply() public constant returns (uint);</div><div class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance);</div><div class="line">    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);</div><div class="line">    function transfer(address to, uint tokens) public returns (bool success);</div><div class="line">    function approve(address spender, uint tokens) public returns (bool success);</div><div class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success);</div><div class="line"></div><div class="line">    event Transfer(address indexed from, address indexed to, uint tokens);</div><div class="line">    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>绝大多数在以太坊区块链上的 token 都遵从 ERC20。<a href="https://theethereum.wiki/w/index.php/Golem_Network_Token" target="_blank" rel="external">GNT Golem Network Token</a>只是部分的遵从 ERC20，它没有实现 <code>approve(...)</code>, <code>allowance(..)</code>, <code>transferFrom(...)</code> 函数和 <code>Approval(...)</code> 事件。</p>
-<p>token 包含的其他一些信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">string public constant name = &quot;Token Name&quot;;</div><div class="line">string public constant symbol = &quot;SYM&quot;;</div><div class="line">uint8 public constant decimals = 18;  // 18 is the most common number of decimal places</div></pre></td></tr></table></figure>
-<h2 id="Token-合约如何工作"><a href="#Token-合约如何工作" class="headerlink" title="Token 合约如何工作"></a>Token 合约如何工作</h2><p>以下是 token 合约的一个片段，用于演示 token 合约如何维护以太坊帐户的 token 余额：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">contract TokenContractFragment &#123;</div><div class="line"></div><div class="line">    // Balances for each account</div><div class="line">    mapping(address =&gt; uint256) balances;</div><div class="line"></div><div class="line">    // Owner of account approves the transfer of an amount to another account</div><div class="line">    mapping(address =&gt; mapping (address =&gt; uint256)) allowed;</div><div class="line"></div><div class="line">    // Get the token balance for account `tokenOwner`</div><div class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance) &#123;</div><div class="line">        return balances[tokenOwner];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Transfer the balance from owner&apos;s account to another account</div><div class="line">    function transfer(address to, uint tokens) public returns (bool success) &#123;</div><div class="line">        balances[msg.sender] = balances[msg.sender].sub(tokens);</div><div class="line">        balances[to] = balances[to].add(tokens);</div><div class="line">        Transfer(msg.sender, to, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Send `tokens` amount of tokens from address `from` to address `to`</div><div class="line">    // The transferFrom method is used for a withdraw workflow, allowing contracts to send</div><div class="line">    // tokens on your behalf, for example to &quot;deposit&quot; to a contract address and/or to charge</div><div class="line">    // fees in sub-currencies; the command should fail unless the _from account has</div><div class="line">    // deliberately authorized the sender of the message via some mechanism; we propose</div><div class="line">    // these standardized APIs for approval:</div><div class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success) &#123;</div><div class="line">        balances[from] = balances[from].sub(tokens);</div><div class="line">        allowed[from][msg.sender] = allowed[from][msg.sender].sub(tokens);</div><div class="line">        balances[to] = balances[to].add(tokens);</div><div class="line">        Transfer(from, to, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Allow `spender` to withdraw from your account, multiple times, up to the `tokens` amount.</div><div class="line">    // If this function is called again it overwrites the current allowance with _value.</div><div class="line">    function approve(address spender, uint tokens) public returns (bool success) &#123;</div><div class="line">        allowed[msg.sender][spender] = tokens;</div><div class="line">        Approval(msg.sender, spender, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Token-余额"><a href="#Token-余额" class="headerlink" title="Token 余额"></a>Token 余额</h3><p>例如，假设这个合约有两个持有者</p>
-<ul>
-<li><code>0x1111111111111111111111111111111111111111</code>有 100 单元的余额</li>
-<li><code>0x2222222222222222222222222222222222222222</code>有 200 单元的余额</li>
-</ul>
-<p>token 合约的 <code>balances</code> 数据结构就像下边这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">balances[0x1111111111111111111111111111111111111111] = 100</div><div class="line">balances[0x2222222222222222222222222222222222222222] = 200</div></pre></td></tr></table></figure>
-<p><code>balanceOf(...)</code> 函数将会返回：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tokenContract.balanceOf(0x1111111111111111111111111111111111111111) will return 100</div><div class="line">tokenContract.balanceOf(0x2222222222222222222222222222222222222222) will return 200</div></pre></td></tr></table></figure>
-<h3 id="token-转移"><a href="#token-转移" class="headerlink" title="token 转移"></a>token 转移</h3><p>如果 <code>0x1111111111111111111111111111111111111111</code> 想转移 10 token 给 <code>0x2222222222222222222222222222222222222222</code>, <code>0x1111111111111111111111111111111111111111</code> 将执行下面的函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tokenContract.transfer(0x2222222222222222222222222222222222222222, 10)</div></pre></td></tr></table></figure>
-<p>token 合约的 <code>transfer(...)</code> 函数将会修改 <code>balances</code> 数据结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">balances[0x1111111111111111111111111111111111111111] = 90</div><div class="line">balances[0x2222222222222222222222222222222222222222] = 210</div></pre></td></tr></table></figure>
-<p><code>balanceOf(...)</code> 函数将返回<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tokenContract.balanceOf(0x1111111111111111111111111111111111111111) will return 90</div><div class="line">tokenContract.balanceOf(0x2222222222222222222222222222222222222222) will return 210</div></pre></td></tr></table></figure></p>
-<h3 id="Approve-And-TransferFrom-Token-Balance"><a href="#Approve-And-TransferFrom-Token-Balance" class="headerlink" title="Approve And TransferFrom Token Balance"></a>Approve And TransferFrom Token Balance</h3><p>如果 <code>0x1111111111111111111111111111111111111111</code> 想授权 <code>0x2222222222222222222222222222222222222222</code> 转移一些 token 给 <code>0x2222222222222222222222222222</code>222222222222<code>,</code>0x1111111111111111111111111111111111111111` 要执行如下函数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tokenContract.approve(0x2222222222222222222222222222222222222222, 30)</div></pre></td></tr></table></figure></p>
-<p><code>approve</code> 数据结构将是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tokenContract.allowed[0x1111111111111111111111111111111111111111][0x2222222222222222222222222222222222222222] = 30</div></pre></td></tr></table></figure>
-<p>如果 <code>0x2222222222222222222222222222222222222222</code> 想以后转移一些 token 从 <code>0x1111111111111111111111111111111111111111</code> 给自己, <code>0x2222222222222222222222222222222222222222</code> 将执行 <code>transferFrom(...)</code> 函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tokenContract.transferFrom(0x1111111111111111111111111111111111111111, 0x2222222222222222222222222222222222222222, 20)</div></pre></td></tr></table></figure>
-<p><code>balances</code> 数据结构将会被修改成如下的样子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tokenContract.balances[0x1111111111111111111111111111111111111111] = 70</div><div class="line">tokenContract.balances[0x2222222222222222222222222222222222222222] = 230</div></pre></td></tr></table></figure>
-<p><code>approve</code> 数据结构将会是这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tokenContract.allowed[0x1111111111111111111111111111111111111111][0x2222222222222222222222222222222222222222] = 10</div></pre></td></tr></table></figure>
-<p><code>0x2222222222222222222222222222222222222222</code> can still spend 10 tokens from <code>0x1111111111111111111111111111111111111111</code>.</p>
-<p><code>balanceOf(...)</code> 函数将返回:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tokenContract.balanceOf(0x1111111111111111111111111111111111111111) will return 70</div><div class="line">tokenContract.balanceOf(0x2222222222222222222222222222222222222222) will return 230</div></pre></td></tr></table></figure>
-<h2 id="固定供应量的-token-合约例子"><a href="#固定供应量的-token-合约例子" class="headerlink" title="固定供应量的 token 合约例子"></a>固定供应量的 token 合约例子</h2><p>下面是一个<a href="https://github.com/bokkypoobah/Tokens#fixed-supply-token" target="_blank" rel="external">固定供应量的 token 合约</a>例子，固定发行 1,000,000 单元，最初分配给合同所有者。该令牌具有18位小数位</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div></pre></td><td class="code"><pre><div class="line">pragma solidity ^0.4.18;</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// &apos;FIXED&apos; &apos;Example Fixed Supply Token&apos; token contract</div><div class="line">//</div><div class="line">// Symbol      : FIXED</div><div class="line">// Name        : Example Fixed Supply Token</div><div class="line">// Total supply: 1,000,000.000000000000000000</div><div class="line">// Decimals    : 18</div><div class="line">//</div><div class="line">// Enjoy.</div><div class="line">//</div><div class="line">// (c) BokkyPooBah / Bok Consulting Pty Ltd 2017. The MIT Licence.</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// Safe maths</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">library SafeMath &#123;</div><div class="line">    function add(uint a, uint b) internal pure returns (uint c) &#123;</div><div class="line">        c = a + b;</div><div class="line">        require(c &gt;= a);</div><div class="line">    &#125;</div><div class="line">    function sub(uint a, uint b) internal pure returns (uint c) &#123;</div><div class="line">        require(b &lt;= a);</div><div class="line">        c = a - b;</div><div class="line">    &#125;</div><div class="line">    function mul(uint a, uint b) internal pure returns (uint c) &#123;</div><div class="line">        c = a * b;</div><div class="line">        require(a == 0 || c / a == b);</div><div class="line">    &#125;</div><div class="line">    function div(uint a, uint b) internal pure returns (uint c) &#123;</div><div class="line">        require(b &gt; 0);</div><div class="line">        c = a / b;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// ERC Token Standard #20 Interface</div><div class="line">// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">contract ERC20Interface &#123;</div><div class="line">    function totalSupply() public constant returns (uint);</div><div class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance);</div><div class="line">    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);</div><div class="line">    function transfer(address to, uint tokens) public returns (bool success);</div><div class="line">    function approve(address spender, uint tokens) public returns (bool success);</div><div class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success);</div><div class="line"></div><div class="line">    event Transfer(address indexed from, address indexed to, uint tokens);</div><div class="line">    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// Contract function to receive approval and execute function in one call</div><div class="line">//</div><div class="line">// Borrowed from MiniMeToken</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">contract ApproveAndCallFallBack &#123;</div><div class="line">    function receiveApproval(address from, uint256 tokens, address token, bytes data) public;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// Owned contract</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">contract Owned &#123;</div><div class="line">    address public owner;</div><div class="line">    address public newOwner;</div><div class="line"></div><div class="line">    event OwnershipTransferred(address indexed _from, address indexed _to);</div><div class="line"></div><div class="line">    function Owned() public &#123;</div><div class="line">        owner = msg.sender;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    modifier onlyOwner &#123;</div><div class="line">        require(msg.sender == owner);</div><div class="line">        _;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function transferOwnership(address _newOwner) public onlyOwner &#123;</div><div class="line">        newOwner = _newOwner;</div><div class="line">    &#125;</div><div class="line">    function acceptOwnership() public &#123;</div><div class="line">        require(msg.sender == newOwner);</div><div class="line">        OwnershipTransferred(owner, newOwner);</div><div class="line">        owner = newOwner;</div><div class="line">        newOwner = address(0);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// ERC20 Token, with the addition of symbol, name and decimals and an</div><div class="line">// initial fixed supply</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">contract FixedSupplyToken is ERC20Interface, Owned &#123;</div><div class="line">    using SafeMath for uint;</div><div class="line"></div><div class="line">    string public symbol;</div><div class="line">    string public  name;</div><div class="line">    uint8 public decimals;</div><div class="line">    uint public _totalSupply;</div><div class="line"></div><div class="line">    mapping(address =&gt; uint) balances;</div><div class="line">    mapping(address =&gt; mapping(address =&gt; uint)) allowed;</div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Constructor</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function FixedSupplyToken() public &#123;</div><div class="line">        symbol = &quot;FIXED&quot;;</div><div class="line">        name = &quot;Example Fixed Supply Token&quot;;</div><div class="line">        decimals = 18;</div><div class="line">        _totalSupply = 1000000 * 10**uint(decimals);</div><div class="line">        balances[owner] = _totalSupply;</div><div class="line">        Transfer(address(0), owner, _totalSupply);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Total supply</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function totalSupply() public constant returns (uint) &#123;</div><div class="line">        return _totalSupply  - balances[address(0)];</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Get the token balance for account `tokenOwner`</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance) &#123;</div><div class="line">        return balances[tokenOwner];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Transfer the balance from token owner&apos;s account to `to` account</div><div class="line">    // - Owner&apos;s account must have sufficient balance to transfer</div><div class="line">    // - 0 value transfers are allowed</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function transfer(address to, uint tokens) public returns (bool success) &#123;</div><div class="line">        balances[msg.sender] = balances[msg.sender].sub(tokens);</div><div class="line">        balances[to] = balances[to].add(tokens);</div><div class="line">        Transfer(msg.sender, to, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Token owner can approve for `spender` to transferFrom(...) `tokens`</div><div class="line">    // from the token owner&apos;s account</div><div class="line">    //</div><div class="line">    // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md</div><div class="line">    // recommends that there are no checks for the approval double-spend attack</div><div class="line">    // as this should be implemented in user interfaces</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function approve(address spender, uint tokens) public returns (bool success) &#123;</div><div class="line">        allowed[msg.sender][spender] = tokens;</div><div class="line">        Approval(msg.sender, spender, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Transfer `tokens` from the `from` account to the `to` account</div><div class="line">    //</div><div class="line">    // The calling account must already have sufficient tokens approve(...)-d</div><div class="line">    // for spending from the `from` account and</div><div class="line">    // - From account must have sufficient balance to transfer</div><div class="line">    // - Spender must have sufficient allowance to transfer</div><div class="line">    // - 0 value transfers are allowed</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success) &#123;</div><div class="line">        balances[from] = balances[from].sub(tokens);</div><div class="line">        allowed[from][msg.sender] = allowed[from][msg.sender].sub(tokens);</div><div class="line">        balances[to] = balances[to].add(tokens);</div><div class="line">        Transfer(from, to, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Returns the amount of tokens approved by the owner that can be</div><div class="line">    // transferred to the spender&apos;s account</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function allowance(address tokenOwner, address spender) public constant returns (uint remaining) &#123;</div><div class="line">        return allowed[tokenOwner][spender];</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Token owner can approve for `spender` to transferFrom(...) `tokens`</div><div class="line">    // from the token owner&apos;s account. The `spender` contract function</div><div class="line">    // `receiveApproval(...)` is then executed</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function approveAndCall(address spender, uint tokens, bytes data) public returns (bool success) &#123;</div><div class="line">        allowed[msg.sender][spender] = tokens;</div><div class="line">        Approval(msg.sender, spender, tokens);</div><div class="line">        ApproveAndCallFallBack(spender).receiveApproval(msg.sender, tokens, this, data);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Don&apos;t accept ETH</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function () public payable &#123;</div><div class="line">        revert();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Owner can transfer out any accidentally sent ERC20 tokens</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function transferAnyERC20Token(address tokenAddress, uint tokens) public onlyOwner returns (bool success) &#123;</div><div class="line">        return ERC20Interface(tokenAddress).transfer(owner, tokens);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>```</p>
-<h3 id="其他的sample"><a href="#其他的sample" class="headerlink" title="其他的sample"></a>其他的sample</h3><ul>
-<li><a href="https://medium.com/bitfwd/how-to-issue-your-own-token-on-ethereum-in-less-than-20-minutes-ac1f8f022793" target="_blank" rel="external">How to issue your own token on Ethereum in less than 20 minutes</a></li>
-<li>Ethereum.org Token page: <a href="https://www.ethereum.org/token" target="_blank" rel="external">https://www.ethereum.org/token</a>.</li>
-<li>Etherscan token selection of popular tokens: <a href="https://etherscan.io/tokens" target="_blank" rel="external">https://etherscan.io/tokens</a></li>
-<li>EtherScan ERC20 token search: <a href="https://etherscan.io/token-search" target="_blank" rel="external">https://etherscan.io/token-search</a></li>
-<li>The HumanStandardToken: a specialisation of ERC20 that provides a name, decimals, symbol and version as public variables, so these can be read from the contract and do not need to be configured: <a href="https://github.com/ConsenSys/Tokens/blob/master/Token_Contracts/contracts/HumanStandardToken.sol" target="_blank" rel="external">https://github.com/ConsenSys/Tokens/blob/master/Token_Contracts/contracts/HumanStandardToken.sol</a></li>
-<li>Token Factory, an application that lets you create these tokens, just to play around with: <a href="https://tokenfactory.surge.sh" target="_blank" rel="external">https://tokenfactory.surge.sh</a></li>
-<li>Libraries:<ul>
-<li>OpenZeppelin: <a href="https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts/token" target="_blank" rel="external">https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts/token</a></li>
-<li>Minime token contract that allows to clone itself, so it can be used for things like voting, or even splitting off a token for a separate application: <a href="https://github.com/Giveth/minime" target="_blank" rel="external">https://github.com/Giveth/minime</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h2><ul>
-<li><a href="https://etherscan.io/tokens" target="_blank" rel="external">以太坊 Token Tracker</a></li>
-</ul>
-<p>目前总共有 41030 个 ERC20 的 Token 合约。</p>
-<hr>
-<p>via: <a href="https://theethereum.wiki/w/index.php/ERC20_Token_Standard" target="_blank" rel="external">ERC20_TOKEN_STANDARD</a></p>
-<p>Author: <a href="https://github.com/chaintechinfo" target="_blank" rel="external">chaintech.info</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1855,7 +1776,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1868,7 +1789,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

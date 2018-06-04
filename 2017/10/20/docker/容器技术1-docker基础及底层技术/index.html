@@ -87,22 +87,16 @@
 
 
 
-<meta name="description" content="Docker 基础基础命令12345# 启动一个容器docker run -d -p 80:80 -v host_dir:container_dir --name web syph/web:1.0# 进入docker容器内部docker exec -it container_name /bin/bash
-QA
-Ignoring unsupported options: build in v1.13">
+<meta name="description" content="Docker 基础基础命令12345678# 启动一个容器$ docker run -d -p 80:80 -v host_dir:container_dir --name web syph/web:1.0# 进入docker容器内部$ docker exec -it container_name /bin/bash# 删除多个容器$ sudo docker rm $(docker ps -a -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="容器技术1-docker基础及底层技术">
 <meta property="og:url" content="http://shniu.github.io/2017/10/20/docker/容器技术1-docker基础及底层技术/index.html">
 <meta property="og:site_name" content="ChainTech">
-<meta property="og:description" content="Docker 基础基础命令12345# 启动一个容器docker run -d -p 80:80 -v host_dir:container_dir --name web syph/web:1.0# 进入docker容器内部docker exec -it container_name /bin/bash
-QA
-Ignoring unsupported options: build in v1.13">
-<meta property="og:updated_time" content="2018-05-27T23:13:49.125Z">
+<meta property="og:description" content="Docker 基础基础命令12345678# 启动一个容器$ docker run -d -p 80:80 -v host_dir:container_dir --name web syph/web:1.0# 进入docker容器内部$ docker exec -it container_name /bin/bash# 删除多个容器$ sudo docker rm $(docker ps -a -">
+<meta property="og:updated_time" content="2018-06-04T22:52:55.061Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="容器技术1-docker基础及底层技术">
-<meta name="twitter:description" content="Docker 基础基础命令12345# 启动一个容器docker run -d -p 80:80 -v host_dir:container_dir --name web syph/web:1.0# 进入docker容器内部docker exec -it container_name /bin/bash
-QA
-Ignoring unsupported options: build in v1.13">
+<meta name="twitter:description" content="Docker 基础基础命令12345678# 启动一个容器$ docker run -d -p 80:80 -v host_dir:container_dir --name web syph/web:1.0# 进入docker容器内部$ docker exec -it container_name /bin/bash# 删除多个容器$ sudo docker rm $(docker ps -a -">
 
 
 
@@ -327,7 +321,7 @@ Ignoring unsupported options: build in v1.13">
       
 
       
-        <h3 id="Docker-基础"><a href="#Docker-基础" class="headerlink" title="Docker 基础"></a>Docker 基础</h3><h4 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 启动一个容器</div><div class="line">docker run -d -p 80:80 -v host_dir:container_dir --name web syph/web:1.0</div><div class="line"></div><div class="line"># 进入docker容器内部</div><div class="line">docker exec -it container_name /bin/bash</div></pre></td></tr></table></figure>
+        <h3 id="Docker-基础"><a href="#Docker-基础" class="headerlink" title="Docker 基础"></a>Docker 基础</h3><h4 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 启动一个容器</div><div class="line">$ docker run -d -p 80:80 -v host_dir:container_dir --name web syph/web:1.0</div><div class="line"></div><div class="line"># 进入docker容器内部</div><div class="line">$ docker exec -it container_name /bin/bash</div><div class="line"></div><div class="line"># 删除多个容器</div><div class="line">$ sudo docker rm $(docker ps -a -q)</div></pre></td></tr></table></figure>
 <h3 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h3><blockquote>
 <p>Ignoring unsupported options: build in v1.13.0-rc4</p>
 </blockquote>
@@ -476,7 +470,7 @@ Ignoring unsupported options: build in v1.13">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -489,7 +483,7 @@ Ignoring unsupported options: build in v1.13">
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
