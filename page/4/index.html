@@ -248,6 +248,267 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/04/201803/blockchain-tech-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/portrait-01.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/04/201803/blockchain-tech-intro/" itemprop="url">
+                  区块链技术介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-04T08:38:48+08:00">
+                2018-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是一篇区块链技术介绍的文章</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/03/201803/golang-echo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/portrait-01.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/03/201803/golang-echo/" itemprop="url">
+                  Echo golang 下的高性能可扩展极简 Web 框架
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T08:42:04+08:00">
+                2018-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go get -u github.com/labstack/echo/...</div></pre></td></tr></table></figure>
+<h3 id="创建一个-Hello-world-服务"><a href="#创建一个-Hello-world-服务" class="headerlink" title="创建一个 Hello world! 服务"></a>创建一个 Hello world! 服务</h3><p>创建 <code>server.go</code> 文件，代码如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">  <span class="string">"net/http"</span>,</div><div class="line">  <span class="string">"github.com/labstack/echo"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    e := echo.New()</div><div class="line">    e.GET(<span class="string">"/"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">        <span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"Hello, World!"</span>)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    e.Logger.Fatal(e.Start(<span class="string">":1323"</span>))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go run server.go</div></pre></td></tr></table></figure>
+<p>在浏览器中打开 <code>http://localhost:1323</code> 就可以看到 <code>Hello, World!</code></p>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">e.POST(<span class="string">"/users"</span>, saveUser)</div><div class="line">e.GET(<span class="string">"/users/:id"</span>, getUser)</div><div class="line">e.PUT(<span class="string">"/users/:id"</span>, updateUser)</div><div class="line">e.DELETE(<span class="string">"/users/:id"</span>, deleteUser)</div></pre></td></tr></table></figure>
+<h3 id="路径参数"><a href="#路径参数" class="headerlink" title="路径参数"></a>路径参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// e.GET("/users/:id", getUser)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getUser</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">  	<span class="comment">// User ID from path `users/:id`</span></div><div class="line">  	id := c.Param(<span class="string">"id"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, id)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h3><p>例如，<code>/show?team=x-men&amp;member=wolverine</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//e.GET("/show", show)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">show</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get team and member from the query string</span></div><div class="line">	team := c.QueryParam(<span class="string">"team"</span>)</div><div class="line">	member := c.QueryParam(<span class="string">"member"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"team:"</span> + team + <span class="string">", member:"</span> + member)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在浏览器中访问 <code>http://localhost:1323/show?team=x-men&amp;member=wolverine</code> 就能看到结果</p>
+<h3 id="application-x-www-form-urlencoded-表单提交"><a href="#application-x-www-form-urlencoded-表单提交" class="headerlink" title="application/x-www-form-urlencoded 表单提交"></a><code>application/x-www-form-urlencoded</code> 表单提交</h3><p>例如，<code>POST</code> <code>/save</code><br>参数：name=””&amp;email=””</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// e.POST("/save", save)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">save</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get name and email</span></div><div class="line">	name := c.FormValue(<span class="string">"name"</span>)</div><div class="line">	email := c.FormValue(<span class="string">"email"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"name:"</span> + name + <span class="string">", email:"</span> + email)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -F &quot;name=Joe Smith&quot; -F &quot;email=joe@labstack.com&quot; http://localhost:1323/save</div><div class="line">// =&gt; name:Joe Smith, email:joe@labstack.com</div></pre></td></tr></table></figure></p>
+<h3 id="multipart-form-data-表单提交"><a href="#multipart-form-data-表单提交" class="headerlink" title="multipart/form-data 表单提交"></a><code>multipart/form-data</code> 表单提交</h3><p>例如，<code>POST</code> <code>/save</code><br>参数：name=””&amp;avatar=File()</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">save</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get name</span></div><div class="line">	name := c.FormValue(<span class="string">"name"</span>)</div><div class="line">	<span class="comment">// Get avatar</span></div><div class="line">  	avatar, err := c.FormFile(<span class="string">"avatar"</span>)</div><div class="line">  	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"></div><div class="line"> 	<span class="comment">// Source</span></div><div class="line"> 	src, err := avatar.Open()</div><div class="line"> 	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">defer</span> src.Close()</div><div class="line"></div><div class="line"> 	<span class="comment">// Destination</span></div><div class="line"> 	dst, err := os.Create(avatar.Filename)</div><div class="line"> 	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">defer</span> dst.Close()</div><div class="line"></div><div class="line"> 	<span class="comment">// Copy</span></div><div class="line"> 	<span class="keyword">if</span> _, err = io.Copy(dst, src); err != <span class="literal">nil</span> &#123;</div><div class="line">  		<span class="keyword">return</span> err</div><div class="line">  	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> c.HTML(http.StatusOK, <span class="string">"&lt;b&gt;Thank you! "</span> + name + <span class="string">"&lt;/b&gt;"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -F &quot;name=Joe Smith&quot; -F &quot;avatar=@/path/to/your/avatar.png&quot; http://localhost:1323/save</div><div class="line">// =&gt; &lt;b&gt;Thank you! Joe Smith&lt;/b&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="请求处理"><a href="#请求处理" class="headerlink" title="请求处理"></a>请求处理</h3><ul>
+<li>基于 <code>Content-Type</code> 的请求头，将 <code>json</code>, <code>xml</code>, <code>form</code>, <code>query</code> 的负荷绑定到 Go struct 中</li>
+<li>把返回的状态码也渲染到以 <code>json</code>, <code>xml</code> 返回的响应中</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</div><div class="line">	Name  <span class="keyword">string</span> <span class="string">`json:"name" xml:"name" form:"name" query:"name"`</span></div><div class="line">	Email <span class="keyword">string</span> <span class="string">`json:"email" xml:"email" form:"email" query:"email"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">e.POST(<span class="string">"/users"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	u := <span class="built_in">new</span>(User)</div><div class="line">	<span class="keyword">if</span> err := c.Bind(u); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> c.JSON(http.StatusCreated, u)</div><div class="line">	<span class="comment">// or</span></div><div class="line">	<span class="comment">// return c.XML(http.StatusCreated, u)</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="静态内容"><a href="#静态内容" class="headerlink" title="静态内容"></a>静态内容</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">e.Static(<span class="string">"/static"</span>, <span class="string">"static"</span>)</div></pre></td></tr></table></figure>
+<p><a href="https://echo.labstack.com/guide/static-files" target="_blank" rel="external">更多看这里</a><br><a href="https://echo.labstack.com/guide/templates" target="_blank" rel="external">模版渲染</a></p>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Root level middleware</span></div><div class="line">e.Use(middleware.Logger())</div><div class="line">e.Use(middleware.Recover())</div><div class="line"></div><div class="line"><span class="comment">// Group level middleware</span></div><div class="line">g := e.Group(<span class="string">"/admin"</span>)</div><div class="line">g.Use(middleware.BasicAuth(<span class="function"><span class="keyword">func</span><span class="params">(username, password <span class="keyword">string</span>, c echo.Context)</span> <span class="params">(<span class="keyword">bool</span>, error)</span></span> &#123;</div><div class="line">  <span class="keyword">if</span> username == <span class="string">"joe"</span> &amp;&amp; password == <span class="string">"secret"</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>, <span class="literal">nil</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>, <span class="literal">nil</span></div><div class="line">&#125;))</div><div class="line"></div><div class="line"><span class="comment">// Route level middleware</span></div><div class="line">track := <span class="function"><span class="keyword">func</span><span class="params">(next echo.HandlerFunc)</span> <span class="title">echo</span>.<span class="title">HandlerFunc</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">		<span class="built_in">println</span>(<span class="string">"request to /users"</span>)</div><div class="line">		<span class="keyword">return</span> next(c)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">e.GET(<span class="string">"/users"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"/users"</span>)</div><div class="line">&#125;, track)</div></pre></td></tr></table></figure>
+<p><a href="https://echo.labstack.com/middleware" target="_blank" rel="external">更多看这里</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/02/Implementing Tail's Follow In Go/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1284,6 +1545,7 @@
 <li><a href="https://docs.docker.com/engine/swarm/stack-deploy/" target="_blank" rel="external">https://docs.docker.com/engine/swarm/stack-deploy/</a>这篇文章讲了部署到swarm的全过程</li>
 <li><a href="https://blog.couchbase.com/deploy-docker-compose-services-swarm/" target="_blank" rel="external">https://blog.couchbase.com/deploy-docker-compose-services-swarm/</a>  Deploy Docker Compose Services to Swarm</li>
 <li><a href="https://technologyconversations.com/2017/01/23/using-docker-stack-and-compose-yaml-files-to-deploy-swarm-services/" target="_blank" rel="external">https://technologyconversations.com/2017/01/23/using-docker-stack-and-compose-yaml-files-to-deploy-swarm-services/</a></li>
+<li><a href="https://yeasy.gitbooks.io/docker_practice/content/compose/introduction.html" target="_blank" rel="external">Docker从入门到实践</a></li>
 </ul>
 <h3 id="docker-技术"><a href="#docker-技术" class="headerlink" title="docker 技术"></a>docker 技术</h3><p>Container (容器)是一种轻量级的虚拟化技术，它不需要模拟硬件创建虚拟机。在 Linux 系统里面，使用到 Linux kernel 的 cgroups，namespace(ipc，network， user，pid，mount），capability 等用于隔离运行环境和资源限制的技术。</p>
 <ul>
@@ -1459,261 +1721,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/04/22/深度学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/22/深度学习/" itemprop="url">
-                  深度学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-22T18:50:55+08:00">
-                2017-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="未知概念"><a href="#未知概念" class="headerlink" title="未知概念"></a>未知概念</h2><ul>
-<li>神经网络</li>
-<li>高数</li>
-<li>线性代数</li>
-</ul>
-<h2 id="重要资源"><a href="#重要资源" class="headerlink" title="重要资源"></a>重要资源</h2><p><a href="https://www.zhihu.com/question/49909565" target="_blank" rel="external">tensorflow如何入门 - 知乎</a></p>
-<p><a href="http://www.tensorflow.org" target="_blank" rel="external">tensorflow.org</a></p>
-<p><a href="http://playground.tensorflow.org" target="_blank" rel="external">playground.tensorflow.org</a></p>
-<p><a href="https://github.com/zsdonghao/tensorlayer" target="_blank" rel="external">https://github.com/zsdonghao/tensorlayer</a></p>
-<h2 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h2><ul>
-<li>tensorflow.org总是打不开的处理办法</li>
-</ul>
-<blockquote>
-<p>修改 /etc/hosts 文件，加入<br>64.233.188.121 www.tensorflow.org</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2017/04/18/认知积累/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/18/认知积累/" itemprop="url">
-                  认知积累
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T13:22:23+08:00">
-                2017-04-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="精准是企业的未来"><a href="#精准是企业的未来" class="headerlink" title="精准是企业的未来"></a>精准是企业的未来</h3><blockquote>
-<p>企业做到了精准，才有机会进入下一轮的商业竞争；Google颠覆了传统广告，带来了创新，Google的广告投放、淘宝的推广投放；商业文明的DNA也具有双螺旋，分别是协同网络和数据智能。<br>协同网络：降低进入生态的门槛，一定是低门槛，以先进入的一批慢慢带动后来者，比如淘宝的生态，开始是一些边缘的人在做，比如大学生、失业的工人等；网络中的各组成部分之间能够自发的发展关系；<br>数据智能：在线化、记录尽可能多的数据，先不要管怎么用，将来肯定有用；<br>数据化是个昂贵的过程，谁有更有创意更优质获取数据的能力，谁就有更强的竞争力；<br>机器学习的的逻辑是否贯穿这个过程，是否能有更有的算法去解决接踵而来的问题；<br>一定要有持续不断的用户反馈、使用反馈，然后再去优化，再去收集反馈；<br>未来一定是有精准服务取胜的。  曾鸣</p>
-</blockquote>
-<h3 id="知识的正解"><a href="#知识的正解" class="headerlink" title="知识的正解"></a>知识的正解</h3><blockquote>
-<p>所谓的知识，并不能给你带来任何的益处；信息本身并不是知识，堆叠在一起并不会自动产生有价值的、可供使用的知识，比如你知道的成语比别人多，这些大量的信息并不能帮你去做出比别人更好的决策，或对未来更好的关键选择；所以知识是那些能帮你做出更好决策，更好选择，能给你带来更加美好未来的信息；注意力比时间重要，时间比金钱重要；知识创造者和知识传播者，现在知识创造者更加重要；  李笑来</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1763,7 +1770,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1776,7 +1783,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

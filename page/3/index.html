@@ -248,6 +248,294 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/09/201804/monitor-platform/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/portrait-01.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/09/201804/monitor-platform/" itemprop="url">
+                  监控平台
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T09:55:31+08:00">
+                2018-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
+<li><p><a href="https://songjiayang.gitbooks.io/prometheus/content/" target="_blank" rel="external">Prometheus 实战</a></p>
+</li>
+<li><p><a href="https://segmentfault.com/a/1190000002527178" target="_blank" rel="external">使用 Prometheus 监控 Docker 容器</a> </p>
+</li>
+</ul>
+<h2 id="主机监控指标"><a href="#主机监控指标" class="headerlink" title="主机监控指标"></a>主机监控指标</h2><p>这里的主机值对物理机或虚拟机的监控，下面是一些重要的监控指标：</p>
+<ul>
+<li>系统平均负载监控项</li>
+</ul>
+<p>对 load average 的理解参看 <a href="http://blog.51cto.com/8088809/1623552" target="_blank" rel="external">理解Linux系统中的load average</a></p>
+<blockquote>
+<p>通常我们先看15分钟load，如果load很高，再看1分钟和5分钟负载，查看是否有下降趋势。1分钟负载值 &gt; 1，那么我们不用担心，但是如果15分钟负载都超过1，我们要赶紧看看发生了什么事情。所以我们要根据实际情况查看这三个值。<br>0.7 &lt; load &lt; 1: 此时是不错的状态，如果进来更多的汽车，你的马路仍然可以应付。<br>load = 1: 你的马路即将拥堵，而且没有更多的资源额外的任务，赶紧看看发生了什么吧。<br>load &gt; 5: 非常严重拥堵，我们的马路非常繁忙，每辆车都无法很快的运行</p>
+</blockquote>
+<p><strong>使用 Prometheus 统计平均负载</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">node_load1&#123;instance=&quot;xxx&quot;&#125; // 1分钟负载</div><div class="line">node_load5&#123;instance=&quot;xxx&quot;&#125; // 5分钟负载</div><div class="line">node_load15&#123;instance=&quot;xxx&quot;&#125; // 15分钟负载</div></pre></td></tr></table></figure></p>
+<h2 id="Spring-boot-and-prometheus"><a href="#Spring-boot-and-prometheus" class="headerlink" title="Spring boot and prometheus"></a>Spring boot and prometheus</h2><ul>
+<li><a href="https://reflectoring.io/monitoring-spring-boot-with-prometheus/" target="_blank" rel="external">Exposing Metrics of a Spring Boot Application for Prometheus</a></li>
+<li><a href="http://yunlzheng.github.io/2018/01/24/use-prometheus-monitor-your-spring-boot-application/" target="_blank" rel="external">自定义Metrics：让Prometheus监控你的应用程序（Spring版)</a></li>
+</ul>
+<h2 id="Docker-hosts-and-containers-monitoring"><a href="#Docker-hosts-and-containers-monitoring" class="headerlink" title="Docker hosts and containers monitoring"></a>Docker hosts and containers monitoring</h2><ul>
+<li><a href="https://github.com/stefanprodan/dockprom" target="_blank" rel="external">Docker hosts and containers monitoring with Prometheus, Grafana, cAdvisor, NodeExporter and AlertManager</a><br>使用起来简单方便，使用及参考价值很大</li>
+</ul>
+<h2 id="Mongodb-monitor"><a href="#Mongodb-monitor" class="headerlink" title="Mongodb monitor"></a>Mongodb monitor</h2><ul>
+<li><a href="https://github.com/percona/mongodb_exporter" target="_blank" rel="external">A Prometheus exporter for MongoDB including sharding, replication and storage engines</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/07/201804/Prometheus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/portrait-01.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/07/201804/Prometheus/" itemprop="url">
+                  Prometheus 监控系统
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T22:21:47+08:00">
+                2018-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Prometheus 是一个最初在 SoundCloud 上构建的开源系统监控和警报工具包。自2012年成立以来，许多公司和组织都采用 Prometheus，该项目拥有非常活跃的开发人员和用户社区。它现在是一个独立的开源项目，并且独立于任何公司。 为了强调这一点，并澄清项目的治理结构，Prometheus 于2016年加入云本地计算基金会，作为 Kubernetes 之后的第二个托管项目。</p>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ul>
+<li>一个多维数据模型，具有由度量名称和键/值对标识的时间序列数据</li>
+<li>一种灵活的查询语言来利用这种维度</li>
+<li>不依赖分布式存储; 单个服务器节点是自治的</li>
+<li>时间序列收集通过 HTTP 上拉式模型进行</li>
+<li>推送时间序列通过中间网关支持</li>
+<li>通过服务发现或静态配置来发现目标</li>
+<li>多种模式的图形和仪表盘支持</li>
+</ul>
+<h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><ul>
+<li>the main Prometheus server which scrapes and stores time series data</li>
+<li>client libraries for instrumenting application code</li>
+<li>a push gateway for supporting short-lived jobs</li>
+<li>special-purpose exporters for services like HAProxy, StatsD, Graphite, etc.</li>
+<li>an alertmanager to handle alerts</li>
+<li>various support tools</li>
+</ul>
+<p><img src="https://prometheus.io/assets/architecture.svg" alt="prometheus"></p>
+<p>Prometheus 直接或通过中介推送网关从短期工作中提取仪器化工作的指标。它在本地存储所有抓取的样本，并对这些数据运行规则，以聚合和记录现有数据的新时间序列或生成警报。 Grafana 或其他 API 消费者可用于可视化收集的数据。</p>
+<h2 id="开始使用-Prometheus"><a href="#开始使用-Prometheus" class="headerlink" title="开始使用 Prometheus"></a>开始使用 Prometheus</h2><p>Prometheus 是一个监控平台，通过在这些目标上抓取指标 HTTP 端点来收集受监控目标的指标。本指南将向您展示如何使用 Prometheus 安装，配置和监控我们的第一个资源。您将下载，安装并运行 Prometheus。您还将下载并安装导出器，这些工具可在主机和服务上显示时间序列数据。 我们的第一个出口商将是节点出口商，它公开了 CPU，内存和磁盘等主机级度量。</p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a href="https://prometheus.io/download/" target="_blank" rel="external">下载地址</a></p>
+<h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><p>下载安装 Grafana，<a href="http://docs.grafana.org/guides/getting_started/" target="_blank" rel="external">地址</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># http://docs.grafana.org/installation/debian/</div><div class="line"># add deb https://packagecloud.io/grafana/stable/debian/ jessie main to /etc/apt/sources.list</div><div class="line">deb https://packagecloud.io/grafana/stable/debian/ jessie main</div><div class="line"></div><div class="line">curl https://packagecloud.io/gpg.key | sudo apt-key add -</div><div class="line"></div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install grafana</div><div class="line"></div><div class="line">http://docs.grafana.org/installation/debian/</div><div class="line"></div><div class="line"># 配置文件位置</div><div class="line">/etc/grafana/grafana.ini</div><div class="line"></div><div class="line"># 配置：http://docs.grafana.org/installation/configuration/</div><div class="line"></div><div class="line">trusty</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/24811652?refer=cloudsre" target="_blank" rel="external">基于Prometheus的分布式在线服务监控实践</a></li>
+<li><a href="https://blog.csdn.net/sinkou/article/details/75303997" target="_blank" rel="external">为普罗米修斯添加Nginx基本认证</a></li>
+<li><a href="http://blog.shurenyun.com/shurenyun-sre-256/" target="_blank" rel="external">SRE工程实践——基于时间序列存储数据的报警</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/07/201804/nginx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1449,267 +1737,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/04/201803/blockchain-tech-intro/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/04/201803/blockchain-tech-intro/" itemprop="url">
-                  区块链技术介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-04T08:38:48+08:00">
-                2018-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这是一篇区块链技术介绍的文章</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/03/201803/golang-echo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/03/201803/golang-echo/" itemprop="url">
-                  Echo golang 下的高性能可扩展极简 Web 框架
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T08:42:04+08:00">
-                2018-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go get -u github.com/labstack/echo/...</div></pre></td></tr></table></figure>
-<h3 id="创建一个-Hello-world-服务"><a href="#创建一个-Hello-world-服务" class="headerlink" title="创建一个 Hello world! 服务"></a>创建一个 Hello world! 服务</h3><p>创建 <code>server.go</code> 文件，代码如下：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">  <span class="string">"net/http"</span>,</div><div class="line">  <span class="string">"github.com/labstack/echo"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    e := echo.New()</div><div class="line">    e.GET(<span class="string">"/"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">        <span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"Hello, World!"</span>)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    e.Logger.Fatal(e.Start(<span class="string">":1323"</span>))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>启动服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">go run server.go</div></pre></td></tr></table></figure>
-<p>在浏览器中打开 <code>http://localhost:1323</code> 就可以看到 <code>Hello, World!</code></p>
-<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">e.POST(<span class="string">"/users"</span>, saveUser)</div><div class="line">e.GET(<span class="string">"/users/:id"</span>, getUser)</div><div class="line">e.PUT(<span class="string">"/users/:id"</span>, updateUser)</div><div class="line">e.DELETE(<span class="string">"/users/:id"</span>, deleteUser)</div></pre></td></tr></table></figure>
-<h3 id="路径参数"><a href="#路径参数" class="headerlink" title="路径参数"></a>路径参数</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// e.GET("/users/:id", getUser)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getUser</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">  	<span class="comment">// User ID from path `users/:id`</span></div><div class="line">  	id := c.Param(<span class="string">"id"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, id)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h3><p>例如，<code>/show?team=x-men&amp;member=wolverine</code></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//e.GET("/show", show)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">show</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get team and member from the query string</span></div><div class="line">	team := c.QueryParam(<span class="string">"team"</span>)</div><div class="line">	member := c.QueryParam(<span class="string">"member"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"team:"</span> + team + <span class="string">", member:"</span> + member)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在浏览器中访问 <code>http://localhost:1323/show?team=x-men&amp;member=wolverine</code> 就能看到结果</p>
-<h3 id="application-x-www-form-urlencoded-表单提交"><a href="#application-x-www-form-urlencoded-表单提交" class="headerlink" title="application/x-www-form-urlencoded 表单提交"></a><code>application/x-www-form-urlencoded</code> 表单提交</h3><p>例如，<code>POST</code> <code>/save</code><br>参数：name=””&amp;email=””</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// e.POST("/save", save)</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">save</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get name and email</span></div><div class="line">	name := c.FormValue(<span class="string">"name"</span>)</div><div class="line">	email := c.FormValue(<span class="string">"email"</span>)</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"name:"</span> + name + <span class="string">", email:"</span> + email)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>运行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -F &quot;name=Joe Smith&quot; -F &quot;email=joe@labstack.com&quot; http://localhost:1323/save</div><div class="line">// =&gt; name:Joe Smith, email:joe@labstack.com</div></pre></td></tr></table></figure></p>
-<h3 id="multipart-form-data-表单提交"><a href="#multipart-form-data-表单提交" class="headerlink" title="multipart/form-data 表单提交"></a><code>multipart/form-data</code> 表单提交</h3><p>例如，<code>POST</code> <code>/save</code><br>参数：name=””&amp;avatar=File()</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">save</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="comment">// Get name</span></div><div class="line">	name := c.FormValue(<span class="string">"name"</span>)</div><div class="line">	<span class="comment">// Get avatar</span></div><div class="line">  	avatar, err := c.FormFile(<span class="string">"avatar"</span>)</div><div class="line">  	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"></div><div class="line"> 	<span class="comment">// Source</span></div><div class="line"> 	src, err := avatar.Open()</div><div class="line"> 	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">defer</span> src.Close()</div><div class="line"></div><div class="line"> 	<span class="comment">// Destination</span></div><div class="line"> 	dst, err := os.Create(avatar.Filename)</div><div class="line"> 	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"> 		<span class="keyword">return</span> err</div><div class="line"> 	&#125;</div><div class="line"> 	<span class="keyword">defer</span> dst.Close()</div><div class="line"></div><div class="line"> 	<span class="comment">// Copy</span></div><div class="line"> 	<span class="keyword">if</span> _, err = io.Copy(dst, src); err != <span class="literal">nil</span> &#123;</div><div class="line">  		<span class="keyword">return</span> err</div><div class="line">  	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> c.HTML(http.StatusOK, <span class="string">"&lt;b&gt;Thank you! "</span> + name + <span class="string">"&lt;/b&gt;"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>运行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -F &quot;name=Joe Smith&quot; -F &quot;avatar=@/path/to/your/avatar.png&quot; http://localhost:1323/save</div><div class="line">// =&gt; &lt;b&gt;Thank you! Joe Smith&lt;/b&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="请求处理"><a href="#请求处理" class="headerlink" title="请求处理"></a>请求处理</h3><ul>
-<li>基于 <code>Content-Type</code> 的请求头，将 <code>json</code>, <code>xml</code>, <code>form</code>, <code>query</code> 的负荷绑定到 Go struct 中</li>
-<li>把返回的状态码也渲染到以 <code>json</code>, <code>xml</code> 返回的响应中</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</div><div class="line">	Name  <span class="keyword">string</span> <span class="string">`json:"name" xml:"name" form:"name" query:"name"`</span></div><div class="line">	Email <span class="keyword">string</span> <span class="string">`json:"email" xml:"email" form:"email" query:"email"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">e.POST(<span class="string">"/users"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	u := <span class="built_in">new</span>(User)</div><div class="line">	<span class="keyword">if</span> err := c.Bind(u); err != <span class="literal">nil</span> &#123;</div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> c.JSON(http.StatusCreated, u)</div><div class="line">	<span class="comment">// or</span></div><div class="line">	<span class="comment">// return c.XML(http.StatusCreated, u)</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h3 id="静态内容"><a href="#静态内容" class="headerlink" title="静态内容"></a>静态内容</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">e.Static(<span class="string">"/static"</span>, <span class="string">"static"</span>)</div></pre></td></tr></table></figure>
-<p><a href="https://echo.labstack.com/guide/static-files" target="_blank" rel="external">更多看这里</a><br><a href="https://echo.labstack.com/guide/templates" target="_blank" rel="external">模版渲染</a></p>
-<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Root level middleware</span></div><div class="line">e.Use(middleware.Logger())</div><div class="line">e.Use(middleware.Recover())</div><div class="line"></div><div class="line"><span class="comment">// Group level middleware</span></div><div class="line">g := e.Group(<span class="string">"/admin"</span>)</div><div class="line">g.Use(middleware.BasicAuth(<span class="function"><span class="keyword">func</span><span class="params">(username, password <span class="keyword">string</span>, c echo.Context)</span> <span class="params">(<span class="keyword">bool</span>, error)</span></span> &#123;</div><div class="line">  <span class="keyword">if</span> username == <span class="string">"joe"</span> &amp;&amp; password == <span class="string">"secret"</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>, <span class="literal">nil</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>, <span class="literal">nil</span></div><div class="line">&#125;))</div><div class="line"></div><div class="line"><span class="comment">// Route level middleware</span></div><div class="line">track := <span class="function"><span class="keyword">func</span><span class="params">(next echo.HandlerFunc)</span> <span class="title">echo</span>.<span class="title">HandlerFunc</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">		<span class="built_in">println</span>(<span class="string">"request to /users"</span>)</div><div class="line">		<span class="keyword">return</span> next(c)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">e.GET(<span class="string">"/users"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> c.String(http.StatusOK, <span class="string">"/users"</span>)</div><div class="line">&#125;, track)</div></pre></td></tr></table></figure>
-<p><a href="https://echo.labstack.com/middleware" target="_blank" rel="external">更多看这里</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1759,7 +1786,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1772,7 +1799,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
