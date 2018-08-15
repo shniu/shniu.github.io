@@ -200,6 +200,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -216,6 +226,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            搜索
           </a>
         </li>
       
@@ -248,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/13/spring/database-all-kinds-lock/">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/13/201805/spring-transactional/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
@@ -270,8 +290,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/05/13/spring/database-all-kinds-lock/" itemprop="url">
-                  spring jpa and mybatis
+                <a class="post-title-link" href="/2018/05/13/201805/spring-transactional/" itemprop="url">
+                  spring 事务处理
                 </a>
               
             
@@ -325,125 +345,29 @@
       
         
           
-            
-          
-        
-      
-    </div>
+            <h2 id="Spring-事务处理"><a href="#Spring-事务处理" class="headerlink" title="Spring 事务处理"></a>Spring 事务处理</h2><h4 id="事务的作用"><a href="#事务的作用" class="headerlink" title="事务的作用"></a>事务的作用</h4><p>将若干的数据库操作作为一个整体控制,一起成功或一起失败。</p>
+<ul>
+<li>原子性：指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。</li>
+<li>一致性：指事务前后数据的完整性必须保持一致。</li>
+<li>隔离性：指多个用户并发访问数据库时，一个用户的事务不能被其他用户的事务所干扰，多个并发事务之间数据要相互隔离。</li>
+<li>持久性：指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，即时数据库发生故障也不应该对其有任何影响。</li>
+</ul>
+<h4 id="容易引发的问题"><a href="#容易引发的问题" class="headerlink" title="容易引发的问题"></a>容易引发的问题</h4><ul>
+<li>脏读：一个事务读取了另一个事务改写但还未提交的数据，如果这些数据被回滚，则读到的数据是无效的。</li>
+<li>不可重复读：在同一事务中，多次读取同一数据返回的结果有所不同。</li>
+<li>幻读：一个事务读取了几行记录后，另一个事务插入一些记录，幻读就发生了。再后来的查询中，第一个事务就会发现有些原来没有的记录。</li>
+</ul>
+<h4 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h4><ul>
+<li>DEFAULT–使用后端数据库默认的隔离级别（Spring中的选择项）</li>
+<li>READ_UNCOMMITED–允许你读取还未提交的改变了的数据。可能导致脏、幻、不可重复读</li>
+<li>READ_COMMITTED–允许在并发事务已经提交后读取。可防止脏读，但幻读和不可重复读仍可发生</li>
+<li>REPEATABLE_READ–对相同字段的多次读取是一致的，除非数据被事务本身改变。可防止脏、不可重复读，但幻读仍可能发生</li>
+<li>SERIALIZABLE–完全服从ACID的隔离级别，确保不发生脏、幻、不可重复读。这在所有的隔离级别中是最慢的，它是典型的通过完全锁定在事务中涉及的数据表来完成的</li>
+</ul>
+<h3 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h3><ul>
+<li><a href="https://blog.csdn.net/wkl305268748/article/details/77619367" target="_blank" rel="external">SpringBoot事务注解@Transactional</a></li>
+</ul>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/13/bash/basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/13/bash/basic/" itemprop="url">
-                  常用的 bash shell
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-13T21:31:28+08:00">
-                2018-05-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="常用-shell-汇总"><a href="#常用-shell-汇总" class="headerlink" title="常用 shell 汇总"></a>常用 shell 汇总</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">DIR_HOME=&quot;$&#123;BASH_SOURCE-$0&#125;&quot;</div><div class="line">DIR_HOME=&quot;$(dirname &quot;$DIR_HOME&quot;)&quot;</div><div class="line"># 执行bash脚本的文件路径</div><div class="line">PRGDIR=&quot;$(cd &quot;$&#123;DIR_HOME&#125;&quot;; pwd)&quot;</div><div class="line"></div><div class="line">jarfile=$PRGDIR/app.jar</div><div class="line"></div><div class="line"># 获取运行中的程序的pid</div><div class="line">pid=$(ps -ef | grep java | grep $jarfile | awk &apos;&#123;print $2&#125;&apos;)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env bash</div><div class="line"></div><div class="line">url=&quot;http://127.0.0.1:8088/heartbeat&quot;;</div><div class="line">echo $url</div><div class="line">while [ true ]</div><div class="line">do</div><div class="line">    sleep 1</div><div class="line">    HTTP_CODE=`curl -G -m 10 -o /dev/null -s -w %&#123;http_code&#125; $url`</div><div class="line">    echo &quot;http code: $&#123;HTTP_CODE&#125;&quot;</div><div class="line">    if [ $&#123;HTTP_CODE&#125; -eq 200 ]</div><div class="line">    then</div><div class="line">        echo &quot;server start success...&quot;</div><div class="line">        exit 0</div><div class="line">    fi</div><div class="line">done</div></pre></td></tr></table></figure>
           
         
       
@@ -583,6 +507,123 @@
 <li><a href="https://www.cnblogs.com/dreamroute/p/5173896.html" target="_blank" rel="external">Spring-data-jpa详解，全方位介绍。</a></li>
 </ul>
 
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/13/spring/database-all-kinds-lock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/portrait-01.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/13/spring/database-all-kinds-lock/" itemprop="url">
+                  spring jpa and mybatis
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-13T21:31:28+08:00">
+                2018-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
           
         
       
@@ -1625,7 +1666,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
