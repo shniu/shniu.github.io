@@ -111,7 +111,9 @@
 在计算机信息安全的发展过程中，在公钥加密被发明后，一些函数如素数幂和椭圆曲线乘法被发">
 <meta property="og:image" content="https://camo.githubusercontent.com/7cbd56a1e30d98e982e56648a2f534bec8cdcdb2/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f313738353935392d366663343365656535353636366666322e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430">
 <meta property="og:image" content="https://camo.githubusercontent.com/5f7f239a6d9d036819fceb567f8a88246fb97d30/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f313738353935392d666433643832306535626131343734632e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430">
-<meta property="og:updated_time" content="2018-08-15T06:43:41.846Z">
+<meta property="og:image" content="https://camo.githubusercontent.com/cd4b06a3cddca0802a2a52a3e2462671837dce27/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f383439303135332d653663623034386164333130616562352e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970">
+<meta property="og:image" content="https://camo.githubusercontent.com/31bf97562a3aaca1fdcffb8ee03f0d01dccd11bc/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f383439303135332d376632646430306433656234336563302e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970">
+<meta property="og:updated_time" content="2018-08-15T07:41:54.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区块链钱包 - 1 公私钥生成原理及私钥管理">
 <meta name="twitter:description" content="大纲：
@@ -411,6 +413,27 @@
 <p>以公钥 K 为输入，计算其 SHA256 哈希值，并以此结果计算 RIPEMD160 哈希值，得到一个长度为160位（20字节）的数字：<br>A = RIPEMD160(SHA256(K))</p>
 <p><img src="https://camo.githubusercontent.com/7cbd56a1e30d98e982e56648a2f534bec8cdcdb2/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f313738353935392d366663343365656535353636366666322e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="地址生成过程"></p>
 <h4 id="小插曲-Base58Check"><a href="#小插曲-Base58Check" class="headerlink" title="小插曲 - Base58Check"></a>小插曲 - Base58Check</h4><p><img src="https://camo.githubusercontent.com/5f7f239a6d9d036819fceb567f8a88246fb97d30/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f313738353935392d666433643832306535626131343734632e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="Base58 Check"></p>
+<h3 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h3><p>比特币中使用的数字签名算法是椭圆曲线数字签名算法ECDSA。 ECDSA是用于基于椭圆曲线私钥/公钥对的数字签名的算法。</p>
+<ul>
+<li>签名证明私钥的所有者，即资金所有者，已经授权支出这些资金</li>
+<li>授权证明是不可否认的（不可否认性）</li>
+<li>签名证明交易（或交易的具体部分）在签字之后没有也不能被任何人修改。</li>
+</ul>
+<p>数字签名是一种由两部分组成的数学方案：第一部分是使用私钥（签名密钥）从消息（交易）创建签名的算法； 第二部分是允许任何人验证签名的算法，给定消息和公钥。</p>
+<h5 id="ECDSA-算法签名过程"><a href="#ECDSA-算法签名过程" class="headerlink" title="ECDSA 算法签名过程"></a>ECDSA 算法签名过程</h5><blockquote>
+<p>((Sig = F{sig}(F{hash}(m), dA)))</p>
+</blockquote>
+<ul>
+<li>dA 是签名私钥</li>
+<li>m 是交易（或其部分）</li>
+<li>F{hash} 是散列函数</li>
+<li>F{sig} 是签名算法</li>
+<li>Sig 是结果签名, Sig = (R, S), 签名结果有两个值组成，然后对Sig进行 Der 序列化</li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/cd4b06a3cddca0802a2a52a3e2462671837dce27/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f383439303135332d653663623034386164333130616562352e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970" alt=""></p>
+<h5 id="ECDSA-算法验证签名"><a href="#ECDSA-算法验证签名" class="headerlink" title="ECDSA 算法验证签名"></a>ECDSA 算法验证签名</h5><p>要验证签名，必须有签名（R和S）、序列化交易和公钥（对应于用于创建签名的私钥）。本质上，签名的验证意味着“只有生成此公钥的私钥的所有者，才能在此交易上产生此签名。”</p>
+<p>签名验证算法采用消息（交易或其部分的哈希值）、签名者的公钥和签名（R和S值），如果签名对该消息和公钥有效，则返回 TRUE 值</p>
+<p><img src="https://camo.githubusercontent.com/31bf97562a3aaca1fdcffb8ee03f0d01dccd11bc/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f383439303135332d376632646430306433656234336563302e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970" alt=""></p>
 <h2 id="钱包"><a href="#钱包" class="headerlink" title="钱包"></a>钱包</h2><p>广义上，钱包是一个应用程序，为用户提供交互界面。 钱包控制用户访问权限，管理密钥和地址，跟踪余额以及创建和签名交易。 狭义上，即从程序员的角度来看，“钱包”是指用于存储和管理用户密钥的数据结构。 </p>
 <p>有两种主要类型的钱包，区别在于它们包含的多个密钥是否相互关联。</p>
 <ul>
@@ -422,6 +445,7 @@
 <h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
 <li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch04.md" target="_blank" rel="external">精通比特币 - 密钥 地址</a></li>
 <li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch05.md" target="_blank" rel="external">精通比特币 - 钱包</a></li>
+<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch06.md" target="_blank" rel="external">精通比特币 - ECDSA算法</a></li>
 </ul>
 
       
@@ -600,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#公私钥原理"><span class="nav-number">1.</span> <span class="nav-text">公私钥原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#私钥"><span class="nav-number">1.1.</span> <span class="nav-text">私钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公钥"><span class="nav-number">1.2.</span> <span class="nav-text">公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECC"><span class="nav-number">1.3.</span> <span class="nav-text">ECC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成公钥"><span class="nav-number">1.4.</span> <span class="nav-text">生成公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比特币地址"><span class="nav-number">1.5.</span> <span class="nav-text">比特币地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小插曲-Base58Check"><span class="nav-number">1.5.1.</span> <span class="nav-text">小插曲 - Base58Check</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#钱包"><span class="nav-number">2.</span> <span class="nav-text">钱包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">3.</span> <span class="nav-text">Ref</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#公私钥原理"><span class="nav-number">1.</span> <span class="nav-text">公私钥原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#私钥"><span class="nav-number">1.1.</span> <span class="nav-text">私钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公钥"><span class="nav-number">1.2.</span> <span class="nav-text">公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECC"><span class="nav-number">1.3.</span> <span class="nav-text">ECC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成公钥"><span class="nav-number">1.4.</span> <span class="nav-text">生成公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比特币地址"><span class="nav-number">1.5.</span> <span class="nav-text">比特币地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小插曲-Base58Check"><span class="nav-number">1.5.1.</span> <span class="nav-text">小插曲 - Base58Check</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字签名"><span class="nav-number">1.6.</span> <span class="nav-text">数字签名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ECDSA-算法签名过程"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">ECDSA 算法签名过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ECDSA-算法验证签名"><span class="nav-number">1.6.0.2.</span> <span class="nav-text">ECDSA 算法验证签名</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#钱包"><span class="nav-number">2.</span> <span class="nav-text">钱包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">3.</span> <span class="nav-text">Ref</span></a></li></ol></div>
             
 
           </div>
