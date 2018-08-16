@@ -268,6 +268,148 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/10/201804/design-pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/portrait-01.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/10/201804/design-pattern/" itemprop="url">
+                  设计模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T08:01:08+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="模式的定义"><a href="#模式的定义" class="headerlink" title="模式的定义"></a>模式的定义</h2><p>每个模式都描述了一个在我们的环境中不断出现的问题，然后描述了该问题的解决方案的核心，通过这种方式，我们可以无数次地重用那些已有的成功的解决方案，无须再重复相同的工作。这个定义可以简单地用一句话表示：模式是在特定环境下人们解决某类重复出现问题的一套成功或有效的解决方案。</p>
+<blockquote>
+<p>每一个模式(Pattern)都从Context（前提条件）、Theme或Problem（目标问题）、 Solution（解决方案）三个方面进行了描述，并给出了从用户需求分析到建筑环境结构设计直至经典实例的过程模型。</p>
+</blockquote>
+<p>软件模式是在软件开发中某些可重现问题的一些有效解决方法，软件模式的基础结构主要由四部分构成，包括问题描述【待解决的问题是什么】、前提条件【在何种环境或约束条件下使用】、解法【如何解决】和效果【有哪些优缺点】</p>
+<p>设计模式(Design Pattern)是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结，使用设计模式是为了可重用代码、让代码更容易被他人理解并且保证代码可靠性。</p>
+<p>设计模式一般包含模式名称、问题、目的、解决方案、效果等组成要素，其中关键要素是模式名称、问题、解决方案和效果。模式名称(Pattern Name)通过一两个词来描述模式的问题、解决方案和效果，以便更好地理解模式并方便开发人员之间的交流，绝大多数模式都是根据其功能或模式结构来命名的（GoF设计模式中没有一个模式用人名命名，微笑）；问题(Problem)描述了应该在何时使用模式，它包含了设计中存在的问题以及问题存在的原因；解决方案(Solution)描述了一个设计模式的组成成分，以及这些组成成分之间的相互关系，各自的职责和协作方式，通常解决方案通过UML类图和核心代码来进行描述；效果(Consequences)描述了模式的优缺点以及在使用模式时应权衡的问题。</p>
+<p>设计模式可分为创建型(Creational)，结构型(Structural)和行为型(Behavioral)三种，其中创建型模式主要用于描述如何创建对象，结构型模式主要用于描述如何实现类或对象的组合，行为型模式主要用于描述类或对象怎样交互以及怎样分配职责，在GoF 23种设计模式中包含5种创建型设计模式、7种结构型设计模式和11种行为型设计模式。</p>
+<h4 id="观点"><a href="#观点" class="headerlink" title="观点"></a>观点</h4><ol>
+<li>模式从不保证任何东西，它不能保证你一定能够做出可复用的软件，提高你的生产率，更不能保证世界和平，微笑。模式并不能替代人来完成软件系统的创造，它们只不过会给那些缺乏经验但却具备才能和创造力的人带来希望。</li>
+<li>掌握设计模式并不是件很难的事情，关键在于多思考，多实践，不要听到人家说懂几个设计模式就很“牛”，只要用心学习，设计模式也就那么回事</li>
+<li>学习每一个设计模式时至少应该掌握如下几点：这个设计模式的意图是什么，它要解决一个什么问题，什么时候可以使用它；它是如何解决的，掌握它的结构图，记住它的关键代码；能够想到至少两个它的应用实例，一个生活中的，一个软件中的；这个模式的优缺点是什么，在使用时要注意什么。当你能够回答上述所有问题时，恭喜你，你了解一个设计模式了，至于掌握它，那就在开发中去使用吧，用多了你自然就掌握了。</li>
+</ol>
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><ul>
+<li>单一职责原则 (Single Responsibility Principle, SRP) 一个类只负责一个功能领域中的相应职责</li>
+<li>开闭原则 (Open-Closed Principle, OCP) 软件实体应对扩展开放，而对修改关闭</li>
+<li>里氏代换原则 (Liskov Substitution Principle, LSP)  所有引用基类对象的地方能够透明地使用其子类的对象</li>
+<li>依赖倒转原则 (Dependence Inversion Principle, DIP) 抽象不应该依赖于细节，细节应该依赖于抽象</li>
+<li>接口隔离原则 (Interface Segregation Principle, ISP) 使用多个专门的接口，而不使用单一的总接口</li>
+<li>合成复用原则 (Composite Reuse Principle, CRP) 尽量使用对象组合，而不是继承来达到复用的目的</li>
+<li>迪米特法则 (Law of Demeter, LoD) 一个软件实体应当尽可能少地与其他实体发生相互作用<br>具体的可参见之前的博客 <a href="http://shniu.github.io/2017/03/09/设计原则/">设计原则</a></li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a href="http://woquanke.com/books/gof/" target="_blank" rel="external">设计模式</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/09/201804/spring-boot-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1618,137 +1760,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/11/201803/go-interface/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/11/201803/go-interface/" itemprop="url">
-                  Go 的 interface
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T22:27:40+08:00">
-                2018-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>接口类型是对其它类型行为的抽象和概括；因为接口类型不会和特定的实现细节绑定在一起，通过这种抽象的方式我们可以让我们的函数更加灵活和更具有适应能力。</p>
-<p>很多面向对象的语言都有相似的接口概念，但 Go 语言中接口类型的独特之处在于它是满足隐式实现的。也就是说，我们没有必要对于给定的具体类型定义所有满足的接口类型；简单地拥有一些必需的方法就足够了。这种设计可以让你创建一个新的接口类型满足已经存在的具体类型却不会去改变这些类型的定义；当我们使用的类型来自于不受我们控制的包时这种设计尤其有用。</p>
-<h2 id="接口即合约"><a href="#接口即合约" class="headerlink" title="接口即合约"></a>接口即合约</h2><p>目前为止，我们看到的类型都是具体的类型。一个具体的类型可以准确的描述它所代表的值并且展示出对类型本身的一些操作方式就像数字类型的算术操作，切片类型的索引、附加和取范围操作。具体的类型还可以通过它的方法提供额外的行为操作。总的来说，当你拿到一个具体的类型时你就知道它的本身是什么和你可以用它来做什么。</p>
-<p>在 Go 语言中还存在着另外一种类型：接口类型。接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会展示出它们自己的方法。也就是说当你有看到一个接口类型的值时，你不知道它是什么，唯一知道的就是可以通过它的方法来做什么。</p>
-<p>我们一直使用两个相似的函数来进行字符串的格式化：<code>fmt.Printf</code> 它会把结果写到标准输出和 <code>fmt.Sprintf</code> 它会把结果以字符串的形式返回。这得益于使用接口，我们不必可悲的因为返回结果在使用方式上的一些浅显不同就必需把格式化这个最困难的过程复制一份。实际上，这两个函数都使用了另一个函数 <code>fmt.Fprintf</code> 来进行封装。<code>fmt.Fprintf</code> 这个函数对它的计算结果会被怎么使用是完全不知道的。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> fmt</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Fprintf</span><span class="params">(w io.Writer, format <span class="keyword">string</span>, args ...<span class="keyword">interface</span>&#123;&#125;)</span> <span class="params">(<span class="keyword">int</span>, error)</span></span></div><div class="line"><span class="title">func</span> <span class="title">Printf</span><span class="params">(format <span class="keyword">string</span>, args ...<span class="keyword">interface</span>&#123;&#125;)</span> <span class="params">(<span class="keyword">int</span>, error)</span> &#123;</div><div class="line">    <span class="keyword">return</span> Fprintf(os.Stdout, format, args...)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Sprintf</span><span class="params">(format <span class="keyword">string</span>, args ...<span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">string</span></span> &#123;</div><div class="line">    <span class="keyword">var</span> buf bytes.Buffer</div><div class="line">    Fprintf(&amp;buf, format, args...)</div><div class="line">    <span class="keyword">return</span> buf.String()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>Fprintf</code> 的前缀 F 表示文件(File)也表明格式化输出结果应该被写入第一个参数提供的文件中。在 Printf 函数中的第一个参数 <code>os.Stdout</code> 是 <code>*os.File</code> 类型；在 Sprintf 函数中的第一个参数 <code>&amp;buf</code> 是一个指向可以写入字节的内存缓冲区，然而它 并不是一个文件类型尽管它在某种意义上和文件类型相似。</p>
-<p>即使 Fprintf 函数中的第一个参数也不是一个文件类型。它是 <code>io.Writer</code> 类型这是一个接口类型定义如下：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> io</div><div class="line"></div><div class="line"><span class="comment">// Writer is the interface that wraps the basic Write method.</span></div><div class="line"><span class="keyword">type</span> Writer <span class="keyword">interface</span> &#123;</div><div class="line">    <span class="comment">// Write writes len(p) bytes from p to the underlying data stream.</span></div><div class="line">    <span class="comment">// It returns the number of bytes written from p (0 &lt;= n &lt;= len(p))</span></div><div class="line">    <span class="comment">// and any error encountered that caused the write to stop early.</span></div><div class="line">    <span class="comment">// Write must return a non-nil error if it returns n &lt; len(p).</span></div><div class="line">    <span class="comment">// Write must not modify the slice data, even temporarily.</span></div><div class="line">    <span class="comment">//</span></div><div class="line">    <span class="comment">// Implementations must not retain p.</span></div><div class="line">    Write(p []<span class="keyword">byte</span>) (n <span class="keyword">int</span>, err error)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>io.Writer</code> 类型定义了函数Fprintf和这个函数调用者之间的约定。一方面这个约定需要调用者提供具体类型的值就像 <code>*os.File</code> 和 <code>*bytes.Buffer</code>，这些类型都有一个特定签名和行为的 Write 的函数。另一方面这个约定保证了 Fprintf 接受任何满足 <code>io.Writer</code> 接口的值都可以工作。Fprintf 函数可能没有假定写入的是一个文件或是一段内存，而是写入一个可以调用 Write 函数的值。</p>
-<p>因为 fmt.Fprintf 函数没有对具体操作的值做任何假设而是仅仅通过 io.Writer 接口的约定来保证行为，所以第一个参数可以安全地传入一个任何具体类型的值只需要满足 <code>io.Writer</code> 接口。一个类型可以自由的使用另一个满足相同接口的类型来进行替换被称作可替换性(LSP 里氏替换)。这是一个面向对象的特征。<br>让我们通过一个新的类型来进行校验，下面 <code>*ByteCounter</code> 类型里的 Write 方法，仅仅在丢失写向它的字节前统计它们的长度。(在这个 += 赋值语句中，让 len(p) 的类型和 <code>*c</code> 的类型匹配的转换是必须的。)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">type ByteCounter int</div><div class="line"></div><div class="line">func (c *ByteCounter) Write(p []byte) (int, error) &#123;</div><div class="line">    *c += ByteCounter(len(p)) // convert int to ByteCounter</div><div class="line">    return len(p), nil</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>因为 <code>*ByteCounter</code> 满足 io.Writer 的约定，我们可以把它传入 Fprintf 函数中；Fprintf 函数执行字符串格式化的过程不会去关注 ByteCounter 正确的累加结果的长度。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> c ByteCounter</div><div class="line">c.Write([]<span class="keyword">byte</span>(<span class="string">"hello"</span>))</div><div class="line">fmt.Println(c) <span class="comment">// "5", = len("hello")</span></div><div class="line">c = <span class="number">0</span>          <span class="comment">// reset the counter</span></div><div class="line"><span class="keyword">var</span> name = <span class="string">"Dolly"</span></div><div class="line">fmt.Fprintf(&amp;c, <span class="string">"hello, %s"</span>, name)</div><div class="line">fmt.Println(c) <span class="comment">// "12", = len("hello, Dolly")</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1798,7 +1809,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1811,7 +1822,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
