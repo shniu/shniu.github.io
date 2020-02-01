@@ -1,23 +1,4 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
+<!DOCTYPE html>
 
 
 
@@ -31,47 +12,14 @@
 
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Golang," />
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
 
 
@@ -80,50 +28,66 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="Golang 关键字
-var和const ：变量和常量的声明
-go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发的关键。
-
-1234567891011//go 关键字放在方法调用前新建一个 goroutine 并让他执行方法体go GetThingDone(param1, param2);//上例的变种，新建一个匿名方法并执行go func(param1, param">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Golang">
-<meta property="og:url" content="http://shniu.github.io/2018/03/25/201803/golang-usage/index.html">
-<meta property="og:site_name" content="ChainTech">
-<meta property="og:description" content="Golang 关键字
-var和const ：变量和常量的声明
-go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发的关键。
-
-1234567891011//go 关键字放在方法调用前新建一个 goroutine 并让他执行方法体go GetThingDone(param1, param2);//上例的变种，新建一个匿名方法并执行go func(param1, param">
-<meta property="og:updated_time" content="2018-03-25T02:44:56.726Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Golang">
-<meta name="twitter:description" content="Golang 关键字
-var和const ：变量和常量的声明
-go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发的关键。
-
-1234567891011//go 关键字放在方法调用前新建一个 goroutine 并让他执行方法体go GetThingDone(param1, param2);//上例的变种，新建一个匿名方法并执行go func(param1, param">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -135,18 +99,40 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
 </script>
 
 
-
-  <link rel="canonical" href="http://shniu.github.io/2018/03/25/201803/golang-usage/"/>
-
+  
 
 
 
 
-  <title> Golang | ChainTech </title>
-</head>
+  <meta name="description" content="Golang 关键字 var和const ：变量和常量的声明 go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发的关键。  1234567891011//go 关键字放在方法调用前新建一个 goroutine 并让他执行方法体go GetThingDone(param1, param2);//上例的变种，新建一个匿名方法并执行go func(param1, param">
+<meta name="keywords" content="Golang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang">
+<meta property="og:url" content="http://shniu.github.io/2018/03/25/201803/golang-usage/index.html">
+<meta property="og:site_name" content="ChainTech">
+<meta property="og:description" content="Golang 关键字 var和const ：变量和常量的声明 go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发的关键。  1234567891011//go 关键字放在方法调用前新建一个 goroutine 并让他执行方法体go GetThingDone(param1, param2);//上例的变种，新建一个匿名方法并执行go func(param1, param">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-25T02:44:56.726Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Golang">
+<meta name="twitter:description" content="Golang 关键字 var和const ：变量和常量的声明 go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发的关键。  1234567891011//go 关键字放在方法调用前新建一个 goroutine 并让他执行方法体go GetThingDone(param1, param2);//上例的变种，新建一个匿名方法并执行go func(param1, param">
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+
+
+
+
+  <link rel="canonical" href="http://shniu.github.io/2018/03/25/201803/golang-usage/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Golang | ChainTech</title>
   
 
 
@@ -160,35 +146,65 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
 
 
 
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">ChainTech</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">知其所以然</p>
       
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -196,65 +212,55 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-search">
-          <a href="/search" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            搜索
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -262,12 +268,20 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -280,16 +294,22 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/03/25/201803/golang-usage/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="ChainTech">
     </span>
 
@@ -298,11 +318,8 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Golang
+          <h1 class="post-title" itemprop="name headline">Golang
+
               
             
           </h1>
@@ -310,20 +327,30 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T08:09:05+08:00">
-                2018-03-25
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2018-03-25 08:09:05 / Modified: 10:44:56" itemprop="dateCreated datePublished" datetime="2018-03-25T08:09:05+08:00">2018-03-25</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -346,7 +373,9 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -357,39 +386,39 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
 <li>var和const ：变量和常量的声明</li>
 <li>go : 用于并行<br>go 关键字用来创建 goroutine (协程)，是实现并发的关键。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//go 关键字放在方法调用前新建一个 goroutine 并让他执行方法体</div><div class="line">go GetThingDone(param1, param2);</div><div class="line"></div><div class="line">//上例的变种，新建一个匿名方法并执行</div><div class="line">go func(param1, param2) &#123;</div><div class="line">&#125;(val1, val2)</div><div class="line"></div><div class="line">//直接新建一个 goroutine 并在 goroutine 中执行代码块</div><div class="line">go &#123;</div><div class="line">    //do someting...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//go 关键字放在方法调用前新建一个 goroutine 并让他执行方法体</span><br><span class="line">go GetThingDone(param1, param2);</span><br><span class="line"></span><br><span class="line">//上例的变种，新建一个匿名方法并执行</span><br><span class="line">go func(param1, param2) &#123;</span><br><span class="line">&#125;(val1, val2)</span><br><span class="line"></span><br><span class="line">//直接新建一个 goroutine 并在 goroutine 中执行代码块</span><br><span class="line">go &#123;</span><br><span class="line">    //do someting...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Golang-flag-解析入参"><a href="#Golang-flag-解析入参" class="headerlink" title="Golang flag 解析入参"></a>Golang flag 解析入参</h2><p>flag 是 go 标准库提供的解析命令行参数的包。</p>
 <p>使用 flag.String(), Bool(), Int() 等函数注册 flag</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">"flag"</span></div><div class="line"><span class="comment">// 声明了一个整数flag，解析结果保存在*int指针ip里</span></div><div class="line"><span class="keyword">var</span> ip = flag.Int(<span class="string">"flagname"</span>, <span class="number">1234</span>, <span class="string">"help message for flagname"</span>)</div><div class="line"></div><div class="line"><span class="comment">// 下面的方式也是可以的</span></div><div class="line"><span class="keyword">var</span> flagvar <span class="keyword">int</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</div><div class="line">	flag.IntVar(&amp;flagvar, <span class="string">"flagname"</span>, <span class="number">1234</span>, <span class="string">"help message for flagname"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"flag"</span></span><br><span class="line"><span class="comment">// 声明了一个整数flag，解析结果保存在*int指针ip里</span></span><br><span class="line"><span class="keyword">var</span> ip = flag.Int(<span class="string">"flagname"</span>, <span class="number">1234</span>, <span class="string">"help message for flagname"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面的方式也是可以的</span></span><br><span class="line"><span class="keyword">var</span> flagvar <span class="keyword">int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	flag.IntVar(&amp;flagvar, <span class="string">"flagname"</span>, <span class="number">1234</span>, <span class="string">"help message for flagname"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="自定义-flag"><a href="#自定义-flag" class="headerlink" title="自定义 flag"></a>自定义 flag</h4><p>需要实现 <code>flag.Value</code> interface:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">type Value interface &#123;</div><div class="line">     String() string</div><div class="line">     Set(string) error</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type Value interface &#123;</span><br><span class="line">     String() string</span><br><span class="line">     Set(string) error</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <p><strong>Example</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">type percentage float32</div><div class="line"> func (p *percentage) Set(s string) error &#123;</div><div class="line">     v, err := strconv.ParseFloat(s, 32)</div><div class="line">     *p = percentage(v)</div><div class="line">     return err</div><div class="line"> &#125;</div><div class="line"> func (p *percentage) String() string &#123;</div><div class="line">     return fmt.Sprintf(&quot;%f&quot;, *p)</div><div class="line"> &#125;</div><div class="line"></div><div class="line">var pop percentage</div><div class="line">flag.Var(&amp;pop, &quot;pop&quot;, &quot;popularity&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">type percentage float32</span><br><span class="line"> func (p *percentage) Set(s string) error &#123;</span><br><span class="line">     v, err := strconv.ParseFloat(s, 32)</span><br><span class="line">     *p = percentage(v)</span><br><span class="line">     return err</span><br><span class="line"> &#125;</span><br><span class="line"> func (p *percentage) String() string &#123;</span><br><span class="line">     return fmt.Sprintf(&quot;%f&quot;, *p)</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">var pop percentage</span><br><span class="line">flag.Var(&amp;pop, &quot;pop&quot;, &quot;popularity&quot;)</span><br></pre></td></tr></table></figure>
 <p>在注册完成之后，最后调用 <code>flag.Parse()</code></p>
-<h4 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-flag</div><div class="line">-flag=x</div><div class="line">-flag x  // 只有非bool类型的flag可以</div></pre></td></tr></table></figure>
+<h4 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-flag</span><br><span class="line">-flag=x</span><br><span class="line">-flag x  // 只有非bool类型的flag可以</span><br></pre></td></tr></table></figure>
 <p>可以使用1个或2个’-‘号，效果是一样的。最后一种格式不能用于 bool 类型的 flag。</p>
-<h4 id="来个简单的例子："><a href="#来个简单的例子：" class="headerlink" title="来个简单的例子："></a>来个简单的例子：</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"flag"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    data_path := flag.String(<span class="string">"D"</span>,<span class="string">"/home/manu/sample/"</span>,<span class="string">"DB data path"</span>)</div><div class="line">    log_file := flag.String(<span class="string">"l"</span>,<span class="string">"/home/manu/sample.log"</span>,<span class="string">"log file"</span>)</div><div class="line">    nowait_flag :=flag.Bool(<span class="string">"W"</span>,<span class="literal">false</span>,<span class="string">"do not wait until operation completes"</span>)</div><div class="line"></div><div class="line">    flag.Parse()</div><div class="line"></div><div class="line">    <span class="keyword">var</span> cmd <span class="keyword">string</span> = flag.Arg(<span class="number">0</span>);</div><div class="line"></div><div class="line">    fmt.Printf(<span class="string">"action   : %s\n"</span>,cmd)</div><div class="line">    fmt.Printf(<span class="string">"data path: %s\n"</span>,*data_path)</div><div class="line">    fmt.Printf(<span class="string">"log file : %s\n"</span>,*log_file)</div><div class="line">    fmt.Printf(<span class="string">"nowait     : %v\n"</span>,*nowait_flag)</div><div class="line"></div><div class="line">    fmt.Printf(<span class="string">"-------------------------------------------------------\n"</span>)</div><div class="line"></div><div class="line">    fmt.Printf(<span class="string">"there are %d non-flag input param\n"</span>, flag.NArg())</div><div class="line">    <span class="keyword">for</span> i,param := <span class="keyword">range</span> flag.Args() &#123;</div><div class="line">        fmt.Printf(<span class="string">"#%d    :%s\n"</span>,i,param)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="来个简单的例子："><a href="#来个简单的例子：" class="headerlink" title="来个简单的例子："></a>来个简单的例子：</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"flag"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    data_path := flag.String(<span class="string">"D"</span>,<span class="string">"/home/manu/sample/"</span>,<span class="string">"DB data path"</span>)</span><br><span class="line">    log_file := flag.String(<span class="string">"l"</span>,<span class="string">"/home/manu/sample.log"</span>,<span class="string">"log file"</span>)</span><br><span class="line">    nowait_flag :=flag.Bool(<span class="string">"W"</span>,<span class="literal">false</span>,<span class="string">"do not wait until operation completes"</span>)</span><br><span class="line"></span><br><span class="line">    flag.Parse()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> cmd <span class="keyword">string</span> = flag.Arg(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    fmt.Printf(<span class="string">"action   : %s\n"</span>,cmd)</span><br><span class="line">    fmt.Printf(<span class="string">"data path: %s\n"</span>,*data_path)</span><br><span class="line">    fmt.Printf(<span class="string">"log file : %s\n"</span>,*log_file)</span><br><span class="line">    fmt.Printf(<span class="string">"nowait     : %v\n"</span>,*nowait_flag)</span><br><span class="line"></span><br><span class="line">    fmt.Printf(<span class="string">"-------------------------------------------------------\n"</span>)</span><br><span class="line"></span><br><span class="line">    fmt.Printf(<span class="string">"there are %d non-flag input param\n"</span>, flag.NArg())</span><br><span class="line">    <span class="keyword">for</span> i,param := <span class="keyword">range</span> flag.Args() &#123;</span><br><span class="line">        fmt.Printf(<span class="string">"#%d    :%s\n"</span>,i,param)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://studygolang.com/pkgdoc" target="_blank" rel="external">Go 标准库</a></li>
+<li><a href="https://studygolang.com/pkgdoc" target="_blank" rel="noopener">Go 标准库</a></li>
 </ul>
 
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
+    
       
-    </div>
+    
+    
 
+    
 
     <footer class="post-footer">
       
@@ -401,7 +430,7 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
       
 
       
-        
+      
       
 
       
@@ -429,24 +458,21 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
-          
+
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -462,100 +488,213 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/portrait-01.jpg"
-               alt="shniu<niushaohan@digcredit.com>" />
-          <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></niushaohan@digcredit.com></p>
               <p class="site-description motion-element" itemprop="description">一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">58</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/shniu" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-关键字"><span class="nav-number">1.</span> <span class="nav-text">Golang 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-flag-解析入参"><span class="nav-number">2.</span> <span class="nav-text">Golang flag 解析入参</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-flag"><span class="nav-number">2.0.1.</span> <span class="nav-text">自定义 flag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令行"><span class="nav-number">2.0.2.</span> <span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#来个简单的例子："><span class="nav-number">2.0.3.</span> <span class="nav-text">来个简单的例子：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-关键字"><span class="nav-number">1.</span> <span class="nav-text">Golang 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-flag-解析入参"><span class="nav-number">2.</span> <span class="nav-text">Golang flag 解析入参</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-flag"><span class="nav-number">2.0.1.</span> <span class="nav-text">自定义 flag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令行"><span class="nav-number">2.0.2.</span> <span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#来个简单的例子："><span class="nav-number">2.0.3.</span> <span class="nav-text">来个简单的例子：</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></div>
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -571,30 +710,39 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></span>
+  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></niushaohan@digcredit.com></span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.6.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -606,12 +754,17 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
         
       </div>
     
+
+    
+
+    
+
     
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -625,79 +778,61 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
 
 
 
-  
 
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
 
 
 
 
-	
+
+
+
+
 
 
 
 
 
   
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
 
 
 
   
 
 
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
 
 
 
@@ -706,7 +841,22 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
 
 
   
+
+
+
+
+
+
+
+
+
+
+
   
+
+
+
+
 
   
 
@@ -716,6 +866,20 @@ go : 用于并行go 关键字用来创建 goroutine (协程)，是实现并发�
 
   
 
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 

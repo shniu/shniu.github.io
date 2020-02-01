@@ -1,23 +1,4 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
+<!DOCTYPE html>
 
 
 
@@ -31,47 +12,14 @@
 
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="重构,unittest," />
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
 
 
@@ -80,38 +28,66 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="单元测试单元测试关注一个方法或一个类。它应该非常小，最多只有几行代码。人们在编写单元测试时会犯许多错误，所以这不是小事。因为它们非常小，所以它们应该在内存中运行，而且，一个单元测试应该在几毫秒内运行完成。任何用到外部依赖（数据库、WebService、文件系统、I/O）的测试都不是一个单元测试，那是其他的东西（“集成测试（integration test）”、“综合测试（integrated te">
-<meta property="og:type" content="article">
-<meta property="og:title" content="单元测试">
-<meta property="og:url" content="http://shniu.github.io/2018/04/18/201804/unit-test/index.html">
-<meta property="og:site_name" content="ChainTech">
-<meta property="og:description" content="单元测试单元测试关注一个方法或一个类。它应该非常小，最多只有几行代码。人们在编写单元测试时会犯许多错误，所以这不是小事。因为它们非常小，所以它们应该在内存中运行，而且，一个单元测试应该在几毫秒内运行完成。任何用到外部依赖（数据库、WebService、文件系统、I/O）的测试都不是一个单元测试，那是其他的东西（“集成测试（integration test）”、“综合测试（integrated te">
-<meta property="og:updated_time" content="2018-05-13T13:37:10.487Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单元测试">
-<meta name="twitter:description" content="单元测试单元测试关注一个方法或一个类。它应该非常小，最多只有几行代码。人们在编写单元测试时会犯许多错误，所以这不是小事。因为它们非常小，所以它们应该在内存中运行，而且，一个单元测试应该在几毫秒内运行完成。任何用到外部依赖（数据库、WebService、文件系统、I/O）的测试都不是一个单元测试，那是其他的东西（“集成测试（integration test）”、“综合测试（integrated te">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -123,18 +99,40 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://shniu.github.io/2018/04/18/201804/unit-test/"/>
-
+  
 
 
 
 
-  <title> 单元测试 | ChainTech </title>
-</head>
+  <meta name="description" content="单元测试单元测试关注一个方法或一个类。它应该非常小，最多只有几行代码。人们在编写单元测试时会犯许多错误，所以这不是小事。因为它们非常小，所以它们应该在内存中运行，而且，一个单元测试应该在几毫秒内运行完成。任何用到外部依赖（数据库、WebService、文件系统、I/O）的测试都不是一个单元测试，那是其他的东西（“集成测试（integration test）”、“综合测试（integrated te">
+<meta name="keywords" content="重构,unittest">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单元测试">
+<meta property="og:url" content="http://shniu.github.io/2018/04/18/201804/unit-test/index.html">
+<meta property="og:site_name" content="ChainTech">
+<meta property="og:description" content="单元测试单元测试关注一个方法或一个类。它应该非常小，最多只有几行代码。人们在编写单元测试时会犯许多错误，所以这不是小事。因为它们非常小，所以它们应该在内存中运行，而且，一个单元测试应该在几毫秒内运行完成。任何用到外部依赖（数据库、WebService、文件系统、I/O）的测试都不是一个单元测试，那是其他的东西（“集成测试（integration test）”、“综合测试（integrated te">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-13T13:37:10.488Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单元测试">
+<meta name="twitter:description" content="单元测试单元测试关注一个方法或一个类。它应该非常小，最多只有几行代码。人们在编写单元测试时会犯许多错误，所以这不是小事。因为它们非常小，所以它们应该在内存中运行，而且，一个单元测试应该在几毫秒内运行完成。任何用到外部依赖（数据库、WebService、文件系统、I/O）的测试都不是一个单元测试，那是其他的东西（“集成测试（integration test）”、“综合测试（integrated te">
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+
+
+
+
+  <link rel="canonical" href="http://shniu.github.io/2018/04/18/201804/unit-test/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>单元测试 | ChainTech</title>
   
 
 
@@ -148,35 +146,65 @@
 
 
 
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">ChainTech</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">知其所以然</p>
       
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -184,65 +212,55 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-search">
-          <a href="/search" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            搜索
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -250,12 +268,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -268,16 +294,22 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/04/18/201804/unit-test/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="ChainTech">
     </span>
 
@@ -286,11 +318,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                单元测试
+          <h1 class="post-title" itemprop="name headline">单元测试
+
               
             
           </h1>
@@ -298,20 +327,42 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T13:24:41+08:00">
-                2018-04-18
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2018-04-18 13:24:41" itemprop="dateCreated datePublished" datetime="2018-04-18T13:24:41+08:00">2018-04-18</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-05-13 21:37:10" itemprop="dateModified" datetime="2018-05-13T21:37:10+08:00">2018-05-13</time>
+              
             
           </span>
 
@@ -334,7 +385,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -365,45 +418,45 @@
 <li>核心业务代码。一个产品里最核心最有业务价值的代码应该要有较高的单元测试覆盖率。</li>
 </ol>
 <h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
-<li><a href="https://juejin.im/post/5924578fa0bb9f005f784c81" target="_blank" rel="external">谈谈单元测试</a></li>
-<li><a href="https://arthurportas.wordpress.com/2017/01/21/sample-project-using-spring-boot-and-mongodbfongo-and-test-repository-with-nosqlunit/" target="_blank" rel="external">Sample project using Spring Boot and MongoDB(Fongo) and test repository with NoSqlUnit</a></li>
-<li><a href="https://devops.datenkollektiv.de/testing-the-mongodb-slice-with-spring-and-fongo.html" target="_blank" rel="external">Testing the MongoDB slice with Spring and Fongo</a></li>
-<li><a href="http://www.baeldung.com/mockito-void-methods" target="_blank" rel="external">Mocking void methods with Mockito</a></li>
-<li><a href="https://www.paradigmadigital.com/dev/tests-integrados-spring-boot-fongo/" target="_blank" rel="external">Tests integrados en Spring Boot con Fongo</a></li>
-<li><a href="https://www.infoq.com/news/2016/01/test-first-TDD-BDD" target="_blank" rel="external">Test First Approaches With Test Driven Development and Behavior Driven Development</a></li>
-<li><a href="http://www.infoq.com/cn/news/2017/02/writing-good-unit-tests" target="_blank" rel="external">writing good unit test</a></li>
-<li><a href="https://blog.fundebug.com/2017/12/20/rethinking-unit-test/" target="_blank" rel="external">重新思考单元测试</a></li>
-<li><p><a href="https://dzone.com/articles/spring-boot-unit-testing-and-mocking-with-mockito" target="_blank" rel="external">Spring Boot: Unit Testing and Mocking with Mockito and JUnit</a></p>
+<li><a href="https://juejin.im/post/5924578fa0bb9f005f784c81" target="_blank" rel="noopener">谈谈单元测试</a></li>
+<li><a href="https://arthurportas.wordpress.com/2017/01/21/sample-project-using-spring-boot-and-mongodbfongo-and-test-repository-with-nosqlunit/" target="_blank" rel="noopener">Sample project using Spring Boot and MongoDB(Fongo) and test repository with NoSqlUnit</a></li>
+<li><a href="https://devops.datenkollektiv.de/testing-the-mongodb-slice-with-spring-and-fongo.html" target="_blank" rel="noopener">Testing the MongoDB slice with Spring and Fongo</a></li>
+<li><a href="http://www.baeldung.com/mockito-void-methods" target="_blank" rel="noopener">Mocking void methods with Mockito</a></li>
+<li><a href="https://www.paradigmadigital.com/dev/tests-integrados-spring-boot-fongo/" target="_blank" rel="noopener">Tests integrados en Spring Boot con Fongo</a></li>
+<li><a href="https://www.infoq.com/news/2016/01/test-first-TDD-BDD" target="_blank" rel="noopener">Test First Approaches With Test Driven Development and Behavior Driven Development</a></li>
+<li><a href="http://www.infoq.com/cn/news/2017/02/writing-good-unit-tests" target="_blank" rel="noopener">writing good unit test</a></li>
+<li><a href="https://blog.fundebug.com/2017/12/20/rethinking-unit-test/" target="_blank" rel="noopener">重新思考单元测试</a></li>
+<li><p><a href="https://dzone.com/articles/spring-boot-unit-testing-and-mocking-with-mockito" target="_blank" rel="noopener">Spring Boot: Unit Testing and Mocking with Mockito and JUnit</a></p>
 </li>
-<li><p><a href="http://static.javadoc.io/org.mockito/mockito-core/2.18.0/org/mockito/Mockito.html" target="_blank" rel="external">Mockito document</a></p>
+<li><p><a href="http://static.javadoc.io/org.mockito/mockito-core/2.18.0/org/mockito/Mockito.html" target="_blank" rel="noopener">Mockito document</a></p>
 </li>
-<li><a href="https://docs.spring.io/spring/docs/4.3.16.RELEASE/spring-framework-reference/htmlsingle/#testing" target="_blank" rel="external">Spring test</a></li>
-<li><p><a href="http://sunxiang0918.cn/2016/03/28/%E4%BD%BF%E7%94%A8Mockito%E5%92%8CSpringTest%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" target="_blank" rel="external">使用Mockito和SpringTest进行单元测试</a></p>
+<li><a href="https://docs.spring.io/spring/docs/4.3.16.RELEASE/spring-framework-reference/htmlsingle/#testing" target="_blank" rel="noopener">Spring test</a></li>
+<li><p><a href="http://sunxiang0918.cn/2016/03/28/%E4%BD%BF%E7%94%A8Mockito%E5%92%8CSpringTest%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" target="_blank" rel="noopener">使用Mockito和SpringTest进行单元测试</a></p>
 </li>
-<li><p><a href="https://in28minutes1.teachable.com/courses/257149/lectures/3994283" target="_blank" rel="external">in28minutes mockito courses</a></p>
+<li><p><a href="https://in28minutes1.teachable.com/courses/257149/lectures/3994283" target="_blank" rel="noopener">in28minutes mockito courses</a></p>
 </li>
-<li><p><a href="http://tengj.top/2017/12/28/springboot12/" target="_blank" rel="external">Spring Boot干货系列：（十二）Spring Boot使用单元测试</a></p>
+<li><p><a href="http://tengj.top/2017/12/28/springboot12/" target="_blank" rel="noopener">Spring Boot干货系列：（十二）Spring Boot使用单元测试</a></p>
 </li>
-<li><a href="https://reflectoring.io/transparency-with-spring-boot/" target="_blank" rel="external">Exposing Metrics of a Spring Boot Application using Dropwizard</a></li>
+<li><a href="https://reflectoring.io/transparency-with-spring-boot/" target="_blank" rel="noopener">Exposing Metrics of a Spring Boot Application using Dropwizard</a></li>
 </ul>
 
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
+    
       
-    </div>
+    
+    
 
+    
 
     <footer class="post-footer">
       
@@ -417,7 +470,7 @@
       
 
       
-        
+      
       
 
       
@@ -445,24 +498,21 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
-          
+
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -478,92 +528,205 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/portrait-01.jpg"
-               alt="shniu<niushaohan@digcredit.com>" />
-          <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></niushaohan@digcredit.com></p>
               <p class="site-description motion-element" itemprop="description">一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">58</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/shniu" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -571,7 +734,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -587,30 +750,39 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></span>
+  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></niushaohan@digcredit.com></span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.6.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -622,12 +794,17 @@
         
       </div>
     
+
+    
+
+    
+
     
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -641,79 +818,61 @@
 
 
 
-  
 
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
 
 
 
 
-	
+
+
+
+
 
 
 
 
 
   
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
 
 
 
   
 
 
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
 
 
 
@@ -722,7 +881,22 @@
 
 
   
+
+
+
+
+
+
+
+
+
+
+
   
+
+
+
+
 
   
 
@@ -732,6 +906,20 @@
 
   
 
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 

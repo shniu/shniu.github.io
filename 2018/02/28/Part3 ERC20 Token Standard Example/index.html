@@ -1,23 +1,4 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
+<!DOCTYPE html>
 
 
 
@@ -31,47 +12,14 @@
 
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="ERC20,Ethereum,Blockchain," />
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
 
 
@@ -80,47 +28,66 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="ERC20 Token 标准参见 Ethereum Based Tokens 和 ERC20 Wallet Support
-ERC20 Token 标准描述了以太坊的令牌合约必须实现的功能和事件。
-ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和事件以符合ERC20标准：
-123456789101112131415// -----------------------------">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ERC20 Token 标准例子及解读">
-<meta property="og:url" content="http://shniu.github.io/2018/02/28/Part3 ERC20 Token Standard Example/index.html">
-<meta property="og:site_name" content="ChainTech">
-<meta property="og:description" content="ERC20 Token 标准参见 Ethereum Based Tokens 和 ERC20 Wallet Support
-ERC20 Token 标准描述了以太坊的令牌合约必须实现的功能和事件。
-ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和事件以符合ERC20标准：
-123456789101112131415// -----------------------------">
-<meta property="og:updated_time" content="2018-02-28T23:51:16.256Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ERC20 Token 标准例子及解读">
-<meta name="twitter:description" content="ERC20 Token 标准参见 Ethereum Based Tokens 和 ERC20 Wallet Support
-ERC20 Token 标准描述了以太坊的令牌合约必须实现的功能和事件。
-ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和事件以符合ERC20标准：
-123456789101112131415// -----------------------------">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -132,18 +99,40 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
 </script>
 
 
-
-  <link rel="canonical" href="http://shniu.github.io/2018/02/28/Part3 ERC20 Token Standard Example/"/>
-
+  
 
 
 
 
-  <title> ERC20 Token 标准例子及解读 | ChainTech </title>
-</head>
+  <meta name="description" content="ERC20 Token 标准参见 Ethereum Based Tokens 和 ERC20 Wallet Support ERC20 Token 标准描述了以太坊的令牌合约必须实现的功能和事件。 ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和事件以符合ERC20标准： 123456789101112131415// -----------------------------">
+<meta name="keywords" content="Ethereum,Blockchain,ERC20">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ERC20 Token 标准例子及解读">
+<meta property="og:url" content="http://shniu.github.io/2018/02/28/Part3 ERC20 Token Standard Example/index.html">
+<meta property="og:site_name" content="ChainTech">
+<meta property="og:description" content="ERC20 Token 标准参见 Ethereum Based Tokens 和 ERC20 Wallet Support ERC20 Token 标准描述了以太坊的令牌合约必须实现的功能和事件。 ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和事件以符合ERC20标准： 123456789101112131415// -----------------------------">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-28T23:51:16.257Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ERC20 Token 标准例子及解读">
+<meta name="twitter:description" content="ERC20 Token 标准参见 Ethereum Based Tokens 和 ERC20 Wallet Support ERC20 Token 标准描述了以太坊的令牌合约必须实现的功能和事件。 ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和事件以符合ERC20标准： 123456789101112131415// -----------------------------">
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+
+
+
+
+  <link rel="canonical" href="http://shniu.github.io/2018/02/28/Part3 ERC20 Token Standard Example/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ERC20 Token 标准例子及解读 | ChainTech</title>
   
 
 
@@ -157,35 +146,65 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
 
 
 
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">ChainTech</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">知其所以然</p>
       
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -193,65 +212,55 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-search">
-          <a href="/search" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            搜索
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -259,12 +268,20 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -277,16 +294,22 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/02/28/Part3 ERC20 Token Standard Example/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="ChainTech">
     </span>
 
@@ -295,11 +318,8 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                ERC20 Token 标准例子及解读
+          <h1 class="post-title" itemprop="name headline">ERC20 Token 标准例子及解读
+
               
             
           </h1>
@@ -307,20 +327,42 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T07:00:00+08:00">
-                2018-02-28
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2018-02-28 07:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T07:00:00+08:00">2018-02-28</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-03-01 07:51:16" itemprop="dateModified" datetime="2018-03-01T07:51:16+08:00">2018-03-01</time>
+              
             
           </span>
 
@@ -343,105 +385,107 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <h1 id="ERC20-Token-标准"><a href="#ERC20-Token-标准" class="headerlink" title="ERC20 Token 标准"></a>ERC20 Token 标准</h1><p>参见 <a href="https://theethereum.wiki/w/index.php/Ethereum_Based_Tokens" target="_blank" rel="external">Ethereum Based Tokens</a> 和 <a href="https://theethereum.wiki/w/index.php/ERC20_Wallet_Support" target="_blank" rel="external">ERC20 Wallet Support</a></p>
+        <h1 id="ERC20-Token-标准"><a href="#ERC20-Token-标准" class="headerlink" title="ERC20 Token 标准"></a>ERC20 Token 标准</h1><p>参见 <a href="https://theethereum.wiki/w/index.php/Ethereum_Based_Tokens" target="_blank" rel="noopener">Ethereum Based Tokens</a> 和 <a href="https://theethereum.wiki/w/index.php/ERC20_Wallet_Support" target="_blank" rel="noopener">ERC20 Wallet Support</a></p>
 <p>ERC20 Token 标准描述了以太坊的令牌合约必须实现的功能和事件。</p>
 <h2 id="ERC20-Token-标准接口"><a href="#ERC20-Token-标准接口" class="headerlink" title="ERC20 Token 标准接口"></a>ERC20 Token 标准接口</h2><p>以下是一个接口合约，声明所需的功能和事件以符合ERC20标准：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// ERC Token Standard #20 Interface</div><div class="line">// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">contract ERC20Interface &#123;</div><div class="line">    function totalSupply() public constant returns (uint);</div><div class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance);</div><div class="line">    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);</div><div class="line">    function transfer(address to, uint tokens) public returns (bool success);</div><div class="line">    function approve(address spender, uint tokens) public returns (bool success);</div><div class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success);</div><div class="line"></div><div class="line">    event Transfer(address indexed from, address indexed to, uint tokens);</div><div class="line">    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>绝大多数在以太坊区块链上的 token 都遵从 ERC20。<a href="https://theethereum.wiki/w/index.php/Golem_Network_Token" target="_blank" rel="external">GNT Golem Network Token</a>只是部分的遵从 ERC20，它没有实现 <code>approve(...)</code>, <code>allowance(..)</code>, <code>transferFrom(...)</code> 函数和 <code>Approval(...)</code> 事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">// ERC Token Standard #20 Interface</span><br><span class="line">// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md</span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">contract ERC20Interface &#123;</span><br><span class="line">    function totalSupply() public constant returns (uint);</span><br><span class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance);</span><br><span class="line">    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);</span><br><span class="line">    function transfer(address to, uint tokens) public returns (bool success);</span><br><span class="line">    function approve(address spender, uint tokens) public returns (bool success);</span><br><span class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success);</span><br><span class="line"></span><br><span class="line">    event Transfer(address indexed from, address indexed to, uint tokens);</span><br><span class="line">    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>绝大多数在以太坊区块链上的 token 都遵从 ERC20。<a href="https://theethereum.wiki/w/index.php/Golem_Network_Token" target="_blank" rel="noopener">GNT Golem Network Token</a>只是部分的遵从 ERC20，它没有实现 <code>approve(...)</code>, <code>allowance(..)</code>, <code>transferFrom(...)</code> 函数和 <code>Approval(...)</code> 事件。</p>
 <p>token 包含的其他一些信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">string public constant name = &quot;Token Name&quot;;</div><div class="line">string public constant symbol = &quot;SYM&quot;;</div><div class="line">uint8 public constant decimals = 18;  // 18 is the most common number of decimal places</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string public constant name = &quot;Token Name&quot;;</span><br><span class="line">string public constant symbol = &quot;SYM&quot;;</span><br><span class="line">uint8 public constant decimals = 18;  // 18 is the most common number of decimal places</span><br></pre></td></tr></table></figure>
 <h2 id="Token-合约如何工作"><a href="#Token-合约如何工作" class="headerlink" title="Token 合约如何工作"></a>Token 合约如何工作</h2><p>以下是 token 合约的一个片段，用于演示 token 合约如何维护以太坊帐户的 token 余额：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">contract TokenContractFragment &#123;</div><div class="line"></div><div class="line">    // Balances for each account</div><div class="line">    mapping(address =&gt; uint256) balances;</div><div class="line"></div><div class="line">    // Owner of account approves the transfer of an amount to another account</div><div class="line">    mapping(address =&gt; mapping (address =&gt; uint256)) allowed;</div><div class="line"></div><div class="line">    // Get the token balance for account `tokenOwner`</div><div class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance) &#123;</div><div class="line">        return balances[tokenOwner];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Transfer the balance from owner&apos;s account to another account</div><div class="line">    function transfer(address to, uint tokens) public returns (bool success) &#123;</div><div class="line">        balances[msg.sender] = balances[msg.sender].sub(tokens);</div><div class="line">        balances[to] = balances[to].add(tokens);</div><div class="line">        Transfer(msg.sender, to, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Send `tokens` amount of tokens from address `from` to address `to`</div><div class="line">    // The transferFrom method is used for a withdraw workflow, allowing contracts to send</div><div class="line">    // tokens on your behalf, for example to &quot;deposit&quot; to a contract address and/or to charge</div><div class="line">    // fees in sub-currencies; the command should fail unless the _from account has</div><div class="line">    // deliberately authorized the sender of the message via some mechanism; we propose</div><div class="line">    // these standardized APIs for approval:</div><div class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success) &#123;</div><div class="line">        balances[from] = balances[from].sub(tokens);</div><div class="line">        allowed[from][msg.sender] = allowed[from][msg.sender].sub(tokens);</div><div class="line">        balances[to] = balances[to].add(tokens);</div><div class="line">        Transfer(from, to, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Allow `spender` to withdraw from your account, multiple times, up to the `tokens` amount.</div><div class="line">    // If this function is called again it overwrites the current allowance with _value.</div><div class="line">    function approve(address spender, uint tokens) public returns (bool success) &#123;</div><div class="line">        allowed[msg.sender][spender] = tokens;</div><div class="line">        Approval(msg.sender, spender, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">contract TokenContractFragment &#123;</span><br><span class="line"></span><br><span class="line">    // Balances for each account</span><br><span class="line">    mapping(address =&gt; uint256) balances;</span><br><span class="line"></span><br><span class="line">    // Owner of account approves the transfer of an amount to another account</span><br><span class="line">    mapping(address =&gt; mapping (address =&gt; uint256)) allowed;</span><br><span class="line"></span><br><span class="line">    // Get the token balance for account `tokenOwner`</span><br><span class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance) &#123;</span><br><span class="line">        return balances[tokenOwner];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Transfer the balance from owner&apos;s account to another account</span><br><span class="line">    function transfer(address to, uint tokens) public returns (bool success) &#123;</span><br><span class="line">        balances[msg.sender] = balances[msg.sender].sub(tokens);</span><br><span class="line">        balances[to] = balances[to].add(tokens);</span><br><span class="line">        Transfer(msg.sender, to, tokens);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Send `tokens` amount of tokens from address `from` to address `to`</span><br><span class="line">    // The transferFrom method is used for a withdraw workflow, allowing contracts to send</span><br><span class="line">    // tokens on your behalf, for example to &quot;deposit&quot; to a contract address and/or to charge</span><br><span class="line">    // fees in sub-currencies; the command should fail unless the _from account has</span><br><span class="line">    // deliberately authorized the sender of the message via some mechanism; we propose</span><br><span class="line">    // these standardized APIs for approval:</span><br><span class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success) &#123;</span><br><span class="line">        balances[from] = balances[from].sub(tokens);</span><br><span class="line">        allowed[from][msg.sender] = allowed[from][msg.sender].sub(tokens);</span><br><span class="line">        balances[to] = balances[to].add(tokens);</span><br><span class="line">        Transfer(from, to, tokens);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Allow `spender` to withdraw from your account, multiple times, up to the `tokens` amount.</span><br><span class="line">    // If this function is called again it overwrites the current allowance with _value.</span><br><span class="line">    function approve(address spender, uint tokens) public returns (bool success) &#123;</span><br><span class="line">        allowed[msg.sender][spender] = tokens;</span><br><span class="line">        Approval(msg.sender, spender, tokens);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Token-余额"><a href="#Token-余额" class="headerlink" title="Token 余额"></a>Token 余额</h3><p>例如，假设这个合约有两个持有者</p>
 <ul>
 <li><code>0x1111111111111111111111111111111111111111</code>有 100 单元的余额</li>
 <li><code>0x2222222222222222222222222222222222222222</code>有 200 单元的余额</li>
 </ul>
 <p>token 合约的 <code>balances</code> 数据结构就像下边这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">balances[0x1111111111111111111111111111111111111111] = 100</div><div class="line">balances[0x2222222222222222222222222222222222222222] = 200</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">balances[0x1111111111111111111111111111111111111111] = 100</span><br><span class="line">balances[0x2222222222222222222222222222222222222222] = 200</span><br></pre></td></tr></table></figure>
 <p><code>balanceOf(...)</code> 函数将会返回：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tokenContract.balanceOf(0x1111111111111111111111111111111111111111) will return 100</div><div class="line">tokenContract.balanceOf(0x2222222222222222222222222222222222222222) will return 200</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tokenContract.balanceOf(0x1111111111111111111111111111111111111111) will return 100</span><br><span class="line">tokenContract.balanceOf(0x2222222222222222222222222222222222222222) will return 200</span><br></pre></td></tr></table></figure>
 <h3 id="token-转移"><a href="#token-转移" class="headerlink" title="token 转移"></a>token 转移</h3><p>如果 <code>0x1111111111111111111111111111111111111111</code> 想转移 10 token 给 <code>0x2222222222222222222222222222222222222222</code>, <code>0x1111111111111111111111111111111111111111</code> 将执行下面的函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tokenContract.transfer(0x2222222222222222222222222222222222222222, 10)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tokenContract.transfer(0x2222222222222222222222222222222222222222, 10)</span><br></pre></td></tr></table></figure>
 <p>token 合约的 <code>transfer(...)</code> 函数将会修改 <code>balances</code> 数据结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">balances[0x1111111111111111111111111111111111111111] = 90</div><div class="line">balances[0x2222222222222222222222222222222222222222] = 210</div></pre></td></tr></table></figure>
-<p><code>balanceOf(...)</code> 函数将返回<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tokenContract.balanceOf(0x1111111111111111111111111111111111111111) will return 90</div><div class="line">tokenContract.balanceOf(0x2222222222222222222222222222222222222222) will return 210</div></pre></td></tr></table></figure></p>
-<h3 id="Approve-And-TransferFrom-Token-Balance"><a href="#Approve-And-TransferFrom-Token-Balance" class="headerlink" title="Approve And TransferFrom Token Balance"></a>Approve And TransferFrom Token Balance</h3><p>如果 <code>0x1111111111111111111111111111111111111111</code> 想授权 <code>0x2222222222222222222222222222222222222222</code> 转移一些 token 给 <code>0x2222222222222222222222222222</code>222222222222<code>,</code>0x1111111111111111111111111111111111111111` 要执行如下函数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tokenContract.approve(0x2222222222222222222222222222222222222222, 30)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">balances[0x1111111111111111111111111111111111111111] = 90</span><br><span class="line">balances[0x2222222222222222222222222222222222222222] = 210</span><br></pre></td></tr></table></figure>
+<p><code>balanceOf(...)</code> 函数将返回<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tokenContract.balanceOf(0x1111111111111111111111111111111111111111) will return 90</span><br><span class="line">tokenContract.balanceOf(0x2222222222222222222222222222222222222222) will return 210</span><br></pre></td></tr></table></figure></p>
+<h3 id="Approve-And-TransferFrom-Token-Balance"><a href="#Approve-And-TransferFrom-Token-Balance" class="headerlink" title="Approve And TransferFrom Token Balance"></a>Approve And TransferFrom Token Balance</h3><p>如果 <code>0x1111111111111111111111111111111111111111</code> 想授权 <code>0x2222222222222222222222222222222222222222</code> 转移一些 token 给 <code>0x2222222222222222222222222222</code>222222222222<code>,</code>0x1111111111111111111111111111111111111111` 要执行如下函数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tokenContract.approve(0x2222222222222222222222222222222222222222, 30)</span><br></pre></td></tr></table></figure></p>
 <p><code>approve</code> 数据结构将是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tokenContract.allowed[0x1111111111111111111111111111111111111111][0x2222222222222222222222222222222222222222] = 30</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tokenContract.allowed[0x1111111111111111111111111111111111111111][0x2222222222222222222222222222222222222222] = 30</span><br></pre></td></tr></table></figure>
 <p>如果 <code>0x2222222222222222222222222222222222222222</code> 想以后转移一些 token 从 <code>0x1111111111111111111111111111111111111111</code> 给自己, <code>0x2222222222222222222222222222222222222222</code> 将执行 <code>transferFrom(...)</code> 函数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tokenContract.transferFrom(0x1111111111111111111111111111111111111111, 0x2222222222222222222222222222222222222222, 20)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tokenContract.transferFrom(0x1111111111111111111111111111111111111111, 0x2222222222222222222222222222222222222222, 20)</span><br></pre></td></tr></table></figure>
 <p><code>balances</code> 数据结构将会被修改成如下的样子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tokenContract.balances[0x1111111111111111111111111111111111111111] = 70</div><div class="line">tokenContract.balances[0x2222222222222222222222222222222222222222] = 230</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tokenContract.balances[0x1111111111111111111111111111111111111111] = 70</span><br><span class="line">tokenContract.balances[0x2222222222222222222222222222222222222222] = 230</span><br></pre></td></tr></table></figure>
 <p><code>approve</code> 数据结构将会是这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tokenContract.allowed[0x1111111111111111111111111111111111111111][0x2222222222222222222222222222222222222222] = 10</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tokenContract.allowed[0x1111111111111111111111111111111111111111][0x2222222222222222222222222222222222222222] = 10</span><br></pre></td></tr></table></figure>
 <p><code>0x2222222222222222222222222222222222222222</code> can still spend 10 tokens from <code>0x1111111111111111111111111111111111111111</code>.</p>
 <p><code>balanceOf(...)</code> 函数将返回:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tokenContract.balanceOf(0x1111111111111111111111111111111111111111) will return 70</div><div class="line">tokenContract.balanceOf(0x2222222222222222222222222222222222222222) will return 230</div></pre></td></tr></table></figure>
-<h2 id="固定供应量的-token-合约例子"><a href="#固定供应量的-token-合约例子" class="headerlink" title="固定供应量的 token 合约例子"></a>固定供应量的 token 合约例子</h2><p>下面是一个<a href="https://github.com/bokkypoobah/Tokens#fixed-supply-token" target="_blank" rel="external">固定供应量的 token 合约</a>例子，固定发行 1,000,000 单元，最初分配给合同所有者。该令牌具有18位小数位</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div></pre></td><td class="code"><pre><div class="line">pragma solidity ^0.4.18;</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// &apos;FIXED&apos; &apos;Example Fixed Supply Token&apos; token contract</div><div class="line">//</div><div class="line">// Symbol      : FIXED</div><div class="line">// Name        : Example Fixed Supply Token</div><div class="line">// Total supply: 1,000,000.000000000000000000</div><div class="line">// Decimals    : 18</div><div class="line">//</div><div class="line">// Enjoy.</div><div class="line">//</div><div class="line">// (c) BokkyPooBah / Bok Consulting Pty Ltd 2017. The MIT Licence.</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// Safe maths</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">library SafeMath &#123;</div><div class="line">    function add(uint a, uint b) internal pure returns (uint c) &#123;</div><div class="line">        c = a + b;</div><div class="line">        require(c &gt;= a);</div><div class="line">    &#125;</div><div class="line">    function sub(uint a, uint b) internal pure returns (uint c) &#123;</div><div class="line">        require(b &lt;= a);</div><div class="line">        c = a - b;</div><div class="line">    &#125;</div><div class="line">    function mul(uint a, uint b) internal pure returns (uint c) &#123;</div><div class="line">        c = a * b;</div><div class="line">        require(a == 0 || c / a == b);</div><div class="line">    &#125;</div><div class="line">    function div(uint a, uint b) internal pure returns (uint c) &#123;</div><div class="line">        require(b &gt; 0);</div><div class="line">        c = a / b;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// ERC Token Standard #20 Interface</div><div class="line">// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">contract ERC20Interface &#123;</div><div class="line">    function totalSupply() public constant returns (uint);</div><div class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance);</div><div class="line">    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);</div><div class="line">    function transfer(address to, uint tokens) public returns (bool success);</div><div class="line">    function approve(address spender, uint tokens) public returns (bool success);</div><div class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success);</div><div class="line"></div><div class="line">    event Transfer(address indexed from, address indexed to, uint tokens);</div><div class="line">    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// Contract function to receive approval and execute function in one call</div><div class="line">//</div><div class="line">// Borrowed from MiniMeToken</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">contract ApproveAndCallFallBack &#123;</div><div class="line">    function receiveApproval(address from, uint256 tokens, address token, bytes data) public;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// Owned contract</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">contract Owned &#123;</div><div class="line">    address public owner;</div><div class="line">    address public newOwner;</div><div class="line"></div><div class="line">    event OwnershipTransferred(address indexed _from, address indexed _to);</div><div class="line"></div><div class="line">    function Owned() public &#123;</div><div class="line">        owner = msg.sender;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    modifier onlyOwner &#123;</div><div class="line">        require(msg.sender == owner);</div><div class="line">        _;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function transferOwnership(address _newOwner) public onlyOwner &#123;</div><div class="line">        newOwner = _newOwner;</div><div class="line">    &#125;</div><div class="line">    function acceptOwnership() public &#123;</div><div class="line">        require(msg.sender == newOwner);</div><div class="line">        OwnershipTransferred(owner, newOwner);</div><div class="line">        owner = newOwner;</div><div class="line">        newOwner = address(0);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">// ERC20 Token, with the addition of symbol, name and decimals and an</div><div class="line">// initial fixed supply</div><div class="line">// ----------------------------------------------------------------------------</div><div class="line">contract FixedSupplyToken is ERC20Interface, Owned &#123;</div><div class="line">    using SafeMath for uint;</div><div class="line"></div><div class="line">    string public symbol;</div><div class="line">    string public  name;</div><div class="line">    uint8 public decimals;</div><div class="line">    uint public _totalSupply;</div><div class="line"></div><div class="line">    mapping(address =&gt; uint) balances;</div><div class="line">    mapping(address =&gt; mapping(address =&gt; uint)) allowed;</div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Constructor</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function FixedSupplyToken() public &#123;</div><div class="line">        symbol = &quot;FIXED&quot;;</div><div class="line">        name = &quot;Example Fixed Supply Token&quot;;</div><div class="line">        decimals = 18;</div><div class="line">        _totalSupply = 1000000 * 10**uint(decimals);</div><div class="line">        balances[owner] = _totalSupply;</div><div class="line">        Transfer(address(0), owner, _totalSupply);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Total supply</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function totalSupply() public constant returns (uint) &#123;</div><div class="line">        return _totalSupply  - balances[address(0)];</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Get the token balance for account `tokenOwner`</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance) &#123;</div><div class="line">        return balances[tokenOwner];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Transfer the balance from token owner&apos;s account to `to` account</div><div class="line">    // - Owner&apos;s account must have sufficient balance to transfer</div><div class="line">    // - 0 value transfers are allowed</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function transfer(address to, uint tokens) public returns (bool success) &#123;</div><div class="line">        balances[msg.sender] = balances[msg.sender].sub(tokens);</div><div class="line">        balances[to] = balances[to].add(tokens);</div><div class="line">        Transfer(msg.sender, to, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Token owner can approve for `spender` to transferFrom(...) `tokens`</div><div class="line">    // from the token owner&apos;s account</div><div class="line">    //</div><div class="line">    // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md</div><div class="line">    // recommends that there are no checks for the approval double-spend attack</div><div class="line">    // as this should be implemented in user interfaces</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function approve(address spender, uint tokens) public returns (bool success) &#123;</div><div class="line">        allowed[msg.sender][spender] = tokens;</div><div class="line">        Approval(msg.sender, spender, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Transfer `tokens` from the `from` account to the `to` account</div><div class="line">    //</div><div class="line">    // The calling account must already have sufficient tokens approve(...)-d</div><div class="line">    // for spending from the `from` account and</div><div class="line">    // - From account must have sufficient balance to transfer</div><div class="line">    // - Spender must have sufficient allowance to transfer</div><div class="line">    // - 0 value transfers are allowed</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success) &#123;</div><div class="line">        balances[from] = balances[from].sub(tokens);</div><div class="line">        allowed[from][msg.sender] = allowed[from][msg.sender].sub(tokens);</div><div class="line">        balances[to] = balances[to].add(tokens);</div><div class="line">        Transfer(from, to, tokens);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Returns the amount of tokens approved by the owner that can be</div><div class="line">    // transferred to the spender&apos;s account</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function allowance(address tokenOwner, address spender) public constant returns (uint remaining) &#123;</div><div class="line">        return allowed[tokenOwner][spender];</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Token owner can approve for `spender` to transferFrom(...) `tokens`</div><div class="line">    // from the token owner&apos;s account. The `spender` contract function</div><div class="line">    // `receiveApproval(...)` is then executed</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function approveAndCall(address spender, uint tokens, bytes data) public returns (bool success) &#123;</div><div class="line">        allowed[msg.sender][spender] = tokens;</div><div class="line">        Approval(msg.sender, spender, tokens);</div><div class="line">        ApproveAndCallFallBack(spender).receiveApproval(msg.sender, tokens, this, data);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Don&apos;t accept ETH</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function () public payable &#123;</div><div class="line">        revert();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    // Owner can transfer out any accidentally sent ERC20 tokens</div><div class="line">    // ------------------------------------------------------------------------</div><div class="line">    function transferAnyERC20Token(address tokenAddress, uint tokens) public onlyOwner returns (bool success) &#123;</div><div class="line">        return ERC20Interface(tokenAddress).transfer(owner, tokens);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tokenContract.balanceOf(0x1111111111111111111111111111111111111111) will return 70</span><br><span class="line">tokenContract.balanceOf(0x2222222222222222222222222222222222222222) will return 230</span><br></pre></td></tr></table></figure>
+<h2 id="固定供应量的-token-合约例子"><a href="#固定供应量的-token-合约例子" class="headerlink" title="固定供应量的 token 合约例子"></a>固定供应量的 token 合约例子</h2><p>下面是一个<a href="https://github.com/bokkypoobah/Tokens#fixed-supply-token" target="_blank" rel="noopener">固定供应量的 token 合约</a>例子，固定发行 1,000,000 单元，最初分配给合同所有者。该令牌具有18位小数位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.18;</span><br><span class="line"></span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">// &apos;FIXED&apos; &apos;Example Fixed Supply Token&apos; token contract</span><br><span class="line">//</span><br><span class="line">// Symbol      : FIXED</span><br><span class="line">// Name        : Example Fixed Supply Token</span><br><span class="line">// Total supply: 1,000,000.000000000000000000</span><br><span class="line">// Decimals    : 18</span><br><span class="line">//</span><br><span class="line">// Enjoy.</span><br><span class="line">//</span><br><span class="line">// (c) BokkyPooBah / Bok Consulting Pty Ltd 2017. The MIT Licence.</span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">// Safe maths</span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">library SafeMath &#123;</span><br><span class="line">    function add(uint a, uint b) internal pure returns (uint c) &#123;</span><br><span class="line">        c = a + b;</span><br><span class="line">        require(c &gt;= a);</span><br><span class="line">    &#125;</span><br><span class="line">    function sub(uint a, uint b) internal pure returns (uint c) &#123;</span><br><span class="line">        require(b &lt;= a);</span><br><span class="line">        c = a - b;</span><br><span class="line">    &#125;</span><br><span class="line">    function mul(uint a, uint b) internal pure returns (uint c) &#123;</span><br><span class="line">        c = a * b;</span><br><span class="line">        require(a == 0 || c / a == b);</span><br><span class="line">    &#125;</span><br><span class="line">    function div(uint a, uint b) internal pure returns (uint c) &#123;</span><br><span class="line">        require(b &gt; 0);</span><br><span class="line">        c = a / b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">// ERC Token Standard #20 Interface</span><br><span class="line">// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md</span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">contract ERC20Interface &#123;</span><br><span class="line">    function totalSupply() public constant returns (uint);</span><br><span class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance);</span><br><span class="line">    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);</span><br><span class="line">    function transfer(address to, uint tokens) public returns (bool success);</span><br><span class="line">    function approve(address spender, uint tokens) public returns (bool success);</span><br><span class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success);</span><br><span class="line"></span><br><span class="line">    event Transfer(address indexed from, address indexed to, uint tokens);</span><br><span class="line">    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">// Contract function to receive approval and execute function in one call</span><br><span class="line">//</span><br><span class="line">// Borrowed from MiniMeToken</span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">contract ApproveAndCallFallBack &#123;</span><br><span class="line">    function receiveApproval(address from, uint256 tokens, address token, bytes data) public;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">// Owned contract</span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">contract Owned &#123;</span><br><span class="line">    address public owner;</span><br><span class="line">    address public newOwner;</span><br><span class="line"></span><br><span class="line">    event OwnershipTransferred(address indexed _from, address indexed _to);</span><br><span class="line"></span><br><span class="line">    function Owned() public &#123;</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    modifier onlyOwner &#123;</span><br><span class="line">        require(msg.sender == owner);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function transferOwnership(address _newOwner) public onlyOwner &#123;</span><br><span class="line">        newOwner = _newOwner;</span><br><span class="line">    &#125;</span><br><span class="line">    function acceptOwnership() public &#123;</span><br><span class="line">        require(msg.sender == newOwner);</span><br><span class="line">        OwnershipTransferred(owner, newOwner);</span><br><span class="line">        owner = newOwner;</span><br><span class="line">        newOwner = address(0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">// ERC20 Token, with the addition of symbol, name and decimals and an</span><br><span class="line">// initial fixed supply</span><br><span class="line">// ----------------------------------------------------------------------------</span><br><span class="line">contract FixedSupplyToken is ERC20Interface, Owned &#123;</span><br><span class="line">    using SafeMath for uint;</span><br><span class="line"></span><br><span class="line">    string public symbol;</span><br><span class="line">    string public  name;</span><br><span class="line">    uint8 public decimals;</span><br><span class="line">    uint public _totalSupply;</span><br><span class="line"></span><br><span class="line">    mapping(address =&gt; uint) balances;</span><br><span class="line">    mapping(address =&gt; mapping(address =&gt; uint)) allowed;</span><br><span class="line"></span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    // Constructor</span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    function FixedSupplyToken() public &#123;</span><br><span class="line">        symbol = &quot;FIXED&quot;;</span><br><span class="line">        name = &quot;Example Fixed Supply Token&quot;;</span><br><span class="line">        decimals = 18;</span><br><span class="line">        _totalSupply = 1000000 * 10**uint(decimals);</span><br><span class="line">        balances[owner] = _totalSupply;</span><br><span class="line">        Transfer(address(0), owner, _totalSupply);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    // Total supply</span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    function totalSupply() public constant returns (uint) &#123;</span><br><span class="line">        return _totalSupply  - balances[address(0)];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    // Get the token balance for account `tokenOwner`</span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    function balanceOf(address tokenOwner) public constant returns (uint balance) &#123;</span><br><span class="line">        return balances[tokenOwner];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    // Transfer the balance from token owner&apos;s account to `to` account</span><br><span class="line">    // - Owner&apos;s account must have sufficient balance to transfer</span><br><span class="line">    // - 0 value transfers are allowed</span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    function transfer(address to, uint tokens) public returns (bool success) &#123;</span><br><span class="line">        balances[msg.sender] = balances[msg.sender].sub(tokens);</span><br><span class="line">        balances[to] = balances[to].add(tokens);</span><br><span class="line">        Transfer(msg.sender, to, tokens);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    // Token owner can approve for `spender` to transferFrom(...) `tokens`</span><br><span class="line">    // from the token owner&apos;s account</span><br><span class="line">    //</span><br><span class="line">    // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md</span><br><span class="line">    // recommends that there are no checks for the approval double-spend attack</span><br><span class="line">    // as this should be implemented in user interfaces</span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    function approve(address spender, uint tokens) public returns (bool success) &#123;</span><br><span class="line">        allowed[msg.sender][spender] = tokens;</span><br><span class="line">        Approval(msg.sender, spender, tokens);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    // Transfer `tokens` from the `from` account to the `to` account</span><br><span class="line">    //</span><br><span class="line">    // The calling account must already have sufficient tokens approve(...)-d</span><br><span class="line">    // for spending from the `from` account and</span><br><span class="line">    // - From account must have sufficient balance to transfer</span><br><span class="line">    // - Spender must have sufficient allowance to transfer</span><br><span class="line">    // - 0 value transfers are allowed</span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    function transferFrom(address from, address to, uint tokens) public returns (bool success) &#123;</span><br><span class="line">        balances[from] = balances[from].sub(tokens);</span><br><span class="line">        allowed[from][msg.sender] = allowed[from][msg.sender].sub(tokens);</span><br><span class="line">        balances[to] = balances[to].add(tokens);</span><br><span class="line">        Transfer(from, to, tokens);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    // Returns the amount of tokens approved by the owner that can be</span><br><span class="line">    // transferred to the spender&apos;s account</span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    function allowance(address tokenOwner, address spender) public constant returns (uint remaining) &#123;</span><br><span class="line">        return allowed[tokenOwner][spender];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    // Token owner can approve for `spender` to transferFrom(...) `tokens`</span><br><span class="line">    // from the token owner&apos;s account. The `spender` contract function</span><br><span class="line">    // `receiveApproval(...)` is then executed</span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    function approveAndCall(address spender, uint tokens, bytes data) public returns (bool success) &#123;</span><br><span class="line">        allowed[msg.sender][spender] = tokens;</span><br><span class="line">        Approval(msg.sender, spender, tokens);</span><br><span class="line">        ApproveAndCallFallBack(spender).receiveApproval(msg.sender, tokens, this, data);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    // Don&apos;t accept ETH</span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    function () public payable &#123;</span><br><span class="line">        revert();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    // Owner can transfer out any accidentally sent ERC20 tokens</span><br><span class="line">    // ------------------------------------------------------------------------</span><br><span class="line">    function transferAnyERC20Token(address tokenAddress, uint tokens) public onlyOwner returns (bool success) &#123;</span><br><span class="line">        return ERC20Interface(tokenAddress).transfer(owner, tokens);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>```</p>
 <h3 id="其他的sample"><a href="#其他的sample" class="headerlink" title="其他的sample"></a>其他的sample</h3><ul>
-<li><a href="https://medium.com/bitfwd/how-to-issue-your-own-token-on-ethereum-in-less-than-20-minutes-ac1f8f022793" target="_blank" rel="external">How to issue your own token on Ethereum in less than 20 minutes</a></li>
-<li>Ethereum.org Token page: <a href="https://www.ethereum.org/token" target="_blank" rel="external">https://www.ethereum.org/token</a>.</li>
-<li>Etherscan token selection of popular tokens: <a href="https://etherscan.io/tokens" target="_blank" rel="external">https://etherscan.io/tokens</a></li>
-<li>EtherScan ERC20 token search: <a href="https://etherscan.io/token-search" target="_blank" rel="external">https://etherscan.io/token-search</a></li>
-<li>The HumanStandardToken: a specialisation of ERC20 that provides a name, decimals, symbol and version as public variables, so these can be read from the contract and do not need to be configured: <a href="https://github.com/ConsenSys/Tokens/blob/master/Token_Contracts/contracts/HumanStandardToken.sol" target="_blank" rel="external">https://github.com/ConsenSys/Tokens/blob/master/Token_Contracts/contracts/HumanStandardToken.sol</a></li>
-<li>Token Factory, an application that lets you create these tokens, just to play around with: <a href="https://tokenfactory.surge.sh" target="_blank" rel="external">https://tokenfactory.surge.sh</a></li>
+<li><a href="https://medium.com/bitfwd/how-to-issue-your-own-token-on-ethereum-in-less-than-20-minutes-ac1f8f022793" target="_blank" rel="noopener">How to issue your own token on Ethereum in less than 20 minutes</a></li>
+<li>Ethereum.org Token page: <a href="https://www.ethereum.org/token" target="_blank" rel="noopener">https://www.ethereum.org/token</a>.</li>
+<li>Etherscan token selection of popular tokens: <a href="https://etherscan.io/tokens" target="_blank" rel="noopener">https://etherscan.io/tokens</a></li>
+<li>EtherScan ERC20 token search: <a href="https://etherscan.io/token-search" target="_blank" rel="noopener">https://etherscan.io/token-search</a></li>
+<li>The HumanStandardToken: a specialisation of ERC20 that provides a name, decimals, symbol and version as public variables, so these can be read from the contract and do not need to be configured: <a href="https://github.com/ConsenSys/Tokens/blob/master/Token_Contracts/contracts/HumanStandardToken.sol" target="_blank" rel="noopener">https://github.com/ConsenSys/Tokens/blob/master/Token_Contracts/contracts/HumanStandardToken.sol</a></li>
+<li>Token Factory, an application that lets you create these tokens, just to play around with: <a href="https://tokenfactory.surge.sh" target="_blank" rel="noopener">https://tokenfactory.surge.sh</a></li>
 <li>Libraries:<ul>
-<li>OpenZeppelin: <a href="https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts/token" target="_blank" rel="external">https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts/token</a></li>
-<li>Minime token contract that allows to clone itself, so it can be used for things like voting, or even splitting off a token for a separate application: <a href="https://github.com/Giveth/minime" target="_blank" rel="external">https://github.com/Giveth/minime</a></li>
+<li>OpenZeppelin: <a href="https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts/token" target="_blank" rel="noopener">https://github.com/OpenZeppelin/zeppelin-solidity/tree/master/contracts/token</a></li>
+<li>Minime token contract that allows to clone itself, so it can be used for things like voting, or even splitting off a token for a separate application: <a href="https://github.com/Giveth/minime" target="_blank" rel="noopener">https://github.com/Giveth/minime</a></li>
 </ul>
 </li>
 </ul>
 <h2 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h2><ul>
-<li><a href="https://etherscan.io/tokens" target="_blank" rel="external">以太坊 Token Tracker</a></li>
+<li><a href="https://etherscan.io/tokens" target="_blank" rel="noopener">以太坊 Token Tracker</a></li>
 </ul>
 <p>目前总共有 41030 个 ERC20 的 Token 合约。</p>
 <hr>
-<p>via: <a href="https://theethereum.wiki/w/index.php/ERC20_Token_Standard" target="_blank" rel="external">ERC20_TOKEN_STANDARD</a></p>
-<p>Author: <a href="https://github.com/chaintechinfo" target="_blank" rel="external">chaintech.info</a></p>
+<p>via: <a href="https://theethereum.wiki/w/index.php/ERC20_Token_Standard" target="_blank" rel="noopener">ERC20_TOKEN_STANDARD</a></p>
+<p>Author: <a href="https://github.com/chaintechinfo" target="_blank" rel="noopener">chaintech.info</a></p>
 
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
+    
       
-    </div>
+    
+    
 
+    
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/ERC20/" rel="tag"># ERC20</a>
-          
             <a href="/tags/Ethereum/" rel="tag"># Ethereum</a>
           
             <a href="/tags/Blockchain/" rel="tag"># Blockchain</a>
+          
+            <a href="/tags/ERC20/" rel="tag"># ERC20</a>
           
         </div>
       
 
       
-        
+      
       
 
       
@@ -469,24 +513,21 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
-          
+
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -502,92 +543,205 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/portrait-01.jpg"
-               alt="shniu<niushaohan@digcredit.com>" />
-          <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></niushaohan@digcredit.com></p>
               <p class="site-description motion-element" itemprop="description">一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">58</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/shniu" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -595,7 +749,7 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -611,30 +765,39 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></span>
+  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></niushaohan@digcredit.com></span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.6.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -646,12 +809,17 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
         
       </div>
     
+
+    
+
+    
+
     
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -665,79 +833,61 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
 
 
 
-  
 
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
 
 
 
 
-	
+
+
+
+
 
 
 
 
 
   
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
 
 
 
   
 
 
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
 
 
 
@@ -746,7 +896,22 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
 
 
   
+
+
+
+
+
+
+
+
+
+
+
   
+
+
+
+
 
   
 
@@ -756,6 +921,20 @@ ERC20 Token 标准接口以下是一个接口合约，声明所需的功能和�
 
   
 
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 

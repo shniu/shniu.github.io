@@ -1,23 +1,4 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
+<!DOCTYPE html>
 
 
 
@@ -31,44 +12,14 @@
 
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
 
 
@@ -78,37 +29,65 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ChainTech">
-<meta property="og:url" content="http://shniu.github.io/index.html">
-<meta property="og:site_name" content="ChainTech">
-<meta property="og:description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ChainTech">
-<meta name="twitter:description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -120,18 +99,38 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://shniu.github.io/"/>
-
+  
 
 
 
 
-  <title> ChainTech </title>
-</head>
+  <meta name="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ChainTech">
+<meta property="og:url" content="http://shniu.github.io/index.html">
+<meta property="og:site_name" content="ChainTech">
+<meta property="og:description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ChainTech">
+<meta name="twitter:description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+
+
+
+
+  <link rel="canonical" href="http://shniu.github.io/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ChainTech</title>
   
 
 
@@ -145,37 +144,66 @@
 
 
 
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">ChainTech</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">知其所以然</p>
       
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -183,65 +211,55 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-search">
-          <a href="/search" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            搜索
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -249,12 +267,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -267,16 +293,22 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/08/16/cpp/cpp-intro1/">
+  
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2019/05/18/netty/NettyChannelHandler/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="ChainTech">
     </span>
 
@@ -286,13 +318,9 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2018/08/16/cpp/cpp-intro1/" itemprop="url">
-                  C/C++ - 入门01
-                </a>
+                
+                <a href="/2019/05/18/netty/NettyChannelHandler/" class="post-title-link" itemprop="url">Netty 实战 - Pipeline 和 ChannelHandler</a>
               
             
           </h1>
@@ -300,20 +328,42 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T16:01:41+08:00">
-                2018-08-16
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-05-18 20:31:45" itemprop="dateCreated datePublished" datetime="2019-05-18T20:31:45+08:00">2019-05-18</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-19 09:15:59" itemprop="dateModified" datetime="2019-05-19T09:15:59+08:00">2019-05-19</time>
+              
             
           </span>
 
@@ -336,7 +386,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -345,30 +397,58 @@
       
         
           
-            <h3 id="1-基础用法"><a href="#1-基础用法" class="headerlink" title="1. 基础用法"></a>1. 基础用法</h3><h4 id="1-1-比较两个字符串或者string对象是否相等"><a href="#1-1-比较两个字符串或者string对象是否相等" class="headerlink" title="1.1 比较两个字符串或者string对象是否相等"></a>1.1 比较两个字符串或者string对象是否相等</h4><p>在我们遇到需要比较两个字符串是否相等的时候，如果比较的是 <code>char *</code>  字符串，使用</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int strcmp(const char* s1,const char* s2)</div><div class="line"></div><div class="line">当s1&lt;s2时，返回为负数</div><div class="line">当s1==s2时，返回值= 0</div><div class="line">当s1&gt;s2时，返回正数</div></pre></td></tr></table></figure>
+            <p>Netty 内置了很多开箱即用的 channel handler，能很大程度上简化和节约编程。</p>
+<h3 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h3><p>Netty 的 Pipeline 是 <code>ChannelPipeline</code>, 每个Channel都绑定一个 <code>ChannelPipeline</code>，它的实现原理是基于拦截过滤器模式。</p>
 <blockquote>
-<p>需要注意的是在比较两个字符串的时候，不能使用 <code>==</code>，<code>==</code> 比较的是两个字符串的地址是否相等。如果比较的是两个字符，<code>==</code> 是可以的。</p>
+<p>Intercepting Filter Pattern<br>参考：<a href="https://www.oracle.com/technetwork/java/interceptingfilter-142169.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/interceptingfilter-142169.html</a><br>使用一种无需修改核心请求处理代码的标准方式来创建可插拔的过滤器来处理通用服务。过滤器拦截进入的请求和返回的响应，同时允许预处理和后置处理。我们可以很容易的添加或删除这些过滤器，不需要修改已有的代码。</p>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">std</span>::<span class="built_in">string</span> str = <span class="string">"123456"</span>;</div><div class="line"><span class="comment">// 相等为1，不等为0</span></div><div class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, str == <span class="string">"123456"</span>);</div><div class="line"><span class="comment">// 相等为0，不等非0</span></div><div class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, str.compare(<span class="string">"123456"</span>));</div><div class="line">这样是可以的，<span class="built_in">string</span> 对象的比较可以使用 `==`, 相等为<span class="number">1</span>，不等为<span class="number">0</span></div><div class="line">str.compare(<span class="string">""</span>);  相等为<span class="number">0</span>，不等非<span class="number">0</span></div></pre></td></tr></table></figure>
-<h4 id="1-2-C-中string、char-、char-的转换"><a href="#1-2-C-中string、char-、char-的转换" class="headerlink" title="1.2 C++中string、char *、char[]的转换"></a>1.2 C++中string、char *、char[]的转换</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">////// string to char *</span></div><div class="line"><span class="built_in">string</span> str = <span class="string">"hello"</span>;</div><div class="line"><span class="comment">// - Way 1</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *p = str.data();</div><div class="line"><span class="keyword">char</span> *pp = <span class="keyword">const_cast</span>&lt;<span class="keyword">char</span> *&gt;(str.data());</div><div class="line"></div><div class="line"><span class="comment">// - Way 2</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *w2 = str.c_str();</div><div class="line"></div><div class="line"><span class="comment">// - Way 3</span></div><div class="line"><span class="keyword">char</span> w3[<span class="number">50</span>];</div><div class="line">str.copy(w3, <span class="number">5</span>, <span class="number">0</span>);</div><div class="line">*(w3 + <span class="number">5</span>) = <span class="string">'\0'</span>;</div><div class="line"></div><div class="line"><span class="comment">////// char * to string</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *char2str = <span class="string">"000000"</span>;</div><div class="line"><span class="built_in">std</span>::<span class="built_in">string</span> ss = char2str;</div><div class="line"></div><div class="line"><span class="comment">////// string to char[]</span></div><div class="line"><span class="built_in">std</span>::<span class="built_in">string</span> a2s = <span class="string">"dagah"</span>;</div><div class="line"><span class="keyword">char</span> aa[<span class="number">8</span>];</div><div class="line"><span class="keyword">int</span> i;</div><div class="line"><span class="keyword">for</span>( i=<span class="number">0</span>; i&lt;a2s.length(); i++)</div><div class="line">aa[i] = a2s[i];</div><div class="line">aa[i] = <span class="string">'\0'</span>;</div></pre></td></tr></table></figure>
-<h4 id="1-3-char-和-char-的区别"><a href="#1-3-char-和-char-的区别" class="headerlink" title="1.3 char * 和 char[] 的区别"></a>1.3 char * 和 char[] 的区别</h4><ul>
-<li><code>char *a = &quot;abcd&quot;</code> 此时”abcd”存放在常量区。通过指针只可以访问字符串常量，而不可以改变它; 而 <code>char a[20] = &quot;abcd&quot;</code> 此时 “abcd”存放在栈。可以通过指针去访问和修改数组内容。</li>
-</ul>
+<h3 id="ChannelInboundHandlerAdapter"><a href="#ChannelInboundHandlerAdapter" class="headerlink" title="ChannelInboundHandlerAdapter"></a>ChannelInboundHandlerAdapter</h3><p>这个适配器主要实现了 <code>ChannelInboundHandler</code> 的所有方法。</p>
+<h3 id="ChannelOutboundHandlerAdapter"><a href="#ChannelOutboundHandlerAdapter" class="headerlink" title="ChannelOutboundHandlerAdapter"></a>ChannelOutboundHandlerAdapter</h3><h3 id="TCP-中拆包和粘包的处理"><a href="#TCP-中拆包和粘包的处理" class="headerlink" title="TCP 中拆包和粘包的处理"></a>TCP 中拆包和粘包的处理</h3><p>为什么会出现拆包和粘包？（why）<br>TCP 是一个“流式”协议，在OS的底层，是源源不断的将二进制数据流发送出去，应用程序将用户空间的数据写到Socket的写缓冲取，网卡从写缓冲区中读取数据将二进制数据简单处理后打包发送出去，所以可见，TCP 协议并不会关心业务数据的含义，它会根据发送时的实际情况将数据进行拆包或者粘包处理，然后发送，主要会有以下表现：</p>
+<ol>
+<li>正常的将两个包，按照两次独立的包发送出去，这样刚刚好</li>
+<li>将两个或多个数据包，放在一起发送出去</li>
+<li>将一个数据包拆成很多包发送出去</li>
+<li>将一个数据包的一部分粘合另外一个数据包发送出去</li>
+</ol>
+<p>出现的本质原因是：</p>
+<ol>
+<li>应用程序write写入的字节大小大于套接口发送缓冲区大小；</li>
+<li>进行MSS（最大报文长度）大小的TCP分段</li>
+<li>以太网帧的payload大于MTU进行IP分片</li>
+</ol>
+<p>处理办法：（how）<br>底层TCP协议无法理解上层的业务数据，所以只能通过上层的应用协议设计来解决，一般有如下解决方法</p>
+<ol>
+<li>消息定长，例如每个报文的大小为固定长度200字节，如果不够，空位补空格</li>
+<li>在包尾增加回车换行符进行分割</li>
+<li>将消息分为消息头和消息体，消息头中包含表示消息总长度（或者消息体长度）的字段，通常设计思路为消息头的第一个字段使用int32来表示消息的总长度</li>
+</ol>
+<p>一般情况下发送端发来的数据都是自动做拆包粘包的，所以接收端接受数据时要做拆包处理，基本思路是不断从 TCP 缓冲区中读取数据，每次读取完都需要判断是否是一个完整的数据包</p>
+<ol>
+<li>如果当前读取的数据不足以拼接成一个完整的业务数据包，那就保留该数据，继续从 TCP 缓冲区中读取数据，直到拼接成一个完整的业务包</li>
+<li>如果当前读取的数据已经能拼接出一个业务包，那就将已经读取的数据包拼接上本次读取的数据包，拼接成业务包，然后剩下的数据保留，尝试和下次读取的数据进行拼接处理</li>
+</ol>
+<p>可见，对于以上过程实现起来还是相对麻烦的，需要设计协议、需要做拆包粘包处理、需要考虑异常等，但是 Netty 提供了几个内置的拆包器，在很大程度上能够满足我们的需要。</p>
+<h4 id="ByteToMessageDecoder"><a href="#ByteToMessageDecoder" class="headerlink" title="ByteToMessageDecoder"></a>ByteToMessageDecoder</h4><p><img src="/images/FixedLengthFrameDecoder.png" alt="Decoder"></p>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+      
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -382,6 +462,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -394,16 +478,22 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/08/15/blockchain/wallet-intro1/">
+  
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2019/01/27/os/disk-intro/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="ChainTech">
     </span>
 
@@ -413,13 +503,9 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2018/08/15/blockchain/wallet-intro1/" itemprop="url">
-                  区块链钱包 - 1 公私钥生成原理及私钥管理
-                </a>
+                
+                <a href="/2019/01/27/os/disk-intro/" class="post-title-link" itemprop="url">disk-intro</a>
               
             
           </h1>
@@ -427,18 +513,24 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-15T13:18:34+08:00">
-                2018-08-15
-              </time>
-            
 
+              
+                
+              
+
+              <time title="Created: 2019-01-27 16:16:43" itemprop="dateCreated datePublished" datetime="2019-01-27T16:16:43+08:00">2019-01-27</time>
             
 
             
@@ -463,7 +555,904 @@
       </header>
     
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2019/01/27/os/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/27/os/" class="post-title-link" itemprop="url">Linux 文件系统及磁盘 IO</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-27 16:16:06 / Modified: 16:45:31" itemprop="dateCreated datePublished" datetime="2019-01-27T16:16:06+08:00">2019-01-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h3 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h3><p><img src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2017/6e034503.png" alt="">)</p>
+<ul>
+<li><a href="http://sylab-srv.cs.fiu.edu/lib/exe/fetch.php?media=paperclub:lkd3ch16.pdf" target="_blank" rel="noopener">The Page Cache and Page Writeback</a></li>
+<li><a href="https://tech.meituan.com/2017/05/19/about-desk-io.html" target="_blank" rel="noopener">磁盘I/O那些事</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/08/16/cpp/cpp-intro1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/16/cpp/cpp-intro1/" class="post-title-link" itemprop="url">C/C++ - 入门01</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-16 16:01:41" itemprop="dateCreated datePublished" datetime="2018-08-16T16:01:41+08:00">2018-08-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-02-01 21:35:11" itemprop="dateModified" datetime="2020-02-01T21:35:11+08:00">2020-02-01</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-基础用法"><a href="#1-基础用法" class="headerlink" title="1. 基础用法"></a>1. 基础用法</h3><h4 id="1-1-比较两个字符串或者string对象是否相等"><a href="#1-1-比较两个字符串或者string对象是否相等" class="headerlink" title="1.1 比较两个字符串或者string对象是否相等"></a>1.1 比较两个字符串或者string对象是否相等</h4><p>在我们遇到需要比较两个字符串是否相等的时候，如果比较的是 <code>char *</code>  字符串，使用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">strcmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* s1,<span class="keyword">const</span> <span class="keyword">char</span>* s2)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line">当s1&lt;s2时，返回为负数</span><br><span class="line">当s1==s2时，返回值= <span class="number">0</span></span><br><span class="line">当s1&gt;s2时，返回正数</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要注意的是在比较两个字符串的时候，不能使用 <code>==</code>，<code>==</code> 比较的是两个字符串的地址是否相等。如果比较的是两个字符，<code>==</code> 是可以的。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> str = <span class="string">"123456"</span>;</span><br><span class="line"><span class="comment">// 相等为1，不等为0</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, str == <span class="string">"123456"</span>);</span><br><span class="line"><span class="comment">// 相等为0，不等非0</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, str.compare(<span class="string">"123456"</span>));</span><br><span class="line">这样是可以的，<span class="built_in">string</span> 对象的比较可以使用 `==`, 相等为<span class="number">1</span>，不等为<span class="number">0</span></span><br><span class="line">str.compare(<span class="string">""</span>);  相等为<span class="number">0</span>，不等非<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-2-C-中string、char-、char-的转换"><a href="#1-2-C-中string、char-、char-的转换" class="headerlink" title="1.2 C++中string、char *、char[]的转换"></a>1.2 C++中string、char *、char[]的转换</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">////// string to char *</span></span><br><span class="line"><span class="built_in">string</span> str = <span class="string">"hello"</span>;</span><br><span class="line"><span class="comment">// - Way 1</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *p = str.data();</span><br><span class="line"><span class="keyword">char</span> *pp = <span class="keyword">const_cast</span>&lt;<span class="keyword">char</span> *&gt;(str.data());</span><br><span class="line"></span><br><span class="line"><span class="comment">// - Way 2</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *w2 = str.c_str();</span><br><span class="line"></span><br><span class="line"><span class="comment">// - Way 3</span></span><br><span class="line"><span class="keyword">char</span> w3[<span class="number">50</span>];</span><br><span class="line">str.copy(w3, <span class="number">5</span>, <span class="number">0</span>);</span><br><span class="line">*(w3 + <span class="number">5</span>) = <span class="string">'\0'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">////// char * to string</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *char2str = <span class="string">"000000"</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> ss = char2str;</span><br><span class="line"></span><br><span class="line"><span class="comment">////// string to char[]</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> a2s = <span class="string">"dagah"</span>;</span><br><span class="line"><span class="keyword">char</span> aa[<span class="number">8</span>];</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">for</span>( i=<span class="number">0</span>; i&lt;a2s.length(); i++)</span><br><span class="line">aa[i] = a2s[i];</span><br><span class="line">aa[i] = <span class="string">'\0'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="1-3-char-和-char-的区别"><a href="#1-3-char-和-char-的区别" class="headerlink" title="1.3 char * 和 char[] 的区别"></a>1.3 char * 和 char[] 的区别</h4><ul>
+<li><code>char *a = &quot;abcd&quot;</code> 此时”abcd”存放在常量区。通过指针只可以访问字符串常量，而不可以改变它; 而 <code>char a[20] = &quot;abcd&quot;</code> 此时 “abcd”存放在栈。可以通过指针去访问和修改数组内容。</li>
+</ul>
+<h3 id="2-常见错误"><a href="#2-常见错误" class="headerlink" title="2. 常见错误"></a>2. 常见错误</h3><h4 id="2-1-error-This-file-requires-compiler-and-library-support-for-the-ISO-C-2011-错误解决办法"><a href="#2-1-error-This-file-requires-compiler-and-library-support-for-the-ISO-C-2011-错误解决办法" class="headerlink" title="2.1 #error This file requires compiler and library support for the ISO C++ 2011 错误解决办法"></a>2.1 #error This file requires compiler and library support for the ISO C++ 2011 错误解决办法</h4><p>同样的代码，我在 Mac 上运行和在 Linux 上运行，就有不同，在 Linux 上运行就会报这样的错误。解决办法是：在 CMakeLists.txt 中添加如下配置</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">include(CheckCXXCompilerFlag)</span><br><span class="line">CHECK_CXX_COMPILER_FLAG(<span class="string">"-std=c++11"</span> COMPILER_SUPPORTS_CXX11)</span><br><span class="line">CHECK_CXX_COMPILER_FLAG(<span class="string">"-std=c++0x"</span> COMPILER_SUPPORTS_CXX0X)</span><br><span class="line"><span class="keyword">if</span>(COMPILER_SUPPORTS_CXX11)</span><br><span class="line">    <span class="built_in">set</span>(CMAKE_CXX_FLAGS <span class="string">"$&#123;CMAKE_CXX_FLAGS&#125; -std=c++11"</span>) </span><br><span class="line">elseif(COMPILER_SUPPORTS_CXX0X)</span><br><span class="line">    <span class="built_in">set</span>(CMAKE_CXX_FLAGS <span class="string">"$&#123;CMAKE_CXX_FLAGS&#125; -std=c++0x"</span>)</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">    message(STATUS <span class="string">"The compiler $&#123;CMAKE_CXX_COMPILER&#125; has no C++11 support. Please use a different C++ compiler."</span>)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure>
+<p>原因分析：跟 C++ 的编译器支持有关系，在 C++ 中的一些特性，只有在特定的版本才会支持，比如说 C++ 11 标准等。C++ 常用的编译器有GCC等，不同版本的 GCC 对 C++ 的标准支持是不一样的。 <a href="https://en.wikipedia.org/wiki/C%2B%2B11" target="_blank" rel="noopener">C++ 11 标准的特性可以看这里</a> ，这里 <a href="https://en.cppreference.com/w/cpp/compiler_support" target="_blank" rel="noopener">compiler_support</a> 可以找到编译器版本对C++的支持。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/08/16/cpp/cpp-a-tour-of-cpp/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/16/cpp/cpp-a-tour-of-cpp/" class="post-title-link" itemprop="url">C/C++ - A tour of c++</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-16 16:01:41" itemprop="dateCreated datePublished" datetime="2018-08-16T16:01:41+08:00">2018-08-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-02-01 21:35:11" itemprop="dateModified" datetime="2020-02-01T21:35:11+08:00">2020-02-01</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>The first thing we do, let’s kill all the language lawyers.</p>
+</blockquote>
+<h2 id="C-基础"><a href="#C-基础" class="headerlink" title="C++基础"></a>C++基础</h2><h4 id="类型和变量"><a href="#类型和变量" class="headerlink" title="类型和变量"></a>类型和变量</h4><p>每一个名称和表达式都有一个类型，这个类型决定了能在它之上执行什么操作；变量声明表示向程序中引入一个名称，并且为这个名称实体指定一个类型：</p>
+<ul>
+<li>类型定义了一组可能的值和对象上的一组操作</li>
+<li>对象是一些持有某种类型的值的内存</li>
+<li>值是根据类型解释的一组字节数据</li>
+<li>变量是一个命名对象</li>
+</ul>
+<p>C++ 中提供了各种基础类型，如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span></span><br><span class="line"><span class="keyword">int</span></span><br><span class="line"><span class="keyword">double</span></span><br><span class="line"><span class="keyword">char</span>   <span class="comment">// 1 个 byte，an 8-bits</span></span><br><span class="line"><span class="keyword">unsigned</span></span><br></pre></td></tr></table></figure>
+<p>每个基本类型直接对应于硬件设施，并且具有固定大小，其确定可存储在其中的值的范围. 但是在不同平台下，每种类型的长度可能有所不同，可以使用sizeof来获取类型的长度。如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sizeof</span>(<span class="keyword">char</span>)  <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">sizeof</span>(<span class="keyword">int</span>)   <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<h4 id="Constant"><a href="#Constant" class="headerlink" title="Constant"></a>Constant</h4><p>C++ 支持两种声明不可变常量的方式：</p>
+<ul>
+<li>const</li>
+<li>constexpr<br>constexpr 对应的值必须能在编译时期确定，如果在编译时期确定不了就会报错。</li>
+</ul>
+<h4 id="指针，数组和引用"><a href="#指针，数组和引用" class="headerlink" title="指针，数组和引用"></a>指针，数组和引用</h4><h5 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h5><p>引用是某一个变量或对象的别名，对引用的操作与对其所绑定的变量或对象的操作完全等价。</p>
+<blockquote>
+<ol>
+<li>&amp;不是求地址运算符，而是起标志作用</li>
+<li>引用的类型必须和其所绑定的变量的类型相同</li>
+<li>声明引用的同时必须对其初始化，否则系统会报错</li>
+<li>引用相当于变量或对象的别名，因此不能再将已有的引用名作为其他变量或对象的名字或别名</li>
+<li>引用不是定义一个新的变量或对象，因此内存不会为引用开辟新的空间存储这个引用</li>
+<li>对数组的引用, <code>类型 (&amp;引用名)[数组中元素数量]=数组名</code></li>
+<li>对指针的引用, <code>类型 *&amp;引用名=指针名</code></li>
+</ol>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> *ptr=&amp;a;</span><br><span class="line">    <span class="keyword">int</span> *&amp;new_ptr=ptr;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;&amp;ptr&lt;&lt;<span class="string">" "</span>&lt;&lt;&amp;new_ptr&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>引用的用处</strong></p>
+<ul>
+<li>引用作为函数的参数</li>
+</ul>
+<blockquote>
+<ol>
+<li>使用引用传递函数的参数，在内存中并没有产生实参的副本，它是直接对实参操作；而使用一般变量传递函数的参数，当发生函数调用时，需要给形参分配存储单元，形参变量是实参变量的副本；如果传递的是对象，还将调用拷贝构造函数。因此，当参数传递的数据较大时，用引用比用一般变量传递参数的效率和所占空间都好。</li>
+<li>使用指针作为函数的参数虽然也能达到与使用引用的效果，但是，在被调函数中同样要给形参分配存储单元，且需要重复使用\”*指针变量名\”的形式进行运算，这很容易产生错误且程序的阅读性较差；另一方面，在主调函数的调用点处，必须用变量的地址作为实参。而引用更容易使用，更清晰。</li>
+<li>如果既要利用引用提高程序的效率，又要保护传递给函数的数据不在函数中被改变，就应使用常引用。</li>
+<li>如果在编程过程中既希望通过让引用作为函数的参数来提高函数的编程效率，又希望保护传递的参数使其在函数中不被改变，则此时应当使用对常量的引用作为函数的参数</li>
+<li>数组的引用作为函数的参数：C++的数组类型是带有长度信息的，引用传递时如果指明的是数组则必须指定数组的长度</li>
+</ol>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span>(&amp;a)[<span class="number">5</span>])</span></span>&#123;<span class="comment">//数组引用作为函数的参数，必须指明数组的长度 </span></span><br><span class="line"><span class="comment">//函数体 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> number[<span class="number">5</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    func(number); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>常引用</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> 类型 &amp;引用名=目标变量名</span><br><span class="line"></span><br><span class="line"><span class="comment">// --</span></span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;<span class="built_in">string</span>&gt; </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">func1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> temp=<span class="string">"This is func1"</span>;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;str)</span></span>&#123;   <span class="comment">// 这里如果不加 const 会报错，因为不能将 const 常量赋值给变量的引用</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;str&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    func2(func1());</span><br><span class="line">    func2(<span class="string">"Tomwenxing"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>引用作为函数的返回值</li>
+</ul>
+<blockquote>
+<ol>
+<li>不能返回局部变量的引用</li>
+<li>引用作为函数的返回值时，必须在定义函数时在函数名前将&amp;</li>
+<li>用引用作函数的返回值的最大的好处是在内存中不产生返回值的副本</li>
+<li>不能返回函数内部通过new分配的内存的引用</li>
+<li>当返回类成员的引用时，最好是const引用。这样可以避免在无意的情况下破坏该类的成员</li>
+<li>可以用函数返回的引用作为赋值表达式中的左值</li>
+</ol>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> value[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> error=<span class="number">-1</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> &amp;<span class="title">func</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n&gt;=<span class="number">0</span>&amp;&amp;n&lt;=<span class="number">9</span>)</span><br><span class="line">        <span class="keyword">return</span> value[n];<span class="comment">//返回的引用所绑定的变量一定是全局变量，不能是函数中定义的局部变量 </span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    func(<span class="number">0</span>)=<span class="number">10</span>;</span><br><span class="line">    func(<span class="number">4</span>)=<span class="number">12</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;value[<span class="number">0</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;value[<span class="number">4</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用引用实现多态</li>
+</ul>
+<p>引用是除了指针外另一个可以产生多态效果的手段。也就是说一个基类的引用可以用来绑定其派生类的实例</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span>;</span><span class="comment">//基类（父类）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span>：<span class="title">public</span> <span class="title">Father</span>&#123;</span>.....&#125;<span class="comment">//Son是Father的派生类</span></span><br><span class="line">Son son;<span class="comment">//son是类Son的一个实例</span></span><br><span class="line">Father &amp;ptr=son;<span class="comment">//用派生类的对象初始化基类对象的使用</span></span><br></pre></td></tr></table></figure>
+<p>1.在引用的使用中，单纯给某个变量去别名是毫无意义的，引用的目的主要用于在函数参数的传递中，解决大块数据或对象的传递效率和空间不如意的问题</p>
+<p>2.用引用传递函数的参数，能保证参数在传递的过程中不产生副本，从而提高传递效率，同时通过const的使用，还可以保证参数在传递过程中的安全性</p>
+<p>3.引用本身是目标变量或对象的别名，对引用的操作本质上就是对目标变量或对象的操作。因此能使用引用时尽量使用引用而非指针</p>
+<h4 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h4><ul>
+<li>You don’t hav e to know every detail of C++ to write good programs.</li>
+<li>Focus on programming techniques, not on language features.</li>
+<li>For the final word on language definition issues, see the ISO C++ standard</li>
+<li>A function should perform a single logical operation</li>
+<li>Keep functions short</li>
+<li>Use overloading when functions perform conceptually the same task on different types</li>
+<li>If a function may have to be evaluated at compile time, declare it constexpr</li>
+<li>Avoid ‘‘magic constants;’’ use symbolic constants</li>
+<li>Declare one name (only) per declaration</li>
+<li>Keep common and local names short, and keep uncommon and nonlocal names longer.</li>
+<li>Avoid similar-looking names.</li>
+<li>Prefer the {}-initializer syntax for declarations with a named type; </li>
+<li>Prefer the = syntax for the initialization in declarations using auto;</li>
+<li>Avoid uninitialized variables; </li>
+<li>Keep scopes small;</li>
+<li>Keep use of pointers simple and straightforward;</li>
+<li>Use nullptr rather than 0 or NULL;</li>
+<li>Don’t declare a variable until you have a value to initialize it with; </li>
+<li>Don’t say in comments what can be clearly stated in code</li>
+<li>State intent in comments</li>
+<li>Avoid complicated expressions</li>
+<li>Avoid narrowing conversions</li>
+</ul>
+<h2 id="自定义类型"><a href="#自定义类型" class="headerlink" title="自定义类型"></a>自定义类型</h2><h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><p>构建自定义类型的第一种方式是组织需要的元素到一个数据结构中，称为结构体：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vector</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> sz; <span class="comment">// number of elements</span></span><br><span class="line">  <span class="keyword">double</span>∗ elem; <span class="comment">// pointer to elements</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// then</span></span><br><span class="line">Vector v;</span><br><span class="line"></span><br><span class="line"><span class="comment">// We use . (dot) to access struct members through a name (and through a reference) and −&gt; to</span></span><br><span class="line"><span class="comment">// access struct members through a pointer</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(Vector v, Vector&amp; rv, Vector∗ pv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i1 = v.sz; <span class="comment">// access through name</span></span><br><span class="line">  <span class="keyword">int</span> i2 = rv.sz; <span class="comment">// access through reference</span></span><br><span class="line">  <span class="keyword">int</span> i4 = pv−&gt;sz; <span class="comment">// access through pointer</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p>类拥有一组成员，可以使数据、函数、类型成员；接口被公开的成员函数定义，私有成员只能通过接口来访问。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Vector(<span class="keyword">int</span> s):elem&#123;<span class="keyword">new</span> <span class="keyword">double</span>[s]&#125;, sz&#123;s&#125; &#123; &#125;    <span class="comment">// construct a Vector</span></span><br><span class="line">    <span class="keyword">double</span>&amp; <span class="keyword">operator</span>[](<span class="keyword">int</span> i) &#123; <span class="keyword">return</span> elem[i]; &#125;   <span class="comment">// element access: subscripting</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> sz; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">double</span>∗ elem;                                   <span class="comment">// pointer to the elements</span></span><br><span class="line">    <span class="keyword">int</span> sz;                                         <span class="comment">// the number of elements</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="Unions-联合体"><a href="#Unions-联合体" class="headerlink" title="Unions (联合体)"></a>Unions (联合体)</h4><p>略</p>
+<h4 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> &#123;</span> red, blue , green &#125;;</span><br><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Traffic_light</span> &#123;</span> green, yellow, red &#125;;</span><br><span class="line"></span><br><span class="line">Color col = Color::red;</span><br><span class="line">Traffic_light light = Traffic_light::red;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> Traffic &#123;</span><br><span class="line">    red, blue, green</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="建议-1"><a href="#建议-1" class="headerlink" title="建议"></a>建议</h4><ul>
+<li>Organize related data into structures (structs or classes)</li>
+<li>Represent the distinction between an interface and an implemetation using a class</li>
+<li>A struct is simply a class with its members public by default</li>
+<li>Define constructors to guarantee and simplify initialization of classes</li>
+<li>Use enumerations to represent sets of named constants</li>
+<li>Prefer class enums over ‘‘plain’’ enums to minimize surprises</li>
+<li>Define operations on enumerations for safe and simple use</li>
+</ul>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>–</p>
+<h2 id="类-1"><a href="#类-1" class="headerlink" title="类"></a>类</h2><p><code>class</code> 是 C++ 核心语言特性，<code>class</code> 是用户的一种自定义类型，在代码程序中代表一种思想。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/08/15/blockchain/eos-intro1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/15/blockchain/eos-intro1/" class="post-title-link" itemprop="url">区块链 - EOS 分析</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-15 13:18:34" itemprop="dateCreated datePublished" datetime="2018-08-15T13:18:34+08:00">2018-08-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-02-01 21:35:11" itemprop="dateModified" datetime="2020-02-01T21:35:11+08:00">2020-02-01</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a href="https://blog.csdn.net/bedrock_stable/article/details/80327817" target="_blank" rel="noopener">EOS合约开发第十七章-合约通信编程</a></li>
+</ul>
+<p>使用编写实际合约的方式来验证合约之间的通信方式，值得读。这里是系列文章 <a href="https://blog.csdn.net/bedrock_stable" target="_blank" rel="noopener">https://blog.csdn.net/bedrock_stable</a> </p>
+<ul>
+<li><a href="https://cosmos.network/docs/" target="_blank" rel="noopener">https://cosmos.network/docs/</a></li>
+</ul>
+<p>ibc 跨链通信</p>
+<ul>
+<li><a href="https://blog.csdn.net/ITleaks/article/details/80465715" target="_blank" rel="noopener">EOS特殊智能合约eosio</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/08/15/blockchain/wallet-intro1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChainTech">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/15/blockchain/wallet-intro1/" class="post-title-link" itemprop="url">区块链钱包 - 1 公私钥生成原理及私钥管理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-15 13:18:34" itemprop="dateCreated datePublished" datetime="2018-08-15T13:18:34+08:00">2018-08-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-08-16 17:57:06" itemprop="dateModified" datetime="2018-08-16T17:57:06+08:00">2018-08-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -508,7 +1497,7 @@
 </blockquote>
 <h3 id="生成公钥"><a href="#生成公钥" class="headerlink" title="生成公钥"></a>生成公钥</h3><p><code>K = k * G</code>, G 是生成点，是固定不变的，是 ECC 上的一个点；k 是随机生成的私钥，它是一个随机数，一个很大的随机数；那么，对 G 经过 k 次的椭圆曲线加法操作后就得到最终的点，这个点就是公钥 K。</p>
 <p>So, K = (x, y)， 举个例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">K = 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD * G</div><div class="line">K = (x, y) = (F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A, 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">K = 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD * G</span><br><span class="line">K = (x, y) = (F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A, 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB)</span><br></pre></td></tr></table></figure>
 <p>数学原理就是借助椭圆曲线函数，将G相加k次。在椭圆曲线中，点的相加等同于从该点画切线找到与曲线相交的另一 点，然后翻折到x轴。</p>
 <h3 id="比特币地址"><a href="#比特币地址" class="headerlink" title="比特币地址"></a>比特币地址</h3><p>地址的生成使用到了哈希算法；哈希算法是一种单向函数，接收任意长度的输入产生定长的指纹或哈希，具体的算法是：SHA256 和 RIPEMD160。</p>
 <p>以公钥 K 为输入，计算其 SHA256 哈希值，并以此结果计算 RIPEMD160 哈希值，得到一个长度为160位（20字节）的数字：<br>A = RIPEMD160(SHA256(K))</p>
@@ -544,9 +1533,9 @@
 </li>
 </ul>
 <h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
-<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch04.md" target="_blank" rel="external">精通比特币 - 密钥 地址</a></li>
-<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch05.md" target="_blank" rel="external">精通比特币 - 钱包</a></li>
-<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch06.md" target="_blank" rel="external">精通比特币 - ECDSA算法</a></li>
+<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch04.md" target="_blank" rel="noopener">精通比特币 - 密钥 地址</a></li>
+<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch05.md" target="_blank" rel="noopener">精通比特币 - 钱包</a></li>
+<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch06.md" target="_blank" rel="noopener">精通比特币 - ECDSA算法</a></li>
 </ul>
 
           
@@ -554,14 +1543,20 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+      
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -575,6 +1570,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -587,16 +1586,22 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/06/21/docker/spring-boot-docker-maven-plugin/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="ChainTech">
     </span>
 
@@ -606,13 +1611,9 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2018/06/21/docker/spring-boot-docker-maven-plugin/" itemprop="url">
-                  未命名
-                </a>
+                
+                <a href="/2018/06/21/docker/spring-boot-docker-maven-plugin/" class="post-title-link" itemprop="url">Untitled</a>
               
             
           </h1>
@@ -620,18 +1621,24 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-21T18:30:34+08:00">
-                2018-06-21
-              </time>
-            
 
+              
+                
+              
+
+              <time title="Created: 2018-06-21 18:30:34" itemprop="dateCreated datePublished" datetime="2018-06-21T18:30:34+08:00">2018-06-21</time>
             
 
             
@@ -656,7 +1663,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -671,14 +1680,20 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+      
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -692,6 +1707,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -704,16 +1723,22 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/31/java/exception-error/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="ChainTech">
     </span>
 
@@ -723,13 +1748,9 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2018/05/31/java/exception-error/" itemprop="url">
-                  异常处理机制
-                </a>
+                
+                <a href="/2018/05/31/java/exception-error/" class="post-title-link" itemprop="url">异常处理机制</a>
               
             
           </h1>
@@ -737,20 +1758,30 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T07:24:15+08:00">
-                2018-05-31
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2018-05-31 07:24:15 / Modified: 10:13:44" itemprop="dateCreated datePublished" datetime="2018-05-31T07:24:15+08:00">2018-05-31</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -773,7 +1804,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -792,7 +1825,7 @@
 <p>java.lang.NoClassDefFoundError 和 java.lang.ClassNotFoundException</p>
 <ul>
 <li>JVM在编译的时候能找到调用方法或静态变量所在的类，但在运行的时候找不到此类而引发的错误。Thrown if the Java Virtual Machine or a ClassLoader instance tries to load in the definition of a class (as part of a normal method call or as part of creating a new instance using the new expression) and no definition of the class could be found. The searched-for class definition existed when the currently executing class was compiled, but the definition can no longer be found. 出现这个异常，并不是说这个.class类文件不存在，而是类加载器试图加载类的定义时却找不到这个类的定义，实际上.class文件是存在的。</li>
-<li>Ref: <a href="https://blog.csdn.net/u013065023/article/details/71171373" target="_blank" rel="external">https://blog.csdn.net/u013065023/article/details/71171373</a></li>
+<li>Ref: <a href="https://blog.csdn.net/u013065023/article/details/71171373" target="_blank" rel="noopener">https://blog.csdn.net/u013065023/article/details/71171373</a></li>
 </ul>
 </blockquote>
 <h4 id="Java-中-操作-Trrowable-的元素和实践"><a href="#Java-中-操作-Trrowable-的元素和实践" class="headerlink" title="Java 中 操作 Trrowable 的元素和实践"></a>Java 中 操作 Trrowable 的元素和实践</h4>
@@ -801,14 +1834,20 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+      
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -822,6 +1861,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -834,16 +1877,22 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/28/java/cpu-overhigh/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="ChainTech">
     </span>
 
@@ -853,13 +1902,9 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2018/05/28/java/cpu-overhigh/" itemprop="url">
-                  Java 线上应用 CPU 使用率过高导致 502 504
-                </a>
+                
+                <a href="/2018/05/28/java/cpu-overhigh/" class="post-title-link" itemprop="url">Java 线上应用 CPU 使用率过高导致 502 504</a>
               
             
           </h1>
@@ -867,20 +1912,42 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T07:14:46+08:00">
-                2018-05-28
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2018-05-28 07:14:46" itemprop="dateCreated datePublished" datetime="2018-05-28T07:14:46+08:00">2018-05-28</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-05-31 07:17:53" itemprop="dateModified" datetime="2018-05-31T07:17:53+08:00">2018-05-31</time>
+              
             
           </span>
 
@@ -903,7 +1970,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -915,7 +1984,7 @@
             <h3 id="Java-应用-CPU-使用率过高分析"><a href="#Java-应用-CPU-使用率过高分析" class="headerlink" title="Java 应用 CPU 使用率过高分析"></a>Java 应用 CPU 使用率过高分析</h3><ul>
 <li>使用 Top 查看哪个进程的 CPU 使用率过高, 进程中哪个线程使用率高</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ top</div><div class="line">$ ps aux | grep &lt;PID&gt;</div><div class="line">$ top -H -p PID命令查看哪个线程占用高</div><div class="line"></div><div class="line">// 查找进程下哪个线程占用率高</div><div class="line">$ ps -mp PID -o THREAD,tid,time</div><div class="line">// or</div><div class="line">$ ps -mp 2633 -o THREAD,tid,time | sort -rn</div><div class="line"></div><div class="line">// 线程 id 转换成 16 进制</div><div class="line">$ printf &quot;%X\n&quot; thread_id</div><div class="line"></div><div class="line">// 或者使用 jps 来查看 java 的进程 id</div><div class="line">$ jps</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ top</span><br><span class="line">$ ps aux | grep &lt;PID&gt;</span><br><span class="line">$ top -H -p PID命令查看哪个线程占用高</span><br><span class="line"></span><br><span class="line">// 查找进程下哪个线程占用率高</span><br><span class="line">$ ps -mp PID -o THREAD,tid,time</span><br><span class="line">// or</span><br><span class="line">$ ps -mp 2633 -o THREAD,tid,time | sort -rn</span><br><span class="line"></span><br><span class="line">// 线程 id 转换成 16 进制</span><br><span class="line">$ printf &quot;%X\n&quot; thread_id</span><br><span class="line"></span><br><span class="line">// 或者使用 jps 来查看 java 的进程 id</span><br><span class="line">$ jps</span><br></pre></td></tr></table></figure>
 <p>top 命令中需要关注的指标：</p>
 <ol>
 <li>load average：此值反映了任务队列的平均长度；如果此值超过了CPU数量，则表示当前CPU数量不足以处理任务，负载过高</li>
@@ -929,25 +1998,31 @@
 <ul>
 <li>导出栈信息</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ jstack &lt;pid&gt; | grep &lt;线程id的16进制表示&gt; -A 30</div><div class="line"></div><div class="line">// 导出栈信息</div><div class="line">$ jstack &lt;pid&gt; | jstack.log</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ jstack &lt;pid&gt; | grep &lt;线程id的16进制表示&gt; -A 30</span><br><span class="line"></span><br><span class="line">// 导出栈信息</span><br><span class="line">$ jstack &lt;pid&gt; | jstack.log</span><br></pre></td></tr></table></figure>
 <h3 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h3><ul>
-<li><a href="https://blog.csdn.net/u010862794/article/details/78020231?locationNum=4&amp;fps=1" target="_blank" rel="external">线上java程序CPU占用过高问题排查</a></li>
+<li><a href="https://blog.csdn.net/u010862794/article/details/78020231?locationNum=4&amp;fps=1" target="_blank" rel="noopener">线上java程序CPU占用过高问题排查</a></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"># top</div><div class="line">PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND        6764 root      20   0 2428m 1.1g  11m S 190.0 28.3  36:38.55 java </div><div class="line">// pid为6764的java进程CPU利用持续占用过高,达到了190%。内存占用率为28.3%</div><div class="line"></div><div class="line"># ps -mp 6764 -o THREAD,tid,time</div><div class="line">USER     %CPU PRI SCNT WCHAN  USER SYSTEM   TID     TIME</div><div class="line">root     71.7   -    - -         -      -     - 00:36:52</div><div class="line">root      0.0  19    - futex_    -      -  6764 00:00:00</div><div class="line">root      0.0  19    - poll_s    -      -  6765 00:00:01</div><div class="line">root     44.6  19    - futex_    -      -  6766 00:23:32</div><div class="line">root     44.6  19    - futex_    -      -  6767 00:23:32</div><div class="line">root      1.2  19    - futex_    -      -  6768 00:00:38</div><div class="line">// 6766和6767两个线程占用CPU大约有半个小时，每个线程的CPU利用率约为45%</div><div class="line"></div><div class="line"># printf &quot;%x\n&quot; 6766</div><div class="line">1a6e</div><div class="line">// 转16进制</div><div class="line"></div><div class="line"># jstack 6764 | grep 1a6e</div><div class="line">&quot;GC task thread#0 (ParallelGC)&quot; prio=10 tid=0x00007ffeb8016800 nid=0x1a6e runnable</div><div class="line">&quot;GC task thread#0 (ParallelGC)&quot; prio=10 tid=0x00007ffeb8016800 nid=0x1a6e runnable </div><div class="line">&quot;GC task thread#1 (ParallelGC)&quot; prio=10 tid=0x00007ffeb8016800 nid=0x1a6e runnable  </div><div class="line">&quot;VM Periodic Task Thread&quot; prio=10 tid=0x00007ffeb8016800 nid=0x3700 waiting on condition </div><div class="line">// jstack命令打印线程堆栈信息, 这些都是GC的线程, 很有可能就是内存不够导致GC不断执行</div><div class="line"></div><div class="line"># jstat -gcutil 6764 2000 10</div><div class="line">// 可以看出内存的年轻代和年老带的利用率都达到了惊人的100%。FGC的次数也特别多，并且在不断飙升。可以推断出 </div><div class="line">程序肯定是在哪里的实现有问题，需要重点查看大对象或者异常多的对象信息。</div><div class="line"></div><div class="line"># jmap -dump:format=b,file=dump.bin 6764</div><div class="line">// 使用jmap命令导出heapdump文件，然后拿到本地使用jvisualvm.exe分析</div><div class="line"></div><div class="line"># jstack -l 6764 &gt;&gt; jstack.out</div><div class="line"></div><div class="line">// 从 heatmap 中去分析具体是程序的哪个地方导致内存占用过多，GC时间过长，CPU占用过高</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"># top</span><br><span class="line">PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND        6764 root      20   0 2428m 1.1g  11m S 190.0 28.3  36:38.55 java </span><br><span class="line">// pid为6764的java进程CPU利用持续占用过高,达到了190%。内存占用率为28.3%</span><br><span class="line"></span><br><span class="line"># ps -mp 6764 -o THREAD,tid,time</span><br><span class="line">USER     %CPU PRI SCNT WCHAN  USER SYSTEM   TID     TIME</span><br><span class="line">root     71.7   -    - -         -      -     - 00:36:52</span><br><span class="line">root      0.0  19    - futex_    -      -  6764 00:00:00</span><br><span class="line">root      0.0  19    - poll_s    -      -  6765 00:00:01</span><br><span class="line">root     44.6  19    - futex_    -      -  6766 00:23:32</span><br><span class="line">root     44.6  19    - futex_    -      -  6767 00:23:32</span><br><span class="line">root      1.2  19    - futex_    -      -  6768 00:00:38</span><br><span class="line">// 6766和6767两个线程占用CPU大约有半个小时，每个线程的CPU利用率约为45%</span><br><span class="line"></span><br><span class="line"># printf &quot;%x\n&quot; 6766</span><br><span class="line">1a6e</span><br><span class="line">// 转16进制</span><br><span class="line"></span><br><span class="line"># jstack 6764 | grep 1a6e</span><br><span class="line">&quot;GC task thread#0 (ParallelGC)&quot; prio=10 tid=0x00007ffeb8016800 nid=0x1a6e runnable</span><br><span class="line">&quot;GC task thread#0 (ParallelGC)&quot; prio=10 tid=0x00007ffeb8016800 nid=0x1a6e runnable </span><br><span class="line">&quot;GC task thread#1 (ParallelGC)&quot; prio=10 tid=0x00007ffeb8016800 nid=0x1a6e runnable  </span><br><span class="line">&quot;VM Periodic Task Thread&quot; prio=10 tid=0x00007ffeb8016800 nid=0x3700 waiting on condition </span><br><span class="line">// jstack命令打印线程堆栈信息, 这些都是GC的线程, 很有可能就是内存不够导致GC不断执行</span><br><span class="line"></span><br><span class="line"># jstat -gcutil 6764 2000 10</span><br><span class="line">// 可以看出内存的年轻代和年老带的利用率都达到了惊人的100%。FGC的次数也特别多，并且在不断飙升。可以推断出 </span><br><span class="line">程序肯定是在哪里的实现有问题，需要重点查看大对象或者异常多的对象信息。</span><br><span class="line"></span><br><span class="line"># jmap -dump:format=b,file=dump.bin 6764</span><br><span class="line">// 使用jmap命令导出heapdump文件，然后拿到本地使用jvisualvm.exe分析</span><br><span class="line"></span><br><span class="line"># jstack -l 6764 &gt;&gt; jstack.out</span><br><span class="line"></span><br><span class="line">// 从 heatmap 中去分析具体是程序的哪个地方导致内存占用过多，GC时间过长，CPU占用过高</span><br></pre></td></tr></table></figure>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
+    
+
+    
+      
+    
+    
+
+    
 
     <footer class="post-footer">
       
@@ -961,663 +2036,10 @@
         <div class="post-eof"></div>
       
     </footer>
-  </article>
-
-
-    
-      
-
-  
-
+  </div>
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/24/microservice/microservice-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/24/microservice/microservice-1/" itemprop="url">
-                  post
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T07:55:54+08:00">
-                2018-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h3><ul>
-<li><a href="http://dubbo.apache.org/books/dubbo-dev-book/build.html" target="_blank" rel="external">dubbo 文档</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/24/golang/learn-golang-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/24/golang/learn-golang-1/" itemprop="url">
-                  post
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T07:53:16+08:00">
-                2018-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/20/distributed/分布式1-CAP定理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/20/distributed/分布式1-CAP定理/" itemprop="url">
-                  post
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T17:10:47+08:00">
-                2018-05-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>// Todo</p>
-<h3 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h3><ul>
-<li><a href="http://blog.cloudera.com/blog/2010/04/cap-confusion-problems-with-partition-tolerance/" target="_blank" rel="external">CAP Confusion: Problems with ‘partition tolerance’</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/14/java/deep-in-java/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/14/java/deep-in-java/" itemprop="url">
-                  深入 Java 平台 - 总览
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T07:17:22+08:00">
-                2018-05-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="深入浅出-java"><a href="#深入浅出-java" class="headerlink" title="深入浅出 java"></a>深入浅出 java</h2><h4 id="对-java-平台的理解？"><a href="#对-java-平台的理解？" class="headerlink" title="对 java 平台的理解？"></a>对 java 平台的理解？</h4><p>我们先从一个问题说起，这是一个开放的问题，不同人对 java 平台的理解也是不尽相同，可以从如下不同角度去思考：</p>
-<ul>
-<li>重要特性之一：书写一次，到处运行</li>
-<li>自动垃圾收集 GC，GC 的基本原理，如 SerialGC、Parallel GC、CMS、G1等</li>
-<li>JRE 与 JDK</li>
-<li>对 Java 是否解释执行的理解，Java 编译期和运行时各自完成的事情是什么</li>
-<li>剖析一下 Java 语言特性，如反射、注解、范型、Lambda 表达式、行为参数化等</li>
-<li>基础类库的掌握程度，如集合、IO/NIO、网络、并发、安全等</li>
-<li>对 JVM 的掌握及理解，如 JVM 的内存结构、JVM 的垃圾回收机制、JVM 的调优、JVM 在线上容易出现的问题、解决办法及分析过程</li>
-<li>Java 的类加载机制，如内置的 Bootstrap 加载机制、Application、Extension Class Loader，类加载的过程及每个过程的主要目的；如何自定义 class loader</li>
-<li>JDK 的工具，如编译器、运行时环境、安全工具、诊断工具、监控工具等</li>
-<li>Java 常用第三方类库，如Dubbo、Spark、Hadoop、ES、Maven、Spring生态、Guava、Apache commons、Jackson、Gson等</li>
-<li>JDK 8, JDK 9, JDK 10 的新特性</li>
-</ul>
-<h4 id="Exception-和-Error-有什么区别"><a href="#Exception-和-Error-有什么区别" class="headerlink" title="Exception 和 Error 有什么区别"></a>Exception 和 Error 有什么区别</h4><ul>
-<li>Java 平台的异常处理机制是如何设计的</li>
-<li>在 Java 中异常处理机制的最佳实践</li>
-<li>从性能角度看异常处理机制</li>
-</ul>
-<h4 id="final-finally-finalize-有什么不同"><a href="#final-finally-finalize-有什么不同" class="headerlink" title="final finally finalize 有什么不同"></a>final finally finalize 有什么不同</h4><ul>
-<li>使用特性</li>
-<li>从安全、性能、GC等方面分析他们</li>
-<li>使用的注意事项</li>
-</ul>
-<h4 id="强引用、软引用、弱引用、幻象引用的区别"><a href="#强引用、软引用、弱引用、幻象引用的区别" class="headerlink" title="强引用、软引用、弱引用、幻象引用的区别"></a>强引用、软引用、弱引用、幻象引用的区别</h4><ul>
-<li>理解原始数据类型和引用数据类型</li>
-<li>不同的引用对对象可达性的影响，进而影响 GC</li>
-<li>分析 JVM 中的引用情况以及引用队列</li>
-</ul>
-<h4 id="String-StringBuffer-StringBuilder-有什么区别"><a href="#String-StringBuffer-StringBuilder-有什么区别" class="headerlink" title="String StringBuffer StringBuilder 有什么区别"></a>String StringBuffer StringBuilder 有什么区别</h4><ul>
-<li>他们各自的应用场景</li>
-<li>引申出基本的线程安全性设计与实现，基础编程实践</li>
-<li>JVM 对象缓存机制及如何良好使用</li>
-<li>String 相关类的演进</li>
-</ul>
-<h4 id="动态代理的原理"><a href="#动态代理的原理" class="headerlink" title="动态代理的原理"></a>动态代理的原理</h4><ul>
-<li>Java 反射机制</li>
-<li>动态代理的原理，动态代理解决了什么问题，是否在实际的业务场景中使用到动态代理</li>
-<li>JDK 动态代理的设计和实现？</li>
-<li>Spring 中的动态代理，对AOP的理解</li>
-</ul>
-<h4 id="int-和-Integer-的区别"><a href="#int-和-Integer-的区别" class="headerlink" title="int 和 Integer 的区别"></a>int 和 Integer 的区别</h4><ul>
-<li>自动装箱/拆箱</li>
-<li>分析一下缓存机制</li>
-</ul>
-<h4 id="Vector-ArrayList-LinkedList-有何区别"><a href="#Vector-ArrayList-LinkedList-有何区别" class="headerlink" title="Vector ArrayList LinkedList 有何区别"></a>Vector ArrayList LinkedList 有何区别</h4><ul>
-<li>JDK 集合框架</li>
-<li>基础的排序算法</li>
-<li>JDK 中关于集合的类</li>
-</ul>
-<h4 id="JVM-问题排查，CPU使用过高"><a href="#JVM-问题排查，CPU使用过高" class="headerlink" title="JVM 问题排查，CPU使用过高"></a>JVM 问题排查，CPU使用过高</h4>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/05/13/spring/springboot-Enable-Feature/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ChainTech">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/13/spring/springboot-Enable-Feature/" itemprop="url">
-                  spring boot @Enable* 特性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-13T21:31:28+08:00">
-                2018-05-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="首先来分析一下-Spring-boot-的启动过程"><a href="#首先来分析一下-Spring-boot-的启动过程" class="headerlink" title="首先来分析一下 Spring boot 的启动过程"></a>首先来分析一下 Spring boot 的启动过程</h3><ul>
-<li>启动代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@SpringBootApplication</div><div class="line">public class MyApplication &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        SpringApplication.run(MyApplication.class, args);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>一切显得这么简约．</p>
-<p>分析过程看这里　<a href="http://fangjian0423.github.io/2017/04/30/springboot-startup-analysis/" target="_blank" rel="external">SpringBoot源码分析之SpringBoot的启动过程</a></p>
-<h3 id="Spring-boot-内嵌-tomcat-优化"><a href="#Spring-boot-内嵌-tomcat-优化" class="headerlink" title="Spring boot 内嵌 tomcat 优化"></a>Spring boot 内嵌 tomcat 优化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">// 启动时对 JVM 配置</div><div class="line">$ java -Xms4g -Xmx4g -Xmn768m -server -jar springboot-9-1.4.1.RELEASE.jar</div><div class="line">// -Xms 最小内存</div><div class="line">// -Xmx 最大使用内存</div><div class="line">// -Xmn 年轻代大小, 推荐配置为整个堆的3/8	</div><div class="line">// Ref: http://unixboy.iteye.com/blog/174173/</div><div class="line"></div><div class="line">// 对 Tomcat 的配置优化，大多数是在线程数和并发连接上，这个和主机本身的配置有一定关系</div><div class="line"> @SpringBootApplication</div><div class="line">    public class AppApplication &#123;</div><div class="line">        public static void main(String args[]) &#123;</div><div class="line">            SpringApplication.run(AppApplication.class, args);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Bean</div><div class="line">        public EmbeddedServletContainerFactory tomcatEmbeddedServletContainerFactory() throws IOException &#123;</div><div class="line">            TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();</div><div class="line">            tomcat.addAdditionalTomcatConnectors(httpConnector());</div><div class="line">            return tomcat;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        public Connector httpConnector() throws IOException &#123;</div><div class="line">            Connector connector = new Connector(&quot;org.apache.coyote.http11.Http11NioProtocol&quot;);</div><div class="line">            Http11NioProtocol http11NioProtocol = (Http11NioProtocol) connector.getProtocolHandler();</div><div class="line">            connector.setPort(8080);</div><div class="line">            //设置最大线程数</div><div class="line">            http11NioProtocol.setMaxThreads(100);</div><div class="line">            //设置初始线程数  最小空闲线程数</div><div class="line">            http11NioProtocol.setMinSpareThreads(20);</div><div class="line">            //设置超时</div><div class="line">            http11NioProtocol.setConnectionTimeout(5000);</div><div class="line">            return connector;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">// </div><div class="line">//  Spring Boot内嵌Tomcat启动</div></pre></td></tr></table></figure>
-<h3 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h3><ul>
-<li><a href="http://www.importnew.com/24168.html" target="_blank" rel="external">SpringBoot自动化配置的注解开关原理</a></li>
-<li><a href="http://fangjian0423.github.io/2016/06/12/springboot-autoconfig-analysis/" target="_blank" rel="external">SpringBoot内部的一些自动化配置原理</a></li>
-<li><a href="http://www.jb51.net/article/111853.htm" target="_blank" rel="external">Spring Boot内嵌Tomcat启动</a></li>
-<li><a href="https://blog.csdn.net/mn960mn/article/details/51306140" target="_blank" rel="external">spring boot 自定义内嵌Tomcat</a></li>
-<li><a href="http://blog.longjiazuo.com/archives/1725" target="_blank" rel="external">Tomcat配置和Tomcat替换</a></li>
-<li><a href="http://fangjian0423.github.io/2016/10/07/springboot-transaction/" target="_blank" rel="external">SpringBoot的事务管理</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </article>
 
 
@@ -1626,15 +2048,12 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
-          
+
           </div>
-          
-
-
           
 
         </div>
@@ -1650,75 +2069,187 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/portrait-01.jpg"
-               alt="shniu<niushaohan@digcredit.com>" />
-          <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></p>
-           
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></niushaohan@digcredit.com></p>
               <p class="site-description motion-element" itemprop="description">一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">58</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/shniu" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
 
@@ -1734,30 +2265,39 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></span>
+  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></niushaohan@digcredit.com></span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.6.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -1769,12 +2309,17 @@
         
       </div>
     
+
+    
+
+    
+
     
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1788,79 +2333,45 @@
 
 
 
-  
 
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
 
 
 
 
-	
+
+
+
+
 
 
 
 
 
   
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
 
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
-
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
   
 
 
+  <script src="/js/src/utils.js?v=6.6.0"></script>
 
-
-
-  
+  <script src="/js/src/motion.js?v=6.6.0"></script>
 
 
 
@@ -1871,10 +2382,55 @@
 
   
 
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
   
 
   
 
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 

@@ -1,23 +1,4 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
+<!DOCTYPE html>
 
 
 
@@ -31,47 +12,14 @@
 
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="blockchain,wallet," />
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
 
 
@@ -80,64 +28,66 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="大纲：
-
-以比特币为例子介绍一下如何做签名和验证
-介绍密码学中的椭圆曲线函数生成公钥
-介绍比特币中的公钥使用哈希算法生成私钥
-
-公私钥原理公钥和私钥是基于密码学的概念，密码学可以用来证明数据的真实性（数字指纹）。在 Bitcoin 的世界里，bitcoin 的所有权是通过数字密钥、比特币地址和数字签名来确定的。
-在计算机信息安全的发展过程中，在公钥加密被发明后，一些函数如素数幂和椭圆曲线乘法被发现">
-<meta property="og:type" content="article">
-<meta property="og:title" content="区块链钱包 - 1 公私钥生成原理及私钥管理">
-<meta property="og:url" content="http://shniu.github.io/2018/08/15/blockchain/wallet-intro1/index.html">
-<meta property="og:site_name" content="ChainTech">
-<meta property="og:description" content="大纲：
-
-以比特币为例子介绍一下如何做签名和验证
-介绍密码学中的椭圆曲线函数生成公钥
-介绍比特币中的公钥使用哈希算法生成私钥
-
-公私钥原理公钥和私钥是基于密码学的概念，密码学可以用来证明数据的真实性（数字指纹）。在 Bitcoin 的世界里，bitcoin 的所有权是通过数字密钥、比特币地址和数字签名来确定的。
-在计算机信息安全的发展过程中，在公钥加密被发明后，一些函数如素数幂和椭圆曲线乘法被发现">
-<meta property="og:image" content="https://camo.githubusercontent.com/7cbd56a1e30d98e982e56648a2f534bec8cdcdb2/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f313738353935392d366663343365656535353636366666322e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430">
-<meta property="og:image" content="https://camo.githubusercontent.com/5f7f239a6d9d036819fceb567f8a88246fb97d30/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f313738353935392d666433643832306535626131343734632e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430">
-<meta property="og:image" content="https://camo.githubusercontent.com/cd4b06a3cddca0802a2a52a3e2462671837dce27/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f383439303135332d653663623034386164333130616562352e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970">
-<meta property="og:image" content="https://camo.githubusercontent.com/31bf97562a3aaca1fdcffb8ee03f0d01dccd11bc/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f383439303135332d376632646430306433656234336563302e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970">
-<meta property="og:updated_time" content="2018-08-15T08:21:21.027Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="区块链钱包 - 1 公私钥生成原理及私钥管理">
-<meta name="twitter:description" content="大纲：
-
-以比特币为例子介绍一下如何做签名和验证
-介绍密码学中的椭圆曲线函数生成公钥
-介绍比特币中的公钥使用哈希算法生成私钥
-
-公私钥原理公钥和私钥是基于密码学的概念，密码学可以用来证明数据的真实性（数字指纹）。在 Bitcoin 的世界里，bitcoin 的所有权是通过数字密钥、比特币地址和数字签名来确定的。
-在计算机信息安全的发展过程中，在公钥加密被发明后，一些函数如素数幂和椭圆曲线乘法被发现">
-<meta name="twitter:image" content="https://camo.githubusercontent.com/7cbd56a1e30d98e982e56648a2f534bec8cdcdb2/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f313738353935392d366663343365656535353636366666322e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -149,18 +99,45 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://shniu.github.io/2018/08/15/blockchain/wallet-intro1/"/>
-
+  
 
 
 
 
-  <title> 区块链钱包 - 1 公私钥生成原理及私钥管理 | ChainTech </title>
-</head>
+  <meta name="description" content="大纲：  以比特币为例子介绍一下如何做签名和验证 介绍密码学中的椭圆曲线函数生成公钥 介绍比特币中的公钥使用哈希算法生成私钥  公私钥原理公钥和私钥是基于密码学的概念，密码学可以用来证明数据的真实性（数字指纹）。在 Bitcoin 的世界里，bitcoin 的所有权是通过数字密钥、比特币地址和数字签名来确定的。 在计算机信息安全的发展过程中，在公钥加密被发明后，一些函数如素数幂和椭圆曲线乘法被发现">
+<meta name="keywords" content="blockchain,wallet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区块链钱包 - 1 公私钥生成原理及私钥管理">
+<meta property="og:url" content="http://shniu.github.io/2018/08/15/blockchain/wallet-intro1/index.html">
+<meta property="og:site_name" content="ChainTech">
+<meta property="og:description" content="大纲：  以比特币为例子介绍一下如何做签名和验证 介绍密码学中的椭圆曲线函数生成公钥 介绍比特币中的公钥使用哈希算法生成私钥  公私钥原理公钥和私钥是基于密码学的概念，密码学可以用来证明数据的真实性（数字指纹）。在 Bitcoin 的世界里，bitcoin 的所有权是通过数字密钥、比特币地址和数字签名来确定的。 在计算机信息安全的发展过程中，在公钥加密被发明后，一些函数如素数幂和椭圆曲线乘法被发现">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://camo.githubusercontent.com/7cbd56a1e30d98e982e56648a2f534bec8cdcdb2/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f313738353935392d366663343365656535353636366666322e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430">
+<meta property="og:image" content="https://camo.githubusercontent.com/5f7f239a6d9d036819fceb567f8a88246fb97d30/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f313738353935392d666433643832306535626131343734632e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430">
+<meta property="og:image" content="https://camo.githubusercontent.com/cd4b06a3cddca0802a2a52a3e2462671837dce27/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f383439303135332d653663623034386164333130616562352e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970">
+<meta property="og:image" content="https://camo.githubusercontent.com/31bf97562a3aaca1fdcffb8ee03f0d01dccd11bc/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f383439303135332d376632646430306433656234336563302e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970">
+<meta property="og:updated_time" content="2018-08-16T09:57:06.041Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="区块链钱包 - 1 公私钥生成原理及私钥管理">
+<meta name="twitter:description" content="大纲：  以比特币为例子介绍一下如何做签名和验证 介绍密码学中的椭圆曲线函数生成公钥 介绍比特币中的公钥使用哈希算法生成私钥  公私钥原理公钥和私钥是基于密码学的概念，密码学可以用来证明数据的真实性（数字指纹）。在 Bitcoin 的世界里，bitcoin 的所有权是通过数字密钥、比特币地址和数字签名来确定的。 在计算机信息安全的发展过程中，在公钥加密被发明后，一些函数如素数幂和椭圆曲线乘法被发现">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/7cbd56a1e30d98e982e56648a2f534bec8cdcdb2/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f313738353935392d366663343365656535353636366666322e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430">
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+
+
+
+
+  <link rel="canonical" href="http://shniu.github.io/2018/08/15/blockchain/wallet-intro1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>区块链钱包 - 1 公私钥生成原理及私钥管理 | ChainTech</title>
   
 
 
@@ -174,35 +151,65 @@
 
 
 
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">ChainTech</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">知其所以然</p>
       
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -210,65 +217,55 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-search">
-          <a href="/search" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            搜索
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -276,12 +273,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -294,16 +299,22 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://shniu.github.io/2018/08/15/blockchain/wallet-intro1/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shniu<niushaohan@digcredit.com>">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/portrait-01.jpg">
+      <meta itemprop="description" content="一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="ChainTech">
     </span>
 
@@ -312,11 +323,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                区块链钱包 - 1 公私钥生成原理及私钥管理
+          <h1 class="post-title" itemprop="name headline">区块链钱包 - 1 公私钥生成原理及私钥管理
+
               
             
           </h1>
@@ -324,20 +332,42 @@
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-15T13:18:34+08:00">
-                2018-08-15
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2018-08-15 13:18:34" itemprop="dateCreated datePublished" datetime="2018-08-15T13:18:34+08:00">2018-08-15</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-08-16 17:57:06" itemprop="dateModified" datetime="2018-08-16T17:57:06+08:00">2018-08-16</time>
+              
             
           </span>
 
@@ -360,7 +390,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -403,7 +435,7 @@
 </blockquote>
 <h3 id="生成公钥"><a href="#生成公钥" class="headerlink" title="生成公钥"></a>生成公钥</h3><p><code>K = k * G</code>, G 是生成点，是固定不变的，是 ECC 上的一个点；k 是随机生成的私钥，它是一个随机数，一个很大的随机数；那么，对 G 经过 k 次的椭圆曲线加法操作后就得到最终的点，这个点就是公钥 K。</p>
 <p>So, K = (x, y)， 举个例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">K = 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD * G</div><div class="line">K = (x, y) = (F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A, 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">K = 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD * G</span><br><span class="line">K = (x, y) = (F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A, 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB)</span><br></pre></td></tr></table></figure>
 <p>数学原理就是借助椭圆曲线函数，将G相加k次。在椭圆曲线中，点的相加等同于从该点画切线找到与曲线相交的另一 点，然后翻折到x轴。</p>
 <h3 id="比特币地址"><a href="#比特币地址" class="headerlink" title="比特币地址"></a>比特币地址</h3><p>地址的生成使用到了哈希算法；哈希算法是一种单向函数，接收任意长度的输入产生定长的指纹或哈希，具体的算法是：SHA256 和 RIPEMD160。</p>
 <p>以公钥 K 为输入，计算其 SHA256 哈希值，并以此结果计算 RIPEMD160 哈希值，得到一个长度为160位（20字节）的数字：<br>A = RIPEMD160(SHA256(K))</p>
@@ -439,28 +471,28 @@
 </li>
 </ul>
 <h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
-<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch04.md" target="_blank" rel="external">精通比特币 - 密钥 地址</a></li>
-<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch05.md" target="_blank" rel="external">精通比特币 - 钱包</a></li>
-<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch06.md" target="_blank" rel="external">精通比特币 - ECDSA算法</a></li>
+<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch04.md" target="_blank" rel="noopener">精通比特币 - 密钥 地址</a></li>
+<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch05.md" target="_blank" rel="noopener">精通比特币 - 钱包</a></li>
+<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN/blob/master/ch06.md" target="_blank" rel="noopener">精通比特币 - ECDSA算法</a></li>
 </ul>
 
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
+    
       
-    </div>
+    
+    
 
+    
 
     <footer class="post-footer">
       
@@ -474,7 +506,7 @@
       
 
       
-        
+      
       
 
       
@@ -491,8 +523,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/16/cpp/cpp-intro1/" rel="prev" title="C/C++ - 入门01">
-                C/C++ - 入门01 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/15/blockchain/eos-intro1/" rel="prev" title="区块链 - EOS 分析">
+                区块链 - EOS 分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -502,24 +534,21 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
-          
+
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -535,100 +564,213 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/portrait-01.jpg"
-               alt="shniu<niushaohan@digcredit.com>" />
-          <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shniu<niushaohan@digcredit.com></niushaohan@digcredit.com></p>
               <p class="site-description motion-element" itemprop="description">一个人并不是生来要给打败的，你尽可以的消灭他，可就是打不败他</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">56</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">58</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/shniu" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#公私钥原理"><span class="nav-number">1.</span> <span class="nav-text">公私钥原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#私钥"><span class="nav-number">1.1.</span> <span class="nav-text">私钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公钥"><span class="nav-number">1.2.</span> <span class="nav-text">公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECC"><span class="nav-number">1.3.</span> <span class="nav-text">ECC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成公钥"><span class="nav-number">1.4.</span> <span class="nav-text">生成公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比特币地址"><span class="nav-number">1.5.</span> <span class="nav-text">比特币地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小插曲-Base58Check"><span class="nav-number">1.5.1.</span> <span class="nav-text">小插曲 - Base58Check</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字签名"><span class="nav-number">1.6.</span> <span class="nav-text">数字签名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ECDSA-算法签名过程"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">ECDSA 算法签名过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ECDSA-算法验证签名"><span class="nav-number">1.6.0.2.</span> <span class="nav-text">ECDSA 算法验证签名</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#钱包"><span class="nav-number">2.</span> <span class="nav-text">钱包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">3.</span> <span class="nav-text">Ref</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#公私钥原理"><span class="nav-number">1.</span> <span class="nav-text">公私钥原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#私钥"><span class="nav-number">1.1.</span> <span class="nav-text">私钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公钥"><span class="nav-number">1.2.</span> <span class="nav-text">公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECC"><span class="nav-number">1.3.</span> <span class="nav-text">ECC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成公钥"><span class="nav-number">1.4.</span> <span class="nav-text">生成公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比特币地址"><span class="nav-number">1.5.</span> <span class="nav-text">比特币地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小插曲-Base58Check"><span class="nav-number">1.5.1.</span> <span class="nav-text">小插曲 - Base58Check</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字签名"><span class="nav-number">1.6.</span> <span class="nav-text">数字签名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ECDSA-算法签名过程"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">ECDSA 算法签名过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ECDSA-算法验证签名"><span class="nav-number">1.6.0.2.</span> <span class="nav-text">ECDSA 算法验证签名</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#钱包"><span class="nav-number">2.</span> <span class="nav-text">钱包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">3.</span> <span class="nav-text">Ref</span></a></li></div>
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -644,30 +786,39 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></span>
+  <span class="author" itemprop="copyrightHolder">shniu<niushaohan@digcredit.com></niushaohan@digcredit.com></span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.6.0</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -679,12 +830,17 @@
         
       </div>
     
+
+    
+
+    
+
     
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -698,79 +854,61 @@
 
 
 
-  
 
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
 
 
 
 
-	
+
+
+
+
 
 
 
 
 
   
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
 
 
 
   
 
 
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
 
 
 
@@ -779,7 +917,22 @@
 
 
   
+
+
+
+
+
+
+
+
+
+
+
   
+
+
+
+
 
   
 
@@ -789,6 +942,20 @@
 
   
 
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 
