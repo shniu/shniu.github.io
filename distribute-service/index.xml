@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Distribute Service on Thinging X</title><link>http://thinkingx.xyz/distribute-service/index.html</link><description>Recent content in Distribute Service on Thinging X</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Wed, 17 May 2023 15:37:45 +0800</lastBuildDate><atom:link href="http://thinkingx.xyz/distribute-service/index.xml" rel="self" type="application/rss+xml"/><item><title>存储服务</title><link>http://thinkingx.xyz/distribute-service/backend-storage/index.html</link><pubDate>Wed, 17 May 2023 15:35:34 +0800</pubDate><guid>http://thinkingx.xyz/distribute-service/backend-storage/index.html</guid><description>后端存储是分布式服务中最重要的一部分。存储承担了数据的持久化、读写、查询等功能，一个安全可靠、快速稳定的存储基础设施是构建稳定的业务系统的基础。
+根据不同的业务场景，选择使用不同的存储技术，是一种能力。
+MySQL、Redis、ElasticSearch、HBase、Hive、MongoDB、RocksDB、CockroachDB 等等，这些存储还真就是谁都替代不了谁，每一种都有它擅长的地方，有它适用的场景，当然也有很突出的短板。如何根据业务系统的特点，选择合适的存储来构建我们的系统，是需要学习和掌握的。
+目录列表
+缓存设计</description></item></channel></rss>
