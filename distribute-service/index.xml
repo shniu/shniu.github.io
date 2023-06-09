@@ -2,4 +2,7 @@
 根据不同的业务场景，选择使用不同的存储技术，是一种能力。
 MySQL、Redis、ElasticSearch、HBase、Hive、MongoDB、RocksDB、CockroachDB 等等，这些存储还真就是谁都替代不了谁，每一种都有它擅长的地方，有它适用的场景，当然也有很突出的短板。如何根据业务系统的特点，选择合适的存储来构建我们的系统，是需要学习和掌握的。
 目录列表
-缓存设计</description></item></channel></rss>
+缓存设计</description></item><item><title>BFF</title><link>http://thinkingx.xyz/distribute-service/bff/index.html</link><pubDate>Wed, 17 May 2023 15:35:34 +0800</pubDate><guid>http://thinkingx.xyz/distribute-service/bff/index.html</guid><description>Backend for Frontend 是一种模式，在构建 API 时当然可以不选择使用 BFF，取而代之的是对多个 UI 终端提供一个统一的 API，但是不可避免的会带来一些问题：
+不同的 UI 终端展示的数据是不一样的，比如 Web H5 和 App 之间会存在较大的差异 不同的 UI 终端可能会有不同的逻辑，比如有些数据是 Web 用，有些则是 App 用，这样都放在一个接口里的话，对不同的终端来说，都会有一些无用的数据，或者是无用的逻辑，这样会导致接口的复杂度增加，维护成本增加；从节约流量和资源的角度说，移动端应该尽可能少的去拉取数据 统一的 API 在开发新功能时，可能会对不同 UI 终端都产生影响，而且功能逻辑会相互耦合；也就是说一个接口承担了更多的职责 总结来看：由于不同终端的差异性，导致对后端 API 的数据产生了不同的需求，驱动我们去考虑针对不同的 UI 来定制不同的接口。
+通用的 API 后端和团队组成如下
+使用 BFF The goal of the BFF pattern is to decouple the front-end applications from the back-end services and to reuse the APIs while ensuring that it doesn&amp;rsquo;t cause over-fetching or over-requesting on the client-side.</description></item></channel></rss>

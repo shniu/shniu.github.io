@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JVM on Thinging X</title><link>http://thinkingx.xyz/tags/jvm/index.html</link><description>Recent content in JVM on Thinging X</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Wed, 17 May 2023 15:37:45 +0800</lastBuildDate><atom:link href="http://thinkingx.xyz/tags/jvm/index.xml" rel="self" type="application/rss+xml"/><item><title>JVM</title><link>http://thinkingx.xyz/programming-language/java/jvm/index.html</link><pubDate>Wed, 17 May 2023 15:37:45 +0800</pubDate><guid>http://thinkingx.xyz/programming-language/java/jvm/index.html</guid><description>JVM 是 Java 虚拟机的缩写，是运行 Java 字节码的虚拟机。
+JVM 基础 Java 中的引用：强引用、软引用、弱引用、虚引用。
+不同类型的引用和 GC 有密切的关系。
+JVM 内存模型 TODO
+JVM GC TODO</description></item></channel></rss>
