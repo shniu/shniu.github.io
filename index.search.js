@@ -4,7 +4,10 @@ var relearn_search_index=[{content:`Java 是一种广泛使用的计算机编程
 `,description:"",tags:null,title:"区块链概要",uri:"/blockchain/0-introduction/index.html"},{content:`CS, Computer Science, 计算机科学是系统性研究信息与计算的理论基础以及它们在计算机系统中如何实现与应用的实用技术的学科；涵盖的内容非常多，但是最核心最基础的学科是计算机科学的基石，包括但不限于：
 数据结构与算法 计算机组成原理（计算机体系结构与计算机工程） 操作系统 计算机网络 分布式系统 计算机安全和密码学 数据库 并行计算和分布式计算 编译原理 软件设计 … `,description:"",tags:["CS"],title:"CS",uri:"/basics/index.html"},{content:`Blockchain is a distributed ledger technology that allows for the creation of a decentralized network of computers that can store and share information in a secure.
 怎么组织区块链相关的知识呢？
-区块链原理：技术原理、经济模型等，以及常见的主网 Web3 热点 (Hot / Trend) BRC20 区块链概要 Deep Understanding of Ethereum Smart Contracts Web3 Reference Blockchain Protocols - We research layer 1 blockchain protocols to provide the most accurate, up-to-date information on all of them and make this the easiest way for you to get to know and use them. `,description:"",tags:["Blockchain"],title:"Blockchain",uri:"/blockchain/index.html"},{content:`深入理解以太坊 专有名词 EOA, Contract Accounts, Account state, Account nonce, World state, Transaction, Receipt, Block, Uncle block, Nonce, Gas, Gas price, Gas Price Oracle
+区块链原理：技术原理、经济模型等，以及常见的主网 Wallet Web3 热点 (Hot / Trend) BRC20 区块链概要 Deep Understanding of Bitcoin Deep Understanding of Ethereum Wallet Smart Contracts Web3 Reference Blockchain Protocols - We research layer 1 blockchain protocols to provide the most accurate, up-to-date information on all of them and make this the easiest way for you to get to know and use them.
+How does Bitcoin work? - 这是一个学习 Bitcoin 如何工作的网站，内容非常好
+`,description:"",tags:["Blockchain"],title:"Blockchain",uri:"/blockchain/index.html"},{content:`深入学习 Bitcoin 及其工作原理，有几个非常不错的资源值得推荐
+Mastering Bitcoin 2th edition learn me a bitcoin `,description:"",tags:null,title:"Deep Understanding of Bitcoin",uri:"/blockchain/bitcoin/index.html"},{content:`深入理解以太坊 专有名词 EOA, Contract Accounts, Account state, Account nonce, World state, Transaction, Receipt, Block, Uncle block, Nonce, Gas, Gas price, Gas Price Oracle
 Zero Knowledge Proof, EVM, Message, RLP, MPT (Merkle Patricia Tree), Patricia Trie, Merkle Tree, Whisper, Light Ethereum Subprotocol, Swarm, LLL, Sperpent, Mutan, Solidity, EIPs(ERC20, ERC721)
 Uncle block
 Uncle blocks (or Ommer) are created when two or more miners create blocks at nearly the same time. Only one block can be mined and accepted as canonical on the blockchain. The others are uncle blocks, which are not included but still provide a reward to their miners for the work done.
@@ -20,17 +23,46 @@ In order to minimize disruption to tooling and infrastructure, these fields are 
 // 合约地址生成算法 // sender: 指交易的发起者的地址 // nonce: 指该交易的随机数 Keccak256(rlp([sender,nonce])[12:]) 合约账户特点总结：
 拥有以太余额。 有相关的可执行代码（合约代码）。 合约代码能够被交易或者其他合约消息调用。 合约代码被执行时可再调用其他合约代码。 合约代码被执行时可执行复杂运算，可永久地改变合约内部的数据存储。 账户抽象 在最近的 EIP 中提出了账户抽象的概念(关于账户抽象看 Account abstraction)
 账户数据结构 type Account struct { Nonce uint64 Balance *big.Int Root common.Hash CodeHash []byte } 以太坊中的交易 指由一个外部账户转移一定资产给某个账户， 或者发出一个消息指令到某个智能合约
-Ethereum Node Architecture 在 The Merge 之后，以太坊节点有两部分组成：执行客户端 (EL, Execution Client) 和共识客户端 (CL, Consensus Client):
+参考资料
+以太坊技术与实现 - 交易 区块链架构之美 - EVM / Transaction 深入理解以太坊 Ethereum Node Architecture 在 The Merge 之后，以太坊节点有两部分组成：执行客户端 (EL, Execution Client) 和共识客户端 (CL, Consensus Client):
 EL 负责交易处理，交易广播，状态管理以及对 EVM 的支持 Geth 是一种 EL 的实现，还有其他的实现，比如 Parity CL 负责区块创建，区块广播和共识逻辑 这里可以找到有哪些共识客户端 共识客户端可以变为 Validator，前提是需要像 deposit contract 存入 32 ETH EL 和 CL 之间的通信使用的是 Engine API, 基于本地的 JSON-RPC CL 是在 The Merge 之后开始生效的，正式从 PoW 切换到 PoS 他们之间的关系如下图
 几个规范需要关注
 Execution API Execution Specs Engine API Consensus Specs References 深入理解以太坊 - 简要介绍以太坊的架构 以太坊设计与实现 - 一本深入探讨以太坊实现的电子书 go-ethereum doc - geth 的官方文档 Ethereum Blog `,description:"",tags:null,title:"Deep Understanding of Ethereum",uri:"/blockchain/ethereum/index.html"},{content:`不需要面面俱到的记录和 Copy，只记录自己的一些疑惑，以及一些有意思的东西。
 Golang 基础知识 Golang 的数据类型有哪些？引用类型和值类型的区别？什么时候用引用类型，什么时候用值类型？
-Reference Everything about Golang - 之前记录的一些笔记 `,description:"",tags:["Golang"],title:"Golang",uri:"/programming-language/golang/index.html"},{content:`总结分布式服务、互联网技术相关的知识。
-存储服务 BFF `,description:"",tags:["Distribute Service"],title:"Distribute Service",uri:"/distribute-service/index.html"},{content:`后端存储是分布式服务中最重要的一部分。存储承担了数据的持久化、读写、查询等功能，一个安全可靠、快速稳定的存储基础设施是构建稳定的业务系统的基础。
+Reference Everything about Golang - 之前记录的一些笔记 `,description:"",tags:["Golang"],title:"Golang",uri:"/programming-language/golang/index.html"},{content:`作为用户，Wallet 是区块链的入口；现阶段主流的 Wallet 类型有：HD Wallet，MultiSig wallet，Custodial wallet，Hardware wallet，Paper wallet，MPC Wallet 等。作为开发者，HD Wallet、MultiSig Wallet、MPC Wallet 是需要重点掌握的。
+HD wallet 钱包是用来存钱的，在区块链中，我们的数字资产都会对应到一个账户地址上， 只有拥有账户的钥匙（私钥）才可以对资产进行消费（用私钥对消费交易签名）。
+他们之间的关系如下：
+私钥通过椭圆曲线生成公钥， 公钥通过哈希函数生成地址，这两个过程都是单向的; 所以，数字钱包实际是一个管理私钥（生成、存储、签名）的工具，注意钱包并不保存资产，资产是在链上的。
+生成私钥的本质是在 1 到 2^256 之间选一个数字：生成密钥的第一步也是最重要的一步，是要找到足够安全的熵源，即随机性来源，只要选取的结果是不可预测或不可重复的
+HD, Hierarchical Deterministic, 叫做分层确定性钱包，是一种可以从单个种子（seed）衍生出一系列私钥的钱包结构，这些私钥都可以被根种子所控制，这样就可以用一个种子来管理多个账户。
+在 Mastering Bitcoin 中，有一章是来介绍 Wallet 的，有必要看一下：Mastering Bitcoin - Wallet, 中文版看这里
+HD 钱包允许我们使用一个密钥管理很多个衍生私钥，进而控制多个地址，bip32 规范中使用一种树形结构来进行管理。
+关于 HD wallet 有一系列规范：
+bip32 bip44 bip39 bip43 bip39 bip39 规范主要关于生成确定性密钥的助记码，使用一组预定义的单词来表示一串随机数，这样就可以方便的记忆和传输。主要包含两部分：生成助记码和从主机码转成二进制私钥种子。
+我们来看看 bip39 的技术细节
+如何生成助机词
+Create a random sequence (entropy) of 128 to 256 bits. Create a checksum of the random sequence by taking the first (entropy-length/32) bits of its SHA256 hash. Add the checksum to the end of the random sequence. Split the result into 11-bit length segments. Map each 11-bit value to a word from the predefined dictionary of 2048 words. The mnemonic code is the sequence of words. 随机熵和单词长度的关系：
+Entropy (bits) Checksum (bits) Entropy + checksum (bits) Mnemonic length (words) 128 4 132 12 160 5 165 15 192 6 198 18 224 7 231 21 256 8 264 24 用助记词生成种子
+The first parameter to the PBKDF2 key-stretching function is the mnemonic produced from step 6. The second parameter to the PBKDF2 key-stretching function is a salt. The salt is composed of the string constant “mnemonic” concatenated with an optional user-supplied passphrase string. PBKDF2 stretches the mnemonic and salt parameters using 2048 rounds of hashing with the HMAC-SHA512 algorithm, producing a 512-bit value as its final output. That 512-bit value is the seed. 参考实现：
+go 版本的 bip39 实现 源码解析
+func NewEntropy(bitSize int) ([]byte, error) { // 验证位数在 128 到 256 之间，并且是 32 的倍数 if err := validateEntropyBitSize(bitSize); err != nil { return nil, err } entropy := make([]byte, bitSize/8) // 这里使用的是 crypto/rand 包，而不是 math/rand 包，因为 math/rand 包是伪随机数生成器 // 这里显然需要一个真随机数生成器 _, _ = rand.Read(entropy) return entropy, nil } // 用法 entropy, _ := bip39.NewEntropy(256) mnemonic, _ := bip39.NewMnemonic(entropy) seed := bip39.NewSeed(mnemonic, "hello") 总结一下：bip39 的主要作用就是把随机生成的 seed 转成助记词，方便记忆、传输等，不管是导入、导出还是备份都非常方便，并且从助记词也可以还原出 seed。
+bip32 \u0026 bip44 从种子生成钱包
+上面了解了 bip39，通过 bip39 我们可以获取一个助记词序列，它本质上是一个随机数，这个随机数被用来当作 seed 来生成私钥。bip32 规范主要是定义了从 seed 生成私钥的过程，它定义了一种树形结构来管理私钥，这种树形结构的每个节点都有一个索引，这个索引可以用来生成子节点，这样就可以方便的管理多个私钥。
+关于 extended key 也可以看这里：extended keys
+参考实现
+go 版本的 hdkeychain - 里面包含对 extended key 的实现，也就是实现了 bip32 规范 Keys 和 Addresses 在上面介绍的几个 bip 规范中，其实少了一些细节，比如私钥如何生成公钥？公钥如何生成地址？不同的链使用的算法都一样吗？…
+关于这些问题可以参考这篇文章：Mastering Bitcoin - Keys and Addresses
+Chain Private Key -\u003e Public Key Compressed Public Key ? Public Key -\u003e Address Address Format BTC ECDSA (ecc Secp256k1) Yes SHA256 + RIPEMD160 Base58 ETH ECDSA (ecc Secp256k1) Yes Keccak256 Hex BNB ECDSA (ecc Secp256k1) Yes Keccak256 Bech32 对于地址生成算法，不同的链不太一样
+Bitcoin 采用 SHA256 + RIPEMD160, 然后再进行 Base58 编码 Ethereum 采用 Keccak256, 然后再进行 Hex 编码 对公钥做 Keccak-256 哈希运算，然后取最后的 40 位 16 进制字符 实现一个支持多链的 HD 本地钱包 一些想法
+这个本地钱包，我们暂时叫他 hdkms，后面都这么叫 hdkms 支持管理多个钱包，可以通过指定 name 来区分不同的 hd wallet wallet1 -\u003e mnemonic -\u003e seed -\u003e master private key -\u003e local keystore file1 wallet2 -\u003e mnemonic -\u003e seed -\u003e master private key -\u003e local keystore file2 hdkms 支持导入助记词、私钥 hdkms 支持导出助记词、私钥 hdkms 支持生成地址，并且可以指定 index hdkms 可以查看 address 的余额 hdkms 支持多链 比如 Bitcoin, Ethereum, Binance Smart Chain etc. hdkms 可以离线签署交易，生成签名后的交易数据 支持 native token 的 transfer 支持 erc20 支持 NFT 支持任意类型的合约 hdkms 可以在线广播交易 broadcast tx 查询 tx 状态 hdkms 一些高级功能 支持 event 监听 支持动态手续费，比如 gas fee，network fee 等 … # 考虑怎么使用 # 1. 提供命令行工具，比如 hd-kms # 创建钱包 hdkms wallet generate --wallet-name test1 --passphase 123456 hdkms wallet import --wallet-name test1 --mnemonic "" --passphase 123456 $ hdkms wallet export --wallet-name test1 $ {"mnemonic": "xxx", "passphase": ""} TODOs
+搭建起项目的基本框架 搞定 cli 及其扩展子命令 支持多个子命令的调用，比如 hdkms wallet generate, hdkms wallet list … 支持 Ethereum generate wallet mnemonic store mnemonic or private key to local keystore file get address by index query balance by address `,description:"",tags:null,title:"Wallet",uri:"/blockchain/wallet/index.html"},{content:`总结分布式服务、互联网技术相关的知识。
+后端存储以及存储服务 BFF `,description:"",tags:["Distribute Service"],title:"Distribute Service",uri:"/distribute-service/index.html"},{content:` 把后端存储当成一个贯穿很多知识点的 Topic，这样可以把相关的知识点串联起来，形成一个完整的知识体系。
+后端存储是分布式服务中最重要的一部分。存储承担了数据的持久化、读写、查询等功能，一个安全可靠、快速稳定的存储基础设施是构建稳定的业务系统的基础。
 根据不同的业务场景，选择使用不同的存储技术，是一种能力。
 MySQL、Redis、ElasticSearch、HBase、Hive、MongoDB、RocksDB、CockroachDB 等等，这些存储还真就是谁都替代不了谁，每一种都有它擅长的地方，有它适用的场景，当然也有很突出的短板。如何根据业务系统的特点，选择合适的存储来构建我们的系统，是需要学习和掌握的。
 目录列表
-缓存设计 `,description:"",tags:null,title:"存储服务",uri:"/distribute-service/backend-storage/index.html"},{content:`编程语言相关的知识。
+缓存设计 TODOs
+分库分表 ShardingSphere JDBC `,description:"",tags:null,title:"后端存储以及存储服务",uri:"/distribute-service/backend-storage/index.html"},{content:`编程语言相关的知识。
 Java Golang `,description:"",tags:null,title:"Programming Language",uri:"/programming-language/index.html"},{content:`Backend for Frontend 是一种模式，在构建 API 时当然可以不选择使用 BFF，取而代之的是对多个 UI 终端提供一个统一的 API，但是不可避免的会带来一些问题：
 不同的 UI 终端展示的数据是不一样的，比如 Web H5 和 App 之间会存在较大的差异 不同的 UI 终端可能会有不同的逻辑，比如有些数据是 Web 用，有些则是 App 用，这样都放在一个接口里的话，对不同的终端来说，都会有一些无用的数据，或者是无用的逻辑，这样会导致接口的复杂度增加，维护成本增加；从节约流量和资源的角度说，移动端应该尽可能少的去拉取数据 统一的 API 在开发新功能时，可能会对不同 UI 终端都产生影响，而且功能逻辑会相互耦合；也就是说一个接口承担了更多的职责 总结来看：由于不同终端的差异性，导致对后端 API 的数据产生了不同的需求，驱动我们去考虑针对不同的 UI 来定制不同的接口。
 通用的 API 后端和团队组成如下
@@ -53,7 +85,7 @@ Application-Specific Blockchains: The Past, Present, and Future - 介绍
 { "config": { "chainId": 12345, "homesteadBlock": 0, "eip150Block": 0, "eip155Block": 0, "eip158Block": 0, "byzantiumBlock": 0, "constantinopleBlock": 0, "petersburgBlock": 0, "istanbulBlock": 0, "muirGlacierBlock": 0, "berlinBlock": 0, "londonBlock": 0, "arrowGlacierBlock": 0, "grayGlacierBlock": 0, "clique": { "period": 5, "epoch": 30000 } }, "difficulty": "1", "gasLimit": "800000000", "extradata": "0x00000000000000000000000000000000000000000000000000000000000000003D43ed16b178611C0aBA87a00Dd6b2655aa892870000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", "alloc": { "3D43ed16b178611C0aBA87a00Dd6b2655aa89287": { "balance": "500000" }, "69b24ce645c0Bbdfcc0FE4297804b82F888DE8Fe": { "balance": "500000" }, "46eE6c1779eB3421Fc355132D867804894eFB1F9": { "balance": "300000" }, "4B3Beee7E6E067080f71336fF118E76E53C63cA3": { "balance": "200000" } } } 可以看这个官方教程来理解更多关于私有网络的搭建: Private network
 `,description:"",tags:null,title:"构建以太坊网络",uri:"/blockchain/ethereum/networks/index.html"},{content:"",description:"",tags:null,title:"Blockchain",uri:"/tags/blockchain/index.html"},{content:"",description:"",tags:null,title:"Tags",uri:"/tags/index.html"},{content:"",description:"",tags:null,title:"Web3",uri:"/tags/web3/index.html"},{content:`区块链的基础设施是非常重要的，这为开发者使用区块链、开发应用等提供了基础的支持，可以大大节省时间和资源。
 工具篇 TODO
-基础设施篇 nodereal - Fastest, Reliable \u0026 Instant Web3 Infrastructure nodereal docs bnb dev tools - 里面包含了丰富的工具，值得拥有 quicknode - The Blockchain Development Platform, Learn. Build. Scale. `,description:"",tags:["Blockchain","Web3"],title:"Web3 基础设施及工具",uri:"/blockchain/web3/infra/index.html"},{content:"",description:"",tags:null,title:"Backend Storage",uri:"/tags/backend-storage/index.html"},{content:"",description:"",tags:null,title:"Cache",uri:"/tags/cache/index.html"},{content:"",description:"",tags:null,title:"JVM",uri:"/tags/jvm/index.html"},{content:`JVM 是 Java 虚拟机的缩写，是运行 Java 字节码的虚拟机。
+基础设施篇 nodereal - Fastest, Reliable \u0026 Instant Web3 Infrastructure nodereal docs bnb dev tools - 里面包含了丰富的工具，值得拥有 quicknode - The Blockchain Development Platform, Learn. Build. Scale. wyre - INFRASTRUCTURE FOR THE NEW ECONOMY, We put the power in your hands with easy-to-use APIs that you can use to delight your users with simple and secure payments and digital asset experiences `,description:"",tags:["Blockchain","Web3"],title:"Web3 基础设施及工具",uri:"/blockchain/web3/infra/index.html"},{content:"",description:"",tags:null,title:"Backend Storage",uri:"/tags/backend-storage/index.html"},{content:"",description:"",tags:null,title:"Cache",uri:"/tags/cache/index.html"},{content:"",description:"",tags:null,title:"JVM",uri:"/tags/jvm/index.html"},{content:`JVM 是 Java 虚拟机的缩写，是运行 Java 字节码的虚拟机。
 JVM 基础 Java 中的引用：强引用、软引用、弱引用、虚引用。
 不同类型的引用和 GC 有密切的关系。
 JVM 内存模型 TODO
@@ -71,7 +103,8 @@ JVM GC TODO
 缓存规范 JSR107 Spring Cache 缓存实践 缓存可以应对高并发大流量的场景。
 在做缓存设计时，有一些误区要避开：
 把缓存作为服务间传递数据的通道，这个要避免 使用缓存没有考虑雪崩的情况，这个要考虑 多服务共享一个缓存实例，这个最好要避免，多个服务之间缓存做垂直拆分 找几个例子分析一下
-References 缓存设计 进程内缓存，究竟怎么玩？ 美团-缓存那些事儿 深入分布式缓存：从原理到实践 Frameworks Caffeine Doc `,description:"",tags:["Backend Storage","Cache","Middleware"],title:"缓存设计",uri:"/distribute-service/backend-storage/cache/index.html"},{content:`大道至简，简则易行
+References 缓存设计 进程内缓存，究竟怎么玩？ 美团-缓存那些事儿 深入分布式缓存：从原理到实践 Frameworks Caffeine Doc https://bbs.huaweicloud.com/blogs/365239 https://mp.weixin.qq.com/s/36kVm4pfiy2vQEMToZ9--g https://cloud.tencent.com/developer/article/1546995 https://juejin.cn/post/6844903961078530062 https://mp.weixin.qq.com/s/YBpOz1dQ0sG15vGL7N0PeQ https://shniu.gitbook.io/cs/middleware/redis https://shniu.gitbook.io/cs/system-design/backend-store/cache-design https://tech.meituan.com/2017/03/17/cache-about.html http://highscalability.com/blog/2016/1/25/design-of-a-modern-cache.html https://juejin.cn/post/7151937376578142216 https://juejin.cn/column/7140852038258147358
+`,description:"",tags:["Backend Storage","Cache","Middleware"],title:"缓存设计",uri:"/distribute-service/backend-storage/cache/index.html"},{content:`大道至简，简则易行
 学习不仅是为了找到答案，更是为了找到方法。 计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决。 简单的设计是：设计者确定其设计已经达到了完美的标准不是不能再增加任何东西，而是不能再减少任何东西。 – 编程珠玑 程序员的主要问题与其说是技术问题，还不如说是心理问题，他不能解决问题，是因为他在企图解决错误问题，问题的最终解决， 是通过打破他的概念壁垒，进而去解决一个较简单的问题而实现的。 – 编程珠玑 如无必要，勿增实体。 – 奥卡姆剃刀原理 成为一名适应时代变化的软件工程师，知识体系的建设至关重要。
 Quick Reference CS Blockchain Distribute Service Programming Language How to organize 指导思想是以计算机基础知识为底座，并结合人类在各方面留下的宝贵经验和真理，延伸到更多的应用领域，注重实战。
 基础知识 操作系统原理 网络原理 计算机组成原理 软件工程 编程语言 设计模式 架构设计 代码质量 代码重构 代码审查 代码测试 代码部署 代码发布 代码监控 代码运维 中间件 数据库 缓存 消息队列 搜索引擎 分布式文件系统 分布式数据库 分布式缓存 分布式消息队列 分布式搜索引擎 分布式事务 分布式锁 分布式调度 分布式配置 分布式日志 分布式监控 分布式追踪 分布式链路 分布式存储 分布式计算 分布式任务 分布式协调 topic 行业 区块链 人工智能 云计算 `,description:"",tags:null,title:"Overview",uri:"/index.html"},{content:"",description:"",tags:null,title:"Categories",uri:"/categories/index.html"},{content:"",description:"",tags:null,title:"CS",uri:"/tags/cs/index.html"},{content:"",description:"",tags:null,title:"Distribute Service",uri:"/tags/distribute-service/index.html"},{content:"",description:"",tags:null,title:"Golang",uri:"/tags/golang/index.html"},{content:`Projects…
