@@ -15,11 +15,19 @@ HD 钱包允许我们使用一个密钥管理很多个衍生私钥，进而控�
 bip32 bip44 bip39 bip43 bip39 bip39 规范主要关于生成确定性密钥的助记码，使用一组预定义的单词来表示一串随机数，这样就可以方便的记忆和传输。主要包含两部分：生成助记码和从主机码转成二进制私钥种子。
 我们来看看 bip39 的技术细节
 如何生成助机词
-Create a random sequence (entropy) of 128 to 256 bits. Create a checksum of the random sequence by taking the first (entropy-length/32) bits of its SHA256 hash.</description></item><item><title>Smart Contracts</title><link>http://thinkingx.xyz/blockchain/smart-contracts/index.html</link><pubDate>Sun, 07 May 2023 14:19:59 +0800</pubDate><guid>http://thinkingx.xyz/blockchain/smart-contracts/index.html</guid><description>这里主要是关于智能合约。</description></item><item><title>Web3</title><link>http://thinkingx.xyz/blockchain/web3/index.html</link><pubDate>Sun, 07 May 2023 14:47:48 +0800</pubDate><guid>http://thinkingx.xyz/blockchain/web3/index.html</guid><description>有理由相信 Web3.0 是下一代的价值互联网。
+Create a random sequence (entropy) of 128 to 256 bits. Create a checksum of the random sequence by taking the first (entropy-length/32) bits of its SHA256 hash.</description></item><item><title>Smart Contracts</title><link>http://thinkingx.xyz/blockchain/smart-contracts/index.html</link><pubDate>Sun, 07 May 2023 14:19:59 +0800</pubDate><guid>http://thinkingx.xyz/blockchain/smart-contracts/index.html</guid><description>这里主要是关于智能合约。
+搞明白 hardhat 用 hardhat 和 openzeplin 写 erc20 合约，部署、运行等 开发工具、框架 工欲善其事，必先利其器。
+开发工具 Remix - 一个基于浏览器的 IDE，可以用来编写、编译、部署智能合约。
+Remix 内部也提供了一个交互式的学习 Solidity 的教程 Visiual Studio Code &amp;amp; Solidity Extension - 一个 VSCode 的插件，可以用来编写、编译、部署智能合约。
+Jetbrains 系列 IDE &amp;amp; Solidity Extension - 一个 Jetbrains 系列 IDE 的插件，可以用来编写、编译、部署智能合约。
+开发框架 Hardhat OpenZeplin Truffle ether.js Ganache TypeScript &amp;amp; JavaScript &amp;amp; ES6 &amp;amp; Node.js 学习资源 Solidity Documents
+中文版 英文版 WTF 学院
+WTF-Solidity 用 Go 来做以太坊开发 &amp;amp; Ethereum Development with Go</description></item><item><title>Web3</title><link>http://thinkingx.xyz/blockchain/web3/index.html</link><pubDate>Sun, 07 May 2023 14:47:48 +0800</pubDate><guid>http://thinkingx.xyz/blockchain/web3/index.html</guid><description>有理由相信 Web3.0 是下一代的价值互联网。
 Web3 基础设施及工具 References 这里列出了一些 Web3.0 的相关资料，以供参考。
 The Architecture of a Web 3.0 application - 主要介绍相对于 web2.0，web3.0 的架构是怎样的。
 Web3 Architecture and Tech Stack : A Beginners Guide
 A simple guide to the Web3 stack
 A simple guide to the web3 developer stack
 What Goes Behind Web 3.0 Architecture?
-Application-Specific Blockchains: The Past, Present, and Future - 介绍</description></item></channel></rss>
+Application-Specific Blockchains: The Past, Present, and Future - 介绍
+项目 tokenlon - 值得信赖的去中心化交易结算协议</description></item></channel></rss>
