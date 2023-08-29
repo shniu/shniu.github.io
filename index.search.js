@@ -6,7 +6,7 @@ var relearn_search_index=[{content:`Java 是一种广泛使用的计算机编程
 怎么组织区块链相关的知识呢？
 区块链原理：技术原理、经济模型等，以及常见的主网 Wallet Web3 热点 (Hot / Trend) BRC20 区块链概要 Deep Understanding of Bitcoin Deep Understanding of Ethereum Wallet Smart Contracts Web3 Reference Blockchain Protocols - We research layer 1 blockchain protocols to provide the most accurate, up-to-date information on all of them and make this the easiest way for you to get to know and use them.
 How does Bitcoin work? - 这是一个学习 Bitcoin 如何工作的网站，内容非常好
-`,description:"",tags:["Blockchain"],title:"Blockchain",uri:"/blockchain/index.html"},{content:`深入学习 Bitcoin 及其工作原理，有几个非常不错的资源值得推荐
+Abstract Account How Account Abstraction Will Change Web3 UX Forever What is Account Abstraction and Why is Everyone Talking About It? `,description:"",tags:["Blockchain"],title:"Blockchain",uri:"/blockchain/index.html"},{content:`深入学习 Bitcoin 及其工作原理，有几个非常不错的资源值得推荐
 Mastering Bitcoin 2th edition learn me a bitcoin `,description:"",tags:null,title:"Deep Understanding of Bitcoin",uri:"/blockchain/bitcoin/index.html"},{content:`深入理解以太坊 专有名词 EOA, Contract Accounts, Account state, Account nonce, World state, Transaction, Receipt, Block, Uncle block, Nonce, Gas, Gas price, Gas Price Oracle
 Zero Knowledge Proof, EVM, Message, RLP, MPT (Merkle Patricia Tree), Patricia Trie, Merkle Tree, Whisper, Light Ethereum Subprotocol, Swarm, LLL, Sperpent, Mutan, Solidity, EIPs(ERC20, ERC721)
 Uncle block
